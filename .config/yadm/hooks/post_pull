@@ -8,6 +8,11 @@ if [[ -c firefox ]]; then
 	done
 fi
 
+# Windows
 if [[ -c efibootmgr ]]; then
 	sudo cp ~/.scripts/bootwin /usr/local/bin
 fi
+
+# Pull SSH
+cd ~/.ssh
+git pull
