@@ -1,7 +1,7 @@
 [user]
 	email = 64542347+coredev-uk@users.noreply.github.com
 	name = Core
-	signingkey = 1B77805746C47C28
+	signingkey = FE9BF1B547F8F3C6
 [credential]
 	helper = /usr/lib/git-core/git-credential-libsecret
 [core]
