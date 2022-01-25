@@ -429,6 +429,12 @@ colors:
 #   - (macOS) /bin/bash --login
 #   - (Linux/BSD) user login shell
 #   - (Windows) powershell
+
+{% if yadm.os == "Darwin" %}
+shell:
+	program: /opt/homebrew/bin/fish
+{% endif %}
+
 #shell:
 #  program: /bin/bash
 #  args:
