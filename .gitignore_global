@@ -1,0 +1,24 @@
+*.vscode
+*.vscode-oss
+*.npm
+*.cache
+*.icons
+*.mozilla
+*.local
+*.electron-gyp
+*.idea
+*.lock
+.config/discord
+.config/Code
+.config/Code - OSS
+.DS_Store
+
+# Application Development
+
+package-lock.json
+node_modules
+dist
+
+yarn.lock
+yarn-error.log
+.yarnclean
