@@ -14,6 +14,7 @@ if [ "$system_type" = "Darwin" ]; then
   if [ -f "$HOME/.Brewfile" ]; then
     echo "Updating homebrew bundle"
     brew bundle --global
+		chsh -s /opt/homebrew/bin/fish
   fi
 # Install packages in Linux
 elif [ "$system_type" = "Linux" ]; then
