@@ -35,6 +35,7 @@ height = 25
 font-0 = "SF Compact Text:pixelsize=11;3"
 font-1 = "Font Awesome 5 Free Solid:style=Solid;3"
 font-2 = "Font Awesome 5 Free Regular:style=Regular;3"
+font-3 = "Font Awesome 5 Brands Regular:style=Regular;3"
 
 fixed-center = true
 bottom = true
@@ -207,14 +208,10 @@ format = <label>
 format-foreground = ${colors.systemAccent}
 
 format-prefix = 
-format-prefix-font = 3
+format-prefix-font = 4
 format-prefix-margin = 2
 
 exec = python ~/.config/polybar/scripts/playing.py -q -f ' {artist} {song}'
-
-click-left = apple-music-electron
-click-right = apple-music-electron
-click-middle = apple-music-electron
 
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 

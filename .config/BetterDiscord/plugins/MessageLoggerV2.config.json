@@ -75,6 +75,6 @@
         "imageCacheDir": "/home/paul/.config/BetterDiscord/plugins/MLV2_IMAGE_CACHE",
         "flags": 2,
         "autoUpdate": true,
-        "versionInfo": "1.8.9"
+        "versionInfo": "1.8.12"
     }
 }
