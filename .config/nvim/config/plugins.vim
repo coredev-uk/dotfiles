@@ -13,9 +13,10 @@ Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
-
+Plug 'ray-x/lsp_signature.nvim'
 Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/vim-vsnip'
+Plug 'rafamadriz/friendly-snippets'
 
 " lualine " 
 Plug 'nvim-lualine/lualine.nvim'
@@ -49,8 +50,9 @@ Plug 'akinsho/toggleterm.nvim'
 "Git Stuff"
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-git'
-Plug 'airblade/vim-gitgutter'
 Plug 'rhysd/git-messenger.vim'
+Plug 'tanvirtin/vgit.nvim'
+Plug 'kdheepak/lazygit.nvim'
 
 " JS "
 Plug 'pangloss/vim-javascript'
@@ -60,6 +62,7 @@ Plug 'tpope/vim-surround'
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 Plug 'vuki656/package-info.nvim'
 Plug 'turbio/bracey.vim', {'do': 'npm install --prefix server'}
+Plug 'b3nj5m1n/kommentary'
 
 " Initialize plugin system
 call plug#end()

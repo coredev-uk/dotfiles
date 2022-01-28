@@ -44,10 +44,5 @@ nnoremap <silent> <Space>bd :BufferOrderByDirectory<CR>
 nnoremap <silent> <Space>bl :BufferOrderByLanguage<CR>
 nnoremap <silent> <Space>bw :BufferOrderByWindowNumber<CR>
 
-" Other:
-" :BarbarEnable - enables barbar (enabled by default)
-" :BarbarDisable - very bad command, should never be used
-
-
 " nvim tree "
-nnoremap <silent>	<A-m> :NvimTreeToggle<CR>
+nnoremap <silent> <A-m> :lua require('modules/nvim-tree').toggle_tree()<CR>

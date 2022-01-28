@@ -52,3 +52,5 @@ style =	"bold yellow"
 format = '\([$state( $progress_current/$progress_total)]($style)\) '
 disabled = false
 
+[lua]
+symbol = " "
