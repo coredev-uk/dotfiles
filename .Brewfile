@@ -1,7 +1,6 @@
 tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/core"
-tap "caskroom/fonts"
 tap "homebrew/cask-fonts"
 brew "exa"
 brew "fish"
