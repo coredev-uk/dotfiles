@@ -2,6 +2,7 @@
 set -x SSH_AUTH_SOCK "$XDG_RUNTIME_DIR/ssh-agent.socket"
 set -x PLATFORM (uname -s)
 set -x GPG_TTY (tty)
+set -x STARSHIP_CONFIG "$HOME/.config/starship.toml"
 
 # Fix the annoying terminal database message
 if test "$PLATFORM" = "Darwin"
@@ -11,7 +12,7 @@ end
 
 if status is-interactive
     # Commands to run in interactive sessions can go here
-    neofetch
+    #neofetch
 
     # Gnome Keyring
     if test -n "$DESKTOP_SESSION"
@@ -30,3 +31,5 @@ if status is-login
         exec startx >> .xsession-errors 2>&1
     end
 end
+
+starship init fish | source
