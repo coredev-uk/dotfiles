@@ -1,5 +1,5 @@
 " Telescope find "
-nnoremap <A-p> <cmd>Telescope find_files<CR>
+nnoremap <A-p> :lua require("modules/telescope").project_files()<CR>
 
 " Toggle Terminal "
 nnoremap 			 <A-t> :ToggleTerm direction=float<CR>

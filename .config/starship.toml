@@ -3,7 +3,7 @@ disabled = false
 
 [character]
 success_symbol = " [](dimmed white)"
-error_symbol = "[](red) "
+error_symbol = "[](red) "
 
 [cmd_duration]
 min_time = 1
