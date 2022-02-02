@@ -5,7 +5,7 @@
 [credential]
 	helper = /usr/lib/git-core/git-credential-libsecret
 [core]
-	excludesFile = /home/paul/.gitignore_global
+	excludesFile = ~/.gitignore_global
 	autocrlf = input
 [filter "lfs"]
 	clean = git-lfs clean -- %f

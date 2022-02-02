@@ -1,3 +1,7 @@
+" Unmap keys "
+let g:AutoPairsShortcutToggle = '<Nul>'
+
+
 " Telescope find "
 nnoremap <A-p> :lua require("modules/telescope").project_files()<CR>
 
@@ -45,4 +49,17 @@ nnoremap <silent> <Space>bl :BufferOrderByLanguage<CR>
 nnoremap <silent> <Space>bw :BufferOrderByWindowNumber<CR>
 
 " nvim tree "
-nnoremap <silent> <A-m> :lua require('modules/nvim-tree').toggle_tree()<CR>
+nnoremap <silent> <A-m> :lua require('modules/tree').toggle_tree()<CR>
+
+" nvim-cmp "
+nnoremap			<A-d> :lua vim.diagnostic.open_float()<CR>
+nnoremap			<A-Left> :lua vim.diagnostic.goto_prev()<CR>
+nnoremap			<A-Right> :lua vim.diagnostic.goto_next()<CR>
+
+" Trouble
+nnoremap <leader>xx <cmd>TroubleToggle<cr>
+nnoremap <leader>xw <cmd>TroubleToggle workspace_diagnostics<cr>
+nnoremap <leader>xd <cmd>TroubleToggle document_diagnostics<cr>
+nnoremap <leader>xq <cmd>TroubleToggle quickfix<cr>
+nnoremap <leader>xl <cmd>TroubleToggle loclist<cr>
+nnoremap gR <cmd>TroubleToggle lsp_references<cr>

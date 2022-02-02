@@ -96,7 +96,7 @@ local on_attach = function(client, bufnr)
 end
 
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
-local servers = {'pyright', 'sumneko_lua', 'tsserver', 'cssls', 'html', 'jsonls', 'eslint'}
+local servers = {'sumneko_lua', 'tsserver', 'cssls', 'html', 'jsonls', 'eslint'}
 
 for _, v in pairs(servers) do
 	require('lspconfig')[v].setup {

@@ -17,15 +17,21 @@ Plug 'ray-x/lsp_signature.nvim'
 Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/vim-vsnip'
 Plug 'rafamadriz/friendly-snippets'
+Plug 'jiangmiao/auto-pairs'
+
+" Colorizer "
+Plug 'norcalli/nvim-colorizer.lua'
 
 " lualine " 
 Plug 'nvim-lualine/lualine.nvim'
 
-" Material Theme "
-Plug 'marko-cerovac/material.nvim'
+" Theme "
+Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
+Plug 'folke/trouble.nvim'
+Plug 'folke/which-key.nvim'
 
-" Lines "
-Plug 'myusuf3/numbers.vim'
+" Notification "
+Plug 'rcarriga/nvim-notify'
 
 " NeoVim Telescope "
 Plug 'nvim-lua/plenary.nvim'
@@ -61,8 +67,15 @@ Plug 'pangloss/vim-javascript'
 Plug 'tpope/vim-surround'
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 Plug 'vuki656/package-info.nvim'
+Plug 'MunifTanjim/nui.nvim'
 Plug 'turbio/bracey.vim', {'do': 'npm install --prefix server'}
 Plug 'b3nj5m1n/kommentary'
+
+" Better quick fix "
+Plug 'kevinhwang91/nvim-bqf'
+
+" i3 "
+Plug 'mboughaba/i3config.vim'
 
 " Initialize plugin system
 call plug#end()
