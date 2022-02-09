@@ -12,6 +12,7 @@
 .config/Code
 .config/Code - OSS
 .DS_Store
+.stignore
 
 # Application Development
 
