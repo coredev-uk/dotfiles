@@ -1,15 +1,19 @@
 #!/bin/sh
 
-# firefox
-if [[ -c firefox ]]; then 
+# Firefox
+if (command -v firefox &> /dev/null); then 
 	for path in ~/.mozilla/firefox/*-release/; do
 		mkdir $path/chrome/ 2&>/dev/null
-		cp ~/.config/firefox/* $path/chrome
+		if ! (test -f $path/chrome/userChrome.css); then
+			echo '[Firefox] Linking user css to' $path
+			ln ~/.config/firefox/* $path/chrome
+		fi
 	done
 fi
 
 # Windows
-if [[ -c efibootmgr ]]; then
+if (command -v efibootmgr &> /dev/null) && (efibootmgr | grep -q 'Windows') && ! (test -f /usr/local/bin/bootwin); then
+	echo '[Bootwin] Copying script to /usr/local/bin'
 	sudo cp ~/.scripts/bootwin /usr/local/bin
 fi
 
