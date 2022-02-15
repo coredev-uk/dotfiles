@@ -31,7 +31,6 @@ if status is-interactive
 	. ~/.config/fish/functions/rprompt.fish
 
     alias ls='exa -F --group-directories-first'
-    alias idea='/home/paul/.local/share/JetBrains/Toolbox/apps/IDEA-U/ch-0/212.5457.46/bin/idea.sh'
 end
 
 # Start X at login
