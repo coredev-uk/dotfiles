@@ -1,8 +1,8 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
 SETUVAR EDITOR:vim
-SETUVAR --export SSH_AGENT_PID:1140463
-SETUVAR --export SSH_AUTH_SOCK:/tmp/ssh\x2dXXXXXXJ6L7Iv/agent\x2e1140462
+SETUVAR --export SSH_AGENT_PID:881828
+SETUVAR --export SSH_AUTH_SOCK:/tmp/ssh\x2dXXXXXXeFw8wY/agent\x2e881827
 SETUVAR __fish_initialized:3400
 SETUVAR _fish_abbr_bashtop:btop
 SETUVAR _fish_abbr_bpytop:btop

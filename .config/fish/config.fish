@@ -13,6 +13,7 @@ end
 if status is-interactive
     # Commands to run in interactive sessions can go here
     #neofetch
+	keychain --quiet --agents ssh
 
     # SSH Agent
     if test -z (pgrep ssh-agent | string collect)
