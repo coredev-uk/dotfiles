@@ -1,8 +1,23 @@
 #!/bin/sh
 
 # download vim-plug if missing
-if [ ! -f "$HOME/.local/share/nvim/site/autoload/plug.vim" ] ; then
-	echo "Installing vim-plug"
-	sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-	nvim --headless +PlugInstall +qa
-fi
+directory_exists() {
+    test -d "$1"
+}
+
+
+packer_install() {
+	local PACKER_DIRECTORY="${XDG_DATA_HOME:-$HOME/.local/share}/nvim/site/pack/packer/start/packer.nvim"
+
+	if ! directory_exists "$PACKER_DIRECTORY"; then
+		echo 'Installing a package manager for Neovim...'
+		git clone "https://github.com/wbthomason/packer.nvim" "$PACKER_DIRECTORY"
+		echo 'Done.'
+	fi
+}
+
+packer_install
+nvim -u NONE \
+    +'autocmd User PackerComplete quitall' \
+    +'lua require("core.plugins")' \
+    +'lua require("packer").sync()'

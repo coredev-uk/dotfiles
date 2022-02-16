@@ -11,9 +11,6 @@
 
 # Settings the mod
 set $mod Mod4 
- 
-
-for_window [class="^.*"] border pixel 0
 
 ## _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 ## Floating Window Rules
@@ -59,7 +56,13 @@ exec --no-startup-id cider
 bindsym $mod+c [instance="^cider$"] scratchpad show [instance="^cider$"] move position center
 
 ## _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
-## Colours
+## Window Styling
+
+for_window [class="^.*"] border pixel 1
+new_window 1pixel
+gaps outer 0
+gaps inner 0
+smart_borders on
 
 #client.focused          Border Background Text #01497C   #Window Border (MOD+E)
 # class                 border  backgr. text    indicator child_border
@@ -75,20 +78,9 @@ client.background       #ffffff
 # is used in the bar {} block below.
 font pango:SF Compact Rounded 10
 
-# This font is widely installed, provides lots of unicode glyphs, right-to-left
-# text rendering and scalability on retina/hidpi displays (thanks to pango).
-#font pango:DejaVu Sans Mono 8
-
-# The combination of xss-lock, nm-applet and pactl is a popular choice, so
-# they are included here as an example. Modify as you see fit.
-
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
 exec --no-startup-id xss-lock --transfer-sleep-lock -- 'betterlockscreen -l dimblur --display DP-4' --nofork
-
-# NetworkManager is the most popular way to manage wireless networks on Linux,
-# and nm-applet is a desktop environment-independent system tray GUI for it.
-# exec --no-startup-id nm-applet
 
 # Set fan speed because corsair is shit
 exec --no-startup-id liquidctl --match hydro set fan speed 20
@@ -99,16 +91,10 @@ exec --no-startup-id liquidctl --match hydro set fan speed 20
 # Set the betterlockscreen background
 exec --no-startup-id betterlockscreen -u $HOME/Pictures/gradient.png --display DP-4
 
-# Alternative (set last used background)
-# exec --no-startup-id source /home/paul/.fehbg
-
 # Set the feh background manually
 exec_always --no-startup-id dwall -s lake # using dwall for a bit
 
-
-#dunst 
-#exec --no-startup-id dunst
-# deadd
+# notification 
 exec --no-startup-id deadd-notification-center
 
 # auto lock
@@ -199,10 +185,7 @@ bindsym $mod+Shift+Right move right
 bindsym $mod+Ctrl+Right move workspace to output right
 bindsym $mod+Ctrl+Left move workspace to output left
 
-# nemo
-bindsym $mod+p exec nemo
-
-# brave
+# browser
 bindsym $mod+b exec firefox
 
 # split in horizontal orientation

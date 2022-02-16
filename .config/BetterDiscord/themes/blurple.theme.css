@@ -13,9 +13,9 @@
 
 :root {
     /* Blurple Recolour */
-    --accentcolor:			0,170,255;		/*	blurple		-	default:	88,101,242		*/
-	--accentcolor2:			0,170,255;	/*	boostpink	-	default:	255,115,250		*/
-	--linkcolor:			0,170,255;		/*	link		-	default:	0,176,244		*/
+    --accentcolor:			88,101,242;		/*	blurple		-	default:	88,101,242		*/
+	--accentcolor2:			255,115,250;	/*	boostpink	-	default:	255,115,250		*/
+	--linkcolor:			0,176,244;		/*	link		-	default:	0,176,244		*/
 
     /* Better Badges */
     --badge-size: 22px; /*discord defualt = 18px, theme defualt = 22px;*/
