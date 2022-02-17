@@ -5030,7 +5030,9 @@ module.exports = (_ => {
 					onClick: e => {if (typeof this.props.onClick == "function") this.props.onClick(e, this);},
 					onContextMenu: e => {if (typeof this.props.onContextMenu == "function") this.props.onContextMenu(e, this);},
 					children: [
-						!this.props.noRemove ? BDFDB.ReactUtils.createElement(InternalComponents.LibraryComponents.CardRemoveButton, {
+						!this.props.noRemove ? BDFDB.ReactUtils.createElement(InternalComponents.LibraryComponents.Clickable, {
+							"aria-label": BDFDB.LanguageUtils.LanguageStrings.REMOVE,
+							className: BDFDB.disCNS.hovercardremovebutton + BDFDB.disCNS.hovercardremovebuttondefault,
 							onClick: e => {
 								if (typeof this.props.onRemove == "function") this.props.onRemove(e, this);
 								BDFDB.ListenerUtils.stopEvent(e);
@@ -7995,6 +7997,7 @@ module.exports = (_ => {
 			},
 			after: {
 				useUserVolumeItem: "default",
+				useUserRolesItems : "default",
 				Menu: "default",
 				SettingsView: "componentDidMount",
 				Shakeable: "render",
@@ -8005,22 +8008,6 @@ module.exports = (_ => {
 				AnalyticsContext: ["componentDidMount", "componentDidUpdate"],
 				PeopleListItem: ["componentDidMount", "componentDidUpdate"],
 				DiscordTag: "default"
-			}
-		};
-		
-		InternalBDFDB.processUseUserVolumeItem = function (e) {
-			if (e.returnvalue) {
-				let id = e.arguments[0];
-				let engine = e.arguments[1] != null ? e.arguments[1] : BDFDB.LibraryComponents.VoiceSettingsConstants.MediaEngineContextTypes.DEFAULT;
-				let localVolume = BDFDB.LibraryModules.MediaDeviceUtils.getLocalVolume(id, engine);
-				e.returnvalue = BDFDB.ContextMenuUtils.createItem(BDFDB.LibraryComponents.MenuItems.MenuSliderItem, {
-					id: e.returnvalue.props.id,
-					label: e.returnvalue.props.label,
-					value: BDFDB.LibraryComponents.VolumeUtils.amplitudeToPerceptual(localVolume),
-					maxValue: BDFDB.LibraryModules.PlatformUtils.isPlatformEmbedded ? 200 : 100,
-					onValueChange: value => BDFDB.LibraryModules.MediaDeviceSetUtils.setLocalVolume(id, BDFDB.LibraryComponents.VolumeUtils.perceptualToAmplitude(value), engine),
-					onValueRender: value => `${value}%`
-				});
 			}
 		};
 		
@@ -8208,10 +8195,10 @@ module.exports = (_ => {
 		
 		InternalBDFDB.addChunkObserver = function (pluginData, config) {
 			let module;
-			if (config.stringFind) module = BDFDB.ModuleUtils.findByString(config.stringFind, false, true);
-			else if (config.propertyFind) module = BDFDB.ModuleUtils.findByProperties(config.propertyFind, false, true);
-			else if (config.prototypeFind) module = BDFDB.ModuleUtils.findByPrototypes(config.prototypeFind, false, true);
-			else module = BDFDB.ModuleUtils.findByName(config.name, false, true);
+			if (config.stringFind) module = BDFDB.ModuleUtils.findByString(config.stringFind, config.exported, true);
+			else if (config.propertyFind) module = BDFDB.ModuleUtils.findByProperties(config.propertyFind, config.exported, true);
+			else if (config.prototypeFind) module = BDFDB.ModuleUtils.findByPrototypes(config.prototypeFind, config.exported, true);
+			else module = BDFDB.ModuleUtils.findByName(config.name, config.exported, true);
 			if (module) {
 				let exports = !config.exported && module.exports || module;
 				exports = config.path && BDFDB.ObjectUtils.get(exports, config.path) || exports;
