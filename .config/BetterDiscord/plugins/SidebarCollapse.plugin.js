@@ -39,28 +39,87 @@ module.exports = (_ => {
         }
         start() { this.load(); }
         stop() { }
-    } : (([Plugin]) => {
+    } : (([Plugin, BDFDB]) => {
         return class SidebarCollapse extends Plugin {
-            listener_funcs = {
+            getSettingsPanel (collapseStates = {}) {
+				let settingsPanel;
+				return settingsPanel = BDFDB.PluginUtils.createSettingsPanel(this, {
+					collapseStates: collapseStates,
+					children: _ => {
+						let settingsItems = [];
+				
+						settingsItems.push(BDFDB.ReactUtils.createElement(BDFDB.LibraryComponents.CollapseContainer, {
+							title: "Sidebar Settings",
+							collapseStates: collapseStates,
+							children: Object.keys(this.defaults.general).map(key => this.defaults.general[key].type === 'number' ? BDFDB.ReactUtils.createElement(BDFDB.LibraryComponents.SettingsSaveItem, {
+                                type: "TextInput",
+                                childProps: {
+                                    type: "number"
+                                },
+								plugin: this,
+								key: key,
+								keys: ["general", key],
+								label: this.defaults.general[key].description,
+								value: this.settings.general[key]
+							}) : BDFDB.ReactUtils.createElement(BDFDB.LibraryComponents.SettingsSaveItem, {
+                                type: "Switch",
+								plugin: this,
+								key: key,
+								keys: ["general", key],
+								label: this.defaults.general[key].description,
+								value: this.settings.general[key]
+                            }))
+                        }))
+						
+						return settingsItems;
+					}
+				});
+			}
+
+			onSettingsClosed () {
+				if (this.SettingsUpdated) {
+					delete this.SettingsUpdated;
+					this.forceUpdateAll();
+				}
+			}
+	
+			forceUpdateAll () {				
+				BDFDB.PatchUtils.forceAllUpdates(this);
+				BDFDB.MessageUtils.rerenderAll();
+
+                !this.settings.general.openOnDmsHover ? this.removeListeners(true) : this.createListeners()
+                this.listenerFuntions.guilds.mouseout()
+                console.log(this.settings.general.openOnDmsHover)
+			}
+
+            listenerFuntions = {
                 guilds: {
                     isMouseOver: false,
                     mouseenter: () => {
                         console.log("[guild] mouseenter")
-                        document.querySelector('.guilds-2JjMmN').style.width = '72px';
-                        const divs = document.getElementsByClassName("pill-2RsI5Q")
-                        for (var i = 0; i < divs.length; i++) {
-                            divs[i].style.visibility = 'initial';        
+                        this.listenerFuntions.guilds.isMouseOver = true
+
+                        document.querySelector('.guilds-2JjMmN').style.width = `${this.settings.general.sidebarWidthOpen}px`;
+
+                        if (this.settings.general.sidebarWidth > 5) {
+                            const divs = document.getElementsByClassName("pill-2RsI5Q")
+                            for (var i = 0; i < divs.length; i++) {
+                                divs[i].style.visibility = 'initial';        
+                            }
                         }
-                        this.listener_funcs.guilds.isMouseOver = true
                     },
                     mouseout: () => {
                         console.log("[guild] mouseleave")
-                        this.listener_funcs.guilds.isMouseOver = false
-                        if (document.querySelector('#guild-context') || this.listener_funcs.dms.isMouseOver) return
-                        document.querySelector('.guilds-2JjMmN').style.width = '10px';
-                        const divs = document.getElementsByClassName("pill-2RsI5Q")
-                        for (var i = 0; i < divs.length; i++) {
-                            divs[i].style.visibility = 'hidden';        
+                        this.listenerFuntions.guilds.isMouseOver = false
+
+                        if (document.querySelector('#guild-context') || this.listenerFuntions.dms.isMouseOver) return
+                        document.querySelector('.guilds-2JjMmN').style.width = `${this.settings.general.sidebarWidth}px`;
+                        
+                        if (this.settings.general.sidebarWidth > 5) {
+                            const divs = document.getElementsByClassName("pill-2RsI5Q")
+                            for (var i = 0; i < divs.length; i++) {
+                                divs[i].style.visibility = 'hidden';        
+                            }
                         }
                     }
                 },
@@ -68,33 +127,79 @@ module.exports = (_ => {
                     isMouseOver: false,
                     mouseenter: () => {
                         console.log("[dms] mouseenter")
-                        document.querySelector('.guilds-2JjMmN').style.width = '72px';
-                        const divs = document.getElementsByClassName("pill-2RsI5Q")
-                        for (var i = 0; i < divs.length; i++) {
-                            divs[i].style.visibility = 'initial';        
+                        this.listenerFuntions.dms.isMouseOver = true
+
+                        document.querySelector('.guilds-2JjMmN').style.width = `${this.settings.general.sidebarWidthOpen}px`;
+
+                        if (this.settings.general.sidebarWidth > 5) {
+                            const divs = document.getElementsByClassName("pill-2RsI5Q")
+                            for (var i = 0; i < divs.length; i++) {
+                                divs[i].style.visibility = 'initial';        
+                            }
                         }
-                        this.listener_funcs.dms.isMouseOver = true
                     },
                     mouseout: () => {
                         console.log("[dms] mouseleave")
-                        this.listener_funcs.dms.isMouseOver = false
-                        if (document.querySelector('#guild-context') || this.listener_funcs.guilds.isMouseOver) return
-                        document.querySelector('.guilds-2JjMmN').style.width = '10px';
-                        const divs = document.getElementsByClassName("pill-2RsI5Q")
-                        for (var i = 0; i < divs.length; i++) {
-                            divs[i].style.visibility = 'hidden';        
+                        this.listenerFuntions.dms.isMouseOver = false
+                        
+                        if (document.querySelector('#guild-context') || this.listenerFuntions.guilds.isMouseOver) return
+                        document.querySelector('.guilds-2JjMmN').style.width = `${this.settings.general.sidebarWidth}px`;
+
+                        if (this.settings.general.sidebarWidth > 5) {
+                            const divs = document.getElementsByClassName("pill-2RsI5Q")
+                            for (var i = 0; i < divs.length; i++) {
+                                divs[i].style.visibility = 'hidden';        
+                            }
                         }
                     }
                 }
-            };
+            }
 
-            stylesheet = null;
-
-            onStart() {
-                // Main Stuff
+            createListeners() {
                 const dms = document.querySelector('.privateChannels-oVe7HL')
                 const guilds = document.querySelector('.guilds-2JjMmN')
 
+                if (guilds) {
+                    guilds.addEventListener('mouseover', this.listenerFuntions.guilds.mouseenter)
+                    guilds.addEventListener('mouseleave', this.listenerFuntions.guilds.mouseout)
+                }
+
+                if (dms && this.settings.general.openOnDmsHover) {
+                    dms.addEventListener('mouseover', this.listenerFuntions.dms.mouseenter)
+                    dms.addEventListener('mouseleave', this.listenerFuntions.dms.mouseout)
+                }
+            }
+
+            removeListeners(cfgupdate = false) {
+                const dms = document.querySelector('.privateChannels-oVe7HL')
+                const guilds = document.querySelector('.guilds-2JjMmN')
+
+                if (dms) {
+                    console.log('[dms] removing listeners')
+                    dms.removeEventListener('mouseover', this.listenerFuntions.dms.mouseenter)
+                    dms.removeEventListener('mouseleave', this.listenerFuntions.dms.mouseout)
+                }
+
+                if (guilds && !cfgupdate) {
+                    console.log('[guilds] removing listeners')
+                    guilds.removeEventListener('mouseover', this.listenerFuntions.guilds.mouseenter)
+                    guilds.removeEventListener('mouseleave', this.listenerFuntions.guilds.mouseout)
+                }
+            }
+
+            stylesheet = null;
+
+            onLoad() {
+                this.defaults = {
+                    general: {
+                        sidebarWidth:					{value: '10',	description: "Width of the Sidebar when Closed",    type: 'number'},
+                        sidebarWidthOpen:               {value: '72',   description: "Width of the Sidebar when Open",      type: 'number'},
+                        openOnDmsHover:                 {value: true,   description: "Open the Sidebar on Hovering over DMs", type: 'switch'},
+                    }
+                }
+            }
+
+            onStart() {
                 this.stylesheet = document.head.appendChild(document.createElement("style"));
                 this.stylesheet.innerHTML = `
                 .guilds-2JjMmN:after {
@@ -105,68 +210,28 @@ module.exports = (_ => {
                     top: 0;
                     height: 100%;
                     background-color: #191919;
-                  }
-                  
-                  .guilds-2JjMmN {
+                }
+                
+                .guilds-2JjMmN {
                     width: 10px;
                     transition: all 0.2s ease-out;
-                  }
-                  `;
-
-                // Listeners
-                const divs = document.getElementsByClassName("pill-2RsI5Q")
-                for (var i = 0; i < divs.length; i++) {
-                    divs[i].style.visibility = 'hidden';        
                 }
+                `;
 
-                if (guilds) {
-                    guilds.addEventListener('mouseover', this.listener_funcs.guilds.mouseenter)
-                    guilds.addEventListener('mouseleave', this.listener_funcs.guilds.mouseout)
-                }
-
-                if (dms) {
-                    dms.addEventListener('mouseover', this.listener_funcs.dms.mouseenter)
-                    dms.addEventListener('mouseleave', this.listener_funcs.dms.mouseout)
-                }
+                this.listenerFuntions.guilds.mouseout()
+                this.createListeners()
             }
 
 
             onSwitch() {
-                const dms = document.querySelector('.privateChannels-oVe7HL')
-                const guilds = document.querySelector('.guilds-2JjMmN')
-
-                if (dms) {
-                    dms.addEventListener('mouseover', this.listener_funcs.dms.mouseenter)
-                    dms.addEventListener('mouseleave', this.listener_funcs.dms.mouseout)
-                }
-
-                if (guilds) {
-                    guilds.addEventListener('mouseover', this.listener_funcs.guilds.mouseenter)
-                    guilds.addEventListener('mouseleave', this.listener_funcs.guilds.mouseout)
-                }
+                this.createListeners()
             }
 
             onStop() {
                 this.stylesheet.innerHTML = '';
 
-                const dms = document.querySelector('.privateChannels-oVe7HL')
-                const guilds = document.querySelector('.guilds-2JjMmN')
-
-                const divs = document.getElementsByClassName("pill-2RsI5Q")
-                for (var i = 0; i < divs.length; i++) {
-                    divs[i].style.visibility = 'visible';        
-                }
-
-                if (dms) {
-                    dms.removeEventListener('mouseover', this.listener_funcs.dms.mouseenter)
-                    dms.removeEventListener('mouseleave', this.listener_funcs.dms.mouseout)
-                }
-
-                if (guilds) {
-                    guilds.style.width = "72px"
-                    guilds.removeEventListener('mouseover', this.listener_funcs.guilds.mouseenter)
-                    guilds.removeEventListener('mouseleave', this.listener_funcs.guilds.mouseout)
-                }
+                this.listenerFuntions.guilds.mouseenter()
+                this.removeListeners
             }
         };
     })(window.BDFDB_Global.PluginUtils.buildPlugin(config));
