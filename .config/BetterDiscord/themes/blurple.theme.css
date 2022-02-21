@@ -114,22 +114,6 @@
   --background-mentioned-hover: #404eed2e;
 }
 
-/* Popout Sidebar 
-.guilds-2JjMmN::after {
-  content: "";
-  width: 1px;
-  position: absolute;
-  left: 0;
-  top: 0;
-  height: 100%;
-  background-color: #191919;
-}
-
-.guilds-2JjMmN {
-  width: 10px;
-  transition: all 0.2s ease-out;
-}*/
-
 /* DM margin Remove */
 .container-32HW5s,
 .channel-1Shao0 {
