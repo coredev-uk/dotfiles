@@ -262,7 +262,7 @@
                 "id": "937450512712867840",
                 "invalid": false,
                 "name": "District Gaming Military Regiments",
-                "iconUrl": "https://cdn.discordapp.com/icons/937450512712867840/22c4386d7198f58be85432113ebb794b.webp?size=4096",
+                "iconUrl": "https://cdn.discordapp.com/icons/937450512712867840/85d4230d9373580ed3546d6805dcac33.webp?size=4096",
                 "ownerId": "290901333589098496"
             },
             {
@@ -278,6 +278,12 @@
                 "name": "Cider: After Dark",
                 "iconUrl": "https://cdn.discordapp.com/icons/940857077604167701/92cbf2175e802336f13776f9fa554997.webp?size=4096",
                 "ownerId": "191621342473224192"
+            },
+            {
+                "id": "943638064310407260",
+                "invalid": false,
+                "name": "District Gaming Russian Army Discord",
+                "ownerId": "201746449132683274"
             }
         ],
         "friendsSnapshot": [
@@ -314,7 +320,7 @@
                 "invalid": false,
                 "tag": "Sherv272#2998",
                 "avatarURL": "/assets/1cbd08c76f8af6dddce02c5138971129.png",
-                "avatarUrl": "https://cdn.discordapp.com/avatars/242368594350964736/db17b1f26fc74f56d4cf23c644ae499b.webp?size=128"
+                "avatarUrl": "https://cdn.discordapp.com/avatars/242368594350964736/8bc42df3475a3ca112ca0457f9501280.webp?size=128"
             },
             {
                 "id": "256515075039428608",
@@ -546,6 +552,13 @@
                 "tag": "Testuser#3052",
                 "avatarURL": "/assets/1cbd08c76f8af6dddce02c5138971129.png",
                 "avatarUrl": "/assets/7c8f476123d28d103efe381543274c25.png"
+            },
+            {
+                "id": "335884853163851777",
+                "invalid": false,
+                "tag": "RogueAssassin#0230",
+                "avatarURL": "/assets/1cbd08c76f8af6dddce02c5138971129.png",
+                "avatarUrl": "https://cdn.discordapp.com/avatars/335884853163851777/82e2240e28d2b01e55e68d7d43591ed8.webp?size=128"
             }
         ],
         "showXenoNotifs": true

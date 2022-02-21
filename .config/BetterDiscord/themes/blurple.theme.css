@@ -114,18 +114,7 @@
   --background-mentioned-hover: #404eed2e;
 }
 
-.blobContainer-ikKyFs[data-dnd-name="College Kings"] .icon-3AqZ2e {
-  display: none;
-}
-
-.blobContainer-ikKyFs[data-dnd-name="College Kings"] {
-  background-image: url("https://support.discord.com/hc/article_attachments/1500015317842/Rebrand_Blog__1_.png") !important;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-}
-
-/* Popout Sidebar */
+/* Popout Sidebar 
 .guilds-2JjMmN::after {
   content: "";
   width: 1px;
@@ -139,7 +128,7 @@
 .guilds-2JjMmN {
   width: 10px;
   transition: all 0.2s ease-out;
-}
+}*/
 
 /* DM margin Remove */
 .container-32HW5s,

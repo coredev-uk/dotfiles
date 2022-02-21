@@ -26,10 +26,15 @@
             "801531114958487614",
             "832542885031051274",
             "753591043265396837",
-            "857942126805385217"
+            "857942126805385217",
+            "937450512712867840"
         ],
-        "blacklist": [],
-        "notificationBlacklist": [],
+        "blacklist": [
+            "939685705137922058"
+        ],
+        "notificationBlacklist": [
+            "939685705137922058"
+        ],
         "toastToggles": {
             "sent": false,
             "edited": true,
@@ -61,7 +66,7 @@
         "showPurgedMessages": true,
         "showDeletedCount": true,
         "showEditedCount": true,
-        "alwaysLogSelected": true,
+        "alwaysLogSelected": false,
         "alwaysLogDM": true,
         "restoreDeletedMessages": true,
         "contextmenuSubmenuName": "Message Logger",
@@ -72,7 +77,7 @@
             "showNotifications": false,
             "showContextMenu": false
         },
-        "imageCacheDir": "~/.config/BetterDiscord/plugins/MLV2_IMAGE_CACHE",
+        "imageCacheDir": "/home/paul/.config/BetterDiscord/plugins/MLV2_IMAGE_CACHE",
         "flags": 2,
         "autoUpdate": true,
         "versionInfo": "1.8.13"
