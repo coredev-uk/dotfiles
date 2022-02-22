@@ -110,7 +110,7 @@
                 "id": "332309672486895637",
                 "invalid": false,
                 "name": "r/Apple",
-                "iconUrl": "https://cdn.discordapp.com/icons/332309672486895637/6bafbbd50cf6390e37bb8d2c7eca1962.webp?size=4096",
+                "iconUrl": "https://cdn.discordapp.com/icons/332309672486895637/bcc49a4ab982377793f517e3464f0673.webp?size=4096",
                 "ownerId": "297567836254240768"
             },
             {
@@ -282,8 +282,15 @@
             {
                 "id": "943638064310407260",
                 "invalid": false,
-                "name": "District Gaming Russian Army Discord",
+                "name": "District Gaming Russian Army Discord - N/A",
                 "ownerId": "201746449132683274"
+            },
+            {
+                "id": "285723694259765248",
+                "invalid": false,
+                "name": "Crident Networks",
+                "iconUrl": "https://cdn.discordapp.com/icons/285723694259765248/a_362fb60f732a567d91b2a4d646e0dbe1.webp?size=4096",
+                "ownerId": "150542592172490752"
             }
         ],
         "friendsSnapshot": [
@@ -393,6 +400,13 @@
                 "avatarUrl": "https://cdn.discordapp.com/avatars/313730252448858125/a_1d910b274c122c12965d7c82220a94b9.webp?size=128"
             },
             {
+                "id": "335884853163851777",
+                "invalid": false,
+                "tag": "RogueAssassin#0230",
+                "avatarURL": "/assets/1cbd08c76f8af6dddce02c5138971129.png",
+                "avatarUrl": "https://cdn.discordapp.com/avatars/335884853163851777/82e2240e28d2b01e55e68d7d43591ed8.webp?size=128"
+            },
+            {
                 "id": "340056069420089345",
                 "invalid": false,
                 "tag": "D Dog#1980",
@@ -453,7 +467,7 @@
                 "invalid": false,
                 "tag": "crypticplank#9741",
                 "avatarURL": "/assets/1cbd08c76f8af6dddce02c5138971129.png",
-                "avatarUrl": "https://cdn.discordapp.com/avatars/451861000535277568/b570a07a9ef7ca33546ac1dff7953d69.webp?size=128"
+                "avatarUrl": "https://cdn.discordapp.com/avatars/451861000535277568/04871ec12175e209a291a36b221fe8f4.webp?size=128"
             },
             {
                 "id": "472471580312862740",
@@ -552,13 +566,6 @@
                 "tag": "Testuser#3052",
                 "avatarURL": "/assets/1cbd08c76f8af6dddce02c5138971129.png",
                 "avatarUrl": "/assets/7c8f476123d28d103efe381543274c25.png"
-            },
-            {
-                "id": "335884853163851777",
-                "invalid": false,
-                "tag": "RogueAssassin#0230",
-                "avatarURL": "/assets/1cbd08c76f8af6dddce02c5138971129.png",
-                "avatarUrl": "https://cdn.discordapp.com/avatars/335884853163851777/82e2240e28d2b01e55e68d7d43591ed8.webp?size=128"
             }
         ],
         "showXenoNotifs": true
