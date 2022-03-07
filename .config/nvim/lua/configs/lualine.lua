@@ -27,7 +27,7 @@ function M.config()
 			lualine_z = {}
 		},
 		tabline = {},
-		extensions = {}
+		extensions = {'nvim-tree'}
 	}
 end
 

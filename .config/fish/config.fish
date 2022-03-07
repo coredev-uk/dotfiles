@@ -2,6 +2,7 @@
 set -x PLATFORM (uname -s)
 set -x GPG_TTY (tty)
 set -x STARSHIP_CONFIG "$HOME/.config/starship.toml"
+set fish_greeting
 
 # Fix the annoying terminal database message
 if test "$PLATFORM" = "Darwin"
@@ -33,6 +34,8 @@ if status is-interactive
 	. ~/.config/fish/functions/rprompt.fish
 
     alias ls='exa -F --group-directories-first'
+	alias vim='nvim'
+	alias vi='nvim'
 end
 
 # Start X at login

@@ -2,6 +2,7 @@
 	"changeLogs": {
 		"BDFDB": "2.1.9",
 		"BetterSearchPage": "1.2.0",
+		"HideMutedCategories": "1.0.6",
 		"OpenSteamLinksInApp": "1.1.4",
 		"StaffTag": "1.4.9"
 	},
@@ -14,7 +15,7 @@
 		"useChromium": false
 	},
 	"hashes": {
-		"0BDFDB.data.json": "e49cbdea5695e700a516f72a7271d434a5fe7550",
-		"0BDFDB.raw.css": "a1036e10077b9457f3903795204f7dbd91d7646d"
+		"0BDFDB.data.json": "f6f1063b93385058e09ea98e1920cc3efa3fe95e",
+		"0BDFDB.raw.css": "e4f850b97d5093dae560f81c5b1ea0ef7b446642"
 	}
 }

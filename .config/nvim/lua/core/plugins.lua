@@ -30,7 +30,8 @@ packer.startup {
 
 		-- builtin lsp
 		use {
-			'neovim/nvim-lspconfig'
+			'neovim/nvim-lspconfig',
+			'williamboman/nvim-lsp-installer'
 		}
 
 		use {
@@ -150,6 +151,7 @@ packer.startup {
 				require('configs.package-info')
 			end
 		} -- Package.json Information
+		
 		use {
 			'b3nj5m1n/kommentary',
 			config = function()
@@ -190,14 +192,17 @@ packer.startup {
 
 		-- Bufferline
 		use {
-			'romgrk/barbar.nvim',
-			after = 'nvim-web-devicons',
+			'akinsho/bufferline.nvim', 
+			requires = 'kyazdani42/nvim-web-devicons',
+			config = function()
+				require('configs.bufferline').config()
+			end
 		}
 
 		-- Statusline
 		use {
 			'nvim-lualine/lualine.nvim',
-			after = 'barbar.nvim',
+			after = 'bufferline.nvim',
 			config = function()
 				require('configs.lualine').config()
 			end,

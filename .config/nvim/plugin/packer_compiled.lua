@@ -74,13 +74,10 @@ _G.packer_plugins = {
     path = "/home/paul/.local/share/nvim/site/pack/packer/start/auto-pairs",
     url = "https://github.com/jiangmiao/auto-pairs"
   },
-  ["barbar.nvim"] = {
+  ["bufferline.nvim"] = {
     after = { "lualine.nvim" },
-    load_after = {},
     loaded = true,
-    needs_bufread = false,
-    path = "/home/paul/.local/share/nvim/site/pack/packer/opt/barbar.nvim",
-    url = "https://github.com/romgrk/barbar.nvim"
+    only_config = true
   },
   ["cmp-buffer"] = {
     after_files = { "/home/paul/.local/share/nvim/site/pack/packer/opt/cmp-buffer/after/plugin/cmp_buffer.lua" },
@@ -167,7 +164,7 @@ _G.packer_plugins = {
     url = "https://github.com/kevinhwang91/nvim-bqf"
   },
   ["nvim-cmp"] = {
-    after = { "cmp-cmdline", "cmp-path", "cmp-vsnip", "cmp-buffer", "lsp_signature.nvim" },
+    after = { "cmp-buffer", "cmp-path", "lsp_signature.nvim", "cmp-vsnip", "cmp-cmdline" },
     loaded = true,
     only_config = true
   },
@@ -180,6 +177,11 @@ _G.packer_plugins = {
     needs_bufread = false,
     path = "/home/paul/.local/share/nvim/site/pack/packer/opt/nvim-colorizer.lua",
     url = "https://github.com/norcalli/nvim-colorizer.lua"
+  },
+  ["nvim-lsp-installer"] = {
+    loaded = true,
+    path = "/home/paul/.local/share/nvim/site/pack/packer/start/nvim-lsp-installer",
+    url = "https://github.com/williamboman/nvim-lsp-installer"
   },
   ["nvim-lspconfig"] = {
     loaded = true,
@@ -208,7 +210,7 @@ _G.packer_plugins = {
     url = "https://github.com/kyazdani42/nvim-tree.lua"
   },
   ["nvim-treesitter"] = {
-    after = { "nvim-colorizer.lua", "nvim-ts-rainbow", "nvim_context_vt" },
+    after = { "nvim-ts-rainbow", "nvim-colorizer.lua", "nvim_context_vt" },
     commands = { "TSInstall", "TSInstallInfo", "TSInstallSync", "TSUninstall", "TSUpdate", "TSUpdateSync", "TSDisableAll", "TSEnableAll" },
     config = { "\27LJ\2\nA\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\vconfig\23configs.treesitter\frequire\0" },
     loaded = false,
@@ -314,14 +316,26 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
+-- Config for: nvim-notify
+time([[Config for nvim-notify]], true)
+try_loadstring("\27LJ\2\n2\0\0\4\0\3\0\0066\0\0\0006\1\2\0'\3\1\0B\1\2\2=\1\1\0K\0\1\0\frequire\vnotify\bvim\0", "config", "nvim-notify")
+time([[Config for nvim-notify]], false)
 -- Config for: tokyonight.nvim
 time([[Config for tokyonight.nvim]], true)
 try_loadstring("\27LJ\2\n—\2\0\0\3\0\v\0\0216\0\0\0009\0\1\0'\1\3\0=\1\2\0006\0\0\0009\0\1\0)\1\1\0=\1\4\0006\0\0\0009\0\1\0005\1\6\0=\1\5\0006\0\0\0009\0\1\0005\1\b\0=\1\a\0006\0\0\0009\0\t\0'\2\n\0B\0\2\1K\0\1\0\27colorscheme tokyonight\bcmd\1\0\2\nerror\f#ff0000\thint\vorange\22tokyonight_colors\1\5\0\0\aqf\15vista_kind\rterminal\14Telescope\24tokyonight_sidebars tokyonight_italic_functions\nnight\21tokyonight_style\6g\bvim\0", "config", "tokyonight.nvim")
 time([[Config for tokyonight.nvim]], false)
+-- Config for: nvim-cmp
+time([[Config for nvim-cmp]], true)
+try_loadstring("\27LJ\2\n?\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\vconfig\21configs.cmp-nvim\frequire\0", "config", "nvim-cmp")
+time([[Config for nvim-cmp]], false)
 -- Config for: kommentary
 time([[Config for kommentary]], true)
 try_loadstring("\27LJ\2\n2\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\23configs.kommentary\frequire\0", "config", "kommentary")
 time([[Config for kommentary]], false)
+-- Config for: vgit.nvim
+time([[Config for vgit.nvim]], true)
+try_loadstring("\27LJ\2\n,\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\17configs.vgit\frequire\0", "config", "vgit.nvim")
+time([[Config for vgit.nvim]], false)
 -- Config for: package-info.nvim
 time([[Config for package-info.nvim]], true)
 try_loadstring("\27LJ\2\n4\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\25configs.package-info\frequire\0", "config", "package-info.nvim")
@@ -330,58 +344,48 @@ time([[Config for package-info.nvim]], false)
 time([[Config for nvim-tree.lua]], true)
 try_loadstring("\27LJ\2\n@\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\vconfig\22configs.nvim-tree\frequire\0", "config", "nvim-tree.lua")
 time([[Config for nvim-tree.lua]], false)
--- Config for: nvim-cmp
-time([[Config for nvim-cmp]], true)
-try_loadstring("\27LJ\2\n?\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\vconfig\21configs.cmp-nvim\frequire\0", "config", "nvim-cmp")
-time([[Config for nvim-cmp]], false)
--- Config for: vgit.nvim
-time([[Config for vgit.nvim]], true)
-try_loadstring("\27LJ\2\n,\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\17configs.vgit\frequire\0", "config", "vgit.nvim")
-time([[Config for vgit.nvim]], false)
--- Config for: dashboard-nvim
-time([[Config for dashboard-nvim]], true)
-try_loadstring("\27LJ\2\n\v\0\0\1\0\0\0\1K\0\1\0\0", "config", "dashboard-nvim")
-time([[Config for dashboard-nvim]], false)
--- Config for: nvim-notify
-time([[Config for nvim-notify]], true)
-try_loadstring("\27LJ\2\n2\0\0\4\0\3\0\0066\0\0\0006\1\2\0'\3\1\0B\1\2\2=\1\1\0K\0\1\0\frequire\vnotify\bvim\0", "config", "nvim-notify")
-time([[Config for nvim-notify]], false)
 -- Config for: telescope.nvim
 time([[Config for telescope.nvim]], true)
 try_loadstring("\27LJ\2\n@\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\vconfig\22configs.telescope\frequire\0", "config", "telescope.nvim")
 time([[Config for telescope.nvim]], false)
+-- Config for: bufferline.nvim
+time([[Config for bufferline.nvim]], true)
+try_loadstring("\27LJ\2\nA\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\vconfig\23configs.bufferline\frequire\0", "config", "bufferline.nvim")
+time([[Config for bufferline.nvim]], false)
+-- Config for: dashboard-nvim
+time([[Config for dashboard-nvim]], true)
+try_loadstring("\27LJ\2\n\v\0\0\1\0\0\0\1K\0\1\0\0", "config", "dashboard-nvim")
+time([[Config for dashboard-nvim]], false)
 -- Load plugins in order defined by `after`
 time([[Sequenced loading]], true)
-vim.cmd [[ packadd telescope-packer.nvim ]]
-
--- Config for: telescope-packer.nvim
-try_loadstring("\27LJ\2\nK\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0'\2\3\0B\0\2\1K\0\1\0\vpacker\19load_extension\14telescope\frequire\0", "config", "telescope-packer.nvim")
-
-vim.cmd [[ packadd cmp-cmdline ]]
-vim.cmd [[ packadd cmp-buffer ]]
-vim.cmd [[ packadd lsp_signature.nvim ]]
-vim.cmd [[ packadd cmp-vsnip ]]
-vim.cmd [[ packadd cmp-path ]]
-vim.cmd [[ packadd nvim-web-devicons ]]
-vim.cmd [[ packadd barbar.nvim ]]
 vim.cmd [[ packadd lualine.nvim ]]
 
 -- Config for: lualine.nvim
 try_loadstring("\27LJ\2\n>\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\vconfig\20configs.lualine\frequire\0", "config", "lualine.nvim")
 
+vim.cmd [[ packadd telescope-packer.nvim ]]
+
+-- Config for: telescope-packer.nvim
+try_loadstring("\27LJ\2\nK\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0'\2\3\0B\0\2\1K\0\1\0\vpacker\19load_extension\14telescope\frequire\0", "config", "telescope-packer.nvim")
+
+vim.cmd [[ packadd cmp-vsnip ]]
+vim.cmd [[ packadd lsp_signature.nvim ]]
+vim.cmd [[ packadd cmp-cmdline ]]
+vim.cmd [[ packadd cmp-buffer ]]
+vim.cmd [[ packadd cmp-path ]]
 time([[Sequenced loading]], false)
 
 -- Command lazy-loads
 time([[Defining lazy-load commands]], true)
+pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file TSDisableAll lua require("packer.load")({'nvim-treesitter'}, { cmd = "TSDisableAll", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
+pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file TSEnableAll lua require("packer.load")({'nvim-treesitter'}, { cmd = "TSEnableAll", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
+pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file ToggleTerm lua require("packer.load")({'nvim-toggleterm.lua'}, { cmd = "ToggleTerm", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
 pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file TSInstall lua require("packer.load")({'nvim-treesitter'}, { cmd = "TSInstall", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
 pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file TSInstallInfo lua require("packer.load")({'nvim-treesitter'}, { cmd = "TSInstallInfo", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
 pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file TSInstallSync lua require("packer.load")({'nvim-treesitter'}, { cmd = "TSInstallSync", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
 pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file TSUninstall lua require("packer.load")({'nvim-treesitter'}, { cmd = "TSUninstall", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
 pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file TSUpdate lua require("packer.load")({'nvim-treesitter'}, { cmd = "TSUpdate", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
 pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file TSUpdateSync lua require("packer.load")({'nvim-treesitter'}, { cmd = "TSUpdateSync", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
-pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file TSDisableAll lua require("packer.load")({'nvim-treesitter'}, { cmd = "TSDisableAll", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
-pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file TSEnableAll lua require("packer.load")({'nvim-treesitter'}, { cmd = "TSEnableAll", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
-pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file ToggleTerm lua require("packer.load")({'nvim-toggleterm.lua'}, { cmd = "ToggleTerm", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
 time([[Defining lazy-load commands]], false)
 
 vim.cmd [[augroup packer_load_aucmds]]

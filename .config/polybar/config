@@ -28,7 +28,7 @@ shade-7 = #acb2f9
 ;; Bar Settings
 
 [bar/main]
-monitor = ${env:MONITOR:}
+monitor = ${env:MONITOR}
 width = 100%
 
 height = 25
@@ -57,8 +57,8 @@ cursor-scroll = ns-resize
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 ;; Modules (Right [Right to Left])
 
-tray-position = right
-#tray-position = ${env:TRAY_POS:}
+#tray-position = right
+tray-position = ${env:TRAY_POS}
 tray-background = ${theme.shade-1}
 tray-padding = 2
 
@@ -160,7 +160,7 @@ label-padding-right = 2
 
 [module/download]
 type = internal/network
-interface = enp5s0
+interface = enp6s0
 unknown-as-up = true
 
 format-connected = <label-connected>

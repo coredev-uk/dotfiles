@@ -7,13 +7,13 @@
         "ignoreMutedGuilds": true,
         "ignoreMutedChannels": true,
         "ignoreBots": true,
-        "ignoreSelf": false,
+        "ignoreSelf": true,
         "ignoreBlockedUsers": true,
         "ignoreNSFW": true,
-        "ignoreLocalEdits": false,
-        "ignoreLocalDeletes": false,
+        "ignoreLocalEdits": true,
+        "ignoreLocalDeletes": true,
         "alwaysLogGhostPings": true,
-        "showOpenLogsButton": true,
+        "showOpenLogsButton": false,
         "messageCacheCap": 1000,
         "savedMessagesCap": 1000,
         "reverseOrder": false,
@@ -39,7 +39,8 @@
             "sent": false,
             "edited": true,
             "deleted": true,
-            "ghostPings": true
+            "ghostPings": true,
+            "disableToastsForLocal": true
         },
         "toastTogglesDMs": {
             "sent": false,

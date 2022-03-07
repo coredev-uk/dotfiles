@@ -98,25 +98,16 @@ function M.config()
     vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
   end
 
-  -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
-  local servers = {'sumneko_lua', 'tsserver', 'cssls', 'html', 'jsonls', 'eslint'}
+  local lsp_installer = require('nvim-lsp-installer')
 
-  for _, v in pairs(servers) do
-    require('lspconfig')[v].setup {
-      capabilities = capabilities,
-      on_attach = on_attach
-    }
-  end
+  lsp_installer.on_server_ready(function(server)
+	  local options = {
+		  capabilities = capabilities,
+		  on_attach = on_attach
+	  }
+	  server:setup(options)
+  end)
 
-  require('lspconfig').sumneko_lua.setup{
-    settings = {
-      Lua = {
-        diagnostics = {
-          globals = { 'vim' }
-        }
-      }
-    }
-  }
 end
 
 return M

@@ -6,6 +6,61 @@
     "settings": {
         "removedGuildHistory": [
             {
+                "id": "943638064310407260",
+                "invalid": false,
+                "name": "District Gaming Russian Army Discord - N/A",
+                "ownerId": "201746449132683274"
+            },
+            {
+                "id": "808476259016769546",
+                "invalid": false,
+                "name": "Heavy Division",
+                "iconUrl": "https://cdn.discordapp.com/icons/808476259016769546/34659f7f187f7917026bcb37cced2cff.webp?size=4096",
+                "ownerId": "396422714690240515"
+            },
+            {
+                "id": "695596056062459945",
+                "invalid": false,
+                "name": "In-Flight Apps Discord",
+                "iconUrl": "https://cdn.discordapp.com/icons/695596056062459945/9c39af45b7f5dbdb2ef703db0cfa95b4.webp?size=4096",
+                "ownerId": "518504417314471956"
+            },
+            {
+                "id": "373166369354678282",
+                "invalid": false,
+                "name": "Babish Culinary Universe - Official Discord",
+                "iconUrl": "https://cdn.discordapp.com/icons/373166369354678282/2eef377b50678b8c8cf686ebefa0dbc6.webp?size=4096",
+                "ownerId": "318146736768155649"
+            },
+            {
+                "id": "332309672486895637",
+                "invalid": false,
+                "name": "r/Apple",
+                "iconUrl": "https://cdn.discordapp.com/icons/332309672486895637/bcc49a4ab982377793f517e3464f0673.webp?size=4096",
+                "ownerId": "297567836254240768"
+            },
+            {
+                "id": "150662382874525696",
+                "invalid": false,
+                "name": "Microsoft Community",
+                "iconUrl": "https://cdn.discordapp.com/icons/150662382874525696/a_dce48d27b44b016ade8522f5b352fa8d.webp?size=4096",
+                "ownerId": "382218717997826048"
+            },
+            {
+                "id": "140933721929940992",
+                "invalid": false,
+                "name": "Battlefield",
+                "iconUrl": "https://cdn.discordapp.com/icons/140933721929940992/a_c78db119f9cfec83e9df7f7a8d546b72.webp?size=4096",
+                "ownerId": "591087330681683989"
+            },
+            {
+                "id": "86004744966914048",
+                "invalid": false,
+                "name": "BetterDiscord",
+                "iconUrl": "https://cdn.discordapp.com/icons/86004744966914048/babd1af3fa6011a50e418a80f4970ceb.webp?size=4096",
+                "ownerId": "249746236008169473"
+            },
+            {
                 "id": "322850917248663552",
                 "invalid": false,
                 "name": "Official Fortnite",
@@ -76,29 +131,16 @@
                 "ownerId": "682608834925035530"
             }
         ],
-        "removedFriendHistory": [],
+        "removedFriendHistory": [
+            {
+                "id": "936670314367176724",
+                "invalid": false,
+                "tag": "Testuser#3052",
+                "avatarURL": "/assets/1cbd08c76f8af6dddce02c5138971129.png",
+                "avatarUrl": "/assets/7c8f476123d28d103efe381543274c25.png"
+            }
+        ],
         "guildsSnapshot": [
-            {
-                "id": "86004744966914048",
-                "invalid": false,
-                "name": "BetterDiscord",
-                "iconUrl": "https://cdn.discordapp.com/icons/86004744966914048/babd1af3fa6011a50e418a80f4970ceb.webp?size=4096",
-                "ownerId": "249746236008169473"
-            },
-            {
-                "id": "140933721929940992",
-                "invalid": false,
-                "name": "Battlefield",
-                "iconUrl": "https://cdn.discordapp.com/icons/140933721929940992/a_c78db119f9cfec83e9df7f7a8d546b72.webp?size=4096",
-                "ownerId": "591087330681683989"
-            },
-            {
-                "id": "150662382874525696",
-                "invalid": false,
-                "name": "Microsoft Community",
-                "iconUrl": "https://cdn.discordapp.com/icons/150662382874525696/a_dce48d27b44b016ade8522f5b352fa8d.webp?size=4096",
-                "ownerId": "382218717997826048"
-            },
             {
                 "id": "258087425346240513",
                 "invalid": false,
@@ -107,11 +149,11 @@
                 "ownerId": "112179473226469376"
             },
             {
-                "id": "332309672486895637",
+                "id": "285723694259765248",
                 "invalid": false,
-                "name": "r/Apple",
-                "iconUrl": "https://cdn.discordapp.com/icons/332309672486895637/bcc49a4ab982377793f517e3464f0673.webp?size=4096",
-                "ownerId": "297567836254240768"
+                "name": "Crident Networks",
+                "iconUrl": "https://cdn.discordapp.com/icons/285723694259765248/a_362fb60f732a567d91b2a4d646e0dbe1.webp?size=4096",
+                "ownerId": "150542592172490752"
             },
             {
                 "id": "334343104284852224",
@@ -119,13 +161,6 @@
                 "name": "Grove Street Families",
                 "iconUrl": "https://cdn.discordapp.com/icons/334343104284852224/9754f0d1a6c2a92b9e6a96644d497cf5.webp?size=4096",
                 "ownerId": "64939333383098368"
-            },
-            {
-                "id": "373166369354678282",
-                "invalid": false,
-                "name": "Babish Culinary Universe - Official Discord",
-                "iconUrl": "https://cdn.discordapp.com/icons/373166369354678282/2eef377b50678b8c8cf686ebefa0dbc6.webp?size=4096",
-                "ownerId": "318146736768155649"
             },
             {
                 "id": "417003445346893835",
@@ -163,13 +198,6 @@
                 "ownerId": "675451087901425665"
             },
             {
-                "id": "695596056062459945",
-                "invalid": false,
-                "name": "In-Flight Apps Discord",
-                "iconUrl": "https://cdn.discordapp.com/icons/695596056062459945/9c39af45b7f5dbdb2ef703db0cfa95b4.webp?size=4096",
-                "ownerId": "518504417314471956"
-            },
-            {
                 "id": "738864299392630914",
                 "invalid": false,
                 "name": "FlyByWire Simulations",
@@ -203,13 +231,6 @@
                 "name": "curry hq v8",
                 "iconUrl": "https://cdn.discordapp.com/icons/801531114958487614/f9dc1657262f2228ea0c5d3b2b836a87.webp?size=4096",
                 "ownerId": "281791593017769984"
-            },
-            {
-                "id": "808476259016769546",
-                "invalid": false,
-                "name": "Heavy Division",
-                "iconUrl": "https://cdn.discordapp.com/icons/808476259016769546/34659f7f187f7917026bcb37cced2cff.webp?size=4096",
-                "ownerId": "396422714690240515"
             },
             {
                 "id": "822557680450928650",
@@ -261,14 +282,14 @@
             {
                 "id": "937450512712867840",
                 "invalid": false,
-                "name": "District Gaming Military Regiments",
+                "name": "District Gaming British Army Discord",
                 "iconUrl": "https://cdn.discordapp.com/icons/937450512712867840/85d4230d9373580ed3546d6805dcac33.webp?size=4096",
                 "ownerId": "290901333589098496"
             },
             {
                 "id": "940065288483901501",
                 "invalid": false,
-                "name": "District Gaming  Staff Discord",
+                "name": "District Gaming Staff Discord",
                 "iconUrl": "https://cdn.discordapp.com/icons/940065288483901501/7e1e3e3dc81503b9560f981c5d8f44b0.webp?size=4096",
                 "ownerId": "201746449132683274"
             },
@@ -280,17 +301,11 @@
                 "ownerId": "191621342473224192"
             },
             {
-                "id": "943638064310407260",
+                "id": "945345792745562202",
                 "invalid": false,
-                "name": "District Gaming Russian Army Discord - N/A",
-                "ownerId": "201746449132683274"
-            },
-            {
-                "id": "285723694259765248",
-                "invalid": false,
-                "name": "Crident Networks",
-                "iconUrl": "https://cdn.discordapp.com/icons/285723694259765248/a_362fb60f732a567d91b2a4d646e0dbe1.webp?size=4096",
-                "ownerId": "150542592172490752"
+                "name": "District Gaming Russian Army Discord",
+                "iconUrl": "https://cdn.discordapp.com/icons/945345792745562202/188509a5f1fd7d27770f0d33f4521bab.webp?size=4096",
+                "ownerId": "290901333589098496"
             }
         ],
         "friendsSnapshot": [
@@ -327,7 +342,7 @@
                 "invalid": false,
                 "tag": "Sherv272#2998",
                 "avatarURL": "/assets/1cbd08c76f8af6dddce02c5138971129.png",
-                "avatarUrl": "https://cdn.discordapp.com/avatars/242368594350964736/8bc42df3475a3ca112ca0457f9501280.webp?size=128"
+                "avatarUrl": "https://cdn.discordapp.com/avatars/242368594350964736/ecfbea67a1eb7372af17d696df5e0a93.webp?size=128"
             },
             {
                 "id": "256515075039428608",
@@ -388,7 +403,7 @@
             {
                 "id": "310127302707249152",
                 "invalid": false,
-                "tag": "Porig#2720",
+                "tag": "Alpaca_Ninja#2720",
                 "avatarURL": "/assets/1cbd08c76f8af6dddce02c5138971129.png",
                 "avatarUrl": "https://cdn.discordapp.com/avatars/310127302707249152/2186b1bc27bfce6ca8e9af2b64189c12.webp?size=128"
             },
@@ -402,9 +417,9 @@
             {
                 "id": "335884853163851777",
                 "invalid": false,
-                "tag": "RogueAssassin#0230",
+                "tag": "RogueAssassin#0505",
                 "avatarURL": "/assets/1cbd08c76f8af6dddce02c5138971129.png",
-                "avatarUrl": "https://cdn.discordapp.com/avatars/335884853163851777/82e2240e28d2b01e55e68d7d43591ed8.webp?size=128"
+                "avatarUrl": "https://cdn.discordapp.com/avatars/335884853163851777/a_6f8b5e411a9a9fbc7ab6c7820c267448.webp?size=128"
             },
             {
                 "id": "340056069420089345",
@@ -465,7 +480,7 @@
             {
                 "id": "451861000535277568",
                 "invalid": false,
-                "tag": "crypticplank#9741",
+                "tag": "crypticplank#0001",
                 "avatarURL": "/assets/1cbd08c76f8af6dddce02c5138971129.png",
                 "avatarUrl": "https://cdn.discordapp.com/avatars/451861000535277568/04871ec12175e209a291a36b221fe8f4.webp?size=128"
             },
@@ -516,14 +531,14 @@
                 "invalid": false,
                 "tag": "nosharp#0711",
                 "avatarURL": "/assets/1cbd08c76f8af6dddce02c5138971129.png",
-                "avatarUrl": "https://cdn.discordapp.com/avatars/583025825691992100/a_2c98396d63832d25576be2868aeebca2.webp?size=128"
+                "avatarUrl": "https://cdn.discordapp.com/avatars/583025825691992100/2c98396d63832d25576be2868aeebca2.webp?size=128"
             },
             {
                 "id": "624907837960749064",
                 "invalid": false,
                 "tag": "diamonddevel737#9617",
                 "avatarURL": "/assets/1cbd08c76f8af6dddce02c5138971129.png",
-                "avatarUrl": "https://cdn.discordapp.com/avatars/624907837960749064/0a57fe8a84c9359277f95d955802bfdd.webp?size=128"
+                "avatarUrl": "https://cdn.discordapp.com/avatars/624907837960749064/ce0b01edfed7eb128bbf5ef5395124af.webp?size=128"
             },
             {
                 "id": "670335245517586506",
@@ -559,13 +574,6 @@
                 "tag": "Blicoss#0047",
                 "avatarURL": "/assets/1cbd08c76f8af6dddce02c5138971129.png",
                 "avatarUrl": "https://cdn.discordapp.com/avatars/819941230116995072/6830abaf1365bac8f4966f285691df47.webp?size=128"
-            },
-            {
-                "id": "936670314367176724",
-                "invalid": false,
-                "tag": "Testuser#3052",
-                "avatarURL": "/assets/1cbd08c76f8af6dddce02c5138971129.png",
-                "avatarUrl": "/assets/7c8f476123d28d103efe381543274c25.png"
             }
         ],
         "showXenoNotifs": true
