@@ -88,7 +88,7 @@ if args.play_pause is not None:
 try:
     session_bus = dbus.SessionBus()
     applemusic_bus = session_bus.get_object(
-        'org.mpris.MediaPlayer2.Cider',
+        'org.mpris.MediaPlayer2.cider',
         '/org/mpris/MediaPlayer2'
     )
 

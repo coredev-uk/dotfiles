@@ -95,7 +95,7 @@ exec --no-startup-id betterlockscreen -u $HOME/Pictures/gradient.png --display D
 exec_always --no-startup-id dwall -s lake # using dwall for a bit
 
 # notification 
-exec --no-startup-id dunst 
+exec --no-startup-id deadd-notification-center 
 
 # auto lock
 exec --no-startup-id xidlehook --not-when-fullscreen --not-when-audio --timer 300 'betterlockscreen -l dimblur --display DP-4' '' --timer 120 'systemctl suspend' '' 
