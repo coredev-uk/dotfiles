@@ -151,7 +151,7 @@ packer.startup {
 				require('configs.package-info')
 			end
 		} -- Package.json Information
-		
+
 		use {
 			'b3nj5m1n/kommentary',
 			config = function()
@@ -192,7 +192,7 @@ packer.startup {
 
 		-- Bufferline
 		use {
-			'akinsho/bufferline.nvim', 
+			'akinsho/bufferline.nvim',
 			requires = 'kyazdani42/nvim-web-devicons',
 			config = function()
 				require('configs.bufferline').config()

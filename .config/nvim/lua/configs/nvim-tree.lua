@@ -7,13 +7,7 @@ function M.config()
 	-- g.nvim_tree_git_hl = git_status
 	g.nvim_tree_highlight_opened_files = 0
 	g.nvim_tree_indent_markers = 1
-	g.nvim_tree_quit_on_open = 0 -- closes tree when file's opened
 	g.nvim_tree_root_folder_modifier = table.concat { ":t:gs?$?/..", string.rep(" ", 1000), "?:gs?^??" }
-
-	g.nvim_tree_window_picker_exclude = {
-		filetype = { "notify", "packer", "qf" },
-		buftype = { "terminal" },
-	}
 
 	g.nvim_tree_show_icons = {
 		folders = 1,
@@ -42,23 +36,22 @@ function M.config()
 			symlink_open = "",
 		},
 	}
-
-
 	require'nvim-tree'.setup {
 		disable_netrw       = true,
 		hijack_netrw        = true,
-		open_on_setup       = false,
+		open_on_setup       = true,
 		ignore_ft_on_setup  = {},
 		auto_close          = false,
 		open_on_tab         = false,
-		hijack_cursor       = false,
-		update_cwd          = true,
-		update_to_buf_dir   = {
+		hijack_cursor        = false,
+		update_cwd           = false,
+		hijack_unnamed_buffer_when_opening = false,
+		hijack_directories   = {
 			enable = true,
 			auto_open = true,
 		},
 		diagnostics = {
-			enable = false,
+			enable = true,
 			icons = {
 				hint = "",
 				info = "",
@@ -88,8 +81,8 @@ function M.config()
 			width = 30,
 			height = 30,
 			hide_root_folder = false,
-			side = 'left',
-			auto_resize = false,
+			side = "left",
+			preserve_window_proportions = false,
 			mappings = {
 				custom_only = false,
 				list = {}
@@ -101,22 +94,34 @@ function M.config()
 		trash = {
 			cmd = "trash",
 			require_confirm = true
-		}
+		},
+		actions = {
+			change_dir = {
+				enable = true,
+				global = false,
+			},
+			open_file = {
+				quit_on_open = true,
+				resize_window = false,
+				window_picker = {
+					enable = true,
+					chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890",
+					exclude = {
+						filetype = { "notify", "packer", "qf", "diff", "fugitive", "fugitiveblame", },
+						buftype  = { "nofile", "terminal", "help", },
+					}
+				}
+			}
+		},
+		log = {
+			enable = false,
+			types = {
+				all = false,
+				config = false,
+				git = false,
+			},
+		},
 	}
 end
 
-local view = require('nvim-tree.view')
-
-M.toggle_tree = function()
-	if view.win_open() then
-		require'nvim-tree'.close()
-		require'bufferline.state'.set_offset(0)
-	else
-		require'bufferline.state'.set_offset(31, 'File Explorer')
-		require'nvim-tree'.open()
-	end
-end
-
---[[ vim.api.nvim_set_keymap('n', '<A-m>', ":lua require('modules/nvim-tree').toggle_tree()<CR>", {noremap = true, silent = true})
-]]
 return M
