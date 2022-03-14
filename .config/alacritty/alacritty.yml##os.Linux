@@ -42,7 +42,3 @@ colors:
     cyan: "#5865F2"
     white: "#FFFFFF"
 
-shell:
-  program: /bin/fish
-  args:
-	- --login
