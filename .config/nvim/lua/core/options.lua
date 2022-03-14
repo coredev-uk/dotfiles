@@ -14,6 +14,7 @@ set.smartindent = true
 set.relativenumber = true
 set.cursorline = true
 set.termguicolors = true
+set.background = 'dark'
 --set foldmethod=expr
 --set foldexpr=nvim_treesitter#foldexpr()
 vim.g.vimsyn_embed = '1'

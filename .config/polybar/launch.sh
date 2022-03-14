@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+/#!/usr/bin/env bash
 
 # Add this script to your wm startup file.
 
@@ -17,11 +17,11 @@ while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
 if type "xrandr"; then
   for m in $(xrandr --query | grep " connected" | cut -d" " -f1); do
     if [[ $m == $(xrandr --query | grep " connected" | grep "primary" | cut -d" " -f1) ]]; then
-      MONITOR=$m TRAY_POS=right polybar --reload -q main &
+      MONITOR=$m TRAY_POS=right polybar --reload -q main -c "$DIR"/config.ini &
     else
-      MONITOR=$m TRAY_POS=none polybar --reload -q main &
+      MONITOR=$m TRAY_POS=none polybar --reload -q main -c "$DIR"/config.ini &
     fi
   done
 else
-  polybar --reload -q main &
+  polybar --reload -q main -c "$DIR"/config.ini &
 fi

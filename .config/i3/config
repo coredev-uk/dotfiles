@@ -10,17 +10,17 @@ set $browser    firefox
 set $scrsht     flameshot gui
 set $music      cider
 set $term       alacritty
-set $picom      picom --config ~/.config/picom/picom.conf --experimental-backends --glx-fshader-win "$(cat ~/.config/picom/shader.glsl)"
+set $picom      picom --config $HOME/.config/picom/picom.conf --experimental-backends
 set $notif      deadd-notification-center 
 set $lock       betterlockscreen -l dimblur
-set $dwall      lake
+set $wallpaper  dwall -s fluent
 set $rgbprof    orange-night
-bindsym --release Print exec --no-startup-id ""
+
 # RESIZE
 set $center move position center
 
 # GAPS
-set $inner 32
+set $inner 10
 set $outer 0
 border_radius 4
 
@@ -44,8 +44,9 @@ bindsym $mod+e layout toggle split
 title_align center
 
 # BORDER
+default_floating_border pixel 0
+default_border pixel 0
 for_window [class="^.*"] border pixel 0
-for_window [title="^.*"] border pixel 0
 
 # GAPS
 gaps inner $inner
@@ -239,7 +240,7 @@ exec --no-startup-id openrgb --startminimized -p $rgbprof
 exec --no-startup-id "setxkbmap -layout gb"
 exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent
 
-exec_always --no-startup-id dwall -s $dwall
+exec_always --no-startup-id $wallpaper
 exec_always --no-startup-id $picom
 exec_always --no-startup-id "~/.config/polybar/launch.sh"
 exec_always --no-startup-id "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
