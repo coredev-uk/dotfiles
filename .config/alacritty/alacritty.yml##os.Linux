@@ -42,14 +42,7 @@ colors:
     cyan: "#5865F2"
     white: "#FFFFFF"
 
-{% if yadm.os == "Darwin" %}
-shell:
-	program: /opt/homebrew/bin/fish
-	args:
-
-{% else }
 shell:
   program: /bin/fish
   args:
-    - --login
-{% endif %}
+	- --login
