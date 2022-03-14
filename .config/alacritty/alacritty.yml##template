@@ -46,7 +46,7 @@ colors:
 shell:
 	program: /opt/homebrew/bin/fish
 	args:
-	 - --login
+
 {% else }
 shell:
   program: /bin/fish
