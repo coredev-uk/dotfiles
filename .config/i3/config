@@ -13,11 +13,12 @@ set $term       alacritty
 set $picom      picom --config $HOME/.config/picom/picom.conf --experimental-backends
 set $notif      deadd-notification-center 
 set $lock       betterlockscreen -l dimblur
-set $wallpaper  dwall -s fluent
+set $wallpaper  feh --bg-fill $HOME/Pictures/big-sur-night-grasses.jpg
 set $rgbprof    orange-night
 
 # RESIZE
 set $center move position center
+set $resize resize set 80 ppt 70 ppt
 
 # GAPS
 set $inner 10
@@ -28,7 +29,7 @@ set $rounded 4
 bindsym $mod+Return exec $term
 
 # SCRATCHPAD
-bindsym $mod+c scratchpad show $center
+bindsym $mod+c scratchpad show $center $resize
 bindsym $mod+Shift+c floating enable, move position $inner px $inner px, move scratchpad
 bindsym $mod+Ctrl+c exec $term --class scratch 
 
