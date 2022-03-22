@@ -29,8 +29,8 @@ set $rounded 4
 bindsym $mod+Return exec $term
 
 # SCRATCHPAD
-bindsym $mod+c scratchpad show $center $resize
-bindsym $mod+Shift+c floating enable, move position $inner px $inner px, move scratchpad
+bindsym $mod+c scratchpad show $center
+bindsym $mod+Shift+c floating enable, move position $inner px $inner px, $resize, move scratchpad
 bindsym $mod+Ctrl+c exec $term --class scratch 
 
 # BORDER COLOURS
