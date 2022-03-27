@@ -10,6 +10,7 @@ set $browser    firefox
 set $scrsht     flameshot gui
 set $music      cider
 set $term       alacritty
+set $rofi 		rofi -show drun -theme $HOME/.config/rofi/config.rasi  # > /tmp/rofi.log 2>&1
 set $picom      picom --config $HOME/.config/picom/picom.conf --experimental-backends
 set $notif      deadd-notification-center 
 set $lock       betterlockscreen -l dimblur
@@ -129,7 +130,7 @@ bindsym XF86AudioNext               exec playerctl next
 bindsym XF86AudioPrev               exec playerctl previous
 
 # ROFI
-bindsym $mod+space      exec --no-startup-id ~/.config/rofi/bin/launcher_colorful # > /tmp/rofi.log 2>&1
+bindsym $mod+space      exec --no-startup-id $rofi
 
 bindsym $mod+l          exec $lock # LOCK
 bindsym $mod+b          exec $browser # BROWSER
