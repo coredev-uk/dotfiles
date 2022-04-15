@@ -13,7 +13,7 @@ if [ "$system_type" = "Darwin" ]; then
 
   if [ -f "$HOME/.Brewfile" ]; then
     echo "Updating homebrew bundle"
-    brew bundle --global
+	brew bundle --file ~/.config/yadm/Brewfile
 		chsh -s /opt/homebrew/bin/fish
   fi
 # Install packages in Linux
