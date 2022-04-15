@@ -37,8 +37,8 @@
         ],
         "toastToggles": {
             "sent": false,
-            "edited": true,
-            "deleted": true,
+            "edited": false,
+            "deleted": false,
             "ghostPings": true,
             "disableToastsForLocal": true
         },
@@ -81,6 +81,6 @@
         "imageCacheDir": "/home/paul/.config/BetterDiscord/plugins/MLV2_IMAGE_CACHE",
         "flags": 2,
         "autoUpdate": true,
-        "versionInfo": "1.8.13"
+        "versionInfo": "1.8.14"
     }
 }

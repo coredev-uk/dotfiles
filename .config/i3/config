@@ -12,7 +12,7 @@ set $music      cider
 set $term       alacritty
 set $rofi 		rofi -show drun -theme $HOME/.config/rofi/config.rasi  # > /tmp/rofi.log 2>&1
 set $picom      picom --config $HOME/.config/picom/picom.conf --experimental-backends
-set $notif      deadd-notification-center 
+set $notif      /usr/lib/xfce4/notifyd/xfce4-notifyd 
 set $lock       betterlockscreen -l dimblur
 set $wallpaper  feh --bg-fill $HOME/Pictures/big-sur-night-grasses.jpg
 set $rgbprof    orange-night
@@ -30,7 +30,7 @@ set $rounded 4
 bindsym $mod+Return exec $term
 
 # SCRATCHPAD
-bindsym $mod+c scratchpad show $center
+bindsym $mod+c scratchpad show $center, resize set 80 ppt 70 ppt
 bindsym $mod+Shift+c floating enable, move position $inner px $inner px, $resize, move scratchpad
 bindsym $mod+Ctrl+c exec $term --class scratch 
 
