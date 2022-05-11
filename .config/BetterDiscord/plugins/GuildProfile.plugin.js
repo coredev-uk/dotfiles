@@ -1,7 +1,7 @@
 /**!
  * @name GuildProfile
  * @description Adds a modal that can be opened via any guild menu and contains various information about the guild, such as its owner, creation date, joined date, your friends and blocked users who are in it, and much more.
- * @version 1.5.4
+ * @version 1.5.9
  * @author Marmota (Jaime Filho)
  * @authorId 289112759948410881
  * @invite z6Yx9A8VDR
@@ -37,7 +37,7 @@ const path = require('path');
 const request = require('request');
 const electron = require('electron');
 
-const config = {"info":{"name":"GuildProfile","description":"Adds a modal that can be opened via any guild menu and contains various information about the guild, such as its owner, creation date, joined date, your friends and blocked users who are in it, and much more.","version":"1.5.4","authors":[{"name":"Marmota (Jaime Filho)","discord_id":"289112759948410881"}],"github":"https://github.com/jaimeadf/BetterDiscordPlugins/tree/release/src/GuildProfile","github_raw":"https://raw.githubusercontent.com/jaimeadf/BetterDiscordPlugins/release/dist/GuildProfile/GuildProfile.plugin.js"},"changelog":[{"title":"Fixes","type":"fixed","items":["Fixed random crashes when you open menus."]}]};
+const config = {"info":{"name":"GuildProfile","description":"Adds a modal that can be opened via any guild menu and contains various information about the guild, such as its owner, creation date, joined date, your friends and blocked users who are in it, and much more.","version":"1.5.9","authors":[{"name":"Marmota (Jaime Filho)","discord_id":"289112759948410881"}],"github":"https://github.com/jaimeadf/BetterDiscordPlugins/tree/release/src/GuildProfile","github_raw":"https://raw.githubusercontent.com/jaimeadf/BetterDiscordPlugins/release/dist/GuildProfile/GuildProfile.plugin.js"},"changelog":[{"title":"Fixes","type":"fixed","items":["Fixed Unknown User on owner field."]}]};
 
 function buildPlugin() {
     const [Plugin, BoundedLibrary] = global.ZeresPluginLibrary.buildPlugin(config);
@@ -133,7 +133,7 @@ module.exports = JSON.parse('{"GUILD_PROFILE":"Perfil del Servidor","GUILD_PROFI
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"GUILD_PROFILE":"Profil du serveur","GUILD_PROFILE_GUILD_INFO":"Info du serveur","GUILD_PROFILE_FRIENDS_IN_GUILD":"Amis","GUILD_PROFILE_BLOCKED_USERS_IN_GUILD":"Bloqué","GUILD_PROFILE_LOADING":"Chargement","GUILD_PROFILE_CREATED_AT":"Créé à","GUILD_PROFILE_JOINED_AT":"Rejoins à","GUILD_PROFILE_GUILD_PREMIUM_SUBSCRIBER_COUNT":"Nombre de booster de serveur","GUILD_PROFILE_GUILD_PREMIUM_TIER":"Niveau de boost du serveur","GUILD_PROFILE_NO_FRIENDS_IN_THIS_GUILD":"Aucun ami sur ce serveur","GUILD_PROFILE_NO_BLOCKED_USERS_IN_THIS_GUILD":"Aucun utilisateur bloqué sur ce serveur","GUILD_PROFILE_INVITE_SPLASH":"Contexte d\'invitation du serveur","GUILD_PROFILE_VIP_REGIONS":"Régions VIP","GUILD_PROFILE_VANITY_URL":"URL personnalisée","GUILD_PROFILE_MORE_EMOJI":"Plus d\'Emoji","GUILD_PROFILE_COMMERCE":"Stocker les chaînes","GUILD_PROFILE_DISCOVERABLE":"Discoverable","GUILD_PROFILE_COMMUNITY":"Communauté","GUILD_PROFILE_FEATURABLE":"En vedette","GUILD_PROFILE_NEWS":"Canaux d\'annonce","GUILD_PROFILE_ANIMATED_ICON":"Icône de serveur animé","GUILD_PROFILE_BANNER":"Bannière du serveur","GUILD_PROFILE_ENABLED_DISCOVERABLE_BEFORE":"Activé détectable avant","GUILD_PROFILE_WELCOME_SCREEN_ENABLED":"Écran de bienvenue activé","GUILD_PROFILE_MEMBER_VERIFICATION_GATE_ENABLED":"Vérification des membres","GUILD_PROFILE_PREVIEW_ENABLED":"Aperçu activé"}');
+module.exports = JSON.parse('{"GUILD_PROFILE":"Profil du serveur","GUILD_PROFILE_GUILD_INFO":"Info du serveur","GUILD_PROFILE_FRIENDS_IN_GUILD":"Amis","GUILD_PROFILE_BLOCKED_USERS_IN_GUILD":"Bloqué","GUILD_PROFILE_LOADING":"Chargement","GUILD_PROFILE_CREATED_AT":"Créé le","GUILD_PROFILE_JOINED_AT":"Rejoint le","GUILD_PROFILE_GUILD_PREMIUM_SUBSCRIBER_COUNT":"Nombre de booster de serveur","GUILD_PROFILE_GUILD_PREMIUM_TIER":"Niveau de boost du serveur","GUILD_PROFILE_NO_FRIENDS_IN_THIS_GUILD":"Aucun ami sur ce serveur","GUILD_PROFILE_NO_BLOCKED_USERS_IN_THIS_GUILD":"Aucun utilisateur bloqué sur ce serveur","GUILD_PROFILE_INVITE_SPLASH":"Contexte d\'invitation du serveur","GUILD_PROFILE_VIP_REGIONS":"Régions VIP","GUILD_PROFILE_VANITY_URL":"URL personnalisée","GUILD_PROFILE_MORE_EMOJI":"Plus d\'Emoji","GUILD_PROFILE_COMMERCE":"Stocker les chaînes","GUILD_PROFILE_DISCOVERABLE":"Discoverable","GUILD_PROFILE_COMMUNITY":"Communauté","GUILD_PROFILE_FEATURABLE":"En vedette","GUILD_PROFILE_NEWS":"Canaux d\'annonce","GUILD_PROFILE_ANIMATED_ICON":"Icône de serveur animé","GUILD_PROFILE_BANNER":"Bannière du serveur","GUILD_PROFILE_ENABLED_DISCOVERABLE_BEFORE":"Activé détectable avant","GUILD_PROFILE_WELCOME_SCREEN_ENABLED":"Écran de bienvenue activé","GUILD_PROFILE_MEMBER_VERIFICATION_GATE_ENABLED":"Vérification des membres","GUILD_PROFILE_PREVIEW_ENABLED":"Aperçu activé"}');
 
 /***/ }),
 
@@ -1105,6 +1105,13 @@ function Relationships({ guild, relationshipType }) {
 ;// CONCATENATED MODULE: external ["BoundedLibrary","DiscordModules","Moment"]
 const external_BoundedLibrary_DiscordModules_Moment_namespaceObject = BoundedLibrary.DiscordModules.Moment;
 var external_BoundedLibrary_DiscordModules_Moment_default = /*#__PURE__*/__webpack_require__.n(external_BoundedLibrary_DiscordModules_Moment_namespaceObject);
+;// CONCATENATED MODULE: ./src/@discord/stores/StreamerModeStore.js
+ function _nullishCoalesce(lhs, rhsFn) { if (lhs != null) { return lhs; } else { return rhsFn(); } } function StreamerModeStore_optionalChain(ops) { let lastAccessLHS = undefined; let value = ops[0]; let i = 1; while (i < ops.length) { const op = ops[i]; const fn = ops[i + 1]; i += 2; if ((op === 'optionalAccess' || op === 'optionalCall') && value == null) { return undefined; } if (op === 'access' || op === 'optionalAccess') { lastAccessLHS = value; value = fn(value); } else if (op === 'call' || op === 'optionalCall') { value = fn((...args) => value.call(lastAccessLHS, ...args)); lastAccessLHS = undefined; } } return value; }
+
+/* harmony default export */ const StreamerModeStore = (external_BoundedLibrary_namespaceObject.WebpackModules.find(m =>
+    Object.getOwnPropertyDescriptor(_nullishCoalesce(StreamerModeStore_optionalChain([m, 'optionalAccess', _ => _.default, 'optionalAccess', _2 => _2.__proto__]), () => ( {})), 'hidePersonalInformation')
+).default);
+
 ;// CONCATENATED MODULE: ./src/@discord/components/Form.js
 
 
@@ -1124,9 +1131,9 @@ const {
 
 
 ;// CONCATENATED MODULE: ./src/@discord/components/Text.js
+ function Text_optionalChain(ops) { let lastAccessLHS = undefined; let value = ops[0]; let i = 1; while (i < ops.length) { const op = ops[i]; const fn = ops[i + 1]; i += 2; if ((op === 'optionalAccess' || op === 'optionalCall') && value == null) { return undefined; } if (op === 'access' || op === 'optionalAccess') { lastAccessLHS = value; value = fn(value); } else if (op === 'call' || op === 'optionalCall') { value = fn((...args) => value.call(lastAccessLHS, ...args)); lastAccessLHS = undefined; } } return value; }
 
-
-/* harmony default export */ const Text = (external_BoundedLibrary_namespaceObject.WebpackModules.getByDisplayName('Text'));
+/* harmony default export */ const Text = (external_BoundedLibrary_namespaceObject.WebpackModules.find(m => Text_optionalChain([m, 'optionalAccess', _ => _.Text, 'optionalAccess', _2 => _2.displayName]) === 'Text').Text);
 
 ;// CONCATENATED MODULE: ./src/@discord/components/Flex.js
 
@@ -1159,6 +1166,7 @@ const {
 
 
 
+
 const {
     UserStore: GuildInfo_UserStore,
     GuildChannelsStore,
@@ -1166,8 +1174,9 @@ const {
     DiscordConstants: { VerificationLevels, GuildExplicitContentFilterTypes, GuildNSFWContentLevel }
 } = external_BoundedLibrary_namespaceObject.DiscordModules;
 
-const StreamerModeStore = external_BoundedLibrary_namespaceObject.WebpackModules.getByProps('hidePersonalInformation');
-const UserMention = external_BoundedLibrary_namespaceObject.WebpackModules.getByDisplayName('UserMention');
+const { default: UserMention } = external_BoundedLibrary_namespaceObject.WebpackModules.find(
+    m => !GuildInfo_optionalChain([m, 'optionalAccess', _ => _.default, 'optionalAccess', _2 => _2.displayName]) && GuildInfo_optionalChain([m, 'optionalAccess', _3 => _3.default, 'optionalAccess', _4 => _4.toString, 'call', _5 => _5(), 'access', _6 => _6.includes, 'call', _7 => _7('inlinePreview')])
+);
 const UserFetcher = external_BoundedLibrary_namespaceObject.WebpackModules.getByProps('getUser', 'fetchCurrentUser');
 
 const GuildExplicitContentFilterTypesMessages = {
@@ -1186,7 +1195,7 @@ function InfoSection({ title, children }) {
 
 function GuildInfo({ guild }) {
     const owner = useStateFromStores([GuildInfo_UserStore], () => GuildInfo_UserStore.getUser(guild.ownerId));
-    const hide = useStateFromStores([StreamerModeStore], () => StreamerModeStore.hide);
+    const hide = useStateFromStores([StreamerModeStore], () => StreamerModeStore.hidePersonalInformation);
     const channel = useStateFromStores([GuildChannelsStore], () => GuildChannelsStore.getDefaultChannel(guild.id));
 
     (0,external_BdApi_React_namespaceObject.useEffect)(() => {
@@ -1206,7 +1215,7 @@ function GuildInfo({ guild }) {
                 external_BdApi_React_default().createElement(Flex, { justify: Flex.Justify.START, wrap: Flex.Wrap.WRAP,}
                     , external_BdApi_React_default().createElement(InfoSection, { title: i18n.Messages.GUILD_OWNER,}
                         , owner ? (
-                            external_BdApi_React_default().createElement(UserMention, { className: "mention", userId: owner.id, channelId: GuildInfo_optionalChain([channel, 'optionalAccess', _ => _.id]),} )
+                            external_BdApi_React_default().createElement(UserMention, { className: "mention", userId: owner.id, channelId: GuildInfo_optionalChain([channel, 'optionalAccess', _8 => _8.id]),} )
                         ) : (
                             `${i18n.Messages.GUILD_PROFILE_LOADING}...`
                         )
@@ -1269,11 +1278,11 @@ function GuildInfo({ guild }) {
 
 
 
-const GuildRoles_StreamerModeStore = external_BoundedLibrary_namespaceObject.WebpackModules.getByProps('hidePersonalInformation');
+
 const { MemberRole } = external_BoundedLibrary_namespaceObject.WebpackModules.getByProps('MemberRole');
 
 function GuildRoles({ guild }) {
-    const hide = useStateFromStores([GuildRoles_StreamerModeStore], () => GuildRoles_StreamerModeStore.hide);
+    const hide = useStateFromStores([StreamerModeStore], () => StreamerModeStore.hidePersonalInformation);
     const roles = GuildRoles_optionalChain([Object, 'access', _ => _.values, 'call', _2 => _2(guild.roles), 'optionalAccess', _3 => _3.sort, 'call', _4 => _4((b, a) => a.position - b.position)]);
 
     if (hide) {
@@ -1297,7 +1306,7 @@ function GuildRoles({ guild }) {
 }
 
 ;// CONCATENATED MODULE: ./src/GuildProfile/components/GuildProfileModal/index.jsx
- function _nullishCoalesce(lhs, rhsFn) { if (lhs != null) { return lhs; } else { return rhsFn(); } }/* @license
+ function GuildProfileModal_nullishCoalesce(lhs, rhsFn) { if (lhs != null) { return lhs; } else { return rhsFn(); } }/* @license
  * Copyright (c) 2020 NurMarvin (Marvin Witt)
  * Copyright (c) 2021 jaimeadf (Jaime Filho)
  * Licensed under the Open Software License version 3.0
@@ -1330,7 +1339,7 @@ class GuildProfileModal extends (external_BdApi_React_default()).PureComponent {
         super(props);
 
         this.state = {
-            selectedSection: _nullishCoalesce(props.section, () => ( GuildProfileSections.GUILD_INFO))
+            selectedSection: GuildProfileModal_nullishCoalesce(props.section, () => ( GuildProfileSections.GUILD_INFO))
         };
 
         this.handleSectionSelect = this.handleSectionSelect.bind(this);
@@ -1366,7 +1375,7 @@ class GuildProfileModal extends (external_BdApi_React_default()).PureComponent {
                         )
                     )
                 )
-                , external_BdApi_React_default().createElement('div', { className: "body-1Ukv50 guild-profile-body" ,}, this.renderSelectedSection())
+                , external_BdApi_React_default().createElement('div', { className: "body-1Ukv50",}, this.renderSelectedSection())
             )
         );
     }
@@ -1413,7 +1422,7 @@ function SvgGuildProfile(props) {
 
 /* harmony default export */ const guild_profile = (SvgGuildProfile);
 ;// CONCATENATED MODULE: ./src/GuildProfile/style.scss
-/* harmony default export */ const style = (".guild-profile .guildDetail-3EJhW_{flex-shrink:0;align-self:start}.guild-profile .profileBadge-12r2Nm{color:var(--header-secondary)}.guild-profile .guild-tag{display:flex;align-items:center}.guild-profile .guild-info{padding:20px 10px}.guild-profile .guild-info .section{padding:5px 10px}.guild-profile .guild-roles{color:var(--interactive-active);padding:10px 12px}.guild-profile .guild-profile-body{flex:1;min-height:0}\n");
+/* harmony default export */ const style = (".guild-profile .guildDetail-3EJhW_{flex-shrink:0;align-self:start}.guild-profile .profileBadge-12r2Nm{color:var(--header-secondary)}.guild-profile .guild-tag{display:flex;align-items:center}.guild-profile .guild-info{padding:20px 10px}.guild-profile .guild-info .section{padding:5px 10px}.guild-profile .guild-roles{color:var(--interactive-active);padding:10px 12px}\n");
 ;// CONCATENATED MODULE: ./src/GuildProfile/locales/index.js
 /* @license
  * Copyright (c) 2021 jaimeadf (Jaime Filho)

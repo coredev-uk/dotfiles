@@ -6,7 +6,6 @@ function M.config()
 	g.nvim_tree_add_trailing = 0 -- append a trailing slash to folder names
 	-- g.nvim_tree_git_hl = git_status
 	g.nvim_tree_highlight_opened_files = 0
-	g.nvim_tree_indent_markers = 1
 	g.nvim_tree_root_folder_modifier = table.concat { ":t:gs?$?/..", string.rep(" ", 1000), "?:gs?^??" }
 
 	g.nvim_tree_show_icons = {
@@ -41,7 +40,6 @@ function M.config()
 		hijack_netrw        = true,
 		open_on_setup       = true,
 		ignore_ft_on_setup  = {},
-		auto_close          = false,
 		open_on_tab         = false,
 		hijack_cursor        = false,
 		update_cwd           = false,
@@ -122,6 +120,19 @@ function M.config()
 			},
 		},
 	}
+
+	-- closes neovim automatically when the tree is the last **WINDOW** in the view
+	-- from nvim-tree readme: autocmd BufEnter * ++nested if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif
+	-- https://neovim.io/doc/dev/api_2autocmd_8c.html#a4bf35800481959bb8583e9593a277eb7
+	vim.api.nvim_create_autocmd({ "BufEnter" }, {
+		pattern = { "*" },
+		nested = true,
+		callback = function()
+			if vim.fn.winnr "$" == 1 and vim.fn.bufname() == "NvimTree_" .. vim.fn.tabpagenr() then
+				vim.api.nvim_command ":silent qa!"
+			end
+		end,
+	})
 end
 
 return M

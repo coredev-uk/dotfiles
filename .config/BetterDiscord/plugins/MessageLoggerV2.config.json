@@ -13,7 +13,7 @@
         "ignoreLocalEdits": true,
         "ignoreLocalDeletes": true,
         "alwaysLogGhostPings": true,
-        "showOpenLogsButton": false,
+        "showOpenLogsButton": true,
         "messageCacheCap": 1000,
         "savedMessagesCap": 1000,
         "reverseOrder": false,
@@ -30,7 +30,8 @@
             "937450512712867840"
         ],
         "blacklist": [
-            "939685705137922058"
+            "939685705137922058",
+            "969727749633740900"
         ],
         "notificationBlacklist": [
             "939685705137922058"
@@ -81,6 +82,6 @@
         "imageCacheDir": "/home/paul/.config/BetterDiscord/plugins/MLV2_IMAGE_CACHE",
         "flags": 2,
         "autoUpdate": true,
-        "versionInfo": "1.8.14"
+        "versionInfo": "1.8.15"
     }
 }

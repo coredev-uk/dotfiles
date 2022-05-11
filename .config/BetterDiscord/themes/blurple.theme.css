@@ -87,7 +87,7 @@
   --channeltextarea-background: #101216 !important;
 
   /* Updated Configuration */
-  --background-primary: #090a0c;
+  --background-primary: #090a0c !important;
   --background-alt: #0f1114;
   --background-secondary: #060708;
   --background-secondary-alt: #080a0c;

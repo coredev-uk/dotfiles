@@ -1,7 +1,5 @@
 local M = {}
 
-
-
 function M.config()
 	local actions = require("telescope.actions")
 

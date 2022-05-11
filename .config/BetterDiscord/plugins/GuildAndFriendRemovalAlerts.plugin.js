@@ -544,6 +544,7 @@ function buildPlugin([BasePlugin, PluginApi]) {
                                 if (Settings.get("showXenoNotifs", false)) {
                                     removedGuilds.forEach((guild => {
                                         XenoLib.Notifications.error(renderContent(guild.iconUrl, guild.name, 'Server Left/Banned'), { timeout: 0 });
+										console.log(guild.iconUrl)
                                     }))
                                     removedFriends.forEach((friend => {
                                         XenoLib.Notifications.error(renderContent(friend.avatarUrl, friend.name, 'Friend Removed'), { timeout: 0 });

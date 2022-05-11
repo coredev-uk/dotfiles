@@ -193,6 +193,7 @@ packer.startup {
 		-- Bufferline
 		use {
 			'akinsho/bufferline.nvim',
+			tag = "v2.*",
 			requires = 'kyazdani42/nvim-web-devicons',
 			config = function()
 				require('configs.bufferline').config()
@@ -237,7 +238,8 @@ packer.startup {
 
 		-- Terminal
 		use {
-			'akinsho/nvim-toggleterm.lua',
+			'akinsho/toggleterm.nvim',
+			tag = 'v1.*',
 			cmd = 'ToggleTerm',
 			config = function()
 				require("configs.toggleterm").config()
