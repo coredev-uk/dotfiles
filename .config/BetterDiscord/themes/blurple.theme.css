@@ -114,6 +114,11 @@
   --background-mentioned-hover: #404eed2e;
 }
 
+/* Stop Discord's bs */
+.container-ZMc96U.themed-Hp1KC_ {
+	background-color: #090a0c !important;
+}
+
 /* DM margin Remove */
 .container-32HW5s,
 .channel-1Shao0 {
