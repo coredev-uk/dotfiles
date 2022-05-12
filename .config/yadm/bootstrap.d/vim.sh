@@ -17,7 +17,4 @@ packer_install() {
 }
 
 packer_install
-nvim -u NONE \
-    +'autocmd User PackerComplete quitall' \
-    +'lua require("core.plugins")' \
-    +'lua require("packer").sync()'
+nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
