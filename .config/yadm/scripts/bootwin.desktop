@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Windows 11
+Comment=Uses the BootWin script to reboot into Windows 11
+Exec=bootwin 
+Icon=network-wired
+Terminal=true
+Type=Application

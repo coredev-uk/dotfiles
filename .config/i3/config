@@ -14,7 +14,7 @@ set $rofi 		rofi -show drun -theme $HOME/.config/rofi/config.rasi  # > /tmp/rofi
 set $picom      picom --config $HOME/.config/picom/picom.conf --experimental-backends
 set $notif      /usr/lib/xfce4/notifyd/xfce4-notifyd 
 set $lock       betterlockscreen -l dimblur
-set $wallpaper  feh --bg-fill $HOME/Pictures/big-sur-night-grasses.jpg
+set $wallpaper	dwall -s firewatch # $HOME/Pictures/big-sur-night-grasses.jpg
 set $rgbprof    orange-night
 
 # RESIZE
@@ -44,8 +44,6 @@ bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 title_align center
-
-# BORDER
 default_floating_border pixel 0
 default_border pixel 0
 for_window [class="^.*"] border pixel 0
@@ -101,6 +99,7 @@ for_window [class="^Steam$" title="Steam Library Folders"] floating enable
 for_window [class="^Steam$" title="Create or select new Steam library folder:"] floating enable
 for_window [title="^Steam Keyboard$"] floating enable
 for_window [class="steam_app_*"] floating disable
+for_window [class="steam_app_242760"] floating enable
 
 # JETBRAINS
 for_window [class="jetbrains-*" title="win0"] floating enable
@@ -119,6 +118,7 @@ for_window [class="bms_linux"] floating disable
 # WORKSPACE RULES
 assign [class="jetbrains-idea"] 1
 assign [class="steam_app_*"] 1
+assign [class="discord"] 2
 
 ###############################################
 ##### TOOLS ###################################
@@ -179,9 +179,6 @@ bindsym $mod+d focus mode_toggle
 
 # CHANGE TO PARENT
 bindsym $mod+a focus parent
-
-# RESIZE MODE
-bindsym $mod+r mode "resize"
 
 ###############################################
 ##### WORKSPACES ##############################
@@ -246,8 +243,10 @@ exec --no-startup-id liquidctl --match hydro set fan speed 20
 exec --no-startup-id $notif
 exec --no-startup-id numlockx
 exec --no-startup-id openrgb --startminimized -p $rgbprof
-exec --no-startup-id "setxkbmap -layout gb"
+exec --no-startup-id setxkbmap -layout gb
 exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent
+exec --no-startup-id xrandr --output DP-2 --primary
+exec --no-startup-id steam --silent
 
 exec_always --no-startup-id $wallpaper
 exec_always --no-startup-id $picom
