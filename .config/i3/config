@@ -6,7 +6,7 @@ set $mod Mod4
 font pango:SF Compact Rounded 10
 
 # APPS VARIABLES
-set $browser    firefox
+set $browser    google-chrome-beta --enable-features=WebUIDarkMode --force-dark-mode
 set $scrsht     flameshot gui
 set $music      cider
 set $term       alacritty
