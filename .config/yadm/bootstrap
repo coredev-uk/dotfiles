@@ -26,3 +26,6 @@ done
 
 # Initialize Submodules
 yadm submodule update --init --recursive
+
+# GNUPG
+ln -s ~/.ssh/gnupg ~/.gnupg
