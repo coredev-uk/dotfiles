@@ -236,6 +236,8 @@ mode "resize" {
     bindsym $mod+r mode "default"
 }
 
+bindsym $mod+r mode "resize"
+
 ##### LAUNCH ##############################
 
 exec --no-startup-id xidlehook --not-when-fullscreen --not-when-audio --timer 300 $lock '' --timer 120 'systemctl suspend' '' 

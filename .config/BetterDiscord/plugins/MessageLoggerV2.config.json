@@ -24,7 +24,14 @@
             "945345792745562202",
             "668667392376832031"
         ],
-        "blacklist": [],
+        "blacklist": [
+            "959970753900601344",
+            "939685519347052544",
+            "971507684396396584",
+            "939672756813955182",
+            "990372885795340378",
+            "939685705137922058"
+        ],
         "notificationBlacklist": [],
         "toastToggles": {
             "sent": false,
@@ -72,6 +79,6 @@
         "imageCacheDir": "/home/paul/.config/BetterDiscord/plugins/MLV2_IMAGE_CACHE",
         "flags": 2,
         "autoUpdate": true,
-        "versionInfo": "1.8.15"
+        "versionInfo": "1.8.16"
     }
 }
