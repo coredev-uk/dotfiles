@@ -46,3 +46,8 @@ if status is-login
 end
 
 starship init fish | source
+
+# Bun
+set -Ux BUN_INSTALL "$HOME/.bun"
+set -px --path PATH "$HOME/.bun/bin"
+

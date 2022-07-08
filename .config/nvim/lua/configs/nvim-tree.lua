@@ -3,38 +3,7 @@ local M = {}
 function M.config()
 	local g = vim.g
 
-	g.nvim_tree_add_trailing = 0 -- append a trailing slash to folder names
 	-- g.nvim_tree_git_hl = git_status
-	g.nvim_tree_highlight_opened_files = 0
-	g.nvim_tree_root_folder_modifier = table.concat { ":t:gs?$?/..", string.rep(" ", 1000), "?:gs?^??" }
-
-	g.nvim_tree_show_icons = {
-		folders = 1,
-		files = 1,
-		git = 1,
-	}
-
-	g.nvim_tree_icons = {
-		default = "",
-		symlink = "",
-		git = {
-			deleted = "",
-			ignored = "◌",
-			renamed = "➜",
-			staged = "✓",
-			unmerged = "",
-			unstaged = "✗",
-			untracked = "*",
-		},
-		folder = {
-			default = "",
-			empty = "",
-			empty_open = "",
-			open = "",
-			symlink = "",
-			symlink_open = "",
-		},
-	}
 	require'nvim-tree'.setup {
 		disable_netrw       = true,
 		hijack_netrw        = true,
@@ -88,6 +57,41 @@ function M.config()
 			number = false,
 			relativenumber = false,
 			signcolumn = "yes"
+		},
+		renderer = {
+			group_empty = true,
+			add_trailing = false,
+			highlight_opened_files = "all",
+			root_folder_modifier = table.concat { ":t:gs?$?/..", string.rep(" ", 1000), "?:gs?^??" },
+			icons = {
+				show = {
+					folder = true,
+					file = true,
+					folder_arrow = true
+				},
+				glyphs = {
+					default = "",
+					symlink = "",
+					git = {
+						deleted = "",
+						ignored = "◌",
+						renamed = "➜",
+						staged = "✓",
+						unmerged = "",
+						unstaged = "✗",
+						untracked = "*",
+					},
+					folder = {
+						default = "",
+						empty = "",
+						empty_open = "",
+						open = "",
+						symlink = "",
+						symlink_open = "",
+					},
+
+				}
+			}
 		},
 		trash = {
 			cmd = "trash",

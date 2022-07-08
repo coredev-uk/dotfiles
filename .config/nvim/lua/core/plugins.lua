@@ -245,14 +245,6 @@ packer.startup {
 				require("configs.toggleterm").config()
 			end
 		}
-
-		-- Start screen
-		use {
-			"glepnir/dashboard-nvim",
-			config = function()
-				-- require("configs.dashboard").config()
-			end,
-		}
 	end
 }
 
