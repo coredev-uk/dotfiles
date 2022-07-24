@@ -13,8 +13,8 @@ set $term       alacritty
 set $rofi 		rofi -show drun -theme $HOME/.config/rofi/config.rasi  # > /tmp/rofi.log 2>&1
 set $picom      picom --config $HOME/.config/picom/picom.conf --experimental-backends
 set $notif      /usr/lib/xfce4/notifyd/xfce4-notifyd 
-set $lock       betterlockscreen -l dimblur
-set $wallpaper	dwall -s firewatch # $HOME/Pictures/big-sur-night-grasses.jpg
+set $lock       xlock
+set $wallpaper	dwall -s bigsur # $HOME/Pictures/big-sur-night-grasses.jpg
 set $rgbprof    orange-night
 
 # RESIZE
@@ -114,6 +114,7 @@ for_window [class="Lutris" title="Manage Runners"] floating enable
 for_window [class="feh"] floating enable
 for_window [class="gmod"] floating disable
 for_window [class="bms_linux"] floating disable
+for_window [class="cassowaryApp-College Kings.exe"] floating enable
 
 # WORKSPACE RULES
 assign [class="jetbrains-idea"] 1

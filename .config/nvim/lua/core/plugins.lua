@@ -245,6 +245,8 @@ packer.startup {
 				require("configs.toggleterm").config()
 			end
 		}
+
+		use 'github/copilot.vim'
 	end
 }
 
