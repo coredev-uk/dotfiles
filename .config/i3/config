@@ -14,6 +14,8 @@ set $rofi 		rofi -show drun -theme $HOME/.config/rofi/config.rasi  # > /tmp/rofi
 set $picom      picom --config $HOME/.config/picom/picom.conf --experimental-backends
 set $notif      /usr/lib/xfce4/notifyd/xfce4-notifyd 
 set $lock       xlock
+set $locktime	120
+set $sleeptime	300
 set $wallpaper	dwall -s bigsur # $HOME/Pictures/big-sur-night-grasses.jpg
 set $rgbprof    orange-night
 
@@ -100,9 +102,12 @@ for_window [class="^Steam$" title="Create or select new Steam library folder:"] 
 for_window [title="^Steam Keyboard$"] floating enable
 for_window [class="steam_app_*"] floating disable
 for_window [class="steam_app_242760"] floating enable
+for_window [class="steam_app_1182480" title="Origin"] floating enable
+for_window [class="steam_app_1091500" title="REDlauncher"] floating enable
 
 # JETBRAINS
 for_window [class="jetbrains-*" title="win0"] floating enable
+for_window [class="jetbrains-*" title="splash"] floating enable
 for_window [class="jetbrains-*" title="Welcome to *"] floating enable
 for_window [class="^com-intellij-updater-Runner$" title="^Update$"] floating enable
 for_window [instance="^sun-awt-X11-XDialogPeer$" title="^Complete Installation$"] floating enable
@@ -114,7 +119,8 @@ for_window [class="Lutris" title="Manage Runners"] floating enable
 for_window [class="feh"] floating enable
 for_window [class="gmod"] floating disable
 for_window [class="bms_linux"] floating disable
-for_window [class="cassowaryApp-College Kings.exe"] floating enable
+for_window [class="cassowaryApp-Coll*"] floating enable
+for_window [instance="crx_nngceckbapebfimnlniiiahkandclblb"] floating enable
 
 # WORKSPACE RULES
 assign [class="jetbrains-idea"] 1
@@ -241,7 +247,7 @@ bindsym $mod+r mode "resize"
 
 ##### LAUNCH ##############################
 
-exec --no-startup-id xidlehook --not-when-fullscreen --not-when-audio --timer 300 $lock '' --timer 120 'systemctl suspend' '' 
+exec --no-startup-id xidlehook --not-when-fullscreen --not-when-audio --timer $locktime $lock '' --timer $sleeptime 'systemctl suspend' '' 
 exec --no-startup-id liquidctl --match hydro set fan speed 20
 exec --no-startup-id $notif
 exec --no-startup-id numlockx
