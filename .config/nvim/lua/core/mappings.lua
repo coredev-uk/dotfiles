@@ -33,8 +33,8 @@ map("n", "<A-m>", "<cmd>NvimTreeToggle<CR>", opts)
 map("n", "<A-t>", "<cmd>ToggleTerm<CR>", opts)
 
 -- Move Lines
-map("n", "<A-Down>", "<cmd>m +1<CR>", opts)
-map("n", "<A-Up>", "<cmd>m -2<CR>", opts)
+map("n", "<A-J>", "<cmd>m +1<CR>", opts)
+map("n", "<A-K>", "<cmd>m -2<CR>", opts)
 
 -- Diagnostics
 map("n", "<A-d>", "<cmd>TroubleToggle<CR>", opts)

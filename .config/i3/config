@@ -16,7 +16,7 @@ set $notif      /usr/lib/xfce4/notifyd/xfce4-notifyd
 set $lock       xlock
 set $locktime	120
 set $sleeptime	300
-set $wallpaper	dwall -s bigsur # $HOME/Pictures/big-sur-night-grasses.jpg
+set $wallpaper	feh --bg-fill $HOME/Pictures/bluecircuit.png
 set $rgbprof    orange-night
 
 # RESIZE

@@ -1,88 +1,91 @@
-/*
- * ROFI color theme
- *
- * Based on Something Found in the Internet
- *
- * User: Contributors
- * Copyright: *!
- */
-
 configuration {
-  font: "JetBrainsMono Nerd Font Medium 10";
-
-  drun {
-    display-name: "";
-  }
-
-  run {
-    display-name: "";
-  }
-
-  window {
-    display-name: "";
-  }
-
-  timeout {
-    delay: 10;
-    action: "kb-cancel";
-  }
+	modi:					"drun";
+	display-drun: 			"Apps";
+	drun-display-format:    "{name}";
+	font:				    "JetBrainsMono Nerd Font 9";
+	show-icons:              true;
+	icon-theme: 			"Papirus";
 }
 
+@theme "/dev/null"
+
 * {
-  border: 0;
-  margin: 0;
-  padding: 0;
-  spacing: 0;
+	bg:				#101313;
+	fg:				#d7d7d7;
+	red:     		#f85858;
+    green:   		#2ac68e;
+    yellow:  		#f076ab;
+    blue:    		#008ce3;
+    purple: 		#a07dde;
+    cyan:    		#3dddd8;
+    active:      	#232525;
+	rad:			5px;
 
-  bg: #151515;
-  bg-alt: #232323;
-  fg: #FFFFFF;
-  fg-alt: #424242;
-
-  background-color: @bg;
-  text-color: @fg;
+	background-color: @bg;
+	text-color:	@fg;
 }
 
 window {
-  transparency: "real";
-}
-
-mainbox {
-  children: [inputbar, listview];
+	transparency: "real";
+	height: 1050px;
+    width: 15%;
+	location: west;
+	x-offset: 0px;
+	y-offset: 15px;
+	border: 0px;
 }
 
 inputbar {
-  background-color: @bg-alt;
-  children: [prompt, entry];
+	children: [ textbox, entry ];
+	expand: false;
+	margin: 15px;
+	border-radius: @rad;
+	background-color: @active;
 }
 
-entry {
-  background-color: inherit;
-  padding: 12px 3px;
+textbox {
+    str: "";
+    expand: false;
+    padding: 0 0.5% 0;
+    horizontal-align: 0.5;
+    vertical-align: 0.5;
+    border-radius: @rad;
+    background-image: linear-gradient(to right, #008ce3, #a07dde);
+    text-color: @fg;
+    font: "Material Icons 17";
 }
 
-prompt {
-  background-color: inherit;
-  padding: 12px;
+entry{
+	expand: true;
+	padding: 1%;
+    placeholder: "Search";
+	border-radius: @rad;
+    background-color: @active;
 }
 
 listview {
-  lines: 8;
+	columns: 2;
+	lines: 2;
+	cycle: false;
+    margin: 20px;
 }
 
 element {
-  children: [element-icon, element-text];
+	orientation: vertical;
+	padding: 0.5em;
 }
 
-element-icon {
-  padding: 10px 10px;
+element-text, element-icon {
+	padding: 0.2em;
+	horizontal-align: 0.5;
+	background-color: inherit;
 }
 
-element-text {
-  padding: 10px 0;
-  text-color: @fg-alt;
-}
+element-icon { size: 48px; }
+listview, element, element selected, element-text, element-icon { cursor: pointer; }
 
-element-text selected {
-  text-color: @fg;
+element selected {
+	background-color: @active;
+	text-color: @fg;
+	border-radius: @rad;
 }

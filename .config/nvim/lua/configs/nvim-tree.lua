@@ -4,6 +4,7 @@ function M.config()
 	local g = vim.g
 
 	-- g.nvim_tree_git_hl = git_status
+
 	require'nvim-tree'.setup {
 		disable_netrw       = true,
 		hijack_netrw        = true,
@@ -11,11 +12,11 @@ function M.config()
 		ignore_ft_on_setup  = {},
 		open_on_tab         = false,
 		hijack_cursor        = false,
-		update_cwd           = false,
+		update_cwd           = true,
 		hijack_unnamed_buffer_when_opening = false,
 		hijack_directories   = {
-			enable = true,
-			auto_open = true,
+			enable = false,
+			auto_open = false,
 		},
 		diagnostics = {
 			enable = true,
@@ -27,8 +28,8 @@ function M.config()
 			}
 		},
 		update_focused_file = {
-			enable      = false,
-			update_cwd  = false,
+			enable      = true,
+			update_cwd  = true,
 			ignore_list = {}
 		},
 		system_open = {
@@ -128,6 +129,7 @@ function M.config()
 	-- closes neovim automatically when the tree is the last **WINDOW** in the view
 	-- from nvim-tree readme: autocmd BufEnter * ++nested if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif
 	-- https://neovim.io/doc/dev/api_2autocmd_8c.html#a4bf35800481959bb8583e9593a277eb7
+	--[[
 	vim.api.nvim_create_autocmd({ "BufEnter" }, {
 		pattern = { "*" },
 		nested = true,
@@ -137,6 +139,7 @@ function M.config()
 			end
 		end,
 	})
+	--]]
 end
 
 return M
