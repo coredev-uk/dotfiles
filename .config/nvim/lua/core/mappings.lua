@@ -1,5 +1,5 @@
 local M = {}
-
+local nnoremap = require('core.keymap').nnoremap
 local opts = { noremap = true, silent = true }
 
 local map = vim.api.nvim_set_keymap
@@ -40,6 +40,16 @@ map("n", "<A-K>", "<cmd>m -2<CR>", opts)
 map("n", "<A-d>", "<cmd>TroubleToggle<CR>", opts)
 --map("n", "<A-Left>", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
 --map("n", "<A-Right>", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
+
+-- Harpoon
+nnoremap("<leader>a", function() require("harpoon.mark").add_file() end, silent)
+nnoremap("<C-e>", function() require("harpoon.ui").toggle_quick_menu() end, silent)
+nnoremap("<leader>tc", function() require("harpoon.cmd-ui").toggle_quick_menu() end, silent)
+
+nnoremap("<C-h>", function() require("harpoon.ui").nav_file(1) end, silent)
+nnoremap("<C-t>", function() require("harpoon.ui").nav_file(2) end, silent)
+nnoremap("<C-n>", function() require("harpoon.ui").nav_file(3) end, silent)
+nnoremap("<C-s>", function() require("harpoon.ui").nav_file(4) end, silent)
 
 return M
 

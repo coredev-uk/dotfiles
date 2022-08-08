@@ -34,6 +34,10 @@ packer.startup {
 			'williamboman/nvim-lsp-installer'
 		}
 
+		-- nerdy shit
+		use("ThePrimeagen/git-worktree.nvim")
+		use("ThePrimeagen/harpoon")
+
 		use {
 			'hrsh7th/nvim-cmp',
 			config = function()

@@ -6,7 +6,7 @@ set $mod Mod4
 font pango:SF Compact Rounded 10
 
 # APPS VARIABLES
-set $browser    google-chrome-beta --enable-features=WebUIDarkMode --force-dark-mode
+set $browser    microsoft-edge-beta --enable-features=WebUIDarkMode --force-dark-mode
 set $scrsht     flameshot gui
 set $music      cider
 set $term       alacritty
@@ -16,7 +16,7 @@ set $notif      /usr/lib/xfce4/notifyd/xfce4-notifyd
 set $lock       xlock
 set $locktime	120
 set $sleeptime	300
-set $wallpaper	feh --bg-fill $HOME/Pictures/bluecircuit.png
+set $wallpaper	feh --bg-fill $HOME/Pictures/bluecircuit-upscaled.jpg
 set $rgbprof    orange-night
 
 # RESIZE
@@ -54,6 +54,7 @@ border_radius $rounded
 # GAPS
 gaps inner $inner
 gaps outer $outer
+smart_gaps on
 
 # GAPS COMMAND
 bindsym $mod+g exec $picom; gaps inner all set $inner; gaps outer all set $outer
@@ -121,6 +122,9 @@ for_window [class="gmod"] floating disable
 for_window [class="bms_linux"] floating disable
 for_window [class="cassowaryApp-Coll*"] floating enable
 for_window [instance="crx_nngceckbapebfimnlniiiahkandclblb"] floating enable
+
+# BROWSER
+for_window [class="*edge*" window_role="pop-up"] floating enable
 
 # WORKSPACE RULES
 assign [class="jetbrains-idea"] 1
