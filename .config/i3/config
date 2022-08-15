@@ -14,8 +14,8 @@ set $rofi 		rofi -show drun -theme $HOME/.config/rofi/config.rasi  # > /tmp/rofi
 set $picom      picom --config $HOME/.config/picom/picom.conf --experimental-backends
 set $notif      /usr/lib/xfce4/notifyd/xfce4-notifyd 
 set $lock       xlock
-set $locktime	120
-set $sleeptime	300
+set $locktime	300
+set $sleeptime	600
 set $wallpaper	feh --bg-fill $HOME/Pictures/bluecircuit-upscaled.jpg
 set $rgbprof    orange-night
 
@@ -122,9 +122,12 @@ for_window [class="gmod"] floating disable
 for_window [class="bms_linux"] floating disable
 for_window [class="cassowaryApp-Coll*"] floating enable
 for_window [instance="crx_nngceckbapebfimnlniiiahkandclblb"] floating enable
+for_window [title="Web Remote" window_role="browser-window"] floating enable
 
 # BROWSER
 for_window [class="*edge*" window_role="pop-up"] floating enable
+for_window [window_role="pop-up" title="*Outlook*"] floating disable
+for_window [window_role="bubble"] floating enable
 
 # WORKSPACE RULES
 assign [class="jetbrains-idea"] 1
