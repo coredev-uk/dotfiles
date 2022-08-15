@@ -7,20 +7,22 @@ if [ "$system_type" = "Darwin" ]; then
 
   # install homebrew if it's missing
   if ! command -v brew >/dev/null 2>&1; then
-    echo "Installing homebrew"
-    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+	  echo "Installing homebrew"
+	  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
   fi
 
   if [ -f "$HOME/.Brewfile" ]; then
-    echo "Updating homebrew bundle"
-	brew bundle --file ~/.config/yadm/Brewfile
-		chsh -s /opt/homebrew/bin/fish
+	  echo "Updating homebrew bundle"
+	  brew bundle --file ~/.config/yadm/Brewfile
+	  # Update the shell
+	  fish_path=$(which fish)
+	  chsh -s $fish_path
   fi
-# Install packages in Linux
+  # Install packages in Linux
 elif [ "$system_type" = "Linux" ]; then
-	. /etc/os-release
+	os_type=$(. /etc/os-release)
 
-	if [ "$NAME" != "Arch Linux" ]; then
+	if [ "$os_type" != "Arch Linux" ]; then
 		echo "This script is only for Arch Linux"
 		exit 1
 	fi

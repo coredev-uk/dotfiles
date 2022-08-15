@@ -18,6 +18,7 @@ set.background = 'dark'
 --set foldmethod=expr
 --set foldexpr=nvim_treesitter#foldexpr()
 vim.g.vimsyn_embed = '1'
+vim.g.mapleader = "<Space>"
 
 return M
 
