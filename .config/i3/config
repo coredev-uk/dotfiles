@@ -10,7 +10,7 @@ set $browser    microsoft-edge-beta --enable-features=WebUIDarkMode --force-dark
 set $scrsht     flameshot gui
 set $music      cider
 set $term       alacritty
-set $rofi 		rofi -show drun -theme $HOME/.config/rofi/config.rasi  # > /tmp/rofi.log 2>&1
+set $rofi 		rofi -show drun -theme $HOME/.config/rofi/config.rasi.alt  # > /tmp/rofi.log 2>&1
 set $picom      picom --config $HOME/.config/picom/picom.conf --experimental-backends
 set $notif      /usr/lib/xfce4/notifyd/xfce4-notifyd 
 set $lock       xlock
