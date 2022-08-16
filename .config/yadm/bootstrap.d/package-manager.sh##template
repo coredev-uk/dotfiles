@@ -1,0 +1,33 @@
+#!/bin/sh
+
+# I use arch btw
+{% if yadm.distro == "Arch" %}
+
+if ! command -v paru >/dev/null 2>&1; then
+	echo "Installing pacman packages"
+
+	sudo pacman -S --needed base-devel
+	git clone https://aur.archlinux.org/paru.git
+	cd paru
+	makepkg -si
+
+	paru -S git neovim neofetch alacritty
+fi
+
+{% endif %}
+{% if yadm.os == "Darwin" %}
+
+# install homebrew if it's missing
+if ! command -v brew >/dev/null 2>&1; then
+	echo "Installing homebrew"
+	/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+fi
+
+if [ -f "$HOME/.Brewfile" ]; then
+	echo "Updating homebrew bundle"
+	brew bundle --file ~/.config/yadm/Brewfile
+	# Update the shell
+	fish_path=$(which fish)
+	chsh -s $fish_path
+fi
+{% endif %}
