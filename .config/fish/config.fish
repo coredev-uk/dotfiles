@@ -36,6 +36,7 @@ if status is-interactive
     alias ls='exa -F --group-directories-first'
 	alias vim='nvim'
 	alias vi='nvim'
+	alias la='ls -la'
 end
 
 # Start X at login

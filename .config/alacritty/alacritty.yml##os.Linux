@@ -5,7 +5,7 @@ window:
     y: 10
 
   # sets background opacity to 0.1 (10%)
-  opacity: 0.1
+  opacity: 0.4
 
 font:
   normal:
@@ -15,7 +15,7 @@ font:
 
 colors:
   primary:
-    background: '#eeeeee'
+    background: '#181818' #'#eeeeee'
     foreground: '#DFDFDF' #'#ffffff'
 
   draw_bold_text_with_bright_colors: true
