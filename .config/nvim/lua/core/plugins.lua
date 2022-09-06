@@ -1,8 +1,8 @@
 -- Bootstrapping Functions
 local fn = vim.fn
-local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
 if fn.empty(fn.glob(install_path)) > 0 then
-	packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+	packer_bootstrap = fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path })
 	vim.cmd [[packadd packer.nvim]]
 end
 
@@ -40,6 +40,13 @@ return require('packer').startup(function(use)
 		'neovim/nvim-lspconfig',
 		'williamboman/nvim-lsp-installer'
 	}
+
+	use({
+		"jose-elias-alvarez/null-ls.nvim",
+		config = function()
+			require("configs.nullls")
+		end,
+	})
 
 	-- nerdy shit
 	use("ThePrimeagen/git-worktree.nvim")
@@ -242,7 +249,7 @@ return require('packer').startup(function(use)
 			vim.g.tokyonight_italic_functions = 1
 			vim.g.tokyonight_sidebars = { "qf", "vista_kind", "terminal", "Telescope" }
 			vim.g.tokyonight_colors = { hint = "orange", error = "#ff0000" }
-			vim.cmd[[colorscheme tokyonight]]
+			vim.cmd [[colorscheme tokyonight]]
 		end,
 	}
 

@@ -262,6 +262,7 @@ exec --no-startup-id openrgb --startminimized -p $rgbprof
 exec --no-startup-id setxkbmap -layout gb
 exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent
 exec --no-startup-id xrandr --output DP-2 --primary
+exec --no-startup-id jetbrains-toolbox
 ##exec --no-startup-id steam --silent
 
 exec_always --no-startup-id $wallpaper

@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=X-GNOME-Metatheme
+Name=Quixotic-blue
+Comment=An Flat Gtk+ theme based on Elegant Design
+Encoding=UTF-8
+
+[X-GNOME-Metatheme]
+GtkTheme=Quixotic-blue
+MetacityTheme=Quixotic-blue
+IconTheme=Tela-circle-blue
+CursorTheme=Quixotic-cursors
+ButtonLayout=close,minimize,maximize:menu
