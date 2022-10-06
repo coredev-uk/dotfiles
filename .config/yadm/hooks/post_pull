@@ -6,10 +6,22 @@ if (command -v firefox &> /dev/null); then
 		mkdir $path/chrome/ 2&>/dev/null
 		if ! (test -f $path/chrome/userChrome.css); then
 			echo '[Firefox] Linking user css to' $path
-			ln ~/.config/firefox/* $path/chrome
+			ln -s ~/.config/firefox/* $path/chrome
 		fi
 	done
 fi
+
+# Librewolf
+if (command -v librewolf &> /dev/null); then 
+	for path in ~/.librewolf/*-release/; do
+		mkdir $path/chrome/ 2&>/dev/null
+		if ! (test -f $path/chrome/userChrome.css); then
+			echo '[Librewolf] Linking user css to' $path
+			ln -s ~/.config/firefox/* $path/chrome
+		fi
+	done
+fi
+
 
 # Windows
 if (command -v efibootmgr &> /dev/null) && (efibootmgr | grep -q 'Windows') && ! (test -f /usr/local/bin/bootwin); then

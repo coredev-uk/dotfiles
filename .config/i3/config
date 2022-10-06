@@ -6,18 +6,20 @@ set $mod Mod4
 font pango:SF Compact Rounded 10
 
 # APPS VARIABLES
-set $browser    microsoft-edge-beta --enable-features=WebUIDarkMode --force-dark-mode
+set $browser    librewolf #--enable-features=WebUIDarkMode --force-dark-mode
 set $scrsht     flameshot gui
 set $music      cider
 set $term       alacritty
 set $rofi 		rofi -show drun -theme $HOME/.config/rofi/config.rasi.alt  # > /tmp/rofi.log 2>&1
-set $picom      picom --config $HOME/.config/picom/picom.conf --experimental-backends
+set $picom      picom --config $HOME/.config/picom/picom.conf --experimental-backend
 set $notif      /usr/lib/xfce4/notifyd/xfce4-notifyd 
 set $lock       xlock
 set $locktime	300
 set $sleeptime	600
 set $wallpaper	feh --bg-fill $HOME/Pictures/bluecircuit-upscaled.jpg
 set $rgbprof    orange-night
+set $xrandr		xrandr --output DP-0 --primary --left-of DP-2
+exec $xrandr
 
 # RESIZE
 set $center move position center
@@ -260,10 +262,7 @@ exec --no-startup-id $notif
 exec --no-startup-id numlockx
 exec --no-startup-id openrgb --startminimized -p $rgbprof
 exec --no-startup-id setxkbmap -layout gb
-exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent
-exec --no-startup-id xrandr --output DP-2 --primary
-exec --no-startup-id jetbrains-toolbox
-##exec --no-startup-id steam --silent
+exec --no-startup-id steam -silent
 
 exec_always --no-startup-id $wallpaper
 exec_always --no-startup-id $picom

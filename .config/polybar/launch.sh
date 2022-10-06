@@ -15,15 +15,13 @@ while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
 
 # Multiple Displays
 if type "xrandr"; then
-	for m in $(xrandr --query | grep " connected" | grep "primary" | cut -d" " -f1); do
-		echo $m right
-		MONITOR=$m TRAY_POS=right polybar --reload -q main -c "$DIR"/config.ini &
-	done
 	for m in $(xrandr --query | grep " connected" | cut -d" " -f1); do
-		if [[ $m != $(xrandr --query | grep " connected" | grep "primary" | cut -d" " -f1) ]]; then 
-			echo $m none
-			MONITOR=$m TRAY_POS=none polybar --reload -q main -c "$DIR"/config.ini &
+		tray="none"
+		if [[ $m == $(xrandr --query | grep " connected" | grep "primary" | cut -d" " -f1) ]]; then
+			tray="right"
 		fi
+		echo $m $tray
+		MONITOR=$m TRAY_POS=$tray polybar --reload -q main -c "$DIR"/config.ini &
 	done
 else
 	polybar --reload -q main -c "$DIR"/config.ini &

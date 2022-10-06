@@ -213,16 +213,17 @@ window,
 }
 
 /* grey out ccons inside the toolbar to make it
- * more aligned with the Black & White colour look */
+ * more aligned with the Black & White colour look 
 #PersonalToolbar toolbarbutton:not(:hover),
 #bookmarks-toolbar-button:not(:hover) {
   filter: grayscale(1) !important;
 }
+*/
 
-/* disable the text in bookmarks */
+/* disable the text in bookmarks 
 toolbarbutton .toolbarbutton-text {
   display: none !important;
-}
+}*/
 
 /* remove window control buttons */
 .titlebar-buttonbox-container {

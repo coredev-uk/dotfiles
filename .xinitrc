@@ -30,6 +30,8 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
 	unset f
 fi
 
+xrandr --output DP-0 --primary --left-of DP-2
+
 #echo Starting Plasma
 #export DESKTOP_SESSION=plasma
 #exec startplasma-x11
