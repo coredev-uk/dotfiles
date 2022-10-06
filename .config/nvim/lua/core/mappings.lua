@@ -1,4 +1,3 @@
-local M = {}
 local nnoremap = require('core.keymap').nnoremap
 local opts = { noremap = true, silent = true }
 
@@ -6,7 +5,7 @@ local map = vim.api.nvim_set_keymap
 
 -- Telescope
 vim.g.AutoPairsShortcutToggle = '<Nul>'
-map("n", "<A-p>", "<cmd>lua require('configs/telescope').project_files()<CR>", opts)
+map("n", "<A-p>", "<cmd>Telescope find_files<CR>", opts)
 map("n", "<A-f>", "<cmd>Telescope live_grep<CR>", opts)
 map("n", "<A-o>", "<cmd>Telescope packer<CR>", opts)
 
@@ -50,7 +49,3 @@ nnoremap("<C-h>", function() require("harpoon.ui").nav_file(1) end, silent)
 nnoremap("<C-t>", function() require("harpoon.ui").nav_file(2) end, silent)
 nnoremap("<C-n>", function() require("harpoon.ui").nav_file(3) end, silent)
 nnoremap("<C-s>", function() require("harpoon.ui").nav_file(4) end, silent)
-
-return M
-
-

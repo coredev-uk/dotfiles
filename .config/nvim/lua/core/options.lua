@@ -1,15 +1,16 @@
-local M = {}
 local set = vim.opt
 
 set.autoindent = true
-set.expandtab = false
-set.tabstop=4
-set.shiftwidth=4
+set.expandtab = true
+set.tabstop=2
+set.softtabstop=2
+set.shiftwidth=2
 set.clipboard="unnamedplus"
 set.ignorecase = true
 set.mouse="a"
 set.smartindent = true
-set.relativenumber = false
+set.smarttab = true
+set.relativenumber = true
 set.number = true
 set.nu = true
 set.cursorline = true
@@ -17,8 +18,4 @@ set.termguicolors = true
 set.background = 'dark'
 --set foldmethod=expr
 --set foldexpr=nvim_treesitter#foldexpr()
-vim.g.vimsyn_embed = '1'
-vim.g.mapleader = "<Space>"
-
-return M
-
+vim.g.mapleader = " "
