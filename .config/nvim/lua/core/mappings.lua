@@ -1,59 +1,58 @@
 local nnoremap = require('core.keymap').nnoremap
-local opts = { noremap = true, silent = true }
-
-local map = vim.api.nvim_set_keymap
+local xnoremap = require('core.keymap').xnoremap
 
 -- Telescope
 vim.g.AutoPairsShortcutToggle = '<Nul>'
-map("n", "<A-p>", "<cmd>Telescope find_files<CR>", opts)
-map("n", "<A-f>", "<cmd>Telescope live_grep<CR>", opts)
-map("n", "<A-o>", "<cmd>Telescope packer<CR>", opts)
+nnoremap("<A-p>", "<cmd>Telescope find_files<CR>")
+nnoremap("<A-f>", "<cmd>Telescope live_grep<CR>")
+nnoremap("<A-o>", "<cmd>Telescope packer<CR>")
 
 -- Bufferline
-map("n", "<A-Left>", "<cmd>BufferLineCyclePrev<CR>", opts)
-map("n", "<A-Right>", "<cmd>BufferLineCycleNext<CR>", opts)
-map("n", "<A-S-Left>", "<cmd>BufferLineMovePrev<CR>", opts)
-map("n", "<A-S-Right>", "<cmd>BufferLineMoveNext<CR>", opts)
-map("n", "<A-c>", "<cmd>bdelete<CR>", opts)
-map("n", "<A-1>", "<cmd>BufferLineGoToBuffer 1<CR>", opts)
-map("n", "<A-2>", "<cmd>BufferLineGoToBuffer 2<CR>", opts)
-map("n", "<A-3>", "<cmd>BufferLineGoToBuffer 3<CR>", opts)
-map("n", "<A-4>", "<cmd>BufferLineGoToBuffer 4<CR>", opts)
-map("n", "<A-5>", "<cmd>BufferLineGoToBuffer 5<CR>", opts)
-map("n", "<A-6>", "<cmd>BufferLineGoToBuffer 6<CR>", opts)
-map("n", "<A-7>", "<cmd>BufferLineGoToBuffer 7<CR>", opts)
-map("n", "<A-8>", "<cmd>BufferLineGoToBuffer 8<CR>", opts)
-map("n", "<A-9>", "<cmd>BufferLineGoToBuffer 9<CR>", opts)
+nnoremap("<A-Left>", "<cmd>BufferLineCyclePrev<CR>")
+nnoremap("<A-Right>", "<cmd>BufferLineCycleNext<CR>")
+nnoremap("<A-S-Left>", "<cmd>BufferLineMovePrev<CR>")
+nnoremap("<A-S-Right>", "<cmd>BufferLineMoveNext<CR>")
+nnoremap("<A-c>", "<cmd>bdelete<CR>")
+nnoremap("<A-1>", "<cmd>BufferLineGoToBuffer 1<CR>")
+nnoremap("<A-2>", "<cmd>BufferLineGoToBuffer 2<CR>")
+nnoremap("<A-3>", "<cmd>BufferLineGoToBuffer 3<CR>")
+nnoremap("<A-4>", "<cmd>BufferLineGoToBuffer 4<CR>")
+nnoremap("<A-5>", "<cmd>BufferLineGoToBuffer 5<CR>")
+nnoremap("<A-6>", "<cmd>BufferLineGoToBuffer 6<CR>")
+nnoremap("<A-7>", "<cmd>BufferLineGoToBuffer 7<CR>")
+nnoremap("<A-8>", "<cmd>BufferLineGoToBuffer 8<CR>")
+nnoremap("<A-9>", "<cmd>BufferLineGoToBuffer 9<CR>")
 
-map("n", "<leader>cic", "<Plug>kommentary_line_increase", opts)
-map("n", "<leader>ci", "<Plug>kommentary_motion_increase", opts)
-map("x", "<leader>ci", "<Plug>kommentary_visual_increase", opts)
-map("n", "<leader>cdc", "<Plug>kommentary_line_decrease", opts)
-map("n", "<leader>cd", "<Plug>kommentary_motion_decrease", opts)
-map("x", "<leader>cd", "<Plug>kommentary_visual_decrease", opts)
+nnoremap("<leader>cic", "<Plug>kommentary_line_increase")
+nnoremap("<leader>ci", "<Plug>kommentary_motion_increase")
+xnoremap("<leader>ci", "<Plug>kommentary_visual_increase")
+nnoremap("<leader>cdc", "<Plug>kommentary_line_decrease")
+xnoremap("<leader>cd", "<Plug>kommentary_motion_decrease")
+xnoremap("<leader>cd", "<Plug>kommentary_visual_decrease")
 
 -- Nvim NvimTreeToggle
-map("n", "<A-m>", "<cmd>NvimTreeToggle<CR>", opts)
-map("n", "<leader>trf", "<cmd>NvimTreeRefresh<CR>", opts)
+nnoremap("<A-m>", "<cmd>NvimTreeToggle<CR>")
+nnoremap("<leader>trf", "<cmd>NvimTreeRefresh<CR>")
 
 -- Move Lines
-map("n", "<A-j>", "<cmd>m +1<CR>", opts)
-map("n", "<A-k>", "<cmd>m -2<CR>", opts)
+nnoremap("<A-j>", "<cmd>m +1<CR>")
+nnoremap("<A-k>", "<cmd>m -2<CR>")
+
+-- Terminal
+nnoremap("<A-t>", "<cmd>ToggleTerm<CR>")
 
 -- Diagnostics
-map("n", "<A-d>", "<cmd>TroubleToggle<CR>", opts)
---map("n", "<A-Left>", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
---map("n", "<A-Right>", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
+nnoremap("<A-d>", "<cmd>TroubleToggle<CR>")
 
 -- Symbols
-map("n", "<A-s>", "<cmd>SymbolsOutline<CR>", opts)
+nnoremap("<A-s>", "<cmd>SymbolsOutline<CR>")
 
 -- Harpoon
-nnoremap("<leader>a", function() require("harpoon.mark").add_file() end, silent)
-nnoremap("<C-e>", function() require("harpoon.ui").toggle_quick_menu() end, silent)
-nnoremap("<leader>tc", function() require("harpoon.cmd-ui").toggle_quick_menu() end, silent)
+nnoremap("<leader>a", function() require("harpoon.mark").add_file() end)
+nnoremap("<C-e>", function() require("harpoon.ui").toggle_quick_menu() end)
+nnoremap("<leader>tc", function() require("harpoon.cmd-ui").toggle_quick_menu() end)
 
-nnoremap("<C-h>", function() require("harpoon.ui").nav_file(1) end, silent)
-nnoremap("<C-t>", function() require("harpoon.ui").nav_file(2) end, silent)
-nnoremap("<C-n>", function() require("harpoon.ui").nav_file(3) end, silent)
-nnoremap("<C-s>", function() require("harpoon.ui").nav_file(4) end, silent)
+nnoremap("<C-h>", function() require("harpoon.ui").nav_file(1) end)
+nnoremap("<C-t>", function() require("harpoon.ui").nav_file(2) end)
+nnoremap("<C-n>", function() require("harpoon.ui").nav_file(3) end)
+nnoremap("<C-s>", function() require("harpoon.ui").nav_file(4) end)

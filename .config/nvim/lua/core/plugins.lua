@@ -1,61 +1,29 @@
--- Bootstrapping Functions
-local fn = vim.fn
-local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
-if fn.empty(fn.glob(install_path)) > 0 then
-  packer_bootstrap = fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim',
-  install_path })
-  vim.cmd [[packadd packer.nvim]]
-end
-
-
-local packer_status_ok = pcall(require, 'packer')
-if not packer_status_ok then
-  return
-end
-
-vim.cmd([[
-augroup packer_user_config
-autocmd!
-autocmd BufWritePost plugins.lua source <afile> | PackerCompile
-augroup end
-]])
-
-
 return require('packer').startup(function(use)
 
   -- Plugin manger
   use 'wbthomason/packer.nvim'
 
-   -- Colour Scheme
-  use {"EdenEast/nightfox.nvim",
-  config = function()
-    vim.cmd [[colorscheme carbonfox]]
-  end,}
-
-  -- Finder
-  use {
-    'nvim-telescope/telescope-packer.nvim',
-    after = 'telescope.nvim',
+  -- Colour Scheme
+  use { "EdenEast/nightfox.nvim",
     config = function()
-      require('telescope').load_extension('packer')
-    end
-  }
+      vim.cmd [[colorscheme carbonfox]]
+    end, }
 
-  -- builtin lsp
+  -- Language Servers
   use(
-  {
-    'williamboman/mason.nvim',
-    config = function()
-      require("mason").setup()
-      require("mason-lspconfig").setup()
-    end,
-    requires = {
-      'williamboman/mason-lspconfig.nvim',
-      'neovim/nvim-lspconfig'
-    }
-  },
-  'williamboman/mason-lspconfig.nvim',
-  'neovim/nvim-lspconfig'
+    {
+      'williamboman/mason.nvim',
+      config = function()
+        require("mason").setup()
+        require("mason-lspconfig").setup()
+      end,
+      requires = {
+        'williamboman/mason-lspconfig.nvim',
+        'neovim/nvim-lspconfig'
+      }
+    },
+    'williamboman/mason-lspconfig.nvim',
+    'neovim/nvim-lspconfig'
   )
 
   use {
@@ -63,16 +31,6 @@ return require('packer').startup(function(use)
     config = function()
       require("configs.nullls")
     end,
-  }
-
-  -- nerdy shit
-  use("ThePrimeagen/git-worktree.nvim")
-
-  use {
-    'ThePrimeagen/harpoon',
-    requires = {
-      'nvim-lua/plenary.nvim',
-    },
   }
 
   use {
@@ -115,9 +73,7 @@ return require('packer').startup(function(use)
   use 'dense-analysis/ale'
 
   -- Snippet engine
-  use {
-    'hrsh7th/vim-vsnip',
-  }
+  use 'hrsh7th/vim-vsnip'
 
   -- Snippet completion source
   use {
@@ -176,20 +132,20 @@ return require('packer').startup(function(use)
     end
   })
 
+  -- nerdy shit
+  use("ThePrimeagen/git-worktree.nvim")
+
+  use {
+    'ThePrimeagen/harpoon',
+    requires = {
+      'nvim-lua/plenary.nvim',
+    },
+  }
+
   -- Development Plugins
   use 'pangloss/vim-javascript' -- Syntax highlighting and improved indentation for JS
   use 'tpope/vim-surround' -- Replacing surrounding stuff
   use 'mg979/vim-visual-multi' -- Edit multiple lines at once
-  use {
-    'vuki656/package-info.nvim',
-    requires = {
-      'MunifTanjim/nui.nvim'
-    },
-    config = function()
-      require('configs.package-info')
-    end
-  } -- Package.json Information
-
   use {
     'b3nj5m1n/kommentary',
     config = function()
@@ -242,7 +198,7 @@ return require('packer').startup(function(use)
     end,
   }
 
-  -- File explorer
+    -- File Explorer
   use({
     "kyazdani42/nvim-tree.lua",
     config = function()
@@ -281,9 +237,4 @@ return require('packer').startup(function(use)
       require('configs.whichkey')
     end
   }
-
-  -- Bootstrapping
-  if packer_bootstrap then
-    require('packer').sync()
-  end
 end)
