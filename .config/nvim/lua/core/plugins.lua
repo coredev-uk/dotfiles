@@ -3,7 +3,7 @@ local fn = vim.fn
 local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
 if fn.empty(fn.glob(install_path)) > 0 then
   packer_bootstrap = fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim',
-    install_path })
+  install_path })
   vim.cmd [[packadd packer.nvim]]
 end
 
@@ -26,6 +26,11 @@ return require('packer').startup(function(use)
   -- Plugin manger
   use 'wbthomason/packer.nvim'
 
+   -- Colour Scheme
+  use {"EdenEast/nightfox.nvim",
+  config = function()
+    vim.cmd [[colorscheme carbonfox]]
+  end,}
 
   -- Finder
   use {
@@ -38,27 +43,27 @@ return require('packer').startup(function(use)
 
   -- builtin lsp
   use(
-    {
-      'williamboman/mason.nvim',
-      config = function()
-        require("mason").setup()
-        require("mason-lspconfig").setup()
-      end,
-      requires = {
-        'williamboman/mason-lspconfig.nvim',
-        'neovim/nvim-lspconfig'
-      }
-    },
-    'williamboman/mason-lspconfig.nvim',
-    'neovim/nvim-lspconfig'
+  {
+    'williamboman/mason.nvim',
+    config = function()
+      require("mason").setup()
+      require("mason-lspconfig").setup()
+    end,
+    requires = {
+      'williamboman/mason-lspconfig.nvim',
+      'neovim/nvim-lspconfig'
+    }
+  },
+  'williamboman/mason-lspconfig.nvim',
+  'neovim/nvim-lspconfig'
   )
 
-  use({
+  use {
     "jose-elias-alvarez/null-ls.nvim",
     config = function()
       require("configs.nullls")
     end,
-  })
+  }
 
   -- nerdy shit
   use("ThePrimeagen/git-worktree.nvim")
@@ -105,6 +110,9 @@ return require('packer').startup(function(use)
     'ray-x/lsp_signature.nvim',
     after = 'nvim-cmp',
   }
+
+  -- linting engine
+  use 'dense-analysis/ale'
 
   -- Snippet engine
   use {
@@ -153,6 +161,20 @@ return require('packer').startup(function(use)
 
   -- Git Messenger(Shows origin of code)
   use 'rhysd/git-messenger.vim'
+  use({
+    "lewis6991/gitsigns.nvim",
+    config = function()
+      require('gitsigns').setup({
+        current_line_blame = true,
+        current_line_blame_opts = {
+          virt_text = true,
+          virt_text_pos = 'eol', -- 'eol' | 'overlay' | 'right_align'
+          delay = 500,
+          ignore_whitespace = false,
+        },
+      })
+    end
+  })
 
   -- Development Plugins
   use 'pangloss/vim-javascript' -- Syntax highlighting and improved indentation for JS
@@ -228,18 +250,6 @@ return require('packer').startup(function(use)
     end,
   })
 
-  -- Colour Scheme
-  use {
-    'folke/tokyonight.nvim',
-    config = function()
-      require("tokyonight").setup({
-        style = "night", -- The theme comes in three styles, `storm`, `moon`, a darker variant `night` and `day`
-      })
-
-      vim.cmd [[colorscheme tokyonight-night]]
-    end,
-  }
-
   -- Better Colors for various elements
   use 'folke/trouble.nvim'
 
@@ -264,6 +274,13 @@ return require('packer').startup(function(use)
   }
 
   use 'github/copilot.vim'
+  use 'editorconfig/editorconfig-vim'
+  use {
+    "folke/which-key.nvim",
+    config = function()
+      require('configs.whichkey')
+    end
+  }
 
   -- Bootstrapping
   if packer_bootstrap then

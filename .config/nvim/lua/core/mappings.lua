@@ -25,11 +25,16 @@ map("n", "<A-7>", "<cmd>BufferLineGoToBuffer 7<CR>", opts)
 map("n", "<A-8>", "<cmd>BufferLineGoToBuffer 8<CR>", opts)
 map("n", "<A-9>", "<cmd>BufferLineGoToBuffer 9<CR>", opts)
 
+map("n", "<leader>cic", "<Plug>kommentary_line_increase", opts)
+map("n", "<leader>ci", "<Plug>kommentary_motion_increase", opts)
+map("x", "<leader>ci", "<Plug>kommentary_visual_increase", opts)
+map("n", "<leader>cdc", "<Plug>kommentary_line_decrease", opts)
+map("n", "<leader>cd", "<Plug>kommentary_motion_decrease", opts)
+map("x", "<leader>cd", "<Plug>kommentary_visual_decrease", opts)
+
 -- Nvim NvimTreeToggle
 map("n", "<A-m>", "<cmd>NvimTreeToggle<CR>", opts)
-
--- Toggle term
-map("n", "<A-t>", "<cmd>ToggleTerm<CR>", opts)
+map("n", "<leader>trf", "<cmd>NvimTreeRefresh<CR>", opts)
 
 -- Move Lines
 map("n", "<A-j>", "<cmd>m +1<CR>", opts)
@@ -39,6 +44,9 @@ map("n", "<A-k>", "<cmd>m -2<CR>", opts)
 map("n", "<A-d>", "<cmd>TroubleToggle<CR>", opts)
 --map("n", "<A-Left>", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
 --map("n", "<A-Right>", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
+
+-- Symbols
+map("n", "<A-s>", "<cmd>SymbolsOutline<CR>", opts)
 
 -- Harpoon
 nnoremap("<leader>a", function() require("harpoon.mark").add_file() end, silent)
