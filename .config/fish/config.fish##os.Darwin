@@ -38,3 +38,8 @@ set -px --path PATH "$HOME/.bun/bin"
 
 test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
 
+
+# pnpm
+set -gx PNPM_HOME "/Users/paul/Library/pnpm"
+set -gx PATH "$PNPM_HOME" $PATH
+# pnpm end
