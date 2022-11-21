@@ -4,14 +4,14 @@
 {% if yadm.distro == "Arch" %}
 
 if ! command -v paru >/dev/null 2>&1; then
-	echo "Installing pacman packages"
+	echo "Installing Pacman Helper"
 
 	sudo pacman -S --needed base-devel
 	git clone https://aur.archlinux.org/paru.git
 	cd paru
 	makepkg -si
 
-	paru -S git neovim neofetch alacritty
+	#paru -S git neovim neofetch alacritty
 fi
 
 {% endif %}
@@ -23,7 +23,9 @@ if ! command -v brew >/dev/null 2>&1; then
 	/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 fi
 
-if [ -f "$HOME/.Brewfile" ]; then
+cp $HOME/.config/yadm/Brewfile $HOME
+
+if [ -f "$HOME/Brewfile" ]; then
 	echo "Updating homebrew bundle"
 	brew bundle --file ~/.config/yadm/Brewfile
 	# Update the shell
