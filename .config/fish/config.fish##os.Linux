@@ -28,6 +28,7 @@ if status is-interactive
 	alias vim='nvim'
 	alias vi='nvim'
 	alias la='ls -la'
+  alias edge='microsoft-edge-beta'
 end
 
 # Start X at login
