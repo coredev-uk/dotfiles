@@ -30,12 +30,11 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
 	unset f
 fi
 
-xrandr --output DP-0 --primary --left-of DP-2
+command=i3
 
 #echo Starting Plasma
 #export DESKTOP_SESSION=plasma
 #exec startplasma-x11
 
-echo Starting i3
-exec i3 > ~/.xsession-errors
-#exec sway --unsupported-gpu
+echo Starting $(command)
+exec $command > ~/.xsession-errors

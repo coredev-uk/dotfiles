@@ -17,11 +17,6 @@ if status is-interactive
         set -Ux SSH_AGENT_PID $SSH_AGENT_PID
     end
 
-    # Gnome Keyring
-    if test -n "$DESKTOP_SESSION"
-      set -x (gnome-keyring-daemon --start | string split "=")
-    end
-
 	. ~/.config/fish/functions/rprompt.fish
 
     alias ls='exa -F --group-directories-first'
@@ -43,4 +38,6 @@ starship init fish | source
 # Bun
 set -Ux BUN_INSTALL "$HOME/.bun"
 set -px --path PATH "$HOME/.bun/bin"
+
+set -px --path PATH "$HOME/.local/bin"
 

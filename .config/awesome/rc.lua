@@ -18,9 +18,29 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 -- when client with a matching name is opened:
 require("awful.hotkeys_popup.keys")
 
--- {{{ Error handling
--- Check if awesome encountered an error during startup and fell back to
--- another config (This code will only ever execute for the fallback config)
+--[[====================================================
+    Global Configuration
+====================================================]]--
+
+config = {
+    terminal = "alacritty",
+    editor = "nvim",
+    browser = "microsoft-edge-beta",
+    screenshot = "flameshot gui",
+    launcher = "rofi -show drun -theme $HOME/.config/rofi/config.rasi.new",
+    lockcmd = "xlock",
+    locktime = 300,
+    sleeptime = 600,
+    keymap = "gb",
+    openrgb_profile = "orange-night"
+}
+
+--[[====================================================
+    Error handling
+    Check if awesome encountered an error during startup and fell back to
+    another config (This code will only ever execute for the fallback config)
+====================================================]]--
+
 if awesome.startup_errors then
     naughty.notify({
         preset = naughty.config.presets.critical,
@@ -47,9 +67,11 @@ do
         in_error = false
     end)
 end
--- }}}
 
--- {{{ Variable definitions
+--[[====================================================
+    Variable definitions
+====================================================]]--
+
 -- Themes define colours, icons, font and wallpapers.
 beautiful.init("~/.config/awesome/themes/default/theme.lua")
 
@@ -59,9 +81,9 @@ require('modules.notifications')
 
 
 -- This is used later as the default terminal and editor to run.
-terminal = "alacritty"
-browser = "firefox"
-editor = os.getenv("EDITOR") or "nvim"
+terminal = config.terminal
+browser = config.browser
+editor = os.getenv("EDITOR") or config.editor
 editor_cmd = terminal .. " -e " .. editor
 
 -- Default modkey.
@@ -154,10 +176,10 @@ screen.connect_signal("property::geometry", set_wallpaper)
 
 awful.screen.connect_for_each_screen(function(s)
     -- Wallpaper
-    set_wallpaper(s)
+    -- set_wallpaper(s)
 
     -- Each screen has its own tag table.
-    awful.tag({"", "", "", "", "", "", "", "", ""}, s, awful.layout.layouts[1])
+    awful.tag({"", "", "", "", "", "", "", "", ""}, s, awful.layout.layouts[1])
 
     -- Create a promptbox for each screen
     s.mypromptbox = awful.widget.prompt()
@@ -182,7 +204,7 @@ awful.screen.connect_for_each_screen(function(s)
 				{
                     id = 'text_role',
                     widget = wibox.widget.textbox,
-					font = 'Font Awesome 5 Brands 20',
+					font = 'Font Awesome 6 Brands',
                     align  = 'center',
                     valign = 'center',
 				},

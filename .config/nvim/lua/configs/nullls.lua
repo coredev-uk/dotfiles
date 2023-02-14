@@ -1,13 +1,10 @@
 local nls = require("null-ls")
 
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
-local formatting = nls.builtins.formatting
 local completion = nls.builtins.completion
-local code_actions = nls.builtins.code_actions
 
 require("null-ls").setup({
     sources = {
-        formatting.prettierd,
         completion.vsnip,
     },
     on_attach = function(client, bufnr)

@@ -4,9 +4,9 @@ local watch = require("awful.widget.watch")
 local naughty = require("naughty")
 local beautiful = require("beautiful")
 
-local paused_cmd = [[playerctl -p Cider status]]
-local song_cmd = [[playerctl -p Cider metadata title]]
-local artist_cmd = [[playerctl -p Cider metadata artist]]
+local paused_cmd = [[playerctl -p cider2 status]]
+local song_cmd = [[playerctl -p cider2 metadata title]]
+local artist_cmd = [[playerctl -p cider2 metadata artist]]
 
 
 local music_widget = {}

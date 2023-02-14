@@ -1,34 +1,23 @@
 local awful = require("awful")
 local gears = require("gears")
-
-local configuration = {
-	terminal = "alacritty",
-	editor = os.getenv("EDITOR") or "nvim",
-	lockcmd = "betterlockscreen -l dimblur --display 1",
-	lockwallpaper = "$HOME/Pictures/gradient.png"
-}
-
+local configuration = config
 --[[====================================================
 Apps
 ====================================================]]--
 
 local startup_apps_always = {
-	'picom --config ~/.config/picom/picom.conf --experimental-backends --glx-fshader-win "$(cat ~/.config/picom/shader.glsl)"',
-	'feh --bg-fill ~/Pictures/background.png',
+	"picom --config " .. os.getenv("HOME") .. "/.config/picom/picom.conf",
+	"feh --bg-fill " .. os.getenv("HOME") .. "/OneDrive/Pictures/Ember_Mac.png",
 }
 
 local startup_apps = {
-	'setxkbmap -layout gb',
-	'numlockx',
-	"xss-lock --transfer-sleep-lock -- '" .. configuration.lockcmd .. "' --nofork",
-	'liquidctl --match hydro set fan speed 20',
-	'ssh-add ~/.ssh/aur',
-	'betterlockscreen -u ' .. configuration.lockwallpaper,
-	"xidlehook --not-when-fullscreen --not-when-audio --timer 300 '" .. configuration.lockcmd .. "' '' --timer 120 'systemctl suspend' '' ",
-	'openrgb --startminimized -p orange-night & disown',
-	'/usr/lib/geoclue-2.0/demos/agent',
-	'redshift-gtk',
-	'/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1'
+	"setxkbmap -layout" .. configuration.keymap,
+	"liquidctl --match hydro set fan speed 20",
+	"xidlehook --not-when-fullscreen --not-when-audio --timer " .. configuration.locktime .. " '" .. configuration.lockcmd .. "' '' --timer " .. configuration.sleeptime .. " 'systemctl suspend' '' ",
+	"openrgb --startminimized -p" .. configuration.openrgb_profile .. " & disown",
+	"/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1",
+    "steam -silent",
+    configuration.browser .. " --no-startup-window"
 }
 
 --[[====================================================

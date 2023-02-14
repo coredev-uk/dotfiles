@@ -87,19 +87,31 @@ if args.play_pause is not None:
 
 try:
     session_bus = dbus.SessionBus()
-    applemusic_bus = session_bus.get_object(
-        'org.mpris.MediaPlayer2.cider2',
-        '/org/mpris/MediaPlayer2'
-    )
+    media_interfaces = ["cider2", "spotify"]
+    bus = None
+    interface_properties = None
 
-    applemusic_properties = dbus.Interface(
-        applemusic_bus,
-        'org.freedesktop.DBus.Properties'
-    )
+    for i in media_interfaces:
+        try:
+            bus = session_bus.get_object(
+                'org.mpris.MediaPlayer2.' + i,
+                '/org/mpris/MediaPlayer2',
+            )
+            properties = dbus.Interface(
+                bus,
+                'org.freedesktop.DBus.Properties'
+            )
+            
+            if properties.Get('org.mpris.MediaPlayer2.Player', 'PlaybackStatus') == 'Playing':
+                # print('Playing on ' + i)
+                interface_properties = properties
+                break
+        except dbus.exceptions.DBusException:
+            pass
 
-    metadata = applemusic_properties.Get('org.mpris.MediaPlayer2.Player', 'Metadata')
-    status = applemusic_properties.Get('org.mpris.MediaPlayer2.Player', 'PlaybackStatus')
 
+    metadata = interface_properties.Get('org.mpris.MediaPlayer2.Player', 'Metadata')
+    status = interface_properties.Get('org.mpris.MediaPlayer2.Player', 'PlaybackStatus')
     # Handle play/pause label
 
     play_pause = play_pause.split(',')

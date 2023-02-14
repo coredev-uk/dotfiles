@@ -4,6 +4,7 @@ local naughty = require("naughty")
 local hotkeys_popup = require("awful.hotkeys_popup")
 require("awful.hotkeys_popup.keys")
 local media = require("modules.volume")
+local configuration = config
 
 --[[====================================================
     Group: tag (Tag/Workspace Navigation)
@@ -167,42 +168,42 @@ local layout = gears.table.join(
 ====================================================]]--
 local launchers = gears.table.join(
     awful.key({modkey}, "Return", function()
-            awful.spawn(terminal)
+            awful.spawn(configuration.terminal)
         end, {
         description = "open a terminal",
         group = "launcher"
     }),
 
     awful.key({modkey}, "b", function()
-            awful.spawn(browser)
+            awful.spawn(configuration.browser)
         end, {
         description = "open browser",
         group = "launcher"
     }),
 
     awful.key({modkey, 'Shift'}, "b", function()
-            awful.spawn('chromium --force-dark-mode --enable-features=WebUIDarkMode')
+            awful.spawn(configuration.browser)
         end, {
         description = "open browser",
         group = "launcher"
     }),
 
     awful.key({modkey}, "space", function()
-            awful.spawn.with_shell("~/.config/rofi/bin/launcher_colorful")
+            awful.spawn.with_shell(configuration.launcher)
         end, {
         description = "run rofi",
         group = "launcher"
     }),
 
     awful.key({"Control"}, "Print", function()
-            awful.spawn("flameshot gui")
+            awful.spawn(configuration.screenshot)
         end, {
         description = "screenshot",
         group = "launcher"
     }),
 
     awful.key({"Mod4"}, "l", function()
-            awful.spawn("betterlockscreen -l")
+            awful.spawn(configuration.lock)
         end, {
         description = "lock pc",
         group = "launcher"
