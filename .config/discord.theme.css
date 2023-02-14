@@ -49,7 +49,7 @@
     --window-accent-tint-strength: 5%;
 
     /* chat */
-    --chat-bubble: 0;
+    --chat-bubble: 1;
     --chat-bubble-background-color: var(--background-primary);
     --chat-bubble-border-color: var(--background-primary-border-color);
     --text-link-hue: 212;
