@@ -1,39 +1,38 @@
 #!/bin/sh
 
-{% if yadm.distro == "Arch" %} # Arch Install
+{% if yadm.distro == "Arch" %}
 
-    if ! command -v paru >/dev/null 2>&1; then
-        echo "Installing Pacman Helper"
+if ! command -v paru >/dev/null 2>&1; then
+    echo "Installing Pacman Helper"
 
-        # Install base-devel
-        sudo pacman -S --needed base-devel
+    # Install base-devel
+    sudo pacman -S --needed base-devel
 
-        # Install paru (AUR helper)
-        git clone https://aur.archlinux.org/paru.git
-        cd paru
-        makepkg -si
+    # Install paru (AUR helper)
+    git clone https://aur.archlinux.org/paru.git
+    cd paru
+    makepkg -si
 
-        # Install packages
-        paru -S --needed - < $HOME/.config/yadm/aur_packages.txt
-    fi
+    # Install packages
+    paru -S --needed - < $HOME/.config/yadm/aur_packages.txt
+fi
 
 {% endif %}
 
+{% if yadm.os == "Darwin" %}
 
-{% if yadm.os == "Darwin" %} # MacOS Install
+# Install homebrew
+if ! command -v brew >/dev/null 2>&1; then
+    echo "Installing homebrew"
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+fi
 
-    # Install homebrew
-    if ! command -v brew >/dev/null 2>&1; then
-        echo "Installing homebrew"
-        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    fi
-
-    if [ -f "$HOME/Brewfile" ]; then
-        echo "Updating homebrew bundle"
-        brew bundle --file $HOME/.config/yadm/Brewfile
-        # Update the shell
-        fish_path=$(which fish)
-        chsh -s $fish_path
-    fi
+if [ -f "$HOME/Brewfile" ]; then
+    echo "Updating homebrew bundle"
+    brew bundle --file $HOME/.config/yadm/Brewfile
+    # Update the shell
+    fish_path=$(which fish)
+    chsh -s $fish_path
+fi
     
 {% endif %}
