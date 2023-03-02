@@ -1,3 +1,4 @@
+
 # Setting custom environment vars
 set -x PLATFORM (uname -s)
 set -x GPG_TTY (tty)
@@ -6,7 +7,7 @@ set fish_greeting
 
 if status is-interactive
     # Commands to run in interactive sessions can go here
-    #neofetch
+    pfetch
     keychain --quiet --agents ssh
 
     # SSH Agent
@@ -18,13 +19,16 @@ if status is-interactive
     end
 
 	. ~/.config/fish/functions/rprompt.fish
+    . ~/.local/bin/secret_env.sh
 
     alias ls='exa -F --group-directories-first'
 	alias vim='nvim'
 	alias vi='nvim'
 	alias la='ls -la'
-  alias edge='microsoft-edge-beta'
+    alias edge='microsoft-edge-beta'
 end
+
+{% if yadm.distro == "Arch" %}
 
 # Start X at login
 if status is-login
@@ -33,11 +37,24 @@ if status is-login
     end
 end
 
+{% endif %}
+
+{% if yadm.os == "Darwin" %}
+
+fish_add_path /opt/homebrew/sbin
+
+# Fix the annoying terminal database message
+set -x PATH "/usr/local/bin:/opt/homebrew/bin:$PATH"	
+set -x TERM "xterm-256color"
+
+# pnpm
+set -gx PNPM_HOME "$HOME/Library/pnpm"
+set -gx PATH "$PNPM_HOME" $PATH
+
+if status is-interactive
+  test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
+end
+
+{% endif %}
+
 starship init fish | source
-
-# Bun
-set -Ux BUN_INSTALL "$HOME/.bun"
-set -px --path PATH "$HOME/.bun/bin"
-
-set -px --path PATH "$HOME/.local/bin"
-

@@ -22,19 +22,8 @@ if (command -v librewolf &> /dev/null); then
 	done
 fi
 
+# Update Package Listing
+pacman -Qe | cut -f 1 -d " " > $HOME/.config/yadm/aur_packages.txt
 
-# Windows
-if (command -v efibootmgr &> /dev/null) && (efibootmgr | grep -q 'Windows') && ! (test -f /usr/local/bin/bootwin); then
-	echo '[Bootwin] Copying script to /usr/local/bin'
-	sudo cp ~/.config/yadm/scripts/bootwin /usr/local/bin
-	sudo cp ~/.config/yadm/scripts/bootwin.desktop ~/.local/share/applications
-fi
-
-if (command -v wine &> /dev/null) && ! (test -f /usr/local/bin/killwine); then
-	echo '[KillWine] Copying script to /usr/local/bin'
-	sudo cp ~/.config/yadm/scripts/killwine /usr/local/bin
-fi
-
-# Pull SSH
-cd ~/.ssh
-git pull
+# Update Submodules
+yadm submodule update --recursive --remote

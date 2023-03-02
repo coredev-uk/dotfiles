@@ -1,35 +1,38 @@
 #!/bin/sh
 
-# I use arch btw
 {% if yadm.distro == "Arch" %}
 
 if ! command -v paru >/dev/null 2>&1; then
-	echo "Installing Pacman Helper"
+    echo "Installing Pacman Helper"
 
-	sudo pacman -S --needed base-devel
-	git clone https://aur.archlinux.org/paru.git
-	cd paru
-	makepkg -si
+    # Install base-devel
+    sudo pacman -S --needed base-devel
 
-	#paru -S git neovim neofetch alacritty
+    # Install paru (AUR helper)
+    git clone https://aur.archlinux.org/paru.git
+    cd paru
+    makepkg -si
+
+    # Install packages
+    paru -S --needed - < $HOME/.config/yadm/aur_packages.txt
 fi
 
 {% endif %}
+
 {% if yadm.os == "Darwin" %}
 
-# install homebrew if it's missing
+# Install homebrew
 if ! command -v brew >/dev/null 2>&1; then
-	echo "Installing homebrew"
-	/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    echo "Installing homebrew"
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
-
-cp $HOME/.config/yadm/Brewfile $HOME
 
 if [ -f "$HOME/Brewfile" ]; then
-	echo "Updating homebrew bundle"
-	brew bundle --file ~/.config/yadm/Brewfile
-	# Update the shell
-	fish_path=$(which fish)
-	chsh -s $fish_path
+    echo "Updating homebrew bundle"
+    brew bundle --file $HOME/.config/yadm/Brewfile
+    # Update the shell
+    fish_path=$(which fish)
+    chsh -s $fish_path
 fi
+    
 {% endif %}

@@ -5,18 +5,19 @@
 set $mod Mod4
 font pango:SF Compact Rounded 10
 
-# APPS VARIABLES
+# APP VARIABLES
 set $browser    microsoft-edge-beta
 set $scrsht     flameshot gui
 set $music      cider
 set $term       alacritty
-set $rofi 		rofi -show drun -theme $HOME/.config/rofi/config.rasi.new  # > /tmp/rofi.log 2>&1
+set $rofi 		  rofi -show drun -theme $HOME/.config/rofi/config.rasi.new  # > /tmp/rofi.log 2>&1
 set $picom      picom --config $HOME/.config/picom/picom.conf
+set $bar        "~/.config/polybar/launch.sh"
 set $notif      dunst
 set $lock       xlock
-set $locktime	  300
-set $sleeptime	600
-set $wallpaper	feh --bg-fill $HOME/OneDrive/Pictures/Ember_Mac.png
+set $lockms	    300
+set $sleepms	  600
+set $bge        feh --bg-fill $HOME/OneDrive/Pictures/Ember_Mac.png
 set $rgbprof    orange-night
 
 # RESIZE
@@ -27,9 +28,6 @@ set $resize resize set 80 ppt 70 ppt
 set $inner 10
 set $outer 0
 set $rounded 4
-
-# TERMINAL BINDS
-bindsym $mod+Return exec $term
 
 # SCRATCHPAD
 bindsym $mod+c scratchpad show $center, resize set 80 ppt 70 ppt
@@ -138,23 +136,22 @@ assign [class="discord"] 2
 ###############################################
 
 # MEDIA KEYS
-set $refresh_i3status killall -SIGUSR1 i3status
-bindsym XF86AudioRaiseVolume        exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +2% && $refresh_i3status
-bindsym XF86AudioLowerVolume        exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -2% && $refresh_i3status
-bindsym XF86AudioMute               exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
-bindsym XF86AudioMicMute            exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
-#bindsym Super_L+c                   exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+#bindsym Super_L+C                   exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
 bindsym XF86AudioPlay               exec playerctl play-pause
 bindsym XF86AudioPause              exec playerctl play-pause
 bindsym XF86AudioNext               exec playerctl next
 bindsym XF86AudioPrev               exec playerctl previous
 
+# TERMINAL
+bindsym $mod+Return     exec $term
 # ROFI
 bindsym $mod+space      exec --no-startup-id $rofi
-
-bindsym $mod+l          exec $lock # LOCK
-bindsym $mod+b          exec $browser # BROWSER
-bindsym Ctrl+Print      exec $scrsht # SCREENSHOTTING
+# LOCK
+bindsym $mod+l          exec $lock
+# BROWSER
+bindsym $mod+b          exec $browser
+# SCREENSHOT
+bindsym Ctrl+Print      exec $scrsht
 
 ###############################################
 ##### MOVEMENT ################################
@@ -257,14 +254,13 @@ bindsym $mod+r mode "resize"
 
 exec --no-startup-id setxkbmap -layout gb
 exec --no-startup-id liquidctl --match hydro set fan speed 20
-exec --no-startup-id xidlehook --not-when-fullscreen --not-when-audio --timer $locktime $lock '' --timer $sleeptime 'systemctl suspend' '' 
+exec --no-startup-id xidlehook --not-when-fullscreen --not-when-audio --timer $lockms $lock '' --timer $sleepms 'systemctl suspend' '' 
 exec --no-startup-id openrgb --startminimized -p $rgbprof
-exec --no-startup-id "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
+exec --no-startup-id /usr/lib/polkit-kde-authentication-agent-1
 exec --no-startup-id $notif
 exec --no-startup-id steam -silent
 exec --no-startup-id $browser --no-startup-window
 
-exec_always --no-startup-id $wallpaper
+exec_always --no-startup-id $bge
 exec_always --no-startup-id $picom
-exec_always --no-startup-id "~/.config/polybar/launch.sh"
-
+exec_always --no-startup-id $bar
