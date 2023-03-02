@@ -41,6 +41,8 @@ end
 
 {% if yadm.os == "Darwin" %}
 
+fish_add_path /opt/homebrew/sbin
+
 # Fix the annoying terminal database message
 set -x PATH "/usr/local/bin:/opt/homebrew/bin:$PATH"	
 set -x TERM "xterm-256color"
