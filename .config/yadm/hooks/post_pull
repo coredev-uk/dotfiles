@@ -23,7 +23,9 @@ if (command -v librewolf &> /dev/null); then
 fi
 
 # Update Package Listing
-pacman -Qe | cut -f 1 -d " " > $HOME/.config/yadm/aur_packages.txt
+if (command -v pacman &> /dev/null); then
+    pacman -Qe | cut -f 1 -d " " > $HOME/.config/yadm/packages.txt
+fi
 
 # Update Submodules
 yadm submodule update --recursive --remote
