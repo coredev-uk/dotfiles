@@ -1,7 +1,6 @@
 #!/bin/sh
 
-# Arch Install
-{% if yadm.distro == "Arch" %}
+{% if yadm.distro == "Arch" %} # Arch Install
 
     if ! command -v paru >/dev/null 2>&1; then
         echo "Installing Pacman Helper"
@@ -20,8 +19,8 @@
 
 {% endif %}
 
-# MacOS Install
-{% if yadm.os == "Darwin" %}
+
+{% if yadm.os == "Darwin" %} # MacOS Install
 
     # Install homebrew
     if ! command -v brew >/dev/null 2>&1; then
@@ -36,4 +35,5 @@
         fish_path=$(which fish)
         chsh -s $fish_path
     fi
+    
 {% endif %}
