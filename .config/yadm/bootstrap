@@ -26,5 +26,4 @@ done
 # Initialize Submodules
 yadm submodule update --init --recursive
 
-# Link the private GPG keys
-ln -s ~/.ssh/gnupg ~/.gnupg
+# Initialize Private Submodules

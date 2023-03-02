@@ -38,3 +38,6 @@ fi
 # Pull SSH
 cd ~/.ssh
 git pull
+
+# Update Package Listing
+pacman -Qe | cut -f 1 -d " " > $HOME/.config/yadm/aur_packages.txt
