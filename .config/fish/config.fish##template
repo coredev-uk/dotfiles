@@ -19,7 +19,7 @@ if status is-interactive
     end
 
 	. ~/.config/fish/functions/rprompt.fish
-    . ~/.local/bin/secret_env.sh
+    . ~/.private-dots/scripts/secret_env.sh
 
     alias ls='exa -F --group-directories-first'
 	alias vim='nvim'
@@ -42,6 +42,7 @@ end
 {% if yadm.os == "Darwin" %}
 
 fish_add_path /opt/homebrew/sbin
+fish_add_path .local/bin
 
 # Fix the annoying terminal database message
 set -x PATH "/usr/local/bin:/opt/homebrew/bin:$PATH"	
