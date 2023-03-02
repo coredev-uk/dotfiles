@@ -3,6 +3,7 @@
 import sys
 import dbus
 import argparse
+import re
 
 parser = argparse.ArgumentParser()
 parser.add_argument(
@@ -138,6 +139,11 @@ try:
             artist = label_with_font.format(font=font, label=artist)
             song = label_with_font.format(font=font, label=song)
             album = label_with_font.format(font=font, label=album)
+
+            # Replace all ampersands with &amp; to prevent polybar from interpreting them as markup
+            artist = re.sub(r'&', '&amp;', artist)
+            song = re.sub(r'&', '&amp;', song)
+            album = re.sub(r'&', '&amp;', album)
 
         # Add 4 to trunclen to account for status symbol, spaces, and other padding characters
         print(output.format(artist=artist, 

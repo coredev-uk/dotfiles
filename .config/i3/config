@@ -17,7 +17,7 @@ set $notif      dunst
 set $lock       xlock
 set $lockms	    300
 set $sleepms	  600
-set $bg	        feh --bg-fill $HOME/OneDrive/Pictures/Ember_Mac.png
+set $bge        feh --bg-fill $HOME/OneDrive/Pictures/Ember_Mac.png
 set $rgbprof    orange-night
 
 # RESIZE
@@ -261,6 +261,6 @@ exec --no-startup-id $notif
 exec --no-startup-id steam -silent
 exec --no-startup-id $browser --no-startup-window
 
-exec_always --no-startup-id $bg
+exec_always --no-startup-id $bge
 exec_always --no-startup-id $picom
 exec_always --no-startup-id $bar
