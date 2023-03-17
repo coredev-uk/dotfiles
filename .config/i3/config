@@ -14,7 +14,7 @@ set $rofi 		  rofi -show drun -theme $HOME/.config/rofi/config.rasi.new  # > /tm
 set $picom      picom --config $HOME/.config/picom/picom.conf
 set $bar        "~/.config/polybar/launch.sh"
 set $notif      dunst
-set $lock       xlock
+set $lock       betterlockscreen -l dimblur
 set $lockms	    300
 set $sleepms	  600
 set $bge        feh --bg-fill $HOME/OneDrive/Pictures/Ember_Mac.png
@@ -252,7 +252,6 @@ bindsym $mod+r mode "resize"
 
 ##### LAUNCH ##############################
 
-exec --no-startup-id setxkbmap -layout gb
 exec --no-startup-id liquidctl --match hydro set fan speed 20
 exec --no-startup-id xidlehook --not-when-fullscreen --not-when-audio --timer $lockms $lock '' --timer $sleepms 'systemctl suspend' '' 
 exec --no-startup-id openrgb --startminimized -p $rgbprof
@@ -261,6 +260,7 @@ exec --no-startup-id $notif
 exec --no-startup-id steam -silent
 exec --no-startup-id $browser --no-startup-window
 
+exec_always --no-startup-id setxkbmap -layout gb
 exec_always --no-startup-id $bge
 exec_always --no-startup-id $picom
 exec_always --no-startup-id $bar
