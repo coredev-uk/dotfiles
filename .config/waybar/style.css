@@ -49,7 +49,7 @@ tooltip {
     border-radius: 10px;
 }
 
-#custom-language,
+#language,
 #custom-updates,
 #custom-caffeine,
 #custom-weather,
@@ -90,7 +90,7 @@ tooltip {
     margin-left: 10px;
 }
 
-#custom-language {
+#language {
     color: #f38ba8;
     border-left: 0px;
     border-right: 0px;

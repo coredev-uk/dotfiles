@@ -11,7 +11,7 @@
   "modules-right": [
     "tray",
     "custom/updates",
-    "custom/language",
+    "hyprland/language",
     "custom/vpn",
     "battery",
     "backlight",
@@ -19,7 +19,12 @@
     "pulseaudio#microphone"
   ],
   "hyprland/window": {
-    "format": "{}"
+    "format": "{}",
+    "separate-outputs": true
+  },
+  "hyprland/language": {
+    "format": "{}",
+    "keyboard-name": "keychron-keychron-k8-pro"
   },
   "wlr/workspaces": {
     "disable-scroll": true,
