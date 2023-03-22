@@ -69,6 +69,10 @@ def fix_string(string):
 def truncate(name, trunclen):
     if len(name) > trunclen:
         name = name[:trunclen]
+        # check for & sign as last character and remove it
+        # print(name)
+        if name[-1] == '&':
+            name = name[:-1]
         name += '...'
         if ('(' in name) and (')' not in name):
             name += ')'
@@ -158,14 +162,15 @@ try:
             song = label_with_font.format(font=font, label=song)
             album = label_with_font.format(font=font, label=album)
         
+        song = truncate(song, trunclen + 4)
+
         # Replace all ampersands with &amp; to prevent polybar from interpreting them as markup
         artist = re.sub(r'&', '&amp;', artist)
         song = re.sub(r'&', '&amp;', song)
         album = re.sub(r'&', '&amp;', album)
-        
 
         # Add 4 to trunclen to account for status symbol, spaces, and other padding characters
-        output = output.format(artist=artist, song=truncate(song, trunclen + 4), play_pause=play_pause, album=album)
+        output = output.format(artist=artist, song=song, play_pause=play_pause, album=album)
         output = "🎶" + output
         push_output(output, interface_chosen)
 

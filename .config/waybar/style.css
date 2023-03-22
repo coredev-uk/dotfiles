@@ -142,7 +142,7 @@ tooltip {
 }
 
 #custom-weather {
-    border-radius: 0px;
+    border-radius: 0px 10px 10px 0px;
     border-right: 0px;
     margin-left: 0px;
 }
@@ -155,7 +155,6 @@ tooltip {
 }
 
 .custom-nowplaying {
-    border-radius: 0px 10px 10px 0px;
+    border-left: 0px;
     border-right: 0px;
-    margin-left: 0px;
 }

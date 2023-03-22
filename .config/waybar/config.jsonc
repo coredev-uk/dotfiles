@@ -6,7 +6,7 @@
   "passthrough": false,
   "gtk-layer-shell": true,
   "height": 0,
-  "modules-left": ["clock", "custom/weather", "custom/nowplaying", "wlr/workspaces"],
+  "modules-left": ["clock", "custom/nowplaying", "custom/weather", "wlr/workspaces"],
   "modules-center": ["hyprland/window"],
   "modules-right": [
     "tray",
