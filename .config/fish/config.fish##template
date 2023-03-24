@@ -4,6 +4,7 @@ set -x PLATFORM (uname -s)
 set -x GPG_TTY (tty)
 set -x STARSHIP_CONFIG "$HOME/.config/starship.toml"
 set fish_greeting
+set -x TERM "xterm-256color"
 
 {% if yadm.distro == "Arch" %}
 
@@ -24,7 +25,6 @@ fish_add_path $HOME/.cargo/bin
 
 # Fix the annoying terminal database message
 set -x PATH "/usr/local/bin:/opt/homebrew/bin:$PATH"	
-set -x TERM "xterm-256color"
 
 # pnpm
 set -gx PNPM_HOME "$HOME/Library/pnpm"
