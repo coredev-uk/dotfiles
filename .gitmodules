@@ -2,5 +2,5 @@
 	path = .private-dots
 	url = https://github.com/coredev-uk/private-dots.git
 [submodule ".config/.config/nvim"]
-	path = .config/.config/nvim
+	path = .config/nvim
 	url = https://github.com/NvChad/NvChad
