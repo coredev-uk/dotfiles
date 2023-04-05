@@ -117,7 +117,6 @@ for_window [class="Lutris" title="Manage Runners"] floating enable
 for_window [class="feh"] floating enable
 for_window [class="gmod"] floating disable
 for_window [class="bms_linux"] floating disable
-for_window [class="cassowaryApp-Coll*"] floating enable
 for_window [instance="crx_nngceckbapebfimnlniiiahkandclblb"] floating enable
 for_window [title="Web Remote" window_role="browser-window"] floating enable
 
@@ -127,7 +126,6 @@ for_window [window_role="pop-up" title="*Outlook*"] floating disable
 for_window [window_role="bubble"] floating enable
 
 # WORKSPACE RULES
-assign [class="jetbrains-idea"] 1
 assign [class="steam_app_*"] 1
 assign [class="discord"] 2
 
