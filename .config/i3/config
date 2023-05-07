@@ -17,7 +17,7 @@ set $notif      dunst
 set $lock       betterlockscreen -l dimblur
 set $lockms	    300
 set $sleepms	  600
-set $bge        feh --bg-fill $HOME/OneDrive/Pictures/Ember_Mac.png
+set $bge        feh --bg-fill --randomize ~/.wallpapers/*
 set $rgbprof    orange-night
 
 # RESIZE

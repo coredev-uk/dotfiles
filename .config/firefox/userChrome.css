@@ -168,6 +168,7 @@
 :root {
   --uc-theme-colour: var(--window-colour, var(--toolbar-bgcolor));
   --uc-hover-colour: var(--secondary-colour, rgba(0, 0, 0, 0.2));
+  --uc-active-color: var(--secondary-colour, rgba(0, 0, 0, 0.1));
   --uc-inverted-colour: var(--inverted-colour, var(--toolbar-color));
 
   --button-bgcolor: var(--uc-theme-colour) !important;
@@ -254,7 +255,7 @@ toolbarbutton .toolbarbutton-text {
 
 /* active tab background */
 .tabbrowser-tab[selected] > .tab-stack > .tab-background {
-  background: var(--uc-hover-colour) !important;
+  background: var(--uc-active-colour) !important;
 }
 
 /* multi tab selection */
