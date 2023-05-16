@@ -40,7 +40,13 @@ if status is-interactive
     # Commands to run in interactive sessions can go here
     pfetch
     keychain --quiet --agents ssh
-    eval (ssh-agent -c)
+
+    if test -z (pgrep ssh-agent)
+        eval (ssh-agent -c) > /dev/null
+        set -Ux SSH_AUTH_SOCK $SSH_AUTH_SOCK
+        set -Ux SSH_AGENT_PID $SSH_AGENT_PID
+        set -Ux SSH_AUTH_SOCK $SSH_AUTH_SOCK
+    end
 
 	. ~/.config/fish/functions/rprompt.fish
     . ~/.private-dots/scripts/secret_env.sh
