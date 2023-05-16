@@ -6,9 +6,8 @@ set $mod Mod4
 font pango:SF Compact Rounded 10
 
 # APP VARIABLES
-set $browser    microsoft-edge-beta
+set $browser    brave-beta
 set $scrsht     flameshot gui
-set $music      cider
 set $term       alacritty
 set $rofi 		  rofi -show drun -theme $HOME/.config/rofi/config.rasi.new  # > /tmp/rofi.log 2>&1
 set $picom      picom --config $HOME/.config/picom/picom.conf
@@ -81,9 +80,16 @@ bindsym $mod+Ctrl+r reload
 # RESTART
 bindsym $mod+Shift+r restart
 
+# PASSWORD STUFF
+bindsym Ctrl+Shift+space exec --no-startup-id 1password --quick-access
+
 ###############################################
 ##### WINDOW RULES ############################
 ###############################################
+
+# floating windows
+for_window [window_role="pop-up"] floating enable border normal
+for_window [title="Lock Screen — 1Password"] floating enable resize set 800 500
 
 # STEAM
 for_window [class="^Steam$" title="^Friends$"] floating enable
@@ -251,8 +257,9 @@ bindsym $mod+r mode "resize"
 ##### LAUNCH ##############################
 
 exec --no-startup-id liquidctl --match hydro set fan speed 20
+exec --no-startup-id 1password --silent
 exec --no-startup-id xidlehook --not-when-fullscreen --not-when-audio --timer $lockms $lock '' --timer $sleepms 'systemctl suspend' '' 
-exec --no-startup-id openrgb --startminimized -p $rgbprof
+#exec --no-startup-id openrgb --startminimized -p $rgbprof
 exec --no-startup-id /usr/lib/polkit-kde-authentication-agent-1
 exec --no-startup-id $notif
 exec --no-startup-id steam -silent
