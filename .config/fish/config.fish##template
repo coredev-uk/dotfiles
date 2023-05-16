@@ -5,6 +5,9 @@ set -x GPG_TTY (tty)
 set -x STARSHIP_CONFIG "$HOME/.config/starship.toml"
 set fish_greeting
 set -x TERM "xterm-256color"
+if test -z $(pgrep ssh-agent | string collect)
+    eval (ssh-agent -c) > /dev/null
+end
 
 {% if yadm.distro == "Arch" %}
 
@@ -40,13 +43,6 @@ if status is-interactive
     # Commands to run in interactive sessions can go here
     pfetch
     keychain --quiet --agents ssh
-
-    if test -z (pgrep ssh-agent)
-        eval (ssh-agent -c) > /dev/null
-        set -Ux SSH_AUTH_SOCK $SSH_AUTH_SOCK
-        set -Ux SSH_AGENT_PID $SSH_AGENT_PID
-        set -Ux SSH_AUTH_SOCK $SSH_AUTH_SOCK
-    end
 
 	. ~/.config/fish/functions/rprompt.fish
     . ~/.private-dots/scripts/secret_env.sh
