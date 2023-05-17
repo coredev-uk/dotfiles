@@ -48,7 +48,16 @@ if status is-interactive
         set -Ux SSH_AUTH_SOCK $SSH_AUTH_SOCK
     end
 
-	. ~/.config/fish/functions/rprompt.fish
+    # macOS Building Vars
+    if test -z (secret_env.sh)
+      eval (secret_env.sh) > /dev/null 
+      set -Ux CSC_KEY_PASSWORD $CSC_KEY_PASSWORD
+      set -Ux CSC_LINK $CSC_LINK
+      set -Ux APPLEID $APPLEID
+      set -Ux APPLEIDPASS $APPLEIDPASS
+    end
+
+	  . ~/.config/fish/functions/rprompt.fish
     . ~/.private-dots/scripts/secret_env.sh
 
     alias ls='exa -F --group-directories-first'
