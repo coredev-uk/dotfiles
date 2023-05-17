@@ -4,14 +4,14 @@
     signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICNe/GgdcSrbi4HP8n5O9XIyOavbftteDPYAdKKQtc6E
 [core]
     excludesFile = ~/.gitignore_global
-	autocrlf = input
+    autocrlf = input
 [filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
 [pull]
-	rebase = false
+    rebase = false
 [gpg "ssh"]
     program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
 [commit]
