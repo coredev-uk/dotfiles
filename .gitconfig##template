@@ -1,0 +1,28 @@
+[user]
+	email = 64542347+coredev-uk@users.noreply.github.com
+	name = Core
+  signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICNe/GgdcSrbi4HP8n5O9XIyOavbftteDPYAdKKQtc6E
+[gpg]
+  format = ssh
+{% if yadm.distro == "Arch" %}
+[gpg "ssh"]
+  program = "/opt/1Password/op-ssh-sign"
+[credential]
+	helper = /usr/lib/git-core/git-credential-libsecret
+{% endif % }
+{% if yadm.os == "Darwin" %}
+[gpg "ssh"]
+  program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
+{% endif %}
+[commit]
+  gpgsign = true
+[core]
+	excludesFile = ~/.gitignore_global
+	autocrlf = input
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[pull]
+	rebase = false
