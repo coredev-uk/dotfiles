@@ -5,9 +5,6 @@ set -x GPG_TTY (tty)
 set -x STARSHIP_CONFIG "$HOME/.config/starship.toml"
 set fish_greeting
 set -x TERM "xterm-256color"
-if test -z $(pgrep ssh-agent | string collect)
-    eval (ssh-agent -c) > /dev/null
-end
 
 {% if yadm.distro == "Arch" %}
 
@@ -34,7 +31,7 @@ set -gx PNPM_HOME "$HOME/Library/pnpm"
 set -gx PATH "$PNPM_HOME" $PATH
 
 if status is-interactive
-  test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
+    test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
 end
 
 {% endif %}
@@ -44,30 +41,22 @@ if status is-interactive
     pfetch
     keychain --quiet --agents ssh
 
-    if test -z (pgrep ssh-agent)
+    # Start ssh-agent if not running
+    if test -z (pgrep ssh-agent | string collect)
         eval (ssh-agent -c) > /dev/null
         set -Ux SSH_AUTH_SOCK $SSH_AUTH_SOCK
         set -Ux SSH_AGENT_PID $SSH_AGENT_PID
         set -Ux SSH_AUTH_SOCK $SSH_AUTH_SOCK
     end
 
-    # macOS Building Vars
-    if test -z (secret_env.sh)
-      eval (secret_env.sh) > /dev/null 
-      set -Ux CSC_KEY_PASSWORD $CSC_KEY_PASSWORD
-      set -Ux CSC_LINK $CSC_LINK
-      set -Ux APPLEID $APPLEID
-      set -Ux APPLEIDPASS $APPLEIDPASS
-    end
-
-	  . ~/.config/fish/functions/rprompt.fish
-    . ~/.private-dots/scripts/secret_env.sh
+    . ~/.config/fish/functions/rprompt.fish
+    . ~/.private-dots/secrets.fish
 
     alias ls='exa -F --group-directories-first'
-	alias vim='nvim'
-	alias vi='nvim'
-	alias la='ls -la'
-    
+    alias vim='nvim'
+    alias vi='nvim'
+    alias la='ls -la'
+
     op completion fish | source
 end
 
