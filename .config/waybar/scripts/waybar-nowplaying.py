@@ -111,7 +111,7 @@ if args.play_pause is not None:
 
 try:
     session_bus = dbus.SessionBus()
-    media_interfaces = ["cider2", "spotify"]
+    media_interfaces = ["cider2", "cider", "spotify"]
     bus = None
     interface_properties = None
     interface_chosen = None
