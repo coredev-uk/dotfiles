@@ -57,6 +57,7 @@ if status is-interactive
     alias vim='nvim'
     alias vi='nvim'
     alias la='ls -la'
+    alias paru='yay'
 end
 
 starship init fish | source
