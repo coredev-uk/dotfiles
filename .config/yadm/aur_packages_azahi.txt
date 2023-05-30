@@ -1,4 +1,3 @@
-alacritty
 amd-ucode
 autoconf
 automake
@@ -14,10 +13,8 @@ btop
 cmake
 dbus-python
 dhcpcd
-discord
 dnsmasq
 dunst
-edk2-ovmf
 efibootmgr
 exa
 flameshot
@@ -25,7 +22,6 @@ gamemode
 gdu
 gnome-keyring
 kitty
-lib32-nvidia-utils
 libappindicator-gtk3
 libimobiledevice
 libtool
@@ -33,16 +29,12 @@ libvirt
 liquidctl
 lvm2
 m4
-mangohud
 networkmanager
 nodejs
 npm
 ntfs-3g
-nvidia-open-dkms
-obs-studio
 onefetch
 openssh
-os-prober
 pacman-contrib
 pamixer
 papirus-icon-theme
@@ -63,7 +55,6 @@ rofi
 rustup
 sshpass
 starship
-steam
 sudo
 swaybg
 swaylock
@@ -81,8 +72,6 @@ vulkan-headers
 vulkan-tools
 wget
 which
-wine
-winetricks
 wireguard-tools
 wireplumber
 wl-clipboard
