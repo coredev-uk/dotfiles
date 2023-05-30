@@ -8,13 +8,13 @@ if ! command -v paru >/dev/null 2>&1; then
     # Install base-devel
     sudo pacman -S --needed base-devel
 
-    # Install paru (AUR helper)
-    git clone https://aur.archlinux.org/paru.git
-    cd paru
+    # Install yay (AUR helper)
+    git clone https://aur.archlinux.org/yay.git
+    cd yay
     makepkg -si
 
     # Install packages
-    paru -S --needed - < $HOME/.config/yadm/aur_packages.txt
+    yay -S --needed - < $HOME/.config/yadm/arch_packages
 fi
 
 {% endif %}

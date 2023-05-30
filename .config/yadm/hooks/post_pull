@@ -24,7 +24,7 @@ fi
 
 # Update Package Listing
 if (command -v pacman &> /dev/null); then
-    pacman -Qe | cut -f 1 -d " " > $HOME/.config/yadm/packages.txt
+    pacman -Qqen > $HOME/.config/yadm/arch_packages
 fi
 
 # Update Submodules
