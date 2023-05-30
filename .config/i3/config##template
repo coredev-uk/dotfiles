@@ -6,9 +6,17 @@ set $mod Mod4
 font pango:SF Compact Rounded 10
 
 # APP VARIABLES
+{% if yadm.hostname == "coreasahi" %}
+set $browser    brave
+{% else %}
 set $browser    brave-beta
+{% endif %}
 set $scrsht     flameshot gui
+{% if yadm.hostname == "coreasahi" %}
+set $term       MESA_GL_VERSION_OVERRIDE=3.3 MESA_GLSL_VERSION_OVERRIDE=330 kitty
+{% else %}
 set $term       alacritty
+{% endif %}
 set $rofi 		  rofi -show drun -theme $HOME/.config/rofi/config.rasi.new  # > /tmp/rofi.log 2>&1
 set $picom      picom --config $HOME/.config/picom/picom.conf
 set $bar        "~/.config/polybar/launch.sh"
@@ -266,6 +274,8 @@ exec --no-startup-id steam -silent
 exec --no-startup-id $browser --no-startup-window
 
 exec_always --no-startup-id setxkbmap -layout gb
+{% if yadm.hostname == "corearch" %}
+exec_always --no-startup-id $picom 
+{% endif %}
 exec_always --no-startup-id $bge
-exec_always --no-startup-id $picom
 exec_always --no-startup-id $bar
