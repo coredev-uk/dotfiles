@@ -35,13 +35,14 @@ end
 {% endif %}
 
 if status is-interactive
-    # Commands to run in interactive sessions can go here
-    
-    {% if yadm.hostname == "coreasahi" %} 
-    neofetch
-    {% else %}
-    pfetch
-    {% endif %}
+    # Commands to run in interactive sessions can go here 
+    if command -v neofetch &> /dev/null
+      neofetch
+    end
+
+    if command -v pfetch &> /dev/null
+      pfetch
+    end
 
     # Start ssh-agent if not running
     if test -z (pgrep ssh-agent | string collect)
