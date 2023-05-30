@@ -5,7 +5,11 @@
 $MOD = SUPER
 
 # APP VARIABLES
+{% if yadm.hostname == "coreasahi" %}
 $BROWSER        = brave
+{% else %}
+$BROWSER        = brave-beta
+{% endif %}
 $BROWSER        = brave
 $SCREENSHOT     = grimblast --notify copy
 $MUSIC          = cider
@@ -17,6 +21,17 @@ $LOCK           = swaylock -c 000000 -f -F
 $BACKGROUND     = swaybg -i $(find $HOME/.wallpapers/. -type f | shuf -n1) -m fill &
 $RGBPROFILE     = orange-night
 
+{% if yadm.hostname == "corearch" %}
+###############################################
+##### NVIDIA ENV ##############################
+###############################################
+env = LIBVA_DRIVER_NAME,nvidia
+env = XDG_SESSION_TYPE,wayland
+env = GBM_BACKEND,nvidia-drm
+env = __GLX_VENDOR_LIBRARY_NAME,nvidia
+env = WLR_NO_HARDWARE_CURSORS,1
+env = MOZ_ENABLE_WAYLAND,1
+{% endif %}
 
 # Import GTK Settings and Setup Environment
 exec-once = $HOME/.config/hypr/import-gsettings
@@ -37,7 +52,12 @@ exec      = $BACKGROUND
 ###############################################
 ##### MONITOR #################################
 ###############################################
+{% if yadm.hostname == "corearch" %}
+monitor=DP-1,2560x1440@144,1920x0,1 
+monitor=DP-2,1920x1080@60,0x0,1
+{% else %}
 monitor=,preferred,auto,1.5
+{% endif %}
 
 ###############################################
 ##### INPUT ###################################
