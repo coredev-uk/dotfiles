@@ -243,7 +243,7 @@ windowrulev2 = tile, class:^(.*.exe)$
 windowrulev2 = float, class:^(Calculator)$
 # 1PASSWORD 
 windowrulev2 = float, class:^(1Password)$,title:^(Quick Access.*)$
-windowrulev2 = fakefullscreen, class:^(1Password)$,title:^(Quick Access.*)$
+#windowrulev2 = fakefullscreen, class:^(1Password)$,title:^(Quick Access.*)$
 
 ###############################################
 ##### KEYBIND #################################
