@@ -36,9 +36,6 @@ end
 
 if status is-interactive
     # Commands to run in interactive sessions can go here 
-    if command -v neofetch &> /dev/null
-      neofetch
-    end
 
     if command -v pfetch &> /dev/null
       pfetch

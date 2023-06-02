@@ -45,7 +45,7 @@
     }
   },
   "custom/updates": {
-    "exec": "(pacman -Qu ; paru -Qua) | wc -l",
+    "exec": "(pacman -Qu ; yay -Qua) | wc -l",
     "interval": 7200,
     "format": " {}"
   },

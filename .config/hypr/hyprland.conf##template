@@ -5,11 +5,7 @@
 $MOD = SUPER
 
 # APP VARIABLES
-{% if yadm.hostname == "coreasahi" %}
-$BROWSER        = brave
-{% else %}
 $BROWSER        = brave-beta
-{% endif %}
 $SCREENSHOT     = grimblast --notify copy
 $MUSIC          = cider
 $TERM           = MESA_GL_VERSION_OVERRIDE=3.3 MESA_GLSL_VERSION_OVERRIDE=330 kitty
@@ -69,6 +65,7 @@ input {
   touchpad {
     natural_scroll = true
   }
+  kb_layout: mac
 {% endif %}
 
 {% if yadm.hostname == "corearch" %}
@@ -106,7 +103,7 @@ misc {
 ###############################################
 
 decoration {
-  # ROUNDING
+  # ROUNDINGG
   rounding = 8
   multisample_edges = true
 
