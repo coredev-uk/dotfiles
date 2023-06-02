@@ -41,12 +41,15 @@ exec-once = 1password --silent
 exec-once = wl-clipboard-history -t
 exec-once = liquidctl --match hydro set fan speed 20
 #exec-once = openrgb --startminimized -p $RGBPROFILE
-exec-once = /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec-once = $NOTIFY
 exec-once = $BROWSER --no-startup-window
 exec-once = wlsunset -S 9:00 -s 19:30
 exec-once = $BAR
 exec      = $BACKGROUND
+
+# POLKIT
+exec-once = dbus-update-activation-environment --all
+exec-once = gnome-keyring-daemon --start --components=secrets
 
 ###############################################
 ##### MONITOR #################################

@@ -268,10 +268,12 @@ exec --no-startup-id liquidctl --match hydro set fan speed 20
 exec --no-startup-id 1password --silent
 exec --no-startup-id xidlehook --not-when-fullscreen --not-when-audio --timer $lockms $lock '' --timer $sleepms 'systemctl suspend' '' 
 #exec --no-startup-id openrgb --startminimized -p $rgbprof
-exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id $notif
 exec --no-startup-id steam -silent
 exec --no-startup-id $browser --no-startup-window
+
+exec dbus-update-activation-environment --all
+exec gnome-keyring-daemon --start --components=secrets
 
 exec_always --no-startup-id setxkbmap -layout gb
 {% if yadm.hostname == "corearch" %}
