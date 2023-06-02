@@ -6,11 +6,7 @@ set $mod Mod4
 font pango:SF Compact Rounded 10
 
 # APP VARIABLES
-{% if yadm.hostname == "coreasahi" %}
-set $browser    brave
-{% else %}
 set $browser    brave-beta
-{% endif %}
 set $scrsht     flameshot gui
 {% if yadm.hostname == "coreasahi" %}
 set $term       MESA_GL_VERSION_OVERRIDE=3.3 MESA_GLSL_VERSION_OVERRIDE=330 kitty

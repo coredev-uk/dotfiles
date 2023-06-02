@@ -13,7 +13,6 @@ if status is-login
         exec startx >> .xsession-errors 2>&1
     end
 end
-alias code='code-insiders'
 {% endif %}
 
 {% if yadm.os == "Darwin" %}
@@ -57,6 +56,7 @@ if status is-interactive
     alias vi='nvim'
     alias la='ls -la'
     alias paru='yay'
+    alias code='code-insiders'
 end
 
 starship init fish | source
