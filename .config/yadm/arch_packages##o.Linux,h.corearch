@@ -44,6 +44,7 @@ nodejs
 npm
 ntfs-3g
 nvidia-open-dkms
+nvidia-settings
 obs-studio
 onefetch
 openssh
@@ -58,7 +59,7 @@ pipewire-alsa
 pipewire-pulse
 pkgconf
 playerctl
-polkit-kde-agent
+polkit-gnome
 polybar
 python-pip
 qemu-desktop
@@ -93,8 +94,8 @@ wireguard-tools
 wireplumber
 wl-clipboard
 xclip
+xdg-desktop-portal-hyprland
 xorg-xinput
 xorg-xwayland
 yadm
-yarn
 zip
