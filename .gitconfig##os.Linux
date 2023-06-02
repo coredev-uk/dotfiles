@@ -22,3 +22,5 @@
     helper = /usr/lib/git-core/git-credential-libsecret
 [url "git@github.com:"]
 	insteadOf = https://github.com/
+[init]
+	defaultBranch = main
