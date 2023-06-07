@@ -57,6 +57,7 @@ if status is-interactive
     alias la='ls -la'
     alias paru='yay'
     alias code='code-insiders'
+    alias yarn='corepack yarn'
 end
 
 starship init fish | source
