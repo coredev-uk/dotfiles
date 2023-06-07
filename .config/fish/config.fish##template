@@ -6,7 +6,7 @@ set -x STARSHIP_CONFIG "$HOME/.config/starship.toml"
 set fish_greeting
 set -x TERM "xterm-256color"
 
-{% if yadm.distro == "Arch" %}
+{% if yadm.os == "Linux" %}
 # Start X at login
 if status is-login
     if test -z "$DISPLAY" -a "$XDG_VTNR" = 1
