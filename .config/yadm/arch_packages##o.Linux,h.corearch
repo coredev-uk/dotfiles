@@ -10,6 +10,7 @@ bridge-utils
 btop
 cmake
 dbus-python
+devtools
 dhcpcd
 discord
 dunst
@@ -31,11 +32,13 @@ linux-zen
 linux-zen-headers
 liquidctl
 lvm2
+man-db
 mangohud
 neovim
 networkmanager
 nodejs
 npm
+npm-check-updates
 ntfs-3g
 nvidia-open-dkms
 nvidia-settings

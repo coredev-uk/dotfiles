@@ -48,6 +48,8 @@ if status is-interactive
         set -Ux SSH_AUTH_SOCK $SSH_AUTH_SOCK
     end
 
+    set -Ux CARGO_NET_GIT_FETCH_WITH_CLI true
+
     . ~/.config/fish/functions/rprompt.fish
     . ~/.private-dots/secrets.fish
 
