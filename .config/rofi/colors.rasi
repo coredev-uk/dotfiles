@@ -1,5 +1,5 @@
 * {
-    font:                        "JetBrains Mono Nerd Font 10";
+    font:                        "SF Pro Display Regular 10";
     background:                  #101313;
     background-alt:              #1b1c24;
     foreground:                  #FFFFFF;

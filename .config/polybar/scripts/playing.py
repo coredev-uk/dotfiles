@@ -149,7 +149,7 @@ try:
         print(output.format(artist=artist, 
                                      song="%{F#fff}[ "+song+" ]%{F-}",
                                      play_pause=play_pause, 
-                                     album=album) + "%{F#00000000}%{R}%{T5}%{T-}")
+                                     album=album))
 
 except Exception as e:
     if isinstance(e, dbus.exceptions.DBusException):

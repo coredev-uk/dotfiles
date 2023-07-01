@@ -5,7 +5,7 @@
 $MOD = SUPER
 
 # APP VARIABLES
-$BROWSER        = brave-beta
+$BROWSER        = brave
 $SCREENSHOT     = grimblast --notify copy
 $MUSIC          = cider
 $TERM           = MESA_GL_VERSION_OVERRIDE=3.3 MESA_GLSL_VERSION_OVERRIDE=330 kitty
@@ -15,6 +15,7 @@ $NOTIFY         = dunst
 $LOCK           = swaylock -c 000000 -f -F
 $BACKGROUND     = swaybg -i $(find $HOME/.wallpapers/. -type f | shuf -n1) -m fill &
 $RGBPROFILE     = orange-night
+$FILEMANAGER    = nemo
 
 {% if yadm.hostname == "corearch" %}
 ###############################################
@@ -32,22 +33,21 @@ env = SSH_AUTH_SOCK,$XDG_RUNTIME_DIR/ssh-agent.socket
 
 # Import GTK Settings and Setup Environment
 exec-once = $HOME/.config/hypr/import-gsettings
-exec-once = dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
-
-##### LAUNCH ##############################
-exec-once = 1password --silent
-exec-once = wl-clipboard-history -t
-exec-once = liquidctl --match hydro set fan speed 20
-#exec-once = openrgb --startminimized -p $RGBPROFILE
-exec-once = $NOTIFY
-exec-once = $BROWSER --no-startup-window
-exec-once = wlsunset -S 9:00 -s 19:30
-exec-once = $BAR
-exec      = $BACKGROUND
-
-# POLKIT
 exec-once = dbus-update-activation-environment --all
 exec-once = gnome-keyring-daemon --start --components=secrets
+exec-once = /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+
+##### LAUNCH ##############################
+exec-once = $NOTIFY
+exec-once = $BROWSER --no-startup-window
+exec-once = $BAR
+
+exec-once = onedrive_tray
+exec-once = wl-clipboard-history -t
+exec-once = liquidctl --match hydro set fan speed 20
+exec-once = openrgb --startminimized -p $RGBPROFILE
+exec-once = 1password --silent
+exec      = $BACKGROUND
 
 ###############################################
 ##### MONITOR #################################
@@ -274,6 +274,7 @@ bind = $MOD, F2, exec, $BACKGROUND
 bind = $MOD, L, exec, start-vm.sh
 bind = $MOD, P, exec, wlogout
 bind = $MOD, escape, exec, wlogout --protocol layer-shell -b 5 -T 400 -B 400
+bind = $MOD, M, exec, $FILEMANAGER
 
 ###############################################
 ##### WINDOW MANAGEMENT #######################
