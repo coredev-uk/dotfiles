@@ -5,11 +5,11 @@
 $MOD = SUPER
 
 # APP VARIABLES
-$BROWSER        = brave
+$BROWSER        = microsoft-edge-stable
 $SCREENSHOT     = grimblast --notify copy
 $MUSIC          = cider
 $TERM           = MESA_GL_VERSION_OVERRIDE=3.3 MESA_GLSL_VERSION_OVERRIDE=330 kitty
-$ROFI 	        = rofi -show drun -theme $HOME/.config/rofi/config.rasi.new  # > /tmp/rofi.log 2>&1
+$ROFI 	        = rofi -show drun -theme $HOME/.config/rofi/config.rasi  # > /tmp/rofi.log 2>&1 
 $BAR            = waybar
 $NOTIFY         = dunst
 $LOCK           = swaylock -c 000000 -f -F
