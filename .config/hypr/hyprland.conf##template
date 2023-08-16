@@ -114,10 +114,12 @@ decoration {
   inactive_opacity = 1.0
 
   # BLUR
-  blur = true
-  blur_size = 3
-  blur_passes = 3
-  blur_new_optimizations = true
+  blur {
+    enabled = true
+    size = 3 
+    passes = 3 
+    new_optimizations = true
+  }
 
   # SHADOW
   drop_shadow = true
