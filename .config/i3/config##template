@@ -5,7 +5,7 @@
 set $MOD Mod4
 
 # APP VARIABLES
-set $BROWSER        microsoft-edge-stable
+set $BROWSER        google-chrome-stable
 set $SCREENSHOT     flameshot gui 
 set $MUSIC          cider 
 set $TERM           alacritty # MESA_LOADER_DRIVER_OVERRIDE=radeonsi __EGL_VENDOR_LIBRARY_FILENAMES=/usr/share/glvnd/egl_vendor.d/50_mesa.json kitty
@@ -43,7 +43,7 @@ exec                    xclip
 exec                    liquidctl --match hydro set fan speed 20
 exec                    openrgb --startminimized -p $RGBPROFILE
 exec                    1password --silent
-exec                    redshift
+#exec                    redshift
 exec                    xscreensaver --no-splash
 exec                    /opt/safing/portmaster/portmaster-start app --data=/opt/safing/portmaster
 

@@ -5,7 +5,7 @@
 $MOD = SUPER
 
 # APP VARIABLES
-$BROWSER        = microsoft-edge-stable
+$BROWSER        = google-chrome-stable
 $SCREENSHOT     = grimblast --notify copy
 $MUSIC          = cider
 $TERM           = MESA_GL_VERSION_OVERRIDE=3.3 MESA_GLSL_VERSION_OVERRIDE=330 kitty
@@ -21,12 +21,12 @@ $FILEMANAGER    = nemo
 ###############################################
 ##### NVIDIA ENV ##############################
 ###############################################
-env = LIBVA_DRIVER_NAME,nvidia
-env = XDG_SESSION_TYPE,wayland
-env = GBM_BACKEND,nvidia-drm
-env = __GLX_VENDOR_LIBRARY_NAME,nvidia
+#env = LIBVA_DRIVER_NAME,nvidia
+#env = XDG_SESSION_TYPE,wayland
+#env = GBM_BACKEND,nvidia-drm
+#env = __GLX_VENDOR_LIBRARY_NAME,nvidia
 env = WLR_NO_HARDWARE_CURSORS,1
-env = MOZ_ENABLE_WAYLAND,1
+#env = MOZ_ENABLE_WAYLAND,1
 
 env = SSH_AUTH_SOCK,$XDG_RUNTIME_DIR/ssh-agent.socket
 {% endif %}
@@ -41,13 +41,14 @@ exec-once = /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec-once = $NOTIFY
 exec-once = $BROWSER --no-startup-window
 exec-once = $BAR
+exec      = $BACKGROUND
 
-exec-once = onedrive_tray
 exec-once = wl-clipboard-history -t
 exec-once = liquidctl --match hydro set fan speed 20
 exec-once = openrgb --startminimized -p $RGBPROFILE
 exec-once = 1password --silent
-exec      = $BACKGROUND
+#exec-once = redshift
+exec-once = /opt/safing/portmaster/portmaster-start app --data=/opt/safing/portmaster
 
 ###############################################
 ##### MONITOR #################################
