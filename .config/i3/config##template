@@ -5,7 +5,7 @@
 set $MOD Mod4
 
 # APP VARIABLES
-set $BROWSER        google-chrome-stable
+set $BROWSER        firefox
 set $SCREENSHOT     flameshot gui 
 set $MUSIC          cider 
 set $TERM           alacritty # MESA_LOADER_DRIVER_OVERRIDE=radeonsi __EGL_VENDOR_LIBRARY_FILENAMES=/usr/share/glvnd/egl_vendor.d/50_mesa.json kitty
