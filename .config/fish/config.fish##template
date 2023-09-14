@@ -59,7 +59,7 @@ if status is-interactive
     . ~/.config/fish/functions/rprompt.fish
     . ~/.private-dots/secrets.fish
 
-    alias ls='exa -F --group-directories-first'
+    alias ls='eza -F --group-directories-first'
     alias vim='nvim'
     alias vi='nvim'
     alias la='ls -la'
