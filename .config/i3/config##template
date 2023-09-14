@@ -46,6 +46,7 @@ exec                    1password --silent
 #exec                    redshift
 exec                    xscreensaver --no-splash
 exec                    /opt/safing/portmaster/portmaster-start app --data=/opt/safing/portmaster
+exec                    protonmail-bridge -no-window --noninteractive
 
 exec_always --no-startup-id setxkbmap -layout gb
 {% if yadm.hostname == "corearch" %}
