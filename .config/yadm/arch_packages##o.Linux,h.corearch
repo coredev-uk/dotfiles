@@ -17,7 +17,7 @@ eza
 firefox
 flameshot
 gamemode
-gnome-keyring
+hexedit
 kitty
 lib32-libnm
 lib32-nvidia-utils
@@ -33,8 +33,10 @@ man-db
 mangohud
 neofetch
 neovim
+network-manager-applet
 networkmanager
 networkmanager-openvpn
+nmap
 nodejs
 npm
 nvidia-open-dkms
@@ -50,10 +52,10 @@ polkit-gnome
 polybar
 python-pip
 python-requests
-qemu-desktop
 qt5-graphicaleffects
 qt5ct
 rofi
+rpm-tools
 rustup
 sshpass
 starship
@@ -78,7 +80,6 @@ xbindkeys
 xclip
 xdg-desktop-portal-hyprland
 xdg-user-dirs
-xorg-xev
 xorg-xinit
 xorg-xinput
 xorg-xwayland

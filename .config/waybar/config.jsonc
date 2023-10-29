@@ -71,7 +71,8 @@
     "format": "{}",
     "interval": 5,
     "exec": "~/.config/waybar/scripts/waybar-vpn.sh",
-    "on-click": "nordvpn c"
+    "on-click": "protonvpn-cli c -f",
+    "on-click-right": "protonvpn-cli d"
   },
   "tray": {
     "icon-size": 13,

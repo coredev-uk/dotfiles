@@ -5,9 +5,8 @@
 $MOD = SUPER
 
 # APP VARIABLES
-$BROWSER        = google-chrome-stable
+$BROWSER        = firefox
 $SCREENSHOT     = grimblast --notify copy
-$MUSIC          = cider
 $TERM           = MESA_GL_VERSION_OVERRIDE=3.3 MESA_GLSL_VERSION_OVERRIDE=330 kitty
 $ROFI 	        = rofi -show drun -theme $HOME/.config/rofi/config.rasi  # > /tmp/rofi.log 2>&1 
 $BAR            = waybar
@@ -21,21 +20,21 @@ $FILEMANAGER    = nemo
 ###############################################
 ##### NVIDIA ENV ##############################
 ###############################################
-#env = LIBVA_DRIVER_NAME,nvidia
-#env = XDG_SESSION_TYPE,wayland
-#env = GBM_BACKEND,nvidia-drm
-#env = __GLX_VENDOR_LIBRARY_NAME,nvidia
+env = LIBVA_DRIVER_NAME,nvidia
+env = XDG_SESSION_TYPE,wayland
+env = GBM_BACKEND,nvidia-drm
+env = __GLX_VENDOR_LIBRARY_NAME,nvidia
 env = WLR_NO_HARDWARE_CURSORS,1
-#env = MOZ_ENABLE_WAYLAND,1
 
 env = SSH_AUTH_SOCK,$XDG_RUNTIME_DIR/ssh-agent.socket
 {% endif %}
 
-# Import GTK Settings and Setup Environment
-exec-once = $HOME/.config/hypr/import-gsettings
+# Setup Environment
 exec-once = dbus-update-activation-environment --all
+exec-once = nm-applet
 exec-once = gnome-keyring-daemon --start --components=secrets
 exec-once = /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec-once = /usr/lib/geoclue-2.0/demos/agent
 
 ##### LAUNCH ##############################
 exec-once = $NOTIFY
@@ -46,9 +45,7 @@ exec      = $BACKGROUND
 exec-once = wl-clipboard-history -t
 exec-once = liquidctl --match hydro set fan speed 20
 exec-once = openrgb --startminimized -p $RGBPROFILE
-exec-once = 1password --silent
-#exec-once = redshift
-exec-once = /opt/safing/portmaster/portmaster-start app --data=/opt/safing/portmaster
+exec-once = protonmail-bridge -no-window --noninteractive
 
 ###############################################
 ##### MONITOR #################################
@@ -108,7 +105,6 @@ misc {
 decoration {
   # ROUNDINGG
   rounding = 8
-  multisample_edges = true
 
   # OPACITY
   active_opacity = 1.0
@@ -125,7 +121,6 @@ decoration {
   # SHADOW
   drop_shadow = true
   shadow_ignore_window = true
-  shadow_offset = 2 2
   shadow_range = 4
   shadow_render_power = 2
   col.shadow = 0x66000000
@@ -209,53 +204,35 @@ windowrulev2 = tile, class:^(Cider)$
 # WINE 
 windowrulev2 = move 0 0, title:^(Wine System Tray)$
 windowrulev2 = size 0 0, title:^(Wine System Tray)$
-# STEAM
-windowrulev2 = float, class:^(Steam)$,title:^(Friends)$
-windowrulev2 = float, class:^(Steam)$,title:^(Friends List)$
-windowrulev2 = float, class:^(Steam)$,title:^(Steam - News)$
-windowrulev2 = float, class:^(Steam)$,title:^(.* - Chat)$
-windowrulev2 = float, class:^(Steam)$,title:^(.* - event started)$
-windowrulev2 = float, class:^(Steam)$,title:^(.* CD key)$
-windowrulev2 = float, class:^(Steam)$,title:^(Steam - Self Updater)$
-windowrulev2 = float, class:^(Steam)$,title:^(Screenshot Uploader)$
-windowrulev2 = float, class:^(Steam)$,title:^(.* - Steam Guard - Computer Authorization Required)$
-windowrulev2 = float, class:^(Steam)$,title:^(Steam - Update)$
-windowrulev2 = float, class:^(Steam)$,title:^(Add a Game)$
-windowrulev2 = float, class:^(Steam)$,title:^(Choose Icon...)$
 # STEAM (BETA)
-windowrulev2 = float, class:^(steamwebhelper)$,title:^(Friends)$
-windowrulev2 = float, class:^(steamwebhelper)$,title:^(Friends List)$
-windowrulev2 = float, class:^(steamwebhelper)$,title:^(Steam - News)$
-windowrulev2 = float, class:^(steamwebhelper)$,title:^(.* - Chat)$
-windowrulev2 = float, class:^(steamwebhelper)$,title:^(.* - event started)$
-windowrulev2 = float, class:^(steamwebhelper)$,title:^(.* CD key)$
-windowrulev2 = float, class:^(steamwebhelper)$,title:^(Steam - Self Updater)$
-windowrulev2 = float, class:^(steamwebhelper)$,title:^(Screenshot Uploader)$
-windowrulev2 = float, class:^(steamwebhelper)$,title:^(.* - Steam Guard - Computer Authorization Required)$
-windowrulev2 = float, class:^(steamwebhelper)$,title:^(Steam - Update)$
-windowrulev2 = float, class:^(steamwebhelper)$,title:^(Add a Game)$
-windowrulev2 = float, class:^(steamwebhelper)$,title:^(Choose Icon...)$
+#windowrulev2 = float, class:^(steamwebhelper)$,title:^(Friends)$
+#windowrulev2 = float, class:^(steamwebhelper)$,title:^(Friends List)$
+#windowrulev2 = float, class:^(steamwebhelper)$,title:^(Steam - News)$
+#windowrulev2 = float, class:^(steamwebhelper)$,title:^(.* - Chat)$
+#windowrulev2 = float, class:^(steamwebhelper)$,title:^(.* - event started)$
+#windowrulev2 = float, class:^(steamwebhelper)$,title:^(.* CD key)$
+#windowrulev2 = float, class:^(steamwebhelper)$,title:^(Steam - Self Updater)$
+#windowrulev2 = float, class:^(steamwebhelper)$,title:^(Screenshot Uploader)$
+#windowrulev2 = float, class:^(steamwebhelper)$,title:^(.* - Steam Guard - Computer Authorization Required)$
+#windowrulev2 = float, class:^(steamwebhelper)$,title:^(Steam - Update)$
+#windowrulev2 = float, class:^(steamwebhelper)$,title:^(Add a Game)$
+#windowrulev2 = float, class:^(steamwebhelper)$,title:^(Choose Icon...)$
 
 # GAME SPECIFIC
-windowrulev2 = float, class:^(steam_app_1182480)$,title:^(Origin)$ # Origin Launcher
-windowrulev2 = float, class:^(steam_app_1182480)$,title:^(REDlauncher)$ # Cyberpunk Launcher
-windowrulev2 = tile, class:^(steam_app_0)$,title:^(Epic Games Launcher)$ # Epic Games Launcher
-windowrulev2 = tile, class:^(steam_app_0)$,title:^(Battle.net)$ # Battle.net
-windowrulev2 = tile, class:^(steam_app_0)$,title:^(Dying Light*)$ # Dying Light
-windowrulev2 = tile, class:^(steam_app_0)$,title:^(Overwatch)$ # Overatch
-windowrulev2 = tile, class:^(.*.exe)$
-# UNI PROJ
-windowrulev2 = float, class:^(Calculator)$
-# 1PASSWORD 
-windowrulev2 = float, class:^(1Password)$,title:^(Quick Access.*)$
-#windowrulev2 = fakefullscreen, class:^(1Password)$,title:^(Quick Access.*)$
+#windowrulev2 = float, class:^(steam_app_1182480)$,title:^(Origin)$ # Origin Launcher
+#windowrulev2 = float, class:^(steam_app_1182480)$,title:^(REDlauncher)$ # Cyberpunk Launcher
+#windowrulev2 = tile, class:^(steam_app_0)$,title:^(Epic Games Launcher)$ # Epic Games Launcher
+#windowrulev2 = tile, class:^(steam_app_0)$,title:^(Battle.net)$ # Battle.net
+#windowrulev2 = tile, class:^(steam_app_0)$,title:^(Dying Light*)$ # Dying Light
+#windowrulev2 = tile, class:^(steam_app_0)$,title:^(Overwatch)$ # Overatch
+#windowrulev2 = tile, class:^(.*.exe)$
 
 ###############################################
 ##### KEYBIND #################################
 ###############################################
 
 # MEDIA KEYS
-bind = SUPER_L, C, exec, pactl set-source-mute @DEFAULT_SOURCE@ toggle
+bind = , XF86AudioMute, exec, pactl set-source-mute @DEFAULT_SOURCE@ toggle
 bind = , XF86AudioPlay, exec, playerctl play-pause
 bind = , XF86AudioPause, exec, playerctl play-pause
 bind = , XF86AudioNext, exec, playerctl next

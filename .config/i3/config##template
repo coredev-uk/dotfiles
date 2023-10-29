@@ -7,7 +7,6 @@ set $MOD Mod4
 # APP VARIABLES
 set $BROWSER        firefox
 set $SCREENSHOT     flameshot gui 
-set $MUSIC          cider 
 set $TERM           alacritty # MESA_LOADER_DRIVER_OVERRIDE=radeonsi __EGL_VENDOR_LIBRARY_FILENAMES=/usr/share/glvnd/egl_vendor.d/50_mesa.json kitty
 set $ROFI           rofi -show drun -theme $HOME/.config/rofi/config.rasi  # > /tmp/rofi.log 2>&1 
 set $BAR            "~/.config/polybar/launch.sh"
@@ -29,23 +28,21 @@ set $TERM           MESA_GL_VERSION_OVERRIDE=3.3 MESA_GLSL_VERSION_OVERRIDE=330 
 
 # Setup Environment
 exec dbus-update-activation-environment --all
+exec nm-applet
 exec gnome-keyring-daemon --start --components=secrets
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec /usr/lib/geoclue-2.0/demos/agent
 
 ##### LAUNCH ##############################
 exec --no-startup-id    $NOTIFY
-exec                    $BROWSER --no-startup-window
+#exec                    $BROWSER --no-startup-window
 exec_always             $BAR
 exec_always             $BACKGROUND
 
 exec                    xclip
 exec                    liquidctl --match hydro set fan speed 20
 exec                    openrgb --startminimized -p $RGBPROFILE
-exec                    1password --silent
-#exec                    redshift
 exec                    xscreensaver --no-splash
-exec                    /opt/safing/portmaster/portmaster-start app --data=/opt/safing/portmaster
 exec                    protonmail-bridge -no-window --noninteractive
 
 exec_always --no-startup-id setxkbmap -layout gb

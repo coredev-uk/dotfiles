@@ -10,11 +10,11 @@ fish_add_path $HOME/.local/bin
 
 {% if yadm.os == "Linux" %}
 # Start X at login
-if status is-login
-    if test -z "$DISPLAY" -a "$XDG_VTNR" = 1
-        exec startx >> .xsession-errors 2>&1
-    end
-end
+#if status is-login
+#    if test -z "$DISPLAY" -a "$XDG_VTNR" = 1
+#        exec startx >> .xsession-errors 2>&1
+#    end
+#end
 {% endif %}
 
 {% if yadm.os == "Darwin" %}
