@@ -26,7 +26,7 @@ env = GBM_BACKEND,nvidia-drm
 env = __GLX_VENDOR_LIBRARY_NAME,nvidia
 env = WLR_NO_HARDWARE_CURSORS,1
 
-env = SSH_AUTH_SOCK,$XDG_RUNTIME_DIR/ssh-agent.socket
+#env = SSH_AUTH_SOCK,$XDG_RUNTIME_DIR/ssh-agent.socket
 {% endif %}
 
 # Setup Environment
@@ -38,7 +38,7 @@ exec-once = /usr/lib/geoclue-2.0/demos/agent
 
 ##### LAUNCH ##############################
 exec-once = $NOTIFY
-exec-once = $BROWSER --no-startup-window
+#exec-once = $BROWSER --no-startup-window
 exec-once = $BAR
 exec      = $BACKGROUND
 
