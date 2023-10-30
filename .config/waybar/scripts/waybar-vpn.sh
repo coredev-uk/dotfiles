@@ -6,5 +6,5 @@ IPADDR=$(protonvpn-cli status | grep IP: | tr -d ' ' | cut -d ':' -f2 | xargs)
 if [ "$SERVER" ]; then
     echo "Connected ($SERVER - $IPADDR)"
 else
-    echo "Disconnected"
+    echo ""
 fi

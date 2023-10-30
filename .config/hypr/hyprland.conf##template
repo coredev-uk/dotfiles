@@ -12,7 +12,7 @@ $ROFI 	        = rofi -show drun -theme $HOME/.config/rofi/config.rasi  # > /tmp
 $BAR            = waybar
 $NOTIFY         = dunst
 $LOCK           = swaylock -c 000000 -f -F
-$BACKGROUND     = swaybg -i $(find $HOME/.wallpapers/. -type f | shuf -n1) -m fill &
+$BACKGROUND     = swaybg -i $(find $HOME/.private-dots/wallpapers/. -type f | shuf -n1) -m fill &
 $RGBPROFILE     = orange-night
 $FILEMANAGER    = nemo
 
