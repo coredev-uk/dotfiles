@@ -8,7 +8,6 @@ bluez-utils
 bridge-utils
 btop
 dbus-python
-dhcpcd
 discord
 dunst
 edk2-ovmf
@@ -17,7 +16,6 @@ eza
 firefox
 flameshot
 gamemode
-hexedit
 kitty
 lib32-libnm
 lib32-nvidia-utils
@@ -36,7 +34,6 @@ neovim
 network-manager-applet
 networkmanager
 networkmanager-openvpn
-nmap
 nodejs
 npm
 nvidia-open-dkms
@@ -61,7 +58,6 @@ sshpass
 starship
 steam
 swaybg
-thunderbird
 timeshift
 ttf-inconsolata-nerd
 ttf-jetbrains-mono-nerd
