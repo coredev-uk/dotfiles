@@ -190,7 +190,7 @@ bindsym Ctrl+Print      exec $SCREENSHOT
 # FILE MANAGER 
 bindsym $MOD+m          exec $FILEMANAGER
 # WALLPAPER 
-bindsym $MOD+f2         exec $WALLPAPER
+bindsym $MOD+F2         exec $BACKGROUND
 
 ###############################################
 ##### MOVEMENT ################################

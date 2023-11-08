@@ -5,25 +5,25 @@ return require('packer').startup(function(use)
 
   -- Colour Scheme
   use { "EdenEast/nightfox.nvim",
-    config = function()
-      vim.cmd [[colorscheme carbonfox]]
-    end, }
+  config = function()
+    vim.cmd [[colorscheme carbonfox]]
+  end, }
 
   -- Language Servers
   use(
-    {
-      'williamboman/mason.nvim',
-      config = function()
-        require("mason").setup()
-        require("mason-lspconfig").setup()
-      end,
-      requires = {
-        'williamboman/mason-lspconfig.nvim',
-        'neovim/nvim-lspconfig'
-      }
-    },
-    'williamboman/mason-lspconfig.nvim',
-    'neovim/nvim-lspconfig'
+  {
+    'williamboman/mason.nvim',
+    config = function()
+      require("mason").setup()
+      require("mason-lspconfig").setup()
+    end,
+    requires = {
+      'williamboman/mason-lspconfig.nvim',
+      'neovim/nvim-lspconfig'
+    }
+  },
+  'williamboman/mason-lspconfig.nvim',
+  'neovim/nvim-lspconfig'
   )
 
   use {
@@ -50,6 +50,10 @@ return require('packer').startup(function(use)
     'hrsh7th/cmp-buffer',
     after = 'nvim-cmp',
   }
+
+  -- VSCode Icons for Completion
+  use 'onsails/lspkind.nvim'
+
 
   -- Path completion source
   use {
@@ -198,7 +202,7 @@ return require('packer').startup(function(use)
     end,
   }
 
-    -- File Explorer
+  -- File Explorer
   use({
     "kyazdani42/nvim-tree.lua",
     config = function()
@@ -229,7 +233,24 @@ return require('packer').startup(function(use)
     end
   }
 
-  use 'github/copilot.vim'
+
+  use {
+    "zbirenbaum/copilot.lua",
+    cmd = "Copilot",
+    event = "InsertEnter",
+    config = function()
+      require("configs.copilot")
+    end,
+  }
+
+  use {
+    "zbirenbaum/copilot-cmp",
+    after = { "copilot.lua" },
+    config = function ()
+      require("copilot_cmp").setup()
+    end
+  }
+
   use 'editorconfig/editorconfig-vim'
   use {
     "folke/which-key.nvim",

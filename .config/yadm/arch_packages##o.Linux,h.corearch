@@ -16,6 +16,7 @@ eza
 firefox
 flameshot
 gamemode
+junit
 kitty
 lib32-libnm
 lib32-nvidia-utils
@@ -36,7 +37,7 @@ networkmanager
 networkmanager-openvpn
 nodejs
 npm
-nvidia-open-dkms
+nvidia-dkms
 nvidia-settings
 os-prober
 pacman-contrib
@@ -58,6 +59,7 @@ sshpass
 starship
 steam
 swaybg
+telegram-desktop
 timeshift
 ttf-inconsolata-nerd
 ttf-jetbrains-mono-nerd
