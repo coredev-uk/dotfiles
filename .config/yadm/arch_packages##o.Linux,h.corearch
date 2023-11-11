@@ -52,6 +52,7 @@ python-pip
 python-requests
 qt5-graphicaleffects
 qt5ct
+ripgrep
 rofi
 rpm-tools
 rustup

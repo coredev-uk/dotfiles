@@ -19,3 +19,7 @@ set.background = 'dark'
 --set foldmethod=expr
 --set foldexpr=nvim_treesitter#foldexpr()
 vim.g.mapleader = " "
+
+return {
+    
+}
