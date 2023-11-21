@@ -25,7 +25,7 @@ env = XDG_SESSION_TYPE,wayland
 env = GBM_BACKEND,nvidia-drm
 env = __GLX_VENDOR_LIBRARY_NAME,nvidia
 env = WLR_NO_HARDWARE_CURSORS,1
-
+env = WLR_DRM_NO_ATOMIC,1
 #env = SSH_AUTH_SOCK,$XDG_RUNTIME_DIR/ssh-agent.socket
 {% endif %}
 
@@ -85,6 +85,7 @@ general {
   border_size = 0
   no_border_on_floating = true
   layout = dwindle
+  allow_tearing = true
 }
 
 ###############################################
@@ -150,6 +151,20 @@ animations {
 }
 
 ###############################################
+##### PLUGINS #################################
+###############################################
+
+plugin {
+    csgo-vulkan-fix {
+        res_w = 2560
+        res_h = 1440
+
+        # NOT a regex! This is a string and has to exactly match initial_class
+        class = cs2
+    }
+}
+
+###############################################
 ##### LAYOUTS #################################
 ###############################################
 dwindle {
@@ -194,6 +209,8 @@ windowrulev2 = tile, class:^(Spotify)$
 windowrulev2 = workspace 9, class:^(Spotify)$
 # CIDER 
 windowrulev2 = tile, class:^(Cider)$
+# cs2
+windowrulev2 = immediate, class:^(cs2)$
 # INTELLIJ
 #windowrulev2 = tile, class:^(jetbrains-idea)$
 #windowrulev2 = float, class:^(jetbrains-*)$,title:^(win0)$
