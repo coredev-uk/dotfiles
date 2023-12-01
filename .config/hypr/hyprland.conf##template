@@ -26,6 +26,7 @@ env = GBM_BACKEND,nvidia-drm
 env = __GLX_VENDOR_LIBRARY_NAME,nvidia
 env = WLR_NO_HARDWARE_CURSORS,1
 env = WLR_DRM_NO_ATOMIC,1
+env = __GL_SHADER_DISK_CACHE_SKIP_CLEANUP,1
 #env = SSH_AUTH_SOCK,$XDG_RUNTIME_DIR/ssh-agent.socket
 {% endif %}
 
@@ -46,13 +47,14 @@ exec-once = wl-clipboard-history -t
 exec-once = liquidctl --match hydro set fan speed 20
 exec-once = openrgb --startminimized -p $RGBPROFILE
 exec-once = protonmail-bridge -no-window --noninteractive
+exec-once = steam -silent
 
 ###############################################
 ##### MONITOR #################################
 ###############################################
 {% if yadm.hostname == "corearch" %}
-monitor=DP-1,2560x1440@144,1920x0,1 
-monitor=DP-2,1920x1080@60,0x0,1
+monitor=DP-1,2560x1440@180,2560x0,1 
+monitor=DP-2,2560x1440@144,0x0,1
 {% else %}
 monitor=,preferred,auto,1.5
 {% endif %}

@@ -44,6 +44,7 @@ exec                    liquidctl --match hydro set fan speed 20
 exec                    openrgb --startminimized -p $RGBPROFILE
 exec                    xscreensaver --no-splash
 exec                    protonmail-bridge -no-window --noninteractive
+exec                    steam -silent
 
 exec_always --no-startup-id setxkbmap -layout gb
 {% if yadm.hostname == "corearch" %}
@@ -123,31 +124,16 @@ bindsym Ctrl+Shift+space exec --no-startup-id 1password --quick-access
 
 # floating windows
 for_window [window_role="pop-up"] floating enable border normal
-for_window [title="Lock Screen — 1Password"] floating enable resize set 800 500
 
-# STEAM
-for_window [class="^Steam$" title="^Friends$"] floating enable
-for_window [class="^Steam$" title="^Friends List$"] floating enable
-for_window [class="^Steam$" title="Steam - News"] floating enable
-for_window [class="^Steam$" title=".* - Chat"] floating enable
-for_window [class="^Steam$" title="^Settings$"] floating enable
-for_window [class="^Steam$" title=".* - event started"] floating enable
-for_window [class="^Steam$" title=".* CD key"] floating enable
-for_window [class="^Steam$" title="^Steam - Self Updater$"] floating enable
-for_window [class="^Steam$" title="^Screenshot Uploader$"] floating enable
-for_window [class="^Steam$" title="^Steam Guard - Computer Authorization Required$"] floating enable
-for_window [class="^Steam$" title="Steam Library Folders"] floating enable
-for_window [class="^Steam$" title="Create or select new Steam library folder:"] floating enable
-for_window [title="^Steam Keyboard$"] floating enable
+# Steam (https://github.com/ValveSoftware/steam-for-linux/issues/1040)
+for_window [class="^steam$"] floating enable
+for_window [class="^Steam$"] floating enable
+for_window [class="^steam$" title="^Steam$"] floating disable
 
-# STEAM GAMES
-for_window [class="steam_app_*"] floating disable
-for_window [class="steam_app_242760"] floating enable
-for_window [class="steam_app_1182480" title="Origin"] floating enable
-for_window [class="steam_app_1091500" title="REDlauncher"] floating enable
+# Games
 for_window [class="cs2"] floating enable fullscreen enable
 
-# JETBRAINS
+# JetBrains Products
 for_window [class="jetbrains-*" title="win0"] floating enable
 for_window [class="jetbrains-*" title="splash"] floating enable
 for_window [class="jetbrains-*" title="Welcome to *"] floating enable
@@ -155,18 +141,8 @@ for_window [class="^com-intellij-updater-Runner$" title="^Update$"] floating ena
 for_window [instance="^sun-awt-X11-XDialogPeer$" title="^Complete Installation$"] floating enable
 
 # OTHER
-for_window [class="origin.exe"] floating enable
 for_window [class="Lutris" title="Manage Runners"] floating enable
 for_window [class="feh"] floating enable
-for_window [class="gmod"] floating disable
-for_window [class="bms_linux"] floating disable
-for_window [instance="crx_nngceckbapebfimnlniiiahkandclblb"] floating enable
-for_window [title="Web Remote" window_role="browser-window"] floating enable
-
-# BROWSER
-for_window [class="*edge*" window_role="pop-up"] floating enable
-for_window [window_role="pop-up" title="*Outlook*"] floating disable
-for_window [window_role="bubble"] floating enable
 
 ###############################################
 ##### TOOLS ###################################
