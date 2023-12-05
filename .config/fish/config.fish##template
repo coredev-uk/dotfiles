@@ -15,6 +15,7 @@ fish_add_path $HOME/.local/bin
 #        exec startx >> .xsession-errors 2>&1
 #    end
 #end
+set -x PATH "/usr/lib/jvm/default/bin:$PATH"
 {% endif %}
 
 {% if yadm.os == "Darwin" %}

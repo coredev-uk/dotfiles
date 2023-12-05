@@ -34,9 +34,5 @@ systemctl --user set-environment DISPLAY=:0
 
 command=i3
 
-#echo Starting Plasma
-#export DESKTOP_SESSION=plasma
-#exec startplasma-x11
-
 echo Starting $(command)
 exec $command > ~/.xsession-errors
