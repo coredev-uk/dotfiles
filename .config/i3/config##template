@@ -45,6 +45,7 @@ exec                    openrgb --startminimized -p $RGBPROFILE
 exec                    xscreensaver --no-splash
 exec                    protonmail-bridge -no-window --noninteractive
 exec                    steam -silent
+exec                    1password --silent 
 
 exec_always --no-startup-id setxkbmap -layout gb
 {% if yadm.hostname == "corearch" %}
