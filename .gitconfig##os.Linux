@@ -1,0 +1,28 @@
+[user]
+	email = 64542347+coredev-uk@users.noreply.github.com
+	name = Core
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINQpQFDxvGq+x6sHldr81kFtftS6KFEzbOtoRKKTXFR7
+
+[gpg]
+	format = ssh
+
+[commit]
+  gpgsign = true
+
+[url "git@github.com:"]
+	insteadOf = https://github.com/
+
+[url "https://github.com/rust-lang/crates.io-index"]
+	insteadOf = https://github.com/rust-lang/crates.io-index
+
+[url "https://github.com/RustSec/advisory-db"]
+	insteadOf = https://github.com/RustSec/advisory-db
+
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+
+[pull]
+	rebase = false
