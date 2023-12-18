@@ -35,4 +35,4 @@ systemctl --user set-environment DISPLAY=:0
 command=i3
 
 echo Starting $(command)
-exec $command > ~/.xsession-errors
+exec $command > ~/.xsession.log
