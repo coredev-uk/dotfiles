@@ -6,24 +6,16 @@ set -x STARSHIP_CONFIG "$HOME/.config/starship.toml"
 set fish_greeting
 set -x TERM "xterm-256color"
 
+# More path
 fish_add_path $HOME/.local/bin
-
-{% if yadm.os == "Linux" %}
-# Start X at login
-#if status is-login
-#    if test -z "$DISPLAY" -a "$XDG_VTNR" = 1
-#        exec startx >> .xsession-errors 2>&1
-#    end
-#end
-set -x PATH "/usr/lib/jvm/default/bin:$PATH"
-{% endif %}
+fish_add_path /usr/lib/jvm/default/bin
+fish_add_path $HOME/.cargo/bin
+fish_add_path /usr/local/bin
 
 {% if yadm.os == "Darwin" %}
+# Path Changes
 fish_add_path /opt/homebrew/sbin
-fish_add_path $HOME/.cargo/bin
-
-# Fix the annoying terminal database message
-set -x PATH "/usr/local/bin:/opt/homebrew/bin:$PATH"	
+fish_add_path /opt/homebrew/bin
 
 # pnpm
 set -gx PNPM_HOME "$HOME/Library/pnpm"
@@ -36,8 +28,8 @@ end
 {% endif %}
 
 if status is-interactive
-    # Commands to run in interactive sessions can go here 
 
+    # Commands to run in interactive sessions can go here 
     if command -v pfetch &> /dev/null
       pfetch
     end
