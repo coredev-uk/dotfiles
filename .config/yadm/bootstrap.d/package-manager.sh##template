@@ -27,9 +27,9 @@ if ! command -v brew >/dev/null 2>&1; then
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
-if [ -f "$HOME/Brewfile" ]; then
+if [ -f "$HOME/.config/yadm/Brewfile" ]; then
     echo "Updating homebrew bundle"
-    brew bundle --file $HOME/.config/yadm/Brewfile
+    brew bundle --file $HOME/.config/yadm/Brewfile -v
     # Update the shell
     fish_path=$(which fish)
     chsh -s $fish_path
