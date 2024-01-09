@@ -1,35 +1,13 @@
 #!/bin/sh
 
-# Firefox
-if (command -v firefox &> /dev/null); then 
-	for path in ~/.mozilla/firefox/*-release/; do
-		mkdir $path/chrome/ 2&>/dev/null
-		if ! (test -f $path/chrome/userChrome.css); then
-			echo '[Firefox] Linking user css to' $path
-			ln -s ~/.config/firefox/* $path/chrome
-		fi
-	done
-fi
-
-# Librewolf
-if (command -v librewolf &> /dev/null); then 
-	for path in ~/.librewolf/*-release/; do
-		mkdir $path/chrome/ 2&>/dev/null
-		if ! (test -f $path/chrome/userChrome.css); then
-			echo '[Librewolf] Linking user css to' $path
-			ln -s ~/.config/firefox/* $path/chrome
-		fi
-	done
-fi
-
 # Update Package Listing
 if (command -v pacman &> /dev/null); then
-    pacman -Qqen > $HOME/.config/yadm/arch_packages
+    pacman -Qqen > '$HOME/.config/yadm/packages##os.Linux'
 fi
 
 # Update Brew Listing
 if (command -v brew &> /dev/null); then
-    cd $HOME/.config/yadm && brew bundle dump --quiet --force
+    cd $HOME/.config/yadm && brew bundle dump --quiet --force && mv Brewfile 'packages##os.Darwin' && rm Brewfile.lock.json
 fi
 
 # Update Submodules
