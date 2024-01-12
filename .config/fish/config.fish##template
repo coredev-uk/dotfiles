@@ -45,7 +45,7 @@ if status is-interactive
     set -Ux CARGO_NET_GIT_FETCH_WITH_CLI true
 
     . ~/.config/fish/functions/rprompt.fish
-    . ~/.private-dots/secrets.fish
+    . ~/.config/fish/secrets.fish
 
     alias ls='eza -F --group-directories-first'
     alias vim='nvim'
