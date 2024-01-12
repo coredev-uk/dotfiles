@@ -12,7 +12,7 @@ set $ROFI           rofi -show drun -theme $HOME/.config/rofi/config.rasi  # > /
 set $BAR            "~/.config/polybar/launch.sh"
 set $NOTIFY         dunst
 set $LOCK           betterlockscreen -l dimblur 
-set $BACKGROUND     feh --bg-fill --randomize ~/.private-dots/wallpapers/*
+set $BACKGROUND     feh --bg-fill --randomize ~/ProtonDrive/Wallpapers/*
 set $RGBPROFILE     orange-night 
 set $FILEMANAGER    nemo
 
