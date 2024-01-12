@@ -1,4 +1,3 @@
-
 # Setting custom environment vars
 set -x PLATFORM (uname -s)
 set -x GPG_TTY (tty)
@@ -6,24 +5,24 @@ set -x STARSHIP_CONFIG "$HOME/.config/starship.toml"
 set fish_greeting
 set -x TERM "xterm-256color"
 
-# More path
+# Path Fixes
 fish_add_path $HOME/.local/bin
 fish_add_path /usr/lib/jvm/default/bin
 fish_add_path $HOME/.cargo/bin
 fish_add_path /usr/local/bin
+fish_add_path $HOME/.config/fish/scripts
 
 {% if yadm.os == "Darwin" %}
 # Path Changes
 fish_add_path /opt/homebrew/sbin
 fish_add_path /opt/homebrew/bin
 
-# pnpm
+# PNPM
 set -gx PNPM_HOME "$HOME/Library/pnpm"
 set -gx PATH "$PNPM_HOME" $PATH
 {% endif %}
 
 if status is-interactive
-
     # Commands to run in interactive sessions can go here 
     if command -v pfetch &> /dev/null
       pfetch
@@ -45,7 +44,7 @@ if status is-interactive
     set -Ux CARGO_NET_GIT_FETCH_WITH_CLI true
 
     . ~/.config/fish/functions/rprompt.fish
-    . ~/.config/fish/functions/secrets.fish
+    . ~/.config/fish/misc/secrets.fish
 
     alias ls='eza -F --group-directories-first'
     alias vim='nvim'
@@ -57,5 +56,5 @@ end
 
 starship init fish | source
 {% if yadm.os == "Darwin" %}
-source ~/.config/fish/functions/iterm2_shell_integration.fish
+source ~/.config/fish/misc/iterm2_shell_integration.fish
 {% endif %}
