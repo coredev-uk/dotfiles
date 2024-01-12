@@ -45,7 +45,7 @@ if status is-interactive
     set -Ux CARGO_NET_GIT_FETCH_WITH_CLI true
 
     . ~/.config/fish/functions/rprompt.fish
-    . ~/.config/fish/secrets.fish
+    . ~/.config/fish/functions/secrets.fish
 
     alias ls='eza -F --group-directories-first'
     alias vim='nvim'
@@ -57,5 +57,5 @@ end
 
 starship init fish | source
 {% if yadm.os == "Darwin" %}
-source ~/.config/fish/iterm2_shell_integration.fish
+source ~/.config/fish/functions/iterm2_shell_integration.fish
 {% endif %}
