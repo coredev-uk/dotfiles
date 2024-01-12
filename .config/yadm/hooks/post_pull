@@ -9,7 +9,7 @@ fi
 
 # Update Brew Listing
 if (command -v brew &> /dev/null); then
-    cd $HOME/.config/yadm && brew bundle dump --quiet --force && mv Brewfile 'packages##os.Darwin' && rm Brewfile.lock.json
+    cd $HOME/.config/yadm && brew bundle dump --quiet --force && mv Brewfile 'packages##os.Darwin' && rm Brewfile.lock.json 2> /dev/null
 fi
 
 # Update Submodules
