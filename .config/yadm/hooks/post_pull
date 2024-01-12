@@ -1,8 +1,10 @@
 #!/bin/sh
 
+HOSTNAME=$(uname -n)
+
 # Update Package Listing
 if (command -v pacman &> /dev/null); then
-    pacman -Qqen > '$HOME/.config/yadm/packages##os.Linux'
+    pacman -Qqen > "$HOME/.config/yadm/packages##os.Linux,h.$HOSTNAME"
 fi
 
 # Update Brew Listing

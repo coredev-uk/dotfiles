@@ -40,7 +40,6 @@ exec_always             $BAR
 exec_always             $BACKGROUND
 
 exec                    xclip
-exec                    liquidctl --match hydro set fan speed 20
 exec                    openrgb --startminimized -p $RGBPROFILE
 exec                    xscreensaver --no-splash
 exec                    protonmail-bridge -no-window --noninteractive

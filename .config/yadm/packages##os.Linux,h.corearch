@@ -31,7 +31,7 @@ linux-firmware
 linux-headers
 linux-zen
 linux-zen-headers
-liquidctl
+lld
 lvm2
 man-db
 mangohud
@@ -78,6 +78,7 @@ viewnior
 vkd3d
 vulkan-headers
 vulkan-tools
+waybar
 wine
 winetricks
 wireguard-tools
