@@ -12,7 +12,7 @@ set $ROFI           rofi -show drun -theme $HOME/.config/rofi/config.rasi  # > /
 set $BAR            "~/.config/polybar/launch.sh"
 set $NOTIFY         dunst
 set $LOCK           betterlockscreen -l dimblur 
-set $BACKGROUND     feh --bg-fill --randomize ~/ProtonDrive/Wallpapers/*
+set $BACKGROUND     feh --bg-fill --randomize ~/Wallpapers/*
 set $RGBPROFILE     orange-night 
 set $FILEMANAGER    nemo
 
@@ -34,10 +34,6 @@ exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec /usr/lib/geoclue-2.0/demos/agent
 
 ##### LAUNCH ##############################
-exec --no-startup-id    $NOTIFY
-#exec                    $BROWSER --no-startup-window
-exec_always             $BAR
-exec_always             $BACKGROUND
 
 exec                    xclip
 exec                    openrgb --startminimized -p $RGBPROFILE
@@ -47,8 +43,13 @@ exec                    steam -silent
 exec                    1password --silent
 exec                    rclone mount --daemon protondrive: ~/ProtonDrive/ --vfs-cache-mode=full
 exec                    rclone mount --daemon onedrive: ~/OneDrive/ --vfs-cache-mode=full 
+exec --no-startup-id    $NOTIFY
 
+#exec                    $BROWSER --no-startup-window
+exec_always             $BAR
+exec_always             $BACKGROUND
 exec_always --no-startup-id setxkbmap -layout gb
+
 {% if yadm.hostname == "corearch" %}
 exec_always --no-startup-id $COMPOSITOR
 {% endif %}

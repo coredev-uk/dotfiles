@@ -38,11 +38,6 @@ exec-once = /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec-once = /usr/lib/geoclue-2.0/demos/agent
 
 ##### LAUNCH ##############################
-exec-once = $NOTIFY
-#exec-once = $BROWSER --no-startup-window
-exec-once = $BAR
-exec      = $BACKGROUND
-
 exec-once = wl-clipboard-history -t
 exec-once = openrgb --startminimized -p $RGBPROFILE
 exec-once = protonmail-bridge -no-window --noninteractive
@@ -50,6 +45,11 @@ exec-once = steam -silent
 exec-once = 1password --silent
 exec-once = rclone mount --daemon protondrive: ~/ProtonDrive/ --vfs-cache-mode=full
 exec-once = rclone mount --daemon onedrive: ~/OneDrive/ --vfs-cache-mode=full 
+
+exec-once = $NOTIFY
+#exec-once = $BROWSER --no-startup-window
+exec-once = $BAR
+exec      = $BACKGROUND
 
 ###############################################
 ##### MONITOR #################################
