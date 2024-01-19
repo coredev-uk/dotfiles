@@ -3,3 +3,4 @@
 .ssh/*.p12
 .config/fish/misc/secrets.fish
 .config/fish/scripts/raptor
+.gitconfig-uni

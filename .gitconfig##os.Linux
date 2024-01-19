@@ -1,7 +1,7 @@
 [user]
 	email = core@coredev.uk
 	name = Core
-	signingkey = ~/.ssh/id_ed25519.pub
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINQpQFDxvGq+x6sHldr81kFtftS6KFEzbOtoRKKTXFR7
 
 [gpg]
 	format = ssh
@@ -29,3 +29,7 @@
 
 [pull]
 	rebase = false
+
+[includeIf "hasconfig:remote.*.url:git@git.cs.kent.ac.uk*/**"]
+  path = .gitconfig-uni
+
