@@ -42,7 +42,8 @@ exec                    protonmail-bridge -no-window --noninteractive
 exec                    steam -silent
 exec                    1password --silent
 exec                    rclone mount --daemon protondrive: ~/ProtonDrive/ --vfs-cache-mode=full
-exec                    rclone mount --daemon onedrive: ~/OneDrive/ --vfs-cache-mode=full 
+exec                    rclone mount --daemon onedrive: ~/OneDrive/ --vfs-cache-mode=full
+exec                    rclone mount --daemon jellyfin:media ~/Jellyfin/
 exec --no-startup-id    $NOTIFY
 
 #exec                    $BROWSER --no-startup-window
