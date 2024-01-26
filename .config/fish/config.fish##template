@@ -40,6 +40,10 @@ if status is-interactive
     if command -v code-insiders &> /dev/null
      alias code="code-insiders"
     end
+
+    if command -v vscodium &> /dev/null
+     alias code="vscodium"
+    end
     
     set -Ux CARGO_NET_GIT_FETCH_WITH_CLI true
 
