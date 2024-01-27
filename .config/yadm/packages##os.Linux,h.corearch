@@ -10,8 +10,8 @@ btop
 cargo-make
 cargo-tauri
 dbus-python
-deno
 discord
+dpkg
 dunst
 edk2-ovmf
 efibootmgr
@@ -35,7 +35,6 @@ lld
 lvm2
 man-db
 mangohud
-maven
 mpv
 neovim
 network-manager-applet
@@ -47,6 +46,7 @@ nvidia-dkms
 nvidia-settings
 os-prober
 pacman-contrib
+pam-u2f
 papirus-icon-theme
 pavucontrol
 pipewire-alsa
@@ -63,13 +63,13 @@ rofi
 rpm-tools
 rustup
 sbctl
-sddm
 sshpass
 starship
 steam
 swaybg
 timeshift
 tree-sitter-cli
+ttf-firacode-nerd
 ttf-inconsolata-nerd
 ttf-jetbrains-mono-nerd
 ttf-nerd-fonts-symbols

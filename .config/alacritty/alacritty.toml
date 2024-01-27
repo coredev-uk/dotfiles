@@ -26,7 +26,7 @@ foreground = "#c5c8c6"
 size = 10.0
 
 [font.normal]
-family = "SFMono Nerd Font Mono"
+family = "FiraCode Nerd Font Mono"
 style = "Regular"
 
 [window]
