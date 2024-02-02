@@ -42,7 +42,7 @@ networkmanager
 networkmanager-openvpn
 nodejs
 npm
-nvidia-dkms
+nvidia-open-dkms
 nvidia-settings
 os-prober
 pacman-contrib
@@ -63,10 +63,12 @@ rofi
 rpm-tools
 rustup
 sbctl
+sshfs
 sshpass
 starship
 steam
 swaybg
+thunderbird
 timeshift
 tree-sitter-cli
 ttf-firacode-nerd
