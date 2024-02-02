@@ -50,6 +50,10 @@ if status is-interactive
     . ~/.config/fish/functions/rprompt.fish
     . ~/.config/fish/misc/secrets.fish
 
+    if test -d $HOME/.cargo/env
+      source $HOME/.cargo/env
+    end
+
     alias ls='eza -F --group-directories-first'
     alias vim='nvim'
     alias vi='nvim'
