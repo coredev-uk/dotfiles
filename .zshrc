@@ -47,6 +47,7 @@ zinit snippet OMZP::rust
 zinit snippet OMZP::command-not-found
 zinit snippet OMZP::1password
 zinit snippet OMZP::nvm
+zinit snippet OMZP::ssh-agent
 
 zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions

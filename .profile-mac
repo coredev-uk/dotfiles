@@ -1,3 +1,5 @@
 # 1Password Git Configuration Changes
 git config --global gpg.ssh.program "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
 
+# Homebrew Path Changes
+export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
