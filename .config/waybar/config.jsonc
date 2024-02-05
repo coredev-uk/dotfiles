@@ -1,0 +1,119 @@
+{
+  "layer": "top",
+  "position": "top",
+  "mod": "dock",
+  "exclusive": true,
+  "passthrough": false,
+  "gtk-layer-shell": true,
+  "height": 0,
+  "modules-left": ["clock", "custom/nowplaying", "custom/weather","hyprland/workspaces"],
+  "modules-center": ["hyprland/window"],
+  "modules-right": [
+    "tray",
+    "custom/updates",
+    "hyprland/language",
+    "custom/vpn",
+    "battery",
+    "backlight",
+    "pulseaudio",
+    "pulseaudio#microphone"
+  ],
+  "hyprland/window": {
+    "format": "{}",
+    "separate-outputs": true
+  },
+  "hyprland/language": {
+    "format": "{}",
+    "keyboard-name": "keychron-keychron-k8-pro"
+  },
+  "hyprland/workspaces": {
+    "format": "{}",
+    "on-scroll-up": "hyprctl dispatch workspace e+1",
+    "on-scroll-down": "hyprctl dispatch workspace e-1"
+  },
+  "custom/updates": {
+    "exec": "(pacman -Qu ; yay -Qua) | wc -l",
+    "interval": 7200,
+    "format": " {}"
+  },
+  "custom/weather": {
+    "tooltip": true,
+    "format": "{}",
+    "interval": 30,
+    "exec": "~/.config/waybar/scripts/waybar-wttr.py",
+    "return-type": "json"
+  },
+  "custom/nowplaying": {
+    "tooltip": true,
+    "format": "{}",
+    "interval": 5,
+    "exec": "~/.config/waybar/scripts/waybar-nowplaying.py --playing-only --quiet -f ' {artist} [ {song} ]' --trunclen 30",
+    "return-type": "json",
+    "on-click": "playerctl --player=cider2 play-pause && playerctl --player=spotify play-pause",
+    "on-scroll-up": "playerctl --player=cider2 next && playerctl --player=spotify next",
+    "on-scroll-down": "playerctl --player=cider2 previous && playerctl --player=spotify previous"
+  },
+  "custom/vpn": {
+    "tooltip": true,
+    "format": "{}",
+    "interval": 5,
+    "exec": "~/.config/waybar/scripts/waybar-vpn.sh",
+    "on-click": "protonvpn-cli c -f",
+    "on-click-right": "protonvpn-cli d"
+  },
+  "tray": {
+    "icon-size": 13,
+    "spacing": 10
+  },
+  "clock": {
+    "format": "{: %R   %d/%m}",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+  },
+  "backlight": {
+    "device": "intel_backlight",
+    "format": "{icon} {percent}%",
+    "format-icons": ["", "", ""],
+    "on-scroll-up": "brightnessctl set 1%+",
+    "on-scroll-down": "brightnessctl set 1%-",
+    "min-length": 6
+  },
+  "battery": {
+    "states": {
+      "good": 95,
+      "warning": 30,
+      "critical": 20
+    },
+    "format": "{icon} {capacity}%",
+    "format-charging": " {capacity}%",
+    "format-plugged": " {capacity}%",
+    "format-alt": "{time} {icon}",
+    "format-icons": ["", "", "", "", "", "", "", "", "", "", ""]
+  },
+  "pulseaudio": {
+    "format": "{icon} {volume}%",
+    "tooltip": false,
+    "format-muted": " Muted",
+    "on-click": "pamixer -t",
+    "on-scroll-up": "pamixer -i 5",
+    "on-scroll-down": "pamixer -d 5",
+    "scroll-step": 5,
+    "format-icons": {
+      "headphone": "",
+      "hands-free": "",
+      "headset": "",
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "default": ["", "", ""]
+    }
+  },
+  "pulseaudio#microphone": {
+    "format": "{format_source}",
+    "format-source": " {volume}%",
+    "format-source-muted": " Muted",
+    "on-click": "pamixer --default-source -t",
+    "on-scroll-up": "pamixer --default-source -i 5",
+    "on-scroll-down": "pamixer --default-source -d 5",
+    "scroll-step": 5
+  }
+}

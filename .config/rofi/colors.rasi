@@ -1,0 +1,9 @@
+* {
+    font:                        "SF Pro Display Regular 10";
+    background:                  #101313;
+    background-alt:              #1b1c24;
+    foreground:                  #FFFFFF;
+    selected:                    #038ce3;
+    active:                      #6E77FF;
+    urgent:                      #9f7dde;
+}
