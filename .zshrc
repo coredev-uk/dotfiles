@@ -6,7 +6,12 @@ else
   export GPG_TTY="$TTY"
 fi
 
+# Path Updated
 export PATH="/usr/local/bin:/usr/bin:$PATH"
+export PATH="$HOME/.local/bin:$HOME/.cargo/bin:$PATH"
+
+# Cargo Stupidity
+export CARGO_NET_GIT_FETCH_WITH_CLI=true
 
 if [ Darwin = `uname` ]; then
   source $HOME/.profile-macos
@@ -33,8 +38,8 @@ autoload -Uz compinit && compinit
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 # Download Zinit, if it's not there yet
 if [ ! -d "$ZINIT_HOME" ]; then
-   mkdir -p "$(dirname $ZINIT_HOME)"
-   git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+  mkdir -p "$(dirname $ZINIT_HOME)"
+  git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
 fi
 
 source "${ZINIT_HOME}/zinit.zsh"
@@ -58,6 +63,8 @@ export LC_ALL=en_GB.UTF-8
 
 if [ Darwin = `uname` ]; then
   zinit snippet OMZP::brew
+  zinit snippet OMZP::iterm2
+  zinit snippet OMZP::macos
   zstyle :omz:plugins:iterm2 shell-integration yes > /dev/null 2>&1
 fi
 
@@ -66,8 +73,10 @@ setopt auto_cd
 export LD_LIBRARY_PATH=/usr/local/lib
 
 # Aliases
+alias vi=nvim
 alias vim=nvim
-
+alias ls='eza -F --group-directories-first'
+alias yarn='corepack yarn' # Use corepack for yarn
 
 # P10k customizations
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
@@ -76,15 +85,11 @@ alias vim=nvim
 # Fix for password store
 export PASSWORD_STORE_GPG_OPTS='--no-throw-keyids'
 
-export NVM_DIR="$HOME/.nvm"                            # You can change this if you want.
-export NVM_SOURCE="/usr/share/nvm"                     # The AUR package installs it to here.
-[ -s "$NVM_SOURCE/nvm.sh" ] && . "$NVM_SOURCE/nvm.sh"  # Load N
-
 bindkey "^P" up-line-or-beginning-search
 bindkey "^N" down-line-or-beginning-search
 
 if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
-    export MOZ_ENABLE_WAYLAND=1
+  export MOZ_ENABLE_WAYLAND=1
 fi
 
 zle_highlight=('paste:none')

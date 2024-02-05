@@ -45,3 +45,12 @@ if (command -v zsh &> /dev/null); then
 else
   echo "Shell: Zsh is not installed"
 fi
+
+SCRIPT_PATH=$(realpath $(dirname $0))
+
+# Scripts
+if [[ "Linux" = `uname` || "Darwin" = `uname` ]]; then
+  cp $SCRIPT_PATH/scripts/* $HOME/.local/bin
+else
+  echo "Scripts: Your OS is not supported"
+fi
