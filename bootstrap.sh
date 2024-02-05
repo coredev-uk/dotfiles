@@ -8,9 +8,9 @@ SCRIPT_PATH=$(realpath $(dirname $0))
 
 # Git Config Symlinking for Mac and Linux
 if [ "Linux" = `uname` ]; then
-  ln -sf $SCRIPT_PATH/.gitconfig-linux $HOME/.gitconfig
+  ln -sf $SCRIPT_PATH/gitconfig-linux $HOME/.gitconfig
 elif [ "Darwin" = `uname` ]; then
-  ln -sf $SCRIPT_PATH/.gitconfig-mac $HOME/.gitconfig
+  ln -sf $SCRIPT_PATH/gitconfig-mac $HOME/.gitconfig
 else
   echo "Git Config: No gitconfig specified for your OS."
 fi

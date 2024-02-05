@@ -21,4 +21,7 @@ _darcs
 ^/LICENSE.*
 ^/COPYING
 
-\.gitconfig--* # git config files
+# Custom Entries
+^/gitconfig-.* # git config files
+^/bootstrap.sh # bootstrap script
+^/scripts # scripts
