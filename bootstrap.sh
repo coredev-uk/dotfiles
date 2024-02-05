@@ -4,6 +4,17 @@
 # coredev-uk/dotfiles - bootstrap.sh
 ################################################
 
+SCRIPT_PATH=$(realpath $(dirname $0))
+
+# Git Config Symlinking for Mac and Linux
+if [ "Linux" = `uname` ]; then
+  ln -sf $SCRIPT_PATH/.gitconfig-linux $HOME/.gitconfig
+elif [ "Darwin" = `uname` ]; then
+  ln -sf $SCRIPT_PATH/.gitconfig-mac $HOME/.gitconfig
+else
+  echo "Git Config: No gitconfig specified for your OS."
+fi
+
 # Package Manager
 if [ "Linux" = `uname` ]; then
   if (command -v yay &> /dev/null); then
@@ -29,10 +40,10 @@ fi
 # Firefox Theme
 if (command -v firefox &> /dev/null); then
     if [ "Linux" = `uname` ]; then
+        echo "Firefox Theme: Installing firefox-gnome-theme..."
         curl -s -o- https://raw.githubusercontent.com/rafaelmardojai/firefox-gnome-theme/master/scripts/install-by-curl.sh | bash
     elif [ "Darwin" = `uname` ]; then
-        git clone https://github.com/AdamXweb/WhiteSurFirefoxThemeMacOS.git tmp && cd tmp && bash ./install.sh && cd .. && rm -rf tmp
-    elif [ "Windows" = `uname` ]; then
+        echo "Firefox Theme: Installing WhiteSurFirefoxThemeMacOS..."
         git clone https://github.com/AdamXweb/WhiteSurFirefoxThemeMacOS.git tmp && cd tmp && bash ./install.sh && cd .. && rm -rf tmp
     else
         echo "Firefox Theme: Your OS is not supported"
@@ -41,12 +52,16 @@ fi
 
 # Shell
 if (command -v zsh &> /dev/null); then
-  chsh -s $(which zsh)
+  if [ `$SHELL` != `which zsh` ]; then
+    echo "Shell: Changing shell to Zsh"
+    chsh -s $(which zsh)
+  else
+    echo "Shell: Zsh is already the default shell"
+  fi
 else
   echo "Shell: Zsh is not installed"
 fi
 
-SCRIPT_PATH=$(realpath $(dirname $0))
 
 # Scripts
 if [[ "Linux" = `uname` || "Darwin" = `uname` ]]; then
