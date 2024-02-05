@@ -1,5 +1,2 @@
-# 1Password Git Configuration Changes
-git config --global gpg.ssh.program "/opt/1Password/op-ssh-sign"
-
 # For Steam Shader Stuff (https://github.com/ValveSoftware/steam-for-linux/issues/9748)
 export __GL_SHADER_DISK_CACHE_SKIP_CLEANUP=1
