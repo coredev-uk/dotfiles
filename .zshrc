@@ -14,11 +14,13 @@ export PATH="$HOME/.local/bin:$HOME/.cargo/bin:$PATH"
 export CARGO_NET_GIT_FETCH_WITH_CLI=true
 
 if [ Darwin = `uname` ]; then
-  source $HOME/.profile-mac
+  # Homebrew Path Changes
+  export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
 fi
 
 if [ Linux = `uname` ]; then
-  source $HOME/.profile-linux
+  # For Steam Shader Stuff (https://github.com/ValveSoftware/steam-for-linux/issues/9748)
+  export __GL_SHADER_DISK_CACHE_SKIP_CLEANUP=1
 fi
 
 # SSH_AUTH_SOCK set to GPG to enable using gpgagent as the ssh agent.
