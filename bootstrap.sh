@@ -6,11 +6,9 @@
 
 SCRIPT_PATH=$(realpath $(dirname $0))
 
-if [ ! command -v stow ]; then
+if (! command -v stow &> /dev/null); then
   echo "Stow must be installed!"
   exit;
-else
-  cd $SCRIPT_PATH && stow --adopt .
 fi
 
 # Git Config Symlinking for Mac and Linux
@@ -35,30 +33,32 @@ if [ "Linux" = `uname` ]; then
     makepkg -si
   fi
 elif [ "Darwin" = `uname` ]; then
-    if (command -v brew &> /dev/null); then
-        echo "Package Manager: Homebrew is already installed"
-    else
-        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    fi
+  if (command -v brew &> /dev/null); then
+    echo "Package Manager: Homebrew is already installed"
+  else
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  fi
 else
-    echo "Package Manager: Your OS is not supported"
+  echo "Package Manager: Your OS is not supported"
 fi
 
 # Firefox Theme
 if (command -v firefox &> /dev/null); then
+  if [[ -f $SCRIPT_PATH/install_state && $(cat $SCRIPT_PATH/install_state | grep 'firefox-theme') ]]; then
+    echo "Firefox Theme: Theme already installed."
+  else
     if [ "Linux" = `uname` ]; then
-        echo "Firefox Theme: Installing firefox-gnome-theme..."
-        curl -s -o- https://raw.githubusercontent.com/rafaelmardojai/firefox-gnome-theme/master/scripts/install-by-curl.sh | bash
+      echo "Firefox Theme: Installing firefox-gnome-theme..."
+      curl -s -o- https://raw.githubusercontent.com/rafaelmardojai/firefox-gnome-theme/master/scripts/install-by-curl.sh | bash
+      echo "firefox-theme" > $SCRIPT_PATH/install_state
     elif [ "Darwin" = `uname` ]; then
-        FIREFOX_PATH="$HOME/Library/"Application Support"/Firefox/Profiles/*.default-release"
-        if [ ! -f $FIREFOX_PATH ]; then
-          echo "Firefox Theme: Installing WhiteSurFirefoxThemeMacOS..."
-          git clone https://github.com/AdamXweb/WhiteSurFirefoxThemeMacOS.git tmp && cd tmp && bash ./install.sh && cd .. && rm -rf tmp
-          touch theme.installed ~/Library/"Application Support"/Firefox/Profiles/*.default-release
-        fi
+      echo "Firefox Theme: Installing WhiteSurFirefoxThemeMacOS..."
+      git clone https://github.com/AdamXweb/WhiteSurFirefoxThemeMacOS.git tmp && cd tmp && bash ./install.sh && cd .. && rm -rf tmp
+      echo "firefox-theme" > $SCRIPT_PATH/install_state
     else
-        echo "Firefox Theme: Your OS is not supported"
+      echo "Firefox Theme: Your OS is not supported"
     fi
+  fi
 fi
 
 # Shell
