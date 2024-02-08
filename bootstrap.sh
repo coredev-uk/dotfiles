@@ -6,6 +6,13 @@
 
 SCRIPT_PATH=$(realpath $(dirname $0))
 
+if [ ! command -v stow ]; then
+  echo "Stow must be installed!"
+  exit;
+else
+  cd $SCRIPT_PATH && stow --adopt .
+fi
+
 # Git Config Symlinking for Mac and Linux
 if [ "Linux" = `uname` ]; then
   ln -sf $SCRIPT_PATH/gitconfig-linux $HOME/.gitconfig
@@ -43,8 +50,12 @@ if (command -v firefox &> /dev/null); then
         echo "Firefox Theme: Installing firefox-gnome-theme..."
         curl -s -o- https://raw.githubusercontent.com/rafaelmardojai/firefox-gnome-theme/master/scripts/install-by-curl.sh | bash
     elif [ "Darwin" = `uname` ]; then
-        echo "Firefox Theme: Installing WhiteSurFirefoxThemeMacOS..."
-        git clone https://github.com/AdamXweb/WhiteSurFirefoxThemeMacOS.git tmp && cd tmp && bash ./install.sh && cd .. && rm -rf tmp
+        FIREFOX_PATH="$HOME/Library/"Application Support"/Firefox/Profiles/*.default-release"
+        if [ ! -f $FIREFOX_PATH ]; then
+          echo "Firefox Theme: Installing WhiteSurFirefoxThemeMacOS..."
+          git clone https://github.com/AdamXweb/WhiteSurFirefoxThemeMacOS.git tmp && cd tmp && bash ./install.sh && cd .. && rm -rf tmp
+          touch theme.installed ~/Library/"Application Support"/Firefox/Profiles/*.default-release
+        fi
     else
         echo "Firefox Theme: Your OS is not supported"
     fi
