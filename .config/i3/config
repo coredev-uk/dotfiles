@@ -35,7 +35,7 @@ exec /usr/lib/geoclue-2.0/demos/agent
 exec                    xclip
 exec                    openrgb --startminimized -p $RGBPROFILE
 exec                    xscreensaver --no-splash
-exec                    protonmail-bridge -no-window --noninteractive
+exec                    protonmail-bridge -no-window 
 exec                    steam -silent
 exec                    1password --silent
 exec                    rclone mount --daemon protondrive: ~/ProtonDrive/ --vfs-cache-mode=full
