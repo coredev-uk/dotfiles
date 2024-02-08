@@ -25,3 +25,5 @@ _darcs
 ^/gitconfig-.* # git config files
 ^/bootstrap.sh # bootstrap script
 ^/scripts # scripts
+^/install_state # install state 
+^/.DS_Store

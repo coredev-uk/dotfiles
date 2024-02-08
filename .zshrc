@@ -14,7 +14,7 @@ export PATH="$HOME/.local/bin:$HOME/.cargo/bin:$PATH"
 export CARGO_NET_GIT_FETCH_WITH_CLI=true
 
 if [ Darwin = `uname` ]; then
-  source $HOME/.profile-macos
+  source $HOME/.profile-mac
 fi
 
 if [ Linux = `uname` ]; then
@@ -44,6 +44,8 @@ fi
 
 source "${ZINIT_HOME}/zinit.zsh"
 
+## Snippets
+
 zinit light ohmyzsh/ohmyzsh
 zinit ice depth=1; zinit light romkatv/powerlevel10k
 zinit snippet OMZP::git
@@ -54,6 +56,13 @@ zinit snippet OMZP::1password
 zinit snippet OMZP::nvm
 zinit snippet OMZP::ssh-agent
 
+if [ Darwin = `uname` ]; then
+  zinit snippet OMZP::brew
+  zinit snippet OMZP::iterm2
+  zstyle :omz:plugins:iterm2 shell-integration yes > /dev/null 2>&1
+fi
+
+### More
 zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
 zinit light zsh-users/zsh-syntax-highlighting
@@ -61,12 +70,6 @@ zinit light zsh-users/zsh-syntax-highlighting
 export LANG=en_GB.UTF-8
 export LC_ALL=en_GB.UTF-8
 
-if [ Darwin = `uname` ]; then
-  zinit snippet OMZP::brew
-  zinit snippet OMZP::iterm2
-  zinit snippet OMZP::macos
-  zstyle :omz:plugins:iterm2 shell-integration yes > /dev/null 2>&1
-fi
 
 setopt auto_cd
 
