@@ -45,9 +45,11 @@ fi
 source "${ZINIT_HOME}/zinit.zsh"
 
 ## Snippets
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
 
 zinit light ohmyzsh/ohmyzsh
-zinit ice depth=1; zinit light romkatv/powerlevel10k
+zinit ice depth"1"; zinit light romkatv/powerlevel10k
 zinit snippet OMZP::git
 zinit snippet OMZP::sudo
 zinit snippet OMZP::rust
