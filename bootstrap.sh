@@ -62,12 +62,13 @@ if (command -v firefox &> /dev/null); then
 fi
 
 # Shell
-if (command -v zsh &> /dev/null); then
-  if [ `$SHELL` != `which zsh` ]; then
+if command -v zsh &> /dev/null; then
+  if [[ -f $SCRIPT_PATH/install_state && $(cat $SCRIPT_PATH/install_state | grep 'zsh-default') ]]; then
+    echo "Shell: Zsh is already the default shell"
+  else
     echo "Shell: Changing shell to Zsh"
     chsh -s $(which zsh)
-  else
-    echo "Shell: Zsh is already the default shell"
+    echo "zsh-default" >> $SCRIPT_PATH/install_state
   fi
 else
   echo "Shell: Zsh is not installed"
