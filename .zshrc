@@ -45,6 +45,7 @@ if [ ! -d "$ZINIT_HOME" ]; then
 fi
 
 source "${ZINIT_HOME}/zinit.zsh"
+source /usr/share/nvm/init-nvm.sh
 
 ## Snippets
 autoload -Uz _zinit
@@ -53,12 +54,8 @@ autoload -Uz _zinit
 zinit light ohmyzsh/ohmyzsh
 zinit ice depth"1"; zinit light romkatv/powerlevel10k
 zinit snippet OMZP::git
-zinit snippet OMZP::sudo
 zinit snippet OMZP::rust
 zinit snippet OMZP::command-not-found
-zinit snippet OMZP::1password
-zinit snippet OMZP::nvm
-zinit snippet OMZP::ssh-agent
 
 if [ Darwin = `uname` ]; then
   zinit snippet OMZP::brew
