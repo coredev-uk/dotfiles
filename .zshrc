@@ -34,6 +34,15 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+# FNM
+if [[ ! -f "$HOME/.local/share/fnm/fnm" ]]; then
+  curl -fsSL https://raw.githubusercontent.com/Schniz/fnm/master/.ci/install.sh | bash
+  export PATH="$HOME/.local/share/fnm:$PATH"
+  eval "`fnm env`"
+else
+  export PATH="$HOME/.local/share/fnm:$PATH"
+  eval "`fnm env`"
+fi
 
 autoload -Uz compinit && compinit
 
@@ -81,6 +90,7 @@ alias vi=nvim
 alias vim=nvim
 alias ls='eza -F --group-directories-first'
 alias yarn='corepack yarn' # Use corepack for yarn
+alias nvm='fnm' # Use fnm for nvm
 
 # P10k customizations
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
@@ -97,3 +107,4 @@ if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
 fi
 
 zle_highlight=('paste:none')
+
