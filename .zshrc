@@ -35,7 +35,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # FNM
-if [[ ! -f "$HOME/.local/share/fnm/fnm" ]]; then
+if [[ (Linux = `uname` && ! -f "$HOME/.local/share/fnm/fnm") || (Darwin = `uname` && ! -f "/opt/homebrew/bin/fnm") ]]; then
   curl -fsSL https://raw.githubusercontent.com/Schniz/fnm/master/.ci/install.sh | bash
   export PATH="$HOME/.local/share/fnm:$PATH"
   eval "`fnm env`"
@@ -54,7 +54,6 @@ if [ ! -d "$ZINIT_HOME" ]; then
 fi
 
 source "${ZINIT_HOME}/zinit.zsh"
-source /usr/share/nvm/init-nvm.sh
 
 ## Snippets
 autoload -Uz _zinit
