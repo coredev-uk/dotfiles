@@ -34,16 +34,6 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# FNM
-if [[ (Linux = `uname` && ! -f "$HOME/.local/share/fnm/fnm") || (Darwin = `uname` && ! -f "/opt/homebrew/bin/fnm") ]]; then
-  curl -fsSL https://raw.githubusercontent.com/Schniz/fnm/master/.ci/install.sh | bash
-  export PATH="$HOME/.local/share/fnm:$PATH"
-  eval "`fnm env`"
-else
-  export PATH="$HOME/.local/share/fnm:$PATH"
-  eval "`fnm env`"
-fi
-
 autoload -Uz compinit && compinit
 
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
@@ -107,3 +97,16 @@ fi
 
 zle_highlight=('paste:none')
 
+# FNM
+if [[ (Linux = `uname` && ! -f "$HOME/.local/share/fnm/fnm") || (Darwin = `uname` && ! -f "/opt/homebrew/bin/fnm") ]]; then
+  curl -fsSL https://raw.githubusercontent.com/Schniz/fnm/master/.ci/install.sh | bash
+  export PATH="$HOME/.local/share/fnm:$PATH"
+  eval "`fnm env`"
+else
+  export PATH="$HOME/.local/share/fnm:$PATH"
+  eval "`fnm env`"
+fi
+
+if (command -v zoxide > /dev/null); then
+  eval "$(zoxide init --cmd cd zsh)"
+fi
