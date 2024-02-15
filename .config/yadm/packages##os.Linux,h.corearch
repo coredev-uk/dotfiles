@@ -1,6 +1,5 @@
 alacritty
 amd-ucode
-awesome-terminal-fonts
 base
 base-devel
 bind
@@ -19,10 +18,10 @@ eza
 firefox
 flameshot
 gamemode
+github-cli
 globalprotect-openconnect
 hyprland
 jdk-openjdk
-kitty
 lib32-libnm
 lib32-nvidia-utils
 libappindicator-gtk2
@@ -35,7 +34,6 @@ lld
 lvm2
 man-db
 mangohud
-mpv
 neovim
 network-manager-applet
 networkmanager
@@ -63,16 +61,13 @@ rofi
 rpm-tools
 rustup
 sbctl
-sshfs
-sshpass
-starship
 steam
+stow
 swaybg
 thunderbird
 timeshift
+tree
 tree-sitter-cli
-ttf-firacode-nerd
-ttf-inconsolata-nerd
 ttf-jetbrains-mono-nerd
 ttf-nerd-fonts-symbols
 unrar
@@ -81,8 +76,6 @@ vkd3d
 vulkan-headers
 vulkan-tools
 waybar
-wine
-winetricks
 wireguard-tools
 wireplumber
 wl-clipboard
@@ -95,3 +88,5 @@ xorg-xinput
 xorg-xwayland
 yadm
 zip
+zoxide
+zsh
