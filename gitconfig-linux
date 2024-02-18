@@ -31,4 +31,4 @@
 	rebase = false
 
 [includeIf "hasconfig:remote.*.url:git@git.cs.kent.ac.uk*/**"]
-  path = ~/ProtonDrive/private/.gitconfig-uni
+  path = ~/.gitconfig-uni
