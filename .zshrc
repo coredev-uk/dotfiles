@@ -110,3 +110,7 @@ fi
 if (command -v zoxide > /dev/null); then
   eval "$(zoxide init --cmd cd zsh)"
 fi
+
+if [ -f "$HOME/.profile" ]; then
+  source "$HOME/.profile"
+fi

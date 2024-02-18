@@ -38,8 +38,8 @@ exec                    xscreensaver --no-splash
 exec                    protonmail-bridge -no-window 
 exec                    steam -silent
 exec                    1password --silent
-exec                    rclone mount --daemon protondrive: ~/ProtonDrive/ --vfs-cache-mode=full
-exec                    rclone mount --daemon onedrive: ~/OneDrive/ --vfs-cache-mode=full
+exec                    rclone mount --daemon protondrive: ~/ProtonDrive/ --vfs-cache-mode=writes
+exec                    rclone mount --daemon onedrive: ~/OneDrive/ --vfs-cache-mode=writes
 exec --no-startup-id    $NOTIFY
 
 #exec                    $BROWSER --no-startup-window
@@ -79,7 +79,6 @@ title_align center
 default_floating_border pixel 0
 default_border pixel 0
 for_window [class="^.*"] border pixel 0
-border_radius $rounded
 
 # GAPS
 gaps inner $inner
