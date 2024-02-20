@@ -1,4 +1,5 @@
 #!/bin/sh
 sudo su - <<EOF
-systemctl reboot --boot-loader-entry=bootmgfw.efi
+efibootmgr -n 0000
+reboot
 EOF
