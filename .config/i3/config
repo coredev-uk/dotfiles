@@ -31,11 +31,12 @@ exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec /usr/lib/geoclue-2.0/demos/agent
 
 ##### LAUNCH ##############################
-
+exec                    redshift
 exec                    xclip
 exec                    openrgb --startminimized -p $RGBPROFILE
 exec                    xscreensaver --no-splash
 exec                    protonmail-bridge -no-window 
+exec                    thunderbird
 exec                    steam -silent
 exec                    1password --silent
 exec                    rclone mount --daemon protondrive: ~/ProtonDrive/ --vfs-cache-mode=writes
@@ -54,7 +55,7 @@ exec_always --no-startup-id $COMPOSITOR
 ###############################################
 
 # FONT
-font pango:SF Pro Display Regular 10
+font pango:SFMono Nerd Font Mono 10
 
 # GAPS
 set $inner 10
@@ -140,6 +141,12 @@ for_window [instance="^sun-awt-X11-XDialogPeer$" title="^Complete Installation$"
 # OTHER
 for_window [class="Lutris" title="Manage Runners"] floating enable
 for_window [class="feh"] floating enable
+
+###############################################
+##### WORKSPACE ASSIGNING #####################
+###############################################
+
+assign [class="thunderbird"] 5
 
 ###############################################
 ##### TOOLS ###################################
