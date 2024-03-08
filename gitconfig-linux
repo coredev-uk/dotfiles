@@ -30,5 +30,5 @@
 [pull]
 	rebase = false
 
-[includeIf "hasconfig:remote.*.url:git@git.cs.kent.ac.uk*/**"]
-  path = ~/.gitconfig-uni
+[includeIf "hasconfig:remote.*.url:git@git.cs.kent.ac.uk:*/**"]
+  path = ~/.gitconfig-cs
