@@ -13,7 +13,7 @@
   gpgsign = true
 
 [url "git@github.com:"]
-	insteadOf = https://github.com/
+  insteadOf = https://github.com/
 
 [url "https://github.com/rust-lang/crates.io-index"]
 	insteadOf = https://github.com/rust-lang/crates.io-index
@@ -30,5 +30,5 @@
 [pull]
 	rebase = false
 
-[includeIf "hasconfig:remote.*.url:git@git.cs.kent.ac.uk*/**"]
-  path = ~/ProtonDrive/private/.gitconfig-uni
+[includeIf "hasconfig:remote.*.url:git@git.cs.kent.ac.uk:*/**"]
+  path = ~/.gitconfig-cs
