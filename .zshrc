@@ -15,7 +15,7 @@ export CARGO_NET_GIT_FETCH_WITH_CLI=true
 
 if [ Darwin = `uname` ]; then
   # Homebrew Path Changes
-  export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
+  export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$(brew --prefix python)/libexec/bin:$PATH"
 fi
 
 if [ Linux = `uname` ]; then
@@ -71,8 +71,10 @@ export LD_LIBRARY_PATH=/usr/local/lib
 alias vi=nvim
 alias vim=nvim
 alias ls='eza -F --group-directories-first'
-alias yarn='corepack yarn' # Use corepack for yarn
 alias nvm='fnm' # Use fnm for nvm
+if (command -v corepack &> /dev/null); then
+  alias yarn='corepack yarn' # Use corepack for yarn
+fi
 
 # P10k customizations
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
@@ -106,4 +108,12 @@ fi
 
 if [ -f "$HOME/.profile" ]; then
   source "$HOME/.profile"
+fi
+
+if [ -f "$HOME/.config/op/plugins.sh" ]; then
+  source $HOME/.config/op/plugins.sh
+fi
+
+if (command -v pkgx &> /dev/null); then
+  source <(pkgx --shellcode)  #docs.pkgx.sh/shellcode
 fi
