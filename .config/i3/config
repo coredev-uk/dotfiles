@@ -11,7 +11,6 @@ set $TERM           alacritty # MESA_LOADER_DRIVER_OVERRIDE=radeonsi __EGL_VENDO
 set $ROFI           rofi -show drun -theme $HOME/.config/rofi/config.rasi  # > /tmp/rofi.log 2>&1 
 set $BAR            "~/.config/polybar/launch.sh"
 set $NOTIFY         dunst
-set $LOCK           betterlockscreen -l dimblur 
 set $BACKGROUND     feh --bg-fill --randomize $HOME/.wallpapers/*
 set $RGBPROFILE     orange-night 
 set $FILEMANAGER    nemo
@@ -33,13 +32,8 @@ exec /usr/lib/geoclue-2.0/demos/agent
 ##### LAUNCH ##############################
 exec                    redshift
 exec                    xclip
-exec                    openrgb --startminimized -p $RGBPROFILE
-exec                    xscreensaver --no-splash
-exec                    protonmail-bridge -no-window 
-exec                    steam -silent
 exec                    1password --silent
 exec                    rclone mount --daemon protondrive: ~/ProtonDrive/ --vfs-cache-mode=writes
-exec                    rclone mount --daemon onedrive: ~/OneDrive/ --vfs-cache-mode=writes
 exec --no-startup-id    $NOTIFY
 
 #exec                    $BROWSER --no-startup-window
@@ -163,8 +157,6 @@ bindsym XF86AudioPrev               exec playerctl previous
 bindsym $MOD+Return     exec $TERM
 # ROFI
 bindsym $MOD+space      exec --no-startup-id $rofi
-# LOCK
-bindsym $MOD+l          exec $LOCK
 # BROWSER
 bindsym $MOD+b          exec $BROWSER
 # SCREENSHOT

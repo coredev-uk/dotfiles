@@ -72,9 +72,6 @@ alias vi=nvim
 alias vim=nvim
 alias ls='eza -F --group-directories-first'
 alias nvm='fnm' # Use fnm for nvm
-if (command -v corepack &> /dev/null); then
-  alias yarn='corepack yarn' # Use corepack for yarn
-fi
 
 # P10k customizations
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
