@@ -5,7 +5,9 @@ load({{
     lazy = false,
     priority = 1000,
     config = function()
-        vim.cmd [[colorscheme carbonfox]]
+        vim.cmd.colorscheme("carbonfox")
+        vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+        vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
     end
 }, {
     "rcarriga/nvim-notify",
@@ -14,9 +16,6 @@ load({{
     end
 }, {
     "nvim-telescope/telescope.nvim",
-    config = function()
-        require("configs.telescope")
-    end,
     dependencies = "nvim-lua/plenary.nvim"
 }, {
     "akinsho/bufferline.nvim",
@@ -34,4 +33,6 @@ load({{
     config = function()
         require("configs.tree")
     end
-}})
+}
+
+})
