@@ -1,7 +1,5 @@
 local wk = require("which-key")
 
-vim.g.mapleader = " "
-
 wk.setup()
 
 wk.register({

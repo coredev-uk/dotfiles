@@ -1,4 +1,5 @@
 local set = vim.opt
+local g = vim.g
 
 set.autoindent = true
 set.expandtab = true
@@ -18,8 +19,10 @@ set.termguicolors = true
 set.background = 'dark'
 --set foldmethod=expr
 --set foldexpr=nvim_treesitter#foldexpr()
-vim.g.mapleader = " "
+g.mapleader = " "
+-- disable netrw at the very start of your init.lua
+g.loaded_netrw = 1
+g.loaded_netrwPlugin = 1
 
-return {
-    
-}
+
+return {}
