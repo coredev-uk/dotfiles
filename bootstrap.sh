@@ -22,14 +22,14 @@ fi
 
 # Package Manager
 if [ "Linux" = `uname` ]; then
-  if (command -v yay &> /dev/null); then
-    echo "Package Manager: Yay is already installed"
+  if (command -v paru &> /dev/null); then
+    echo "Package Manager: Paru is already installed"
   else
     sudo pacman -S --needed base-devel
 
     # Install AUR helper
-    git clone https://aur.archlinux.org/yay.git
-    cd yay
+    git clone https://aur.archlinux.org/paru.git
+    cd paru
     makepkg -si
   fi
 elif [ "Darwin" = `uname` ]; then

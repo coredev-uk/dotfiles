@@ -10,7 +10,6 @@
   "modules-center": ["hyprland/window"],
   "modules-right": [
     "tray",
-    "custom/updates",
     "hyprland/language",
     "custom/vpn",
     "battery",
@@ -31,11 +30,6 @@
     "on-scroll-up": "hyprctl dispatch workspace e+1",
     "on-scroll-down": "hyprctl dispatch workspace e-1"
   },
-  "custom/updates": {
-    "exec": "(pacman -Qu ; yay -Qua) | wc -l",
-    "interval": 7200,
-    "format": " {}"
-  },
   "custom/weather": {
     "tooltip": true,
     "format": "{}",
@@ -47,11 +41,11 @@
     "tooltip": true,
     "format": "{}",
     "interval": 5,
-    "exec": "~/.config/waybar/scripts/waybar-nowplaying.py --playing-only --quiet -f ' {artist} [ {song} ]' --trunclen 30",
+    "exec": "~/dotfiles/scripts/song_formatted.sh --waybar",
     "return-type": "json",
-    "on-click": "playerctl --player=cider2 play-pause && playerctl --player=spotify play-pause",
-    "on-scroll-up": "playerctl --player=cider2 next && playerctl --player=spotify next",
-    "on-scroll-down": "playerctl --player=cider2 previous && playerctl --player=spotify previous"
+    "on-click": "playerctl --player=cider,spotify play-pause && playerctl --player=spotify play-pause",
+    "on-scroll-up": "playerctl --player=cider,spotify next && playerctl --player=spotify next",
+    "on-scroll-down": "playerctl --player=cider,spotify previous && playerctl --player=spotify previous"
   },
   "custom/vpn": {
     "tooltip": true,
@@ -66,8 +60,7 @@
     "spacing": 10
   },
   "clock": {
-    "format": "{: %R   %d/%m}",
-    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+    "format": "{: %I:%M %p   %d/%m/%Y}",
   },
   "backlight": {
     "device": "intel_backlight",
