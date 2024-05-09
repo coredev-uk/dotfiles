@@ -8,6 +8,9 @@ if [ -d "$directory" ]; then
 	hyprctl hyprpaper unload all
 	hyprctl hyprpaper preload $random_background
 
+	rm ~/.current-wallpaper.png
+	ln -s $random_background ~/.current-wallpaper.png
+
 	for monitor in $monitors; do
 		hyprctl hyprpaper wallpaper "$monitor, $random_background"
 	done
