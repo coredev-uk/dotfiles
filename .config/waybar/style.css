@@ -117,7 +117,7 @@ tooltip {
     border-right: 0px;
 }
 
-#clock.2 {
+#clock.date {
   border-radius: 0;
 }
 
@@ -160,6 +160,7 @@ tooltip {
 }
 
 .custom-nowplaying {
+    color: #f38ba8;
     border-left: 0px;
     border-right: 0px;
 }
