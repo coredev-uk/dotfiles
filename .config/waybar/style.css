@@ -1,9 +1,9 @@
 * {
     border: none;
     border-radius: 0;
-    font-family: monospace;
-    font-weight: bold;
-    font-size: 14px;
+    font-family: SF Pro Display, Symbols Nerd Font;
+    font-weight: 600;
+    font-size: 12px;
     min-height: 0;
 }
 
@@ -94,6 +94,7 @@ tooltip {
     color: #f38ba8;
     border-left: 0px;
     border-right: 0px;
+    border-radius: 10px 0px 0px 10px;
 }
 
 #custom-updates {
@@ -114,6 +115,10 @@ tooltip {
     border-radius: 10px 0px 0px 10px;
     margin-left: 0px;
     border-right: 0px;
+}
+
+#clock.2 {
+  border-radius: 0;
 }
 
 #network {
