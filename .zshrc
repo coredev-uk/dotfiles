@@ -1,32 +1,3 @@
-# Set the GPG_TTY to be the same as the TTY, either via the env var
-# or via the tty command.
-if [ -n "$TTY" ]; then
-  export GPG_TTY=$(tty)
-else
-  export GPG_TTY="$TTY"
-fi
-
-# Path Updated
-export PATH="/usr/local/bin:/usr/bin:$PATH"
-export PATH="$HOME/.local/bin:$HOME/.cargo/bin:$PATH"
-
-# Cargo Stupidity
-export CARGO_NET_GIT_FETCH_WITH_CLI=true
-
-if [ Darwin = `uname` ]; then
-  # Homebrew Path Changes
-  export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$(brew --prefix python)/libexec/bin:$PATH"
-fi
-
-if [ Linux = `uname` ]; then
-  # For Steam Shader Stuff (https://github.com/ValveSoftware/steam-for-linux/issues/9748)
-  export __GL_SHADER_DISK_CACHE_SKIP_CLEANUP=1
-fi
-
-# SSH_AUTH_SOCK set to GPG to enable using gpgagent as the ssh agent.
-export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
-gpgconf --launch gpg-agent
-
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -34,83 +5,100 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# Install Zinit
-ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
-[ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
-[ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+# Set the GPG_TTY to be the same as the TTY, either via the env var or via the tty command.
+if [ -n "$TTY" ]; then
+  export GPG_TTY=$(tty)
+else
+  export GPG_TTY="$TTY"
+fi
+
+# Environment variables
+export PATH="/usr/local/bin:/usr/bin:$PATH"
+export PATH="$HOME/.local/bin:$HOME/.cargo/bin:$PATH"
+export CARGO_NET_GIT_FETCH_WITH_CLI=true
+export __GL_SHADER_DISK_CACHE_SKIP_CLEANUP=1 # For Steam Shader Stuff (https://github.com/ValveSoftware/steam-for-linux/issues/9748)
+
+# Homebrew
+if (command -v brew &> /dev/null); then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
+
+# First ensure zinit is installed
+ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git" # Setting the directory we want to store zinit stuff
+
+# Download zinit (if not already installed)
+if [ ! -d "$ZINIT_HOME" ]; then
+  mkdir -p "$(dirname $ZINIT_HOME)"
+  git clone https://zdharma-continuum/zinit.git "$ZINIT_HOME"
+fi
+
+# Load zinit
 source "${ZINIT_HOME}/zinit.zsh"
 
-autoload -Uz compinit && compinit
+# Add Powerlevel10k
+zinit ice depth=1; zinit light romkatv/powerlevel10k
 
-## Zinit Plugins
-zinit light ohmyzsh/ohmyzsh
-zinit ice depth"1"; zinit light romkatv/powerlevel10k
+# Plugins
+zinit light zsh-users/zsh-syntax-highlighting
+zinit light zsh-users/zsh-completions
+zinit light zsh-users/zsh-autosuggestions
+zinit light Aloxaf/fzf-tab
+
+# Snippets
 zinit snippet OMZP::git
 zinit snippet OMZP::rust
 zinit snippet OMZP::command-not-found
 
-if [ Darwin = `uname` ]; then
-  zinit snippet OMZP::brew
-  zinit snippet OMZP::iterm2
-  zstyle :omz:plugins:iterm2 shell-integration yes > /dev/null 2>&1
-fi
 
-### More
-zinit light zsh-users/zsh-completions
-zinit light zsh-users/zsh-autosuggestions
-zinit light zsh-users/zsh-syntax-highlighting
+# Load completions 
+autoload -U compinit && compinit
 
-export LANG=en_GB.UTF-8
-export LC_ALL=en_GB.UTF-8
+zinit cdreplay -q
 
-setopt auto_cd
+# To customize prompt, run 'p10k configure' or edit ~/.p10k.zsh
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-export LD_LIBRARY_PATH=/usr/local/lib
+# Keybinds
+bindkey -e
+bindkey '^p' history-search-backward
+bindkey '^n' history-search-forward
+
+# History Vars
+HISTSIZE=5000
+HISTFILE=~/.zsh_history
+SAVEHIST=$HISTSIZE
+HISTDUP=erase
+setopt appendhistory
+setopt sharehistory
+setopt hist_ignore_space
+setopt hist_ignore_all_dups
+setopt hist_save_no_dups
+setopt hist_ignore_dups
+setopt hist_find_no_dups
+
+# Completion styling
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+zstyle ':completion:*' menu no
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
+zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
 # Aliases
-alias vi=nvim
-alias vim=nvim
-alias ls='eza -F --group-directories-first'
-alias nvm='fnm' # Use fnm for nvm
+alias grep="grep --color=auto"
+alias ls="ls --color=auto --group-directories-first"
+alias la="ls -la"
+alias ..="cd .."
+alias vim="nvim"
+alias nvm="fnm"
 
-# P10k customizations
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
-
-# Fix for password store
-export PASSWORD_STORE_GPG_OPTS='--no-throw-keyids'
-
-bindkey "^P" up-line-or-beginning-search
-bindkey "^N" down-line-or-beginning-search
-
-if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
-  export MOZ_ENABLE_WAYLAND=1
+# Shell Integrations
+eval "$(fzf --zsh)"
+eval "$(zoxide init --cmd cd zsh)"
+eval "$(fnm env)"
+if [ Darwin = `uname` ]; then
+  zstyle :omz:plugins:iterm2 shell-integration yes > /dev/null 2>&1
 fi
-
-zle_highlight=('paste:none')
-
-# FNM
-if [[ (Linux = `uname` && ! -f "$HOME/.local/share/fnm/fnm") || (Darwin = `uname` && ! -f "/opt/homebrew/bin/fnm") ]]; then
-  curl -fsSL https://raw.githubusercontent.com/Schniz/fnm/master/.ci/install.sh | bash
-  export PATH="$HOME/.local/share/fnm:$PATH"
-  eval "`fnm env`"
-else
-  export PATH="$HOME/.local/share/fnm:$PATH"
-  eval "`fnm env`"
-fi
-
-if (command -v zoxide > /dev/null); then
-  eval "$(zoxide init --cmd cd zsh)"
-fi
-
-if [ -f "$HOME/.profile" ]; then
-  source "$HOME/.profile"
-fi
-
-if [ -f "$HOME/.config/op/plugins.sh" ]; then
-  source $HOME/.config/op/plugins.sh
-fi
-
+ 
 if (command -v pkgx &> /dev/null); then
   source <(pkgx --shellcode)  #docs.pkgx.sh/shellcode
 fi
