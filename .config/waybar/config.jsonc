@@ -34,7 +34,7 @@
     "tooltip": true,
     "format": "{}",
     "interval": 30,
-    "exec": "~/dotfiles/scripts/get_weather.sh $(cat .current-location)",
+    "exec": "~/dotfiles/scripts/get_weather.sh $(cat ~/.current-location)",
     "return-type": "json"
   },
   "custom/nowplaying": {
