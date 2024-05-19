@@ -49,7 +49,6 @@ zinit snippet OMZP::git
 zinit snippet OMZP::rust
 zinit snippet OMZP::command-not-found
 
-
 # Load completions 
 autoload -U compinit && compinit
 
@@ -85,7 +84,7 @@ zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
 # Aliases
 alias grep="grep --color=auto"
-alias ls="ls --color=auto --group-directories-first"
+alias ls="eza --color --group-directories-first"
 alias la="ls -la"
 alias ..="cd .."
 alias vim="nvim"
