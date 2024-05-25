@@ -74,14 +74,6 @@ else
   echo "Shell: Zsh is not installed"
 fi
 
-
-# Scripts
-if [[ "Linux" = `uname` || "Darwin" = `uname` ]]; then
-  cp $SCRIPT_PATH/scripts/* $HOME/.local/bin
-else
-  echo "Scripts: Your OS is not supported"
-fi
-
 # FNM (Node Version Manager in R*)
 if [[ (Linux = `uname` && ! -f "$HOME/.local/share/fnm/fnm") || (Darwin = `uname` && ! -f "/opt/homebrew/bin/fnm") ]]; then
   curl -fsSL https://raw.githubusercontent.com/Schniz/fnm/master/.ci/install.sh | bash
