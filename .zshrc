@@ -13,8 +13,7 @@ else
 fi
 
 # Environment variables
-export PATH="/usr/local/bin:/usr/bin:$PATH"
-export PATH="$HOME/.local/bin:$HOME/.cargo/bin:$PATH"
+export PATH="$HOME/dotfiles/scripts:$HOME/.cargo/bin:$PATH"
 export CARGO_NET_GIT_FETCH_WITH_CLI=true
 export __GL_SHADER_DISK_CACHE_SKIP_CLEANUP=1 # For Steam Shader Stuff (https://github.com/ValveSoftware/steam-for-linux/issues/9748)
 
@@ -89,6 +88,7 @@ alias la="ls -la"
 alias ..="cd .."
 alias vim="nvim"
 alias nvm="fnm"
+alias jellyfin="__EGL_VENDOR_LIBRARY_FILENAMES=/usr/share/glvnd/egl_vendor.d/50_mesa.json jellyfinmediaplayer"
 
 # Shell Integrations
 eval "$(fzf --zsh)"

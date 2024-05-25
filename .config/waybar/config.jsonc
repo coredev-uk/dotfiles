@@ -12,8 +12,6 @@
     "tray",
     "hyprland/language",
     "custom/vpn",
-    "battery",
-    "backlight",
     "pulseaudio",
     "pulseaudio#microphone"
   ],
@@ -34,7 +32,7 @@
     "tooltip": true,
     "format": "{}",
     "interval": 30,
-    "exec": "~/dotfiles/scripts/get_weather.sh $(cat ~/.current-location)",
+    "exec": "~/dotfiles/scripts/get_weather.sh --waybar $(cat ~/.current-location)",
     "return-type": "json"
   },
   "custom/nowplaying": {
@@ -69,26 +67,6 @@
   },
   "clock#date": {
     "format": "󰃭  {:%d/%m}"
-  },
-  "backlight": {
-    "device": "intel_backlight",
-    "format": "{icon} {percent}%",
-    "format-icons": ["", "", ""],
-    "on-scroll-up": "brightnessctl set 1%+",
-    "on-scroll-down": "brightnessctl set 1%-",
-    "min-length": 6
-  },
-  "battery": {
-    "states": {
-      "good": 95,
-      "warning": 30,
-      "critical": 20
-    },
-    "format": "{icon} {capacity}%",
-    "format-charging": " {capacity}%",
-    "format-plugged": " {capacity}%",
-    "format-alt": "{time} {icon}",
-    "format-icons": [" ", " ", " ", " ", " "]
   },
   "pulseaudio": {
     "format": "{icon} {volume}%",

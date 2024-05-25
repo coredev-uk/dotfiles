@@ -4,89 +4,66 @@
 
 set $MOD Mod4
 
-# APP VARIABLES
+# Defaults
 set $BROWSER        firefox
 set $SCREENSHOT     flameshot gui 
-set $TERM           alacritty # MESA_LOADER_DRIVER_OVERRIDE=radeonsi __EGL_VENDOR_LIBRARY_FILENAMES=/usr/share/glvnd/egl_vendor.d/50_mesa.json kitty
+set $TERM           alacritty
 set $ROFI           rofi -show drun -theme $HOME/.config/rofi/config.rasi  # > /tmp/rofi.log 2>&1 
-set $BAR            "~/.config/polybar/launch.sh"
+set $BAR            $HOME/.config/polybar/launch.sh
 set $NOTIFY         dunst
-set $BACKGROUND     feh --bg-fill --randomize $HOME/.wallpapers/*
+set $BACKGROUND     $HOME/dotfiles/scripts/wallpaper.sh
+set $LOCK           i3lock -nef -c 000000
+set $IDLELOCK       xidlehook --not-when-audio --not-when-fullscreen --detect-sleep --timer 300 $LOCK --timer 300 xset s activate --timer 1200 systemctl suspend
+set $CLIPBOARD      greenclip daemon
+set $BLUELIGHT      redshift
 
-# I3 SPECIFIC VARIABLES
-set $COMPOSITOR     compfy
+# i3 Specific
 set $CENTER         move position center
 set $RESIZE         resize set 80 ppt 70 ppt
 
-# PLATFORM SPECIFIC VARIABLES
+###############################################
+##### APPS ####################################
+###############################################
 
 # Setup Environment
-exec dbus-update-activation-environment --all
 exec nm-applet
 exec gnome-keyring-daemon --start --components=secrets
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec /usr/lib/geoclue-2.0/demos/agent
+exec dbus-update-activation-environment --all
 
-##### LAUNCH ##############################
-exec                    redshift
-exec                    xclip
-exec                    1password --silent
-exec                    rclone mount --daemon protondrive: ~/ProtonDrive/ --vfs-cache-mode=writes
-exec --no-startup-id    $NOTIFY
+# Standard Applications
+exec --no-startup-id        $CLIPBOARD
+exec --no-startup-id        $NOTIFY
+exec_always --no-startup-id $BAR
+exec_always --no-startup-id $BACKGROUND
+exec --no-startup-id        $IDLELOCK
+exec --no-startup-id        $BLUELIGHT
 
-#exec                    $BROWSER --no-startup-window
-exec_always             $BAR
-exec_always             $BACKGROUND
+# i3 Specific
+exec_always --no-startup-id picom
 exec_always --no-startup-id setxkbmap -layout gb
 
-exec_always --no-startup-id $COMPOSITOR
+# Custom Applications
+exec 1password --silent
+# exec rclone mount --daemon protondrive: ~/ProtonDrive/ --vfs-cache-mode=writes
 
 ###############################################
 ##### DECORATION ##############################
 ###############################################
 
-# FONT
-font pango:Fira Code 10
+# Font
+font pango:Fira Code 8
 
-# GAPS
-set $inner 10
-set $outer 5
-set $rounded 4
+# Gaps
+gaps inner 6px
+gaps outer 2px
+smart_gaps off
 
-# SCRATCHPAD
-bindsym $MOD+c scratchpad show $CENTER, resize set 80 ppt 70 ppt
-bindsym $MOD+Shift+c floating enable, move position $inner px $inner px, $RESIZE, move scratchpad
-bindsym $MOD+Ctrl+c exec $term --class scratch 
-
-# BORDER COLOURS
+# Colors
 set $fg "#FFFFFF"
-set $ac "#5865F2"
-set $bg "#2e3035"
-
-# STACKING
-bindsym $MOD+s layout stacking
-bindsym $MOD+w layout tabbed
-bindsym $MOD+e layout toggle split
-title_align center
-default_floating_border pixel 0
-default_border pixel 0
-for_window [class="^.*"] border pixel 0
-
-# GAPS
-gaps inner $inner
-gaps outer $outer
-smart_gaps on
-
-# GAPS COMMAND
-bindsym $MOD+g gaps inner all set $inner; gaps outer all set $outer
-bindsym $MOD+Shift+g gaps inner all set 0; gaps outer all set 0
-
-new_window 1pixel
-smart_borders on
-
-# FLOATING
-floating_modifier $MOD
-bindsym $MOD+Shift+space floating toggle; $CENTER
+set $ac "#b3b300"
+set $bg "#808000"
 
 # CLASS                 BORDER  BACK    TEXT    INDICATOR
 client.focused          $bg     $ac     $fg     $bg
@@ -95,168 +72,138 @@ client.unfocused        $bg     $bg     $fg     $bg
 client.urgent           $bg     $bg     $fg     $bg 
 client.placeholder      $bg     $bg     $fg     $bg
 
-# EXIT
-bindsym $MOD+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
-
-# RELOAD
-bindsym $MOD+Ctrl+r reload
-
-# RESTART
-bindsym $MOD+Shift+r restart
-
-# PASSWORD STUFF
-bindsym Ctrl+Shift+space exec --no-startup-id 1password --quick-access
-
 ###############################################
 ##### WINDOW RULES ############################
 ###############################################
-
-# floating windows
+title_align center
+default_floating_border pixel 0
+default_border pixel 0
+# Basics
+for_window [class="^.*"] border pixel 0
+# Miscellaneous
 for_window [window_role="pop-up"] floating enable border normal
 
-# Steam (https://github.com/ValveSoftware/steam-for-linux/issues/1040)
-for_window [class="^steam$"] floating enable
+###############################################
+##### APP SPECIFIC ############################
+###############################################
+# 1Password
+for_window [class="^1Password$"] $CENTER
+# Steam 
+for_window [class="^steam$"] floating enable # (ValveSoftware/steam-for-linux#1040)
 for_window [class="^Steam$"] floating enable
 for_window [class="^steam$" title="^Steam$"] floating disable
-
 # Games
 for_window [class="cs2"] floating enable fullscreen enable
-
 # JetBrains Products
 for_window [class="jetbrains-*" title="win0"] floating enable
 for_window [class="jetbrains-*" title="splash"] floating enable
 for_window [class="jetbrains-*" title="Welcome to *"] floating enable
 for_window [class="^com-intellij-updater-Runner$" title="^Update$"] floating enable
 for_window [instance="^sun-awt-X11-XDialogPeer$" title="^Complete Installation$"] floating enable
-
-# OTHER
+# Other
 for_window [class="Lutris" title="Manage Runners"] floating enable
 for_window [class="feh"] floating enable
 
 ###############################################
-##### WORKSPACE ASSIGNING #####################
+##### KEYBIND #################################
 ###############################################
-
-#assign [instance="aa"] 6
-
-###############################################
-##### TOOLS ###################################
-###############################################
-
-# MEDIA KEYS
-#bindsym Super_L+C                   exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
+# Media Keys
 bindsym XF86AudioMute               exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
 bindsym XF86AudioPlay               exec playerctl play-pause
 bindsym XF86AudioPause              exec playerctl play-pause
 bindsym XF86AudioNext               exec playerctl next
 bindsym XF86AudioPrev               exec playerctl previous
+bindsym XF86AudioRaiseVolume        exec wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+
+bindsym XF86AudioLowerVolume        exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
 
-# TERMINAL
-bindsym $MOD+Return     exec $TERM
-# ROFI
-bindsym $MOD+space      exec --no-startup-id $rofi
-# BROWSER
-bindsym $MOD+b          exec $BROWSER
-# SCREENSHOT
-bindsym Ctrl+Print      exec $SCREENSHOT
-# FILE MANAGER 
-bindsym $MOD+m          exec $FILEMANAGER
-# WALLPAPER 
-bindsym $MOD+F2         exec $BACKGROUND
+# Screenshots
+bindsym $MOD+Print                  exec $SCREENSHOT
 
-###############################################
-##### MOVEMENT ################################
-###############################################
+# 1Password
+bindsym Ctrl+Shift+space            exec --no-startup-id 1password --quick-access
 
-# KILL
-bindsym $MOD+q kill
+# Miscellaneous
+bindsym $MOD+l                      exec $LOCK
+bindsym $MOD+b                      exec $BROWSER
+bindsym $MOD+Return                 exec $TERM
+bindsym $MOD+space                  exec --no-startup-id $ROFI
+bindsym $MOD+v                      exec --no-startup-id rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
+bindsym $MOD+F2                     exec $BACKGROUND
 
-# FOCUS CHANGE
-bindsym $MOD+Left focus left
-bindsym $MOD+Down focus down
-bindsym $MOD+Up focus up
-bindsym $MOD+Right focus right
+# WM Controls
+bindsym $MOD+r                      reload
+bindsym $MOD+Shift+r                restart
+bindsym $MOD+Shift+q                exit
 
-# MOVE FOCUSED
-bindsym $MOD+Shift+Left move left
-bindsym $MOD+Shift+Down move down
-bindsym $MOD+Shift+Up move up
-bindsym $MOD+Shift+Right move right
-
-# FOCUS DIFF MONITOR
-bindsym $MOD+Ctrl+Right focus output right
-bindsym $MOD+Ctrl+Left focus output left
-
-# HORIZONTAL SPLIT
-bindsym $MOD+h split h
-
-# VERTICAL SPLIT
-bindsym $MOD+v split v
-
-# FULLSCREEN MODE
-bindsym $MOD+f fullscreen toggle
-
-# FOCUS CHANGE (TILING/FLOATING)
-bindsym $MOD+d focus mode_toggle
-
-# CHANGE TO PARENT
-bindsym $MOD+a focus parent
-
+# Scratchpad
+bindsym $MOD+c scratchpad show $CENTER, resize set 80 ppt 70 ppt
+bindsym $MOD+Shift+c floating enable, $RESIZE, move scratchpad
 
 ###############################################
-##### WORKSPACES ##############################
+##### WINDOW MANAGEMENT #######################
 ###############################################
+floating_modifier $MOD
 
-set $ws1 "1"
-set $ws2 "2"
-set $ws3 "3"
-set $ws4 "4"
-set $ws5 "5"
-set $ws6 "6"
-set $ws7 "7"
-set $ws8 "8"
-set $ws9 "9"
-set $ws10 "10"
+bindsym $MOD+q                      kill
+bindsym $MOD+Shift+space            floating toggle; $CENTER
+bindsym $MOD+s                      layout stacking 
+bindsym $MOD+e                      layout toggle split
+bindsym $MOD+f                      fullscreen toggle
 
-# SWITCHING
-bindsym $MOD+1 workspace number $ws1
-bindsym $MOD+2 workspace number $ws2
-bindsym $MOD+3 workspace number $ws3
-bindsym $MOD+4 workspace number $ws4
-bindsym $MOD+5 workspace number $ws5
-bindsym $MOD+6 workspace number $ws6
-bindsym $MOD+7 workspace number $ws7
-bindsym $MOD+8 workspace number $ws8
-bindsym $MOD+9 workspace number $ws9
-bindsym $MOD+0 workspace number $ws10
+###############################################
+##### FOCUS ###################################
+###############################################
+bindsym $MOD+Left                   focus left
+bindsym $MOD+Down                   focus down
+bindsym $MOD+Up                     focus up
+bindsym $MOD+Right                  focus right
 
-# MOVING
-bindsym $MOD+Shift+1 move container to workspace number $ws1
-bindsym $MOD+Shift+2 move container to workspace number $ws2
-bindsym $MOD+Shift+3 move container to workspace number $ws3
-bindsym $MOD+Shift+4 move container to workspace number $ws4
-bindsym $MOD+Shift+5 move container to workspace number $ws5
-bindsym $MOD+Shift+6 move container to workspace number $ws6
-bindsym $MOD+Shift+7 move container to workspace number $ws7
-bindsym $MOD+Shift+8 move container to workspace number $ws8
-bindsym $MOD+Shift+9 move container to workspace number $ws9
-bindsym $MOD+Shift+0 move container to workspace number $ws10
+###############################################
+##### RESIZE ##################################
+###############################################
+bindsym $MOD+Ctrl+Left              resize shrink width 10 px or 10 ppt
+bindsym $MOD+Ctrl+Right             resize grow width 10 px or 10 ppt
+bindsym $MOD+Ctrl+Up                resize shrink height 10 px or 10 ppt
+bindsym $MOD+Ctrl+Down              resize grow height 10 px or 10 ppt
 
-# RESIZE BINDS
-mode "resize" {
-    bindsym j resize shrink width 10 px or 10 ppt
-    bindsym k resize grow height 10 px or 10 ppt
-    bindsym l resize shrink height 10 px or 10 ppt
-    bindsym semicolon resize grow width 10 px or 10 ppt
+###############################################
+##### TABBED ##################################
+###############################################
+bindsym $MOD+w                      layout toggle tabbed split
+bindsym $MOD+Tab                    focus right
+focus_wrapping force
 
-    bindsym Left resize shrink width 10 px or 10 ppt
-    bindsym Down resize grow height 10 px or 10 ppt
-    bindsym Up resize shrink height 10 px or 10 ppt
-    bindsym Right resize grow width 10 px or 10 ppt
-    
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-    bindsym $MOD+r mode "default"
-}
+###############################################
+##### SWITCH ##################################
+###############################################
+bindsym $MOD+1                      workspace number 1
+bindsym $MOD+2                      workspace number 2
+bindsym $MOD+3                      workspace number 3
+bindsym $MOD+4                      workspace number 4
+bindsym $MOD+5                      workspace number 5
+bindsym $MOD+6                      workspace number 6
+bindsym $MOD+7                      workspace number 7
+bindsym $MOD+8                      workspace number 8
+bindsym $MOD+9                      workspace number 9
+bindsym $MOD+0                      workspace number 10
 
-bindsym $MOD+r mode "resize"
+###############################################
+##### MOVE ####################################
+###############################################
+bindsym $MOD+Shift+1                move container to workspace number 1
+bindsym $MOD+Shift+2                move container to workspace number 2
+bindsym $MOD+Shift+3                move container to workspace number 3
+bindsym $MOD+Shift+4                move container to workspace number 4
+bindsym $MOD+Shift+5                move container to workspace number 5
+bindsym $MOD+Shift+6                move container to workspace number 6
+bindsym $MOD+Shift+7                move container to workspace number 7
+bindsym $MOD+Shift+8                move container to workspace number 8
+bindsym $MOD+Shift+9                move container to workspace number 9
+bindsym $MOD+Shift+0                move container to workspace number 10
+
+###############################################
+##### MOUSE BINDINGS ##########################
+###############################################
+tiling_drag modifier
+bindsym $MOD+button4 --whole-window focus left
+bindsym $MOD+button5 --whole-window focus right
