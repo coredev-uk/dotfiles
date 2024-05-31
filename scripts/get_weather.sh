@@ -1,21 +1,24 @@
 #!/usr/bin/env bash
 
-for i in {1..5}; do
-	text=$(curl -s "https://wttr.in/$2?format=1")
-	if [[ $? == 0 ]]; then
-		text=$(echo "$text" | sed -E "s/\s+/ /g")
-		tooltip=$(curl -s "https://wttr.in/$1?format=4")
-		if [[ $? == 0 ]]; then
-			tooltip=$(echo "$tooltip" | sed -E "s/\s+/ /g")
+if [ "$1" != "--polybar" ] && [ "$1" != "--waybar" ]; then
+	LOCATION=$1
+else
+	BAR_TYPE=$1
+	LOCATION=$2
+fi
 
-			if [ "$1" = "--polybar" ]; then
-				echo "$text"
-			elif [ "$1" = "--waybar" ]; then
-				echo "{\"text\":\"$text\", \"tooltip\":\"$tooltip\"}"
-			fi
-			exit
-		fi
-	fi
-	sleep 2
-done
-echo "{\"text\":\"error\", \"tooltip\":\"error\"}"
+weather=$(curl -s "https://wttr.in/$2?format=1")
+if [[ "$weather" == *"Unknown"* ]] || [[ "$weather" == *"Error"* ]]; then
+	exit
+fi
+
+text=$(echo "$weather" | sed -E "s/\s+/ /g")
+tooltip="hey"
+
+if [ "$BAR_TYPE" == "--polybar" ]; then
+	echo $text
+elif [ "$BAR_TYPE" == "--waybar" ]; then
+	echo "{\"text\":\"$text\", \"tooltip\":\"$tooltip\"}"
+else
+	echo "Unsupported Bar"
+fi

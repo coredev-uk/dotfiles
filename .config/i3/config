@@ -6,14 +6,14 @@ set $MOD Mod4
 
 # Defaults
 set $BROWSER        firefox
-set $SCREENSHOT     flameshot gui 
+set $SCREENSHOT     scrot
 set $TERM           alacritty
 set $ROFI           rofi -show drun -theme $HOME/.config/rofi/config.rasi  # > /tmp/rofi.log 2>&1 
 set $BAR            $HOME/.config/polybar/launch.sh
 set $NOTIFY         dunst
 set $BACKGROUND     $HOME/dotfiles/scripts/wallpaper.sh
 set $LOCK           i3lock -nef -c 000000
-set $IDLELOCK       xidlehook --not-when-audio --not-when-fullscreen --detect-sleep --timer 300 $LOCK --timer 300 xset s activate --timer 1200 systemctl suspend
+set $IDLELOCK       xidlehook --not-when-audio --not-when-fullscreen --detect-sleep --timer 300 '$LOCK' --timer 300 xset s activate --timer 1200 systemctl suspend
 set $CLIPBOARD      greenclip daemon
 set $BLUELIGHT      redshift
 
@@ -44,9 +44,14 @@ exec --no-startup-id        $BLUELIGHT
 exec_always --no-startup-id picom
 exec_always --no-startup-id setxkbmap -layout gb
 
+# Stop Display Turning Off
+exec --no-startup-id xset s off
+exec --no-startup-id xset -dpms
+exec --no-startup-id xset s noblank
+
 # Custom Applications
 exec 1password --silent
-# exec rclone mount --daemon protondrive: ~/ProtonDrive/ --vfs-cache-mode=writes
+exec rclone mount protondrive: ~/ProtonDrive/ --vfs-cache-mode=full
 
 ###############################################
 ##### DECORATION ##############################
@@ -117,10 +122,11 @@ bindsym XF86AudioRaiseVolume        exec wpctl set-volume -l 1.5 @DEFAULT_AUDIO_
 bindsym XF86AudioLowerVolume        exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
 
 # Screenshots
-bindsym $MOD+Print                  exec $SCREENSHOT
+bindsym --release $MOD+Print        exec $SCREENSHOT -u -e 'xclip -selection clipboard -t image/png -i $f && rm $f'
+bindsym --release Print             exec $SCREENSHOT -s -e 'xclip -selection clipboard -t image/png -i $f && rm $f'
 
 # 1Password
-bindsym Ctrl+Shift+space            exec --no-startup-id 1password --quick-access
+bindsym --release Ctrl+Shift+space  exec --no-startup-id 1password --quick-access
 
 # Miscellaneous
 bindsym $MOD+l                      exec $LOCK

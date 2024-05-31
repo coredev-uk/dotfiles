@@ -13,7 +13,7 @@ ln -s $random_background ~/.current-wallpaper.png
 
 if [ "$XDG_SESSION_TYPE" = "x11" ]; then
 	DISPLAY=:0.0 feh --bg-fill $random_background
-elif [ "$XDG_SESSION_TYPE" = "wayland"]; then
+elif [ "$XDG_SESSION_TYPE" = "wayland" ]; then
 	monitors=$(hyprctl monitors | grep Monitor | awk '{print $2}')
 
 	if ! $(pgrep -x hyprpaper &>2); then
