@@ -52,6 +52,7 @@ exec --no-startup-id xset s noblank
 # Custom Applications
 exec 1password --silent
 exec rclone mount protondrive: ~/ProtonDrive/ --vfs-cache-mode=full
+exec openrgb --startminimized --profile off
 
 ###############################################
 ##### DECORATION ##############################
@@ -213,3 +214,11 @@ bindsym $MOD+Shift+0                move container to workspace number 10
 tiling_drag modifier
 bindsym $MOD+button4 --whole-window focus left
 bindsym $MOD+button5 --whole-window focus right
+
+###############################################
+##### MOVE FOCUSED ############################
+###############################################
+bindsym $MOD+Shift+Left move left
+bindsym $MOD+Shift+Down move down
+bindsym $MOD+Shift+Up move up
+bindsym $MOD+Shift+Right move right
