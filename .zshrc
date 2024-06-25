@@ -79,6 +79,9 @@ alias ..="cd .."
 alias vim="nvim"
 alias nvm="fnm"
 alias jellyfin="__EGL_VENDOR_LIBRARY_FILENAMES=/usr/share/glvnd/egl_vendor.d/50_mesa.json jellyfinmediaplayer"
+if (command -v code-insiders &> /dev/null); then
+  alias code="code-insiders"
+fi
 
 # Shell Integrations
 eval "$(fzf --zsh)"
@@ -87,7 +90,9 @@ eval "$(fnm env)"
 if [ Darwin = `uname` ]; then
   zstyle :omz:plugins:iterm2 shell-integration yes > /dev/null 2>&1
 fi
- 
+
 if (command -v pkgx &> /dev/null); then
   source <(pkgx --shellcode)  #docs.pkgx.sh/shellcode
 fi
+
+PATH=~/.console-ninja/.bin:$PATH
