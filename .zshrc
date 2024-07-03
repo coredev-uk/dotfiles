@@ -73,7 +73,7 @@ zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
 # Aliases
 alias grep="grep --color=auto"
-alias ls="eza --color --group-directories-first"
+alias ls="ls --color --group-directories-first"
 alias la="ls -la"
 alias ..="cd .."
 alias vim="nvim"
@@ -95,4 +95,3 @@ if (command -v pkgx &> /dev/null); then
   source <(pkgx --shellcode)  #docs.pkgx.sh/shellcode
 fi
 
-PATH=~/.console-ninja/.bin:$PATH

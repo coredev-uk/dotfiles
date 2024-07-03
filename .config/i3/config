@@ -5,7 +5,7 @@
 set $MOD Mod4
 
 # Defaults
-set $BROWSER        firefox
+set $BROWSER        firefox-nightly
 set $SCREENSHOT     scrot
 set $TERM           alacritty
 set $ROFI           rofi -show drun -theme $HOME/.config/rofi/config.rasi  # > /tmp/rofi.log 2>&1 
@@ -15,7 +15,7 @@ set $BACKGROUND     $HOME/dotfiles/scripts/wallpaper.sh
 set $LOCK           i3lock -nef -c 000000
 set $IDLELOCK       xidlehook --not-when-audio --not-when-fullscreen --detect-sleep --timer 300 '$LOCK' --timer 300 xset s activate --timer 1200 systemctl suspend
 set $CLIPBOARD      greenclip daemon
-set $BLUELIGHT      redshift
+set $BLUELIGHT      gammastep
 
 # i3 Specific
 set $CENTER         move position center
