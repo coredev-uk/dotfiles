@@ -89,6 +89,8 @@ eval "$(zoxide init --cmd cd zsh)"
 eval "$(fnm env)"
 if [ Darwin = `uname` ]; then
   zstyle :omz:plugins:iterm2 shell-integration yes > /dev/null 2>&1
+
+  alias ls="gls --color --group-directories-first"
 fi
 
 if (command -v pkgx &> /dev/null); then
