@@ -37,7 +37,7 @@ zinit light Aloxaf/fzf-tab
 zinit snippet OMZP::git
 zinit snippet OMZP::command-not-found
 
-# Load completions 
+# Load completions
 autoload -U compinit && compinit
 
 zinit cdreplay -q
@@ -90,10 +90,13 @@ eval "$(fnm env)"
 if [ Darwin = `uname` ]; then
   zstyle :omz:plugins:iterm2 shell-integration yes > /dev/null 2>&1
 
-  alias ls="gls --color --group-directories-first"
+  if (command -v gls &> /dev/null); then
+    alias ls="gls --color --group-directories-first"
+  else
+    echo "gls not found. Install coreutils to get gls"
+  fi
 fi
 
 if (command -v pkgx &> /dev/null); then
   source <(pkgx --shellcode)  #docs.pkgx.sh/shellcode
 fi
-
