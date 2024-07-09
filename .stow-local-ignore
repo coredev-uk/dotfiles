@@ -26,4 +26,8 @@ _darcs
 ^/bootstrap.sh # bootstrap script
 ^/scripts # scripts
 ^/install_state # install state 
+^/sysconfigs # System Configs
+
+# Other bs
 ^/.DS_Store
+
