@@ -7,74 +7,51 @@
 SCRIPT_PATH=$(realpath $(dirname $0))
 
 if (! command -v stow &> /dev/null); then
-  echo "Stow must be installed!"
-  exit;
+    echo "Stow must be installed!"
+    exit 1;
 fi
 
 # Git Config Symlinking for Mac and Linux
 if [ "Linux" = `uname` ]; then
-  ln -sf $SCRIPT_PATH/gitconfig-linux $HOME/.gitconfig
+    ln -sf $SCRIPT_PATH/gitconfig-linux $HOME/.gitconfig
 elif [ "Darwin" = `uname` ]; then
-  ln -sf $SCRIPT_PATH/gitconfig-mac $HOME/.gitconfig
+    ln -sf $SCRIPT_PATH/gitconfig-mac $HOME/.gitconfig
 else
-  echo "Git Config: No gitconfig specified for your OS."
+    echo "Git Config: No gitconfig specified for your OS."
 fi
 
 # Package Manager
 if [ "Linux" = `uname` ]; then
-  if (command -v paru &> /dev/null); then
-    echo "Package Manager: Paru is already installed"
-  else
-    sudo pacman -S --needed base-devel
-
-    # Install AUR helper
-    git clone https://aur.archlinux.org/paru.git
-    cd paru
-    makepkg -si
-  fi
-elif [ "Darwin" = `uname` ]; then
-  if (command -v brew &> /dev/null); then
-    echo "Package Manager: Homebrew is already installed"
-  else
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-  fi
-else
-  echo "Package Manager: Your OS is not supported"
-fi
-
-# Firefox Theme
-if (command -v firefox &> /dev/null); then
-  if [[ -f $SCRIPT_PATH/install_state && $(cat $SCRIPT_PATH/install_state | grep 'firefox-theme') ]]; then
-    echo "Firefox Theme: Theme already installed."
-  else
-    if [ "Linux" = `uname` ]; then
-      echo "Firefox Theme: Installing firefox-gnome-theme..."
-      curl -s -o- https://raw.githubusercontent.com/rafaelmardojai/firefox-gnome-theme/master/scripts/install-by-curl.sh | bash
-      echo "firefox-theme" > $SCRIPT_PATH/install_state
-    elif [ "Darwin" = `uname` ]; then
-      echo "Firefox Theme: Installing WhiteSurFirefoxThemeMacOS..."
-      git clone https://github.com/AdamXweb/WhiteSurFirefoxThemeMacOS.git tmp && cd tmp && bash ./install.sh && cd .. && rm -rf tmp
-      echo "firefox-theme" > $SCRIPT_PATH/install_state
+    if (command -v paru &> /dev/null); then
+        echo "Package Manager: Paru is already installed"
     else
-      echo "Firefox Theme: Your OS is not supported"
+        sudo pacman -S --needed base-devel
+        # Install AUR helper
+        git clone https://aur.archlinux.org/paru.git && cd paru && makepkg -si
     fi
-  fi
+elif [ "Darwin" = `uname` ]; then
+    if (command -v brew &> /dev/null); then
+        echo "Package Manager: Homebrew is already installed"
+    else
+        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    fi
+else
+    echo "Package Manager: Your OS is not supported"
 fi
 
 # Shell
 if command -v zsh &> /dev/null; then
-  if [[ -f $SCRIPT_PATH/install_state && $(cat $SCRIPT_PATH/install_state | grep 'zsh-default') ]]; then
-    echo "Shell: Zsh is already the default shell"
-  else
-    echo "Shell: Changing shell to Zsh"
-    chsh -s $(which zsh)
-    echo "zsh-default" >> $SCRIPT_PATH/install_state
-  fi
+    if [[ $SHELL = **zsh** ]]; then
+        echo "Shell: Zsh is already the default shell"
+    else
+        echo "Shell: Changing shell to Zsh"
+        chsh -s $(which zsh)
+    fi
 else
-  echo "Shell: Zsh is not installed"
+    echo "Shell: Zsh is not installed"
 fi
 
 # FNM (Node Version Manager in R*)
 if [[ (Linux = `uname` && ! -f "$HOME/.local/share/fnm/fnm") || (Darwin = `uname` && ! -f "/opt/homebrew/bin/fnm") ]]; then
-  curl -fsSL https://raw.githubusercontent.com/Schniz/fnm/master/.ci/install.sh | bash
+    curl -fsSL https://raw.githubusercontent.com/Schniz/fnm/master/.ci/install.sh | bash
 fi
