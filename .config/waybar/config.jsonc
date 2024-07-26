@@ -32,7 +32,7 @@
     "tooltip": true,
     "format": "{}",
     "interval": 30,
-    "exec": "~/dotfiles/scripts/get_weather.sh --waybar $(cat ~/.current-location)",
+    "exec": "~/dotfiles/scripts/get_weather.sh waybar",
     "return-type": "json"
   },
   "custom/nowplaying": {
@@ -43,7 +43,7 @@
       "spotify": " "
     },
     "interval": 1,
-    "exec": "~/dotfiles/scripts/song_formatted.sh --waybar",
+    "exec": "~/dotfiles/scripts/song_formatted.sh waybar",
     "return-type": "json",
     "on-click": "exec $(playerctl metadata --format '{{playerName}}') ",
     "on-scroll-up": "playerctl --player=cider,spotify next",
@@ -73,6 +73,7 @@
     "tooltip": false,
     "format-muted": " Muted",
     "on-click": "pamixer -t",
+    "on-click-right": "pavucontrol -t 3",
     "on-scroll-up": "pamixer -i 5",
     "on-scroll-down": "pamixer -d 5",
     "scroll-step": 5,
@@ -91,6 +92,7 @@
     "format-source": " {volume}%",
     "format-source-muted": "  Muted",
     "on-click": "pamixer --default-source -t",
+    "on-click-right": "pavucontrol -t 4",
     "on-scroll-up": "pamixer --default-source -i 5",
     "on-scroll-down": "pamixer --default-source -d 5",
     "scroll-step": 5
