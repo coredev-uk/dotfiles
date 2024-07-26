@@ -79,14 +79,21 @@ alias ..="cd .."
 alias vim="nvim"
 alias nvm="fnm"
 alias jellyfin="__EGL_VENDOR_LIBRARY_FILENAMES=/usr/share/glvnd/egl_vendor.d/50_mesa.json jellyfinmediaplayer"
+
+# Application Aliases
 if (command -v code-insiders &> /dev/null); then
   alias code="code-insiders"
+fi
+
+if (command -v zeditor &> /dev/null); then
+  alias zed="zeditor"
+  alias z='zeditor'
 fi
 
 # Shell Integrations
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
-eval "$(fnm env)"
+eval "$(fnm env --use-on-cd)"
 if [ Darwin = `uname` ]; then
   zstyle :omz:plugins:iterm2 shell-integration yes > /dev/null 2>&1
 
