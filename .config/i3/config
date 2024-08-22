@@ -5,7 +5,7 @@
 set $MOD Mod4
 
 # Defaults
-set $BROWSER        firefox-nightly
+set $BROWSER        zen-browser
 set $SCREENSHOT     scrot
 set $TERM           alacritty
 set $ROFI           rofi -show drun -theme $HOME/.config/rofi/config.rasi  # > /tmp/rofi.log 2>&1 
