@@ -1,27 +1,39 @@
-# My Dotfiles
+# My NixOS config.
 
-A repository containing my dotfiles for Arch Linux, macOS and Asahi Linux.
+I do not know what I am doing.
 
-## Required Packages
+| Hostname |   OS   |  Device   |   WM    |
+| :------: | :----: | :-----: | :----------: |
+|  `atlas`   | NixOS | Desktop  |   Hyperland / i3wm   |
+| `poseidon` | NixOS (macOS)  | Laptop  |   Hyprland   |
+| `hyperion` | NixOS | Server | N/A |
 
-### Git
-```
-pacman -S git
-```
+## TODO
 
-### Stow
-```
-pacman -S stow
-```
+- [ ] Working i3wm
+   - [ ] rofi
+   - [ ] polybar
+   - [ ] picom
+   - [ ] gaming (lutris?)
+- [ ] Working hyprland
+   - [ ] nvidia tweaks
+   - [ ] waybar
+   - [ ] hypr-* packages
+   - [ ] rofi-wayland (shared)
+- [ ] apps (shared - differing sources for poseidon)
+   - [ ] zen-browser
+   - [ ] 1pw
+   - [ ] steam
+   - [ ] discord
+   - [ ] vsc
+   - [ ] neovim (+conf)
+   - [ ] node (+yarn,bun,pnpm, no idea how this is gonna work)
+- [ ] tpm encryption
+- [ ] disko setup (for all)
+- [ ] ssh-key encryption (lp)
+- [ ] macos setup
+   - [ ] nixos-hardware
+   - [ ] actually get it to work
 
-## Installation
-First, clone the repository to the dotfiles directory.
-```
-$ git clone git@github.com/coredev-uk/dotfiles.git dotfiles
-$ cd dotfiles
-```
-
-Then use GNU stow to create the symlinks from the config.
-```
-$ stow .
-```
+based off https://github.com/jnsgruk/nixos-config 
+(*thank you for being so helpful*)
