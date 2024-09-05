@@ -17,6 +17,7 @@
     catppuccin-gtk
     desktop-file-utils
     pavucontrol
+    discord-canary
   ];
 
   fonts.fontconfig.enable = true;

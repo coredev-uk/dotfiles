@@ -11,7 +11,7 @@ I do not know what I am doing.
 ## TODO
 
 - [ ] Working i3wm
-   - [ ] rofi
+   - [ x ] rofi
    - [ ] polybar
    - [ ] picom
    - [ ] gaming (lutris?)
@@ -28,8 +28,8 @@ I do not know what I am doing.
    - [ ] vsc
    - [ ] neovim (+conf)
    - [ ] node (+yarn,bun,pnpm, no idea how this is gonna work)
-- [ ] tpm encryption
-- [ ] disko setup (for all)
+- [ x ] tpm encryption
+- [ x ] disko setup (for all)
 - [ ] ssh-key encryption (lp)
 - [ ] macos setup
    - [ ] nixos-hardware
