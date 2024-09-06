@@ -45,7 +45,6 @@
         gst = "git status -sb";
 
         open = "xdg-open";
-        k = "kubectl";
 
         opget = "op item get \"$(op item list --format=json | jq -r '.[].title' | fzf)\"";
 
