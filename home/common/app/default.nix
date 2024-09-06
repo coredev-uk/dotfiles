@@ -3,9 +3,8 @@
   imports = [
     ./alacritty.nix
     ./rofi.nix
-    ./gtk.nix
-    ./qt.nix
-    ./xdg.nix
+    
+    ./system
   ];
 
   programs = {
