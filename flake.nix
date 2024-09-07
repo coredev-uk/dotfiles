@@ -16,6 +16,8 @@
 
     lanzaboote.url = "github:nix-community/lanzaboote";
     lanzaboote.inputs.nixpkgs.follows = "unstable";
+
+    zen-browser.url = "github:MarceColl/zen-browser-flake";
   };
 
 
