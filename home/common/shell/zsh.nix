@@ -30,6 +30,9 @@
         zstyle ':completion:*' list-colors "''${(s.:.)LS_COLORS}"
 
         export EDITOR=vim
+
+        eval "${nh completions --shell zsh}"  # nix-home completions
+        echo ${self}
       '';
 
       shellAliases = {
