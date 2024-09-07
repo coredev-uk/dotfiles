@@ -30,6 +30,7 @@
       inherit (self) outputs;
       stateVersion = "24.05";
       username = "paul";
+      flakePath = "/home/${username}/.dotfiles";
 
       libx = import ./lib {
         inherit
@@ -38,6 +39,7 @@
           outputs
           stateVersion
           username
+          flakePath
           ;
       };
     in
