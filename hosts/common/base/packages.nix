@@ -1,6 +1,7 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 {
   basePackages = with pkgs; [
+    inputs.zen-browser.packages."${system}".default
     _1password
     bat
     binutils
