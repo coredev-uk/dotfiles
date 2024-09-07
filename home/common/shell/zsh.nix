@@ -31,7 +31,7 @@
 
         export EDITOR=vim
 
-        eval "${nh completions --shell zsh}"  # nix-home completions
+        eval "$(nh completions --shell zsh)"  # nix-home completions
         echo ${self}
       '';
 
