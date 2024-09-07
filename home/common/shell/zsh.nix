@@ -1,4 +1,4 @@
-{ self, ... }:
+{ self, flakePath, ... }:
 
 {
   programs = {
@@ -32,7 +32,7 @@
         export EDITOR=vim
 
         eval "$(nh completions --shell zsh)"  # nix-home completions
-        echo ${self}
+        echo ${flakePath}
       '';
 
       shellAliases = {
@@ -54,8 +54,8 @@
         speedtest = "curl -s https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py | python -";
 
         cleanup-nix = "nh clean all --keep-since 10d --keep 3";
-        rln = "nh os switch ${self}";
-        rlh = "nh home switch ${self}";
+        rln = "nh os switch ${flakePath}";
+        rlh = "nh home switch ${flakePath}";
         rlb = "rln;rlh";
       };
     };

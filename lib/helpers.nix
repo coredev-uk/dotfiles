@@ -4,6 +4,7 @@
   outputs,
   stateVersion,
   username,
+  flakePath,
   ...
 }:
 {
@@ -25,6 +26,7 @@
           stateVersion
           hostname
           desktop
+          flakePath
           ;
         username = user;
       };
@@ -51,6 +53,7 @@
           username
           hostname
           desktop
+          flakePath
           ;
       };
       modules = [

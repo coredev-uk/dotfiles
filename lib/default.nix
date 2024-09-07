@@ -4,6 +4,7 @@
   outputs,
   stateVersion,
   username,
+  flakePath
   ...
 }:
 let
@@ -14,6 +15,7 @@ let
       outputs
       stateVersion
       username
+      flakePath
       ;
   };
 in
