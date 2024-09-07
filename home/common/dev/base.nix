@@ -4,10 +4,12 @@
     gnumake
     gcc
 
+    # Node.js development
     nodejs
     nodePackages_latest.prettier
     nodePackages_latest.typescript
     corepack
+    bun
     fnm
 
     # Nix tooling
