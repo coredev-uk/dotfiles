@@ -6,7 +6,8 @@
 
     nodejs
     nodePackages_latest.prettier
-    corepack-nodejs
+    nodePackages_latest.typescript
+    corepack
     fnm
 
     # Nix tooling
