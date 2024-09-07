@@ -32,7 +32,6 @@
         export EDITOR=vim
 
         eval "$(nh completions --shell zsh)"  # nix-home completions
-        echo ${flakePath}
       '';
 
       shellAliases = {
