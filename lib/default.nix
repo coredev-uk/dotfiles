@@ -4,7 +4,7 @@
   outputs,
   stateVersion,
   username,
-  flakePath
+  flakePath,
   ...
 }:
 let
