@@ -42,6 +42,7 @@
       hostname,
       desktop ? null,
       pkgsInput ? inputs.unstable,
+      system ? "x86_64-linux",
     }:
     pkgsInput.lib.nixosSystem {
       specialArgs = {
@@ -54,6 +55,7 @@
           hostname
           desktop
           flakePath
+          system
           ;
       };
       modules = [

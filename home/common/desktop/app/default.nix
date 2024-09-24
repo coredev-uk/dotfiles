@@ -3,8 +3,8 @@
   imports = [
     ./alacritty.nix
     ./rofi.nix
-    
-    ./system
+    ./chromium.nix
+    ./system 
   ];
 
   programs = {

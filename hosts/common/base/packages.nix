@@ -1,7 +1,6 @@
-{ pkgs, inputs, ... }:
+{ pkgs, ... }:
 {
   basePackages = with pkgs; [
-    inputs.zen-browser.packages."${system}".default
     _1password
     bat
     binutils
@@ -14,6 +13,8 @@
     nfs-utils
     ntfs3g
     pciutils
+    polkit
+    polkit_gnome
     ripgrep
     rsync
     sbctl

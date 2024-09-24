@@ -4,6 +4,7 @@ let
 in
 {
   imports = [
+    ./git.nix
     ./zsh.nix
   ];
 

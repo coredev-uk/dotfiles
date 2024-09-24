@@ -1,8 +1,15 @@
 { pkgs, ... }:
 {
-
+  # TODO: Add backup key
   home.file.".config/git/allowed_signers".text = ''
-    ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINQpQFDxvGq+x6sHldr81kFtftS6KFEzbOtoRKKTXFR7
+    core@coredev.uk sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIPF/JcM0mZ9qCfNYrAnaA/rS+N4FuQo+rGxzqAOURIktAAAACnNzaDpHaXRIdWI= YK5C-1
+    core@coredev.uk ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINQpQFDxvGq+x6sHldr81kFtftS6KFEzbOtoRKKTXFR7 1Password
+
+    core@cider.sh sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIPF/JcM0mZ9qCfNYrAnaA/rS+N4FuQo+rGxzqAOURIktAAAACnNzaDpHaXRIdWI= YK5C-1
+    core@cider.sh ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINQpQFDxvGq+x6sHldr81kFtftS6KFEzbOtoRKKTXFR7 1Password
+
+    pt357@kent.ac.uk sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIPF/JcM0mZ9qCfNYrAnaA/rS+N4FuQo+rGxzqAOURIktAAAACnNzaDpHaXRIdWI= YK5C-1
+    pt357@kent.ac.uk ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINQpQFDxvGq+x6sHldr81kFtftS6KFEzbOtoRKKTXFR7 1Password
   '';
 
   home.packages = with pkgs; [ gh ];
