@@ -11,6 +11,7 @@ in
 {
   imports = [
     (./. + "/${desktop}.nix")
+    ../hardware/yubikey.nix
     ../services/pipewire.nix
   ];
 
@@ -35,6 +36,21 @@ in
       polkitPolicyOwners = [ "${username}" ];
     };
   };
+
+   environment.etc = {
+      "1password/custom_allowed_browsers" = {
+        text = ''
+          .zen-wrapped
+          zen
+        '';
+        mode = "0755";
+      };
+    };
+
+  programs.ssh.extraConfig = ''
+    Host *
+      IdentityAgent ~/.1password/agent.sock
+  '';
 
   fonts = {
     packages = with pkgs; [

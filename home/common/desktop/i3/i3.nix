@@ -2,6 +2,8 @@
 
 let 
   mod = "Mod4";
+  browser = "zen";
+  terminal = "alacritty";
 in 
 {
   xsession.windowManager.i3 = {

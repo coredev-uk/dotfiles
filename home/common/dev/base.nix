@@ -8,7 +8,8 @@
     nodejs
     nodePackages_latest.prettier
     nodePackages_latest.typescript
-    corepack
+    pnpm
+    yarn
     bun
     fnm
 
