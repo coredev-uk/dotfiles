@@ -30,7 +30,7 @@
         zstyle ':completion:*' list-colors "''${(s.:.)LS_COLORS}"
 
         export EDITOR=vim
-
+        
         eval "$(nh completions --shell zsh)"  # nix-home completions
       '';
 
@@ -53,9 +53,9 @@
         speedtest = "curl -s https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py | python -";
 
         cleanup-nix = "nh clean all --keep-since 10d --keep 3";
-        rln = "nh os switch ${flakePath}";
-        rlh = "nh home switch ${flakePath}";
-        rlb = "rln;rlh";
+        reb-os = "nh os switch ${flakePath}";
+        reb-home = "nh home switch ${flakePath}";
+        reb-all = "reb-os;reb-home";
       };
     };
   };
