@@ -5,6 +5,7 @@
     bat
     binutils
     curl
+    chromium
     eza
     file
     git

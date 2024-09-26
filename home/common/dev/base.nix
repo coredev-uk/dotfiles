@@ -13,6 +13,12 @@
     bun
     fnm
 
+    # Electron
+    dpkg
+    fakeroot
+    rpm
+    libglibutil
+
     # Nix tooling
     deadnix
     nil

@@ -3,7 +3,6 @@
   imports = [
     ./alacritty.nix
     ./rofi.nix
-    ./chromium.nix
     ./system 
   ];
 
