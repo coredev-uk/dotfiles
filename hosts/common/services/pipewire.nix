@@ -14,5 +14,5 @@
     wireplumber.enable = true;
   };
 
-  environment.systemPackages = if (builtins.isString desktop) then [ pkgs.pavucontrol pkgs.pamixer ] else [ ];
+  environment.systemPackages = if (builtins.isString desktop) then [ pkgs.pavucontrol pkgs.pamixer pkgs.playerctl ] else [ ];
 }

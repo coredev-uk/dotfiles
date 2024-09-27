@@ -10,21 +10,21 @@ in
       defaultApplications = associations;
     };
 
-    # cider nix will be done! (whenever i can understand how nix works)
-    # desktopEntries = {
-    #   # This is obviously brittle, but works around some difficulties in the (current)
-    #   # distribution model of the Cider beta, where they drop binaries onto itch.io.
-    #   cider = {
-    #     name = "Cider";
-    #     exec = "${pkgs.appimage-run}/bin/appimage-run -- /home/jon/data/apps/Cider.AppImage";
-    #     terminal = false;
-    #     icon = "cider";
-    #     type = "Application";
-    #     categories = [
-    #       "Audio"
-    #       "Application"
-    #     ];
-    #   };
-    # };
+    # TODO: Make Cider more compatible with nixOS
+    desktopEntries = {
+      # This is obviously brittle, but works around some difficulties in the (current)
+      # distribution model of the Cider beta, where they drop binaries onto itch.io.
+      cider = {
+        name = "Cider";
+        exec = "${pkgs.appimage-run}/bin/appimage-run -- ~/apps/Cider-1.0.0.AppImage";
+        terminal = false;
+        icon = "cider";
+        type = "Application";
+        categories = [
+          "Audio"
+          "Application"
+        ];
+      };
+    };
   };
 }
