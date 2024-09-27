@@ -1,10 +1,5 @@
 { pkgs, ... }:
 
-let 
-    electron-env = pkgs.writeShellScriptBin "electron-env" ''
-      LD_LIBRARY_PATH=$(for pkg in glib.out nss nspr dbus.lib atk cups.lib libdrm.out gtk3 cairo pango.out xorg.libX11 xorg.libXcomposite xorg.libXdamage xorg.libXext xorg.libXfixes xorg.libXrandr xorg.libxcb mesa expat libxkbcommon alsa-lib libGL; do nix build --print-out-paths --no-link nixpkgs#$pkg; done | awk '{print $1"/lib"}' | tr '\n' ':' | sed 's/:$//')
-    '';
-in
 {
   home.packages = with pkgs; [
     gnumake
@@ -12,15 +7,10 @@ in
 
     # Node.js development
     nodejs
-    nodePackages_latest.prettier
-    nodePackages_latest.typescript
-    pnpm
-    yarn
     bun
     fnm
 
     # Electron
-    electron-env
     dpkg
     fakeroot
     rpm
