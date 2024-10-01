@@ -4,7 +4,7 @@
     ./alacritty.nix
     ./rofi.nix
     ./system 
-  ];
+  ] ++ (if desktop == "i3" then [ ./polybar.nix ] else []);
 
   programs = {
     firefox.enable = true;

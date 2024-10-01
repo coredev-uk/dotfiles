@@ -1,13 +1,9 @@
 { pkgs, ... }:
 
 {
-
-  # home.packages = with pkgs; [
-  #   polybar
-  # ];
-
   services.polybar = {
     enable = true;
+
 
     script = "polybar top &";
 

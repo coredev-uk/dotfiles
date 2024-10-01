@@ -1,5 +1,5 @@
 let
-  browser = [ "zen-browser.desktop" ];
+  browser = [ "userapp-Zen Browser-3H62U2.desktop" ];
   archiveManager = [ "org.gnome.FileRoller.desktop" ];
   imageViewer = [ "org.gnome.Loupe.desktop" ];
   videoPlayer = [ "mpv.desktop" ];
