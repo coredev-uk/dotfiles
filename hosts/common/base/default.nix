@@ -30,7 +30,6 @@
 
   programs = {
     zsh.enable = true;
-    _1password.enable = true;
     nix-ld.enable = true;
   };
 

@@ -9,6 +9,9 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "unstable";
 
+    agenix.url = "github:ryantm/agenix";
+    agenix.inputs.nixpkgs.follows = "unstable";
+
     catppuccin.url = "github:catppuccin/nix";
 
     disko.url = "github:nix-community/disko";
