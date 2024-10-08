@@ -31,5 +31,6 @@ in
     age
     sops
     btop
+    protonvpn-cli
   ];
 }

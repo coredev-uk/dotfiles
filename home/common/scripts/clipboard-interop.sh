@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 #src: https://gist.github.com/andriandreo/cc48e2d67c389919e18c54429d768c1f#file-clipboard-sh
 

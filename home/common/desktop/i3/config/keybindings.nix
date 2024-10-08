@@ -1,46 +1,88 @@
 {
-  mod,
+  browser,
+  screenshot,
   terminal,
   menu,
+  lock,
+  theme,
+  mod,
   pkgs,
   ...
 }:
 {
+
   main = {
-    # Open a terminal
+    ###############################################
+    ##### KEYBIND #################################
+    ###############################################
+    # Media Keys
+    "XF86AudioMute" = "exec ${pkgs.pulseaudioFull}/bin/pactl set-source-mute @DEFAULT_SOURCE@ toggle";
+    "--release XF86AudioPlay" = "exec ${pkgs.playerctl}/bin/playerctl play-pause";
+    "--release XF86AudioNext" = "exec ${pkgs.playerctl}/bin/playerctl next";
+    "--release XF86AudioPrev" = "exec ${pkgs.playerctl}/bin/playerctl prev";
+    "--release XF86AudioRaiseVolume" = "exec ${pkgs.wireplumber}/bin/wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+";
+    "--release XF86AudioLowerVolume" = "exec ${pkgs.wireplumber}/bin/wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-";
+
+    # Screenshot
+    "${mod}+Print" = "exec ${screenshot} -u -e 'xclip -selection clipboard -t image/png -i $f && rm $f'";
+    "${mod}+Shift+Print" = "exec ${screenshot} -s -e 'xclip -selection clipboard -t image/png -i $f && rm $f'";
+
+    # 1Password
+    "${mod}+grave" = "exec ${pkgs._1password-gui}/bin/1password --quick-access";
+
+    # Miscellaneous
+    "${mod}+l" = "exec ${lock}";
+    "${mod}+b" = "exec ${browser}";
     "${mod}+Return" = "exec ${terminal}";
-    # Open the browser
-    # "${mod}+b" = "exec ${pkgs.zen-browser}/bin/zen-bin";
-    # Toggle the launcher
     "${mod}+space" = "exec ${menu} | xargs i3-msg exec --";
-    # Reload the config
+    "${mod}+f2" = "exec ${theme.wallpaper}";
+
+    # WM Controls
     "${mod}+r" = "reload";
     "${mod}+Shift+r" = "restart";
-    # Exit i3
     "${mod}+Shift+q" = "exit";
-  #   # Lock the screen
-  #   # "${mod}+l" = "exec ${pkgs.swaylock-effects}/bin/swaylock -f";
-  #   # Kill application
+
+    # Scratchpad
+    "${mod}+c" = "scratchpad show move position center, resize set 80 ppt 70 ppt";
+    "${mod}+Shift+c" = "floating enable, resize set 80 ppt 70 ppt, move scratchpad";
+
+    ###############################################
+    ##### WINDOW MANAGEMENT #######################
+    ###############################################
+    "floating_modifier" = "${mod}";
+
     "${mod}+q" = "kill";
+    "${mod}+Shift+space" = "floating toggle; move position center"; # Toggle current container between tiling/floating
+    "${mod}+s" = "layout stacking";
+    "${mod}+e" = "layout toggle split";
+    "${mod}+f" = "fullscreen toggle";
 
-  #   # Screenshots
-  #   "Print" = "exec sway-screenshot screen";
-  #   "Shift+Print" = "exec sway-screenshot window";
-  #   "Alt+Print" = "exec sway-screenshot region";
-
-    # Move focus
+    ###############################################
+    ##### FOCUS ###################################
+    ###############################################
     "${mod}+Left" = "focus left";
     "${mod}+Right" = "focus right";
     "${mod}+Up" = "focus up";
     "${mod}+Down" = "focus down";
 
-    # Move windows
-    "${mod}+Shift+Left" = "move left";
-    "${mod}+Shift+Down" = "move down";
-    "${mod}+Shift+Up" = "move up";
-    "${mod}+Shift+Right" = "move right";
+    ###############################################
+    ##### RESIZE ##################################
+    ###############################################
+    "${mod}+Ctrl+Left" = "resize shrink width 10 px or 10 ppt";
+    "${mod}+Ctrl+Right" = "resize grow width 10px or 10 ppt";
+    "${mod}+Ctrl+Up" = "resize shrink height 10px or 10 ppt";
+    "${mod}+Ctrl+Down" = "resize grow height 10px or 10 ppt";
 
-    # Workspaces
+    ###############################################
+    ##### TABBED ##################################
+    ###############################################
+    "${mod}+w" = "layout toggle tabbed split";
+    "${mod}+Tab" = "focus right";
+    "focus_wrapping" = "force";
+
+    ###############################################
+    ##### SWITCH ##################################
+    ###############################################
     "${mod}+1" = "workspace number 1";
     "${mod}+2" = "workspace number 2";
     "${mod}+3" = "workspace number 3";
@@ -50,8 +92,11 @@
     "${mod}+7" = "workspace number 7";
     "${mod}+8" = "workspace number 8";
     "${mod}+9" = "workspace number 9";
+    "${mod}+0" = "workspace number 10";
 
-    # Move focused container to workspace
+    ###############################################
+    ##### MOVE ####################################
+    ###############################################
     "${mod}+Shift+1" = "move container to workspace number 1";
     "${mod}+Shift+2" = "move container to workspace number 2";
     "${mod}+Shift+3" = "move container to workspace number 3";
@@ -62,47 +107,20 @@
     "${mod}+Shift+8" = "move container to workspace number 8";
     "${mod}+Shift+9" = "move container to workspace number 9";
 
-    # Split current object of focus
-    "${mod}+h" = "splith";
-    "${mod}+v" = "splitv";
+    ###############################################
+    ##### MOUSE BINDINGS ##########################
+    ###############################################
+    "tiling_drag" = "modifier";
+    "${mod}+button4" = "--whole-window focus left";
+    "${mod}+button5" = "--whole-window focus right";
 
-    # Switch layout style for current container
-    "${mod}+s" = "layout stacking";
-    "${mod}+w" = "layout tabbed";
-    "${mod}+a" = "layout toggle split";
-
-    # Make current container fullscreen
-    "${mod}+f" = "fullscreen";
-    # Toggle current container between tiling/floating
-    "${mod}+Shift+space" = "floating toggle";
-    # Swap focus between tiled windows and floating window
-    "Mod1+space" = "focus mode_toggle";
-    # Focus parent container
-    # "${mod}+a" = "focus parent";
-    # Move focused window to scratch pad
-    "${mod}+Shift+minus" = "move scratchpad";
-    "${mod}+minus" = "scratchpad show";
-
-    "${mod}+c" = "mode 'resize'";
-
-     # Audio/Media Keys
-     "--release XF86AudioMute" = "exec ${pkgs.pulseaudioFull}/bin/pactl set-source-mute @DEFAULT_SOURCE@ toggle";
-     "--release XF86AudioPlay" = "exec ${pkgs.playerctl}/bin/playerctl play-pause";
-     "--release XF86AudioNext" = "exec ${pkgs.playerctl}/bin/playerctl next";
-     "--release XF86AudioPrev" = "exec ${pkgs.playerctl}/bin/playerctl prev";
-
-     # Volume Keys
-     "--release XF86AudioRaiseVolume" = "exec ${pkgs.wireplumber}/bin/wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+";
-     "--release XF86AudioLowerVolume" = "exec ${pkgs.wireplumber}/bin/wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-";
-
-    # Brightness Controls
-    # "--locked XF86MonBrightnessUp" = "exec ${pkgs.avizo}/bin/lightctl up";
-    # "--locked XF86MonBrightnessDown" = "exec ${pkgs.avizo}/bin/lightctl down";
-
-     # Applications
-     "Mod1+grave" = "exec ${pkgs._1password-gui}/bin/1password --quick-access";
-    #  "${mod}+c" = "exec sway-clip";
-    #  "${mod}+e" = "exec bemoji -c -n";
+    ###############################################
+    ##### MOVE FOCUSED ############################
+    ###############################################
+    "${mod}+Shift+Left" = "move left";
+    "${mod}+Shift+Down" = "move down";
+    "${mod}+Shift+Up" = "move up";
+    "${mod}+Shift+Right" = "move right";
   };
 
   resize = {

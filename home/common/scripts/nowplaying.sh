@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 barType=$1
 
 escaped_artist=$(playerctl metadata --player=cider,spotify --format '{{markup_escape(artist)}}' 2>&1)
