@@ -59,11 +59,6 @@ in
     };
   };
 
-  programs.ssh.extraConfig = ''
-    Host *
-      IdentityAgent ~/.1password/agent.sock
-  '';
-
   fonts = {
     packages = with pkgs; [
       liberation_ttf

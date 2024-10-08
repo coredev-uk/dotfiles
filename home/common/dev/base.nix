@@ -9,8 +9,8 @@
     nodejs
     bun
     pnpm
+    yarn
     fnm
-    corepack # Not in node in future (weird-ass node devs)
 
     # Electron
     dpkg

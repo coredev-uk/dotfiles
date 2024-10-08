@@ -21,57 +21,55 @@
       };
 
       initExtra = ''
-        bindkey '^[[1;5C' forward-word # Ctrl+RightArrow
-        bindkey '^[[1;5D' backward-word # Ctrl+LeftArrow
-
-        zstyle ':completion:*' completer _complete _match _approximate
-        zstyle ':completion:*:match:*' original only
-        zstyle ':completion:*:approximate:*' max-errors 1 numeric
-        zstyle ':completion:*' menu select
+        # Completion styling
+        zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
         zstyle ':completion:*' list-colors "''${(s.:.)LS_COLORS}"
+        zstyle ':completion:*' menu no
+        zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
+        zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
         export EDITOR=vim
 
         eval "$(nh completions --shell zsh)"  # nix-home completions
       '';
 
-      oh-my-zsh = {
-        enable = true;
-        plugins = [
-          "git"
-          "sudo"
-          "golang"
-          "kubectl"
-          "kubectx"
-          "rust"
-          "command-not-found"
-          "pass"
-          "helm"
-        ];
-      };
-      plugins = [
-        {
-          # will source zsh-autosuggestions.plugin.zsh
-          name = "zsh-autosuggestions";
-          src = pkgs.zsh-autosuggestions;
-          file = "share/zsh-autosuggestions/zsh-autosuggestions.zsh";
-        }
-        {
-          name = "zsh-completions";
-          src = pkgs.zsh-completions;
-          file = "share/zsh-completions/zsh-completions.zsh";
-        }
-        {
-          name = "zsh-syntax-highlighting";
-          src = pkgs.zsh-syntax-highlighting;
-          file = "share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh";
-        }
-        {
-          name = "fzf-tab";
-          src = pkgs.zsh-fzf-tab;
-          file = "share/fzf-tab/fzf-tab.plugin.zsh";
-        }
-      ];
+      # oh-my-zsh = {
+      #   enable = true;
+      #   plugins = [
+      #     "git"
+      #     "sudo"
+      #     "golang"
+      #     "kubectl"
+      #     "kubectx"
+      #     "rust"
+      #     # "command-not-found"
+      #     "pass"
+      #     "helm"
+      #   ];
+      # };
+      # plugins = [
+      #   {
+      #     # will source zsh-autosuggestions.plugin.zsh
+      #     name = "zsh-autosuggestions";
+      #     src = pkgs.zsh-autosuggestions;
+      #     file = "share/zsh-autosuggestions/zsh-autosuggestions.zsh";
+      #   }
+      #   {
+      #     name = "zsh-completions";
+      #     src = pkgs.zsh-completions;
+      #     file = "share/zsh-completions/zsh-completions.zsh";
+      #   }
+      #   {
+      #     name = "zsh-syntax-highlighting";
+      #     src = pkgs.zsh-syntax-highlighting;
+      #     file = "share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh";
+      #   }
+      #   {
+      #     name = "fzf-tab";
+      #     src = pkgs.zsh-fzf-tab;
+      #     file = "share/fzf-tab/fzf-tab.plugin.zsh";
+      #   }
+      # ];
 
       shellAliases = {
         # ls = "eza -gl --git --color=automatic";
