@@ -6,6 +6,7 @@ in
   imports = [
     ./git.nix
     ./zsh.nix
+    ./nvim.nix
   ];
 
   catppuccin = {
