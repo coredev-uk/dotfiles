@@ -91,27 +91,21 @@ stdenv.mkDerivation rec {
     dpkg
     libdrm
     libuuid
-    libXdamage
     libX11
+    libXdamage
     libXScrnSaver
     libXtst
     libxcb
     libxshmfence
+    makeShellWrapper
     mesa
     nss
     wrapGAppsHook3
-    makeShellWrapper
   ];
 
   dontWrapGApps = true;
 
   libPath = lib.makeLibraryPath [
-    libcxx
-    systemd
-    libpulseaudio
-    libdrm
-    mesa
-    stdenv.cc.cc
     alsa-lib
     atk
     at-spi2-atk
@@ -125,12 +119,16 @@ stdenv.mkDerivation rec {
     gdk-pixbuf
     glib
     gtk3
+    libcxx
+    libappindicator-gtk3
+    libdbusmenu
+    libdrm
     libglvnd
     libnotify
-    libX11
-    libXcomposite
     libunity
     libuuid
+    libX11
+    libXcomposite
     libXcursor
     libXdamage
     libXext
@@ -138,14 +136,15 @@ stdenv.mkDerivation rec {
     libXi
     libXrandr
     libXrender
-    libXtst
-    nspr
+    libXScrnSaver
     libxcb
+    libXtst
+    mesa
+    nspr
     openssl
     pango
-    libXScrnSaver
-    libappindicator-gtk3
-    libdbusmenu
+    stdenv.cc.cc
+    systemd
     wayland
   ];
 
