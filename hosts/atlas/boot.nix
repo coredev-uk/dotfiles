@@ -18,6 +18,8 @@
         "usbhid"
         "xhci_pci"
       ];
+
+      systemd.dbus.enable = true;
     };
 
     kernelModules = [

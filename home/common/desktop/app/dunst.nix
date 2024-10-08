@@ -9,6 +9,11 @@ in
 
     catppuccin.enable = true;
 
+    iconTheme = {
+      package = pkgs.papirus-icon-theme;
+      name = "Papirus";
+    };
+
     settings = {
       global = {
         width = "(300, 500)";
@@ -32,7 +37,7 @@ in
         frame_width = 2;
 
         font = "${theme.fonts.default.name}";
-        icon_path = "${theme.iconTheme.iconPath}";
+        # icon_path = "${theme.iconTheme.iconPath}";
       };
     };
   };
