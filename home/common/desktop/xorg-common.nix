@@ -7,6 +7,7 @@
 
   home.packages = with pkgs; [
     dunst
+    libnotify
     scrot
     dbus
   ];

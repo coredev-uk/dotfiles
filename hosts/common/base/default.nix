@@ -15,6 +15,7 @@
     ./locale.nix
     ./nh.nix
     ./zramswap.nix
+    ./nix-ld.nix
 
     ../services/openssh.nix
   ];
@@ -30,7 +31,6 @@
 
   programs = {
     zsh.enable = true;
-    nix-ld.enable = true;
   };
 
   services = {

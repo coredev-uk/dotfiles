@@ -1,6 +1,5 @@
 {
   autoPatchelfHook,
-  makeDesktopItem,
   lib,
   requireFile,
   stdenv,
@@ -22,7 +21,6 @@
   gtk3,
   libcxx,
   libdrm,
-  libglvnd,
   libnotify,
   libpulseaudio,
   libGL,
@@ -46,10 +44,6 @@
   openssl,
   pango,
   systemd,
-  libappindicator-gtk3,
-  libdbusmenu,
-  libunity,
-  wayland,
 }:
 
 let
@@ -58,8 +52,6 @@ let
   description = "A cross-platform Apple Music experience built on Vue.js and written from the ground up with performance in mind.";
   homepage = "https://cider.sh";
   downloadPage = "https://cidercollective.itch.io/cider";
-  binaryName = "cider-linux-x64";
-  desktopName = "Cider";
 in
 
 stdenv.mkDerivation rec {

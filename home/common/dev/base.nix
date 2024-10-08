@@ -8,6 +8,7 @@
     # Node.js development
     nodejs
     bun
+    pnpm
     fnm
     corepack # Not in node in future (weird-ass node devs)
 
