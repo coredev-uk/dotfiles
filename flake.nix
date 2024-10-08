@@ -23,7 +23,6 @@
     zen-browser.url = "github:MarceColl/zen-browser-flake";
   };
 
-
   outputs =
     {
       self,
@@ -49,7 +48,7 @@
       };
     in
     {
-      
+
       homeConfigurations = {
         "${username}@atlas" = libx.mkHome {
           hostname = "atlas";
@@ -86,6 +85,6 @@
         import ./shell.nix { inherit pkgs; }
       );
 
-      formatter = libx.forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
+      formatter = libx.forAllSystems (system: self.packages.${system}.nixfmt-plus);
     };
 }

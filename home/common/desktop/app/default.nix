@@ -3,8 +3,8 @@
   imports = [
     ./alacritty.nix
     ./rofi.nix
-    ./system 
-  ] ++ (if desktop == "i3" then [ ./polybar.nix ] else []);
+    ./system
+  ] ++ (if desktop == "i3" then [ ./polybar.nix ] else [ ]);
 
   programs = {
     firefox.enable = true;
@@ -16,6 +16,7 @@
     desktop-file-utils
     pavucontrol
     discord-canary
+    jellyfin-media-player
   ];
 
   fonts.fontconfig.enable = true;

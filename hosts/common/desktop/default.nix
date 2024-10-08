@@ -30,11 +30,18 @@ in
   # Enable location services
   location.provider = "geoclue2";
 
-  programs._1password.enable = true;
-  programs._1password-gui = {
+  # Enable Steam
+  programs.steam = {
     enable = true;
-    polkitPolicyOwners = [ "${username}" ];
+
+    protontricks = {
+      enable = true;
+    };
   };
+
+  programs._1password.enable = true;
+  programs._1password-gui.enable = true;
+  programs._1password-gui.polkitPolicyOwners = [ "${username}" ];
 
   security.pam.services = {
     login.u2fAuth = true;
@@ -42,16 +49,15 @@ in
     polkit-1.u2fAuth = true;
   };
 
-
-   environment.etc = {
-      "1password/custom_allowed_browsers" = {
-        text = ''
-          .zen-wrapped
-          zen
-        '';
-        mode = "0755";
-      };
+  environment.etc = {
+    "1password/custom_allowed_browsers" = {
+      text = ''
+        .zen-wrapped
+        zen
+      '';
+      mode = "0755";
     };
+  };
 
   programs.ssh.extraConfig = ''
     Host *

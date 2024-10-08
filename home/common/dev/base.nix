@@ -9,6 +9,7 @@
     nodejs
     bun
     fnm
+    corepack # Not in node in future (weird-ass node devs)
 
     # Electron
     dpkg
@@ -20,6 +21,8 @@
     deadnix
     nil
     nix-init
+    # Wrapper
+    nixfmt-plus
     nixfmt-rfc-style
     nurl
     statix

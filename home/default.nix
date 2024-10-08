@@ -9,12 +9,10 @@
   ...
 }:
 {
-  imports =
-    [
-      ./common/shell
-      ./common/dev
-    ]
-    ++ lib.optional (builtins.isString desktop) ./common/desktop;
+  imports = [
+    ./common/shell
+    ./common/dev
+  ] ++ lib.optional (builtins.isString desktop) ./common/desktop;
 
   home = {
     inherit username stateVersion;

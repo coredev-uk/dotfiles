@@ -16,9 +16,9 @@ in
 
   disko.devices = {
     disk = {
-     # 1TB root/boot drive. Configured with:
-     # - A FAT32 ESP partition for systemd-boot
-     # - A LUKS container which containers multiple btrfs subvolumes for nixos install
+      # 1TB root/boot drive. Configured with:
+      # - A FAT32 ESP partition for systemd-boot
+      # - A LUKS container which containers multiple btrfs subvolumes for nixos install
       nvme1 = {
         device = "/dev/nvme1n1";
         type = "disk";

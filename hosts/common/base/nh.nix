@@ -1,4 +1,9 @@
-{ self, pkgs, flakePath, ... }:
+{
+  self,
+  pkgs,
+  flakePath,
+  ...
+}:
 {
   programs.nh = {
     enable = true;
