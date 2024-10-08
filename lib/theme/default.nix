@@ -1,6 +1,5 @@
 {
   pkgs,
-  hostname ? "",
   ...
 }:
 let

@@ -1,13 +1,4 @@
-{
-  pkgs,
-  lib,
-  self,
-  ...
-}:
-let
-  theme = import "${self}/lib/theme" { inherit pkgs; };
-in
-{
+_: {
   services.xserver = {
     enable = true;
     windowManager.i3.enable = true;

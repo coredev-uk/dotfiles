@@ -1,4 +1,4 @@
-{ pkgs, desktop, ... }:
+{ desktop, ... }:
 
 {
   imports = [

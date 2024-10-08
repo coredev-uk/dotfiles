@@ -1,7 +1,4 @@
-{
-  lib,
-  ...
-}:
+_:
 let
   cryptroot = "cryptroot";
   defaultBtrfsOpts = [

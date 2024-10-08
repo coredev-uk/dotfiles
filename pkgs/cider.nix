@@ -1,17 +1,19 @@
 {
-  lib,
-  stdenv,
-  requireFile,
-  dpkg,
-  wrapGAppsHook,
   autoPatchelfHook,
+  makeDesktopItem,
+  lib,
+  requireFile,
+  stdenv,
+  wrapGAppsHook3,
+  makeShellWrapper,
   alsa-lib,
-  atk,
   at-spi2-atk,
   at-spi2-core,
+  atk,
   cairo,
   cups,
   dbus,
+  dpkg,
   expat,
   fontconfig,
   freetype,
@@ -20,11 +22,12 @@
   gtk3,
   libcxx,
   libdrm,
+  libglvnd,
   libnotify,
   libpulseaudio,
   libuuid,
   libX11,
-  libxcb,
+  libXScrnSaver,
   libXcomposite,
   libXcursor,
   libXdamage,
@@ -33,39 +36,81 @@
   libXi,
   libXrandr,
   libXrender,
-  libXScrnSaver,
   libXtst,
+  libxcb,
+  libxshmfence,
   mesa,
   nspr,
   nss,
   openssl,
   pango,
   systemd,
+  libappindicator-gtk3,
+  libdbusmenu,
+  libunity,
+  wayland,
 }:
 
-stdenv.mkDerivation rec {
-
-  pname = "cider";
+let
+  pname = "Cider";
   version = "1.0.0";
+  description = "A cross-platform Apple Music experience built on Vue.js and written from the ground up with performance in mind.";
+  homepage = "https://cider.sh";
+  downloadPage = "https://cidercollective.itch.io/cider";
+  binaryName = "cider-linux-x64";
+  desktopName = "Cider";
+in
+
+stdenv.mkDerivation rec {
+  inherit pname version;
 
   src = requireFile rec {
     name = "cider-linux-x64_1.0.0_amd64.deb";
     url = "https://cidercollective.itch.io/cider";
-    # sha256sum /nix/store/i57n6n2jlkika258hiwyljyivsmyb8c9-cider-linux-x64_1.0.0_amd64.deb
-    sha256 = "16pj97lwn79d7vami645pwk7bjvivjx3jy5cr24g44xwv9g9wzmx";
+    # sha256sum /nix/store/9787v3r38sbbmbkxqkx9szk5snmzmf8k-cider-linux-x64_1.0.0_amd64.deb
+    sha256 = "0vnrpx0lk0c9rcd209vmq0armxi62dz3wfnja8ma95b526w8rd39";
+  };
+
+  meta = with lib; {
+    inherit
+      description
+      homepage
+      downloadPage
+      binaryName
+      ;
+    sourceProvenance = with sourceTypes; [ binaryNativeCode ];
+    # license = licenses.unfree;
+    maintainers = with maintainers; [ core ];
+    platforms = [ "x86_64-linux" ];
   };
 
   nativeBuildInputs = [
-    dpkg
-    wrapGAppsHook
+    alsa-lib
     autoPatchelfHook
+    cups
+    dpkg
+    libdrm
+    libuuid
+    libXdamage
+    libX11
+    libXScrnSaver
+    libXtst
+    libxcb
+    libxshmfence
+    mesa
+    nss
+    wrapGAppsHook3
+    makeShellWrapper
   ];
 
-  # Some might not be necessary - Chromium requried libs
-  buildInputs = [
+  dontWrapGApps = true;
+
+  libPath = lib.makeLibraryPath [
     libcxx
     systemd
     libpulseaudio
+    libdrm
+    mesa
     stdenv.cc.cc
     alsa-lib
     atk
@@ -80,12 +125,12 @@ stdenv.mkDerivation rec {
     gdk-pixbuf
     glib
     gtk3
-    libdrm
+    libglvnd
     libnotify
-    libuuid
     libX11
-    libxcb
     libXcomposite
+    libunity
+    libuuid
     libXcursor
     libXdamage
     libXext
@@ -93,24 +138,21 @@ stdenv.mkDerivation rec {
     libXi
     libXrandr
     libXrender
-    libXScrnSaver
     libXtst
-    mesa
     nspr
-    nss
+    libxcb
+    openssl
     pango
-    systemd
+    libXScrnSaver
+    libappindicator-gtk3
+    libdbusmenu
+    wayland
   ];
-
-  libPath = lib.makeLibraryPath buildInputs;
-
-  dontWrapGApps = true;
 
   unpackPhase = ''
     dpkg-deb --fsys-tarfile ${src} | \
       tar -x --no-same-owner
     mv usr $out
-
   '';
 
   # Will be adjusted in future versions
@@ -132,12 +174,17 @@ stdenv.mkDerivation rec {
     runHook postInstall
   '';
 
-  meta = with lib; {
-    description = "some stupid description that i cba to write";
-    homepage = "https://cider.sh";
-    sourceProvenance = with sourceTypes; [ binaryNativeCode ];
-    platforms = [ "x86_64-linux" ];
-    maintainers = with maintainers; [ core ];
-  };
+  # desktopItem = makeDesktopItem {
+  #   name = pname;
+  #   exec = binaryName;
+  #   icon = pname;
+  #   inherit desktopName;
+  #   genericName = description;
+  #   categories = [
+  #     "Audio"
+  #     "AudioVideo"
+  #   ];
+  #   mimeTypes = [ "x-scheme-handler/discord" ];
+  # };
 
 }
