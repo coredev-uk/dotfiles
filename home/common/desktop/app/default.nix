@@ -1,10 +1,20 @@
 { pkgs, desktop, ... }:
 {
-  imports = [
-    ./alacritty.nix
-    ./rofi.nix
-    ./system
-  ] ++ (if desktop == "i3" then [ ./polybar.nix ] else [ ]);
+  imports =
+    [
+      ./alacritty.nix
+      ./rofi.nix
+      ./system
+    ]
+    ++ (
+      if desktop == "i3" then
+        [
+          ./polybar.nix
+          ./picom.nix
+        ]
+      else
+        [ ]
+    );
 
   programs = {
     firefox.enable = true;

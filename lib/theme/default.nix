@@ -17,7 +17,7 @@ rec {
     size = "standard";
   };
 
-  #   wallpaper = if hostname == "kara" then ./wallpapers/mountains.png else ./wallpapers/jokulsarlon.png;
+  wallpaper = "wallpaper";
 
   gtkTheme = {
     name = "catppuccin-macchiato-blue-standard";

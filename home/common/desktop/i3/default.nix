@@ -1,18 +1,28 @@
-{ pkgs, self, hostname, lib, ... }:
+{
+  pkgs,
+  self,
+  hostname,
+  lib,
+  ...
+}:
 
 {
   imports = [
     ../xorg-common.nix
-
     ./packages.nix
   ];
 
-  xsession.windowManager.i3 = 
+  xsession.windowManager.i3 =
     let
       theme = import "${self}/lib/theme" { inherit pkgs hostname; };
       mod = "Mod4";
+      browser = "zen-bin";
+      screenshot = "${pkgs.scrot}/bin/scrot";
       terminal = "alacritty";
       menu = "rofi -show drun";
+      notify = "${pkgs.dunst}/bin/dunst";
+      background = "wallpaper";
+      lock = "${pkgs.i3lock}/bin/i3lock -nef -c 000000";
     in
     {
       enable = true;
@@ -47,27 +57,34 @@
         };
 
         startup = [
-        {
-          command = "systemctl restart --user polybar";
-        }
-      ];
+          {
+            command = "systemctl restart --user polybar";
+          }
+        ];
 
         keybindings =
           (import ./config/keybindings.nix {
             inherit
+              browser
+              screenshot
               terminal
               menu
+              lock
+              theme
               mod
               pkgs
               ;
           }).main;
-          
 
         modes.resize =
           (import ./config/keybindings.nix {
             inherit
+              browser
+              screenshot
               terminal
               menu
+              lock
+              theme
               mod
               pkgs
               ;
