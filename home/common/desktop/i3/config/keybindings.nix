@@ -86,15 +86,14 @@
     "${mod}+c" = "mode 'resize'";
 
      # Audio/Media Keys
-    #  "--locked XF86AudioPlay" = "exec ${pkgs.playerctl}/bin/playerctl play-pause";
-    #  "--locked XF86AudioNext" = "exec ${pkgs.playerctl}/bin/playerctl next";
-    #  "--locked XF86AudioPrev" = "exec ${pkgs.playerctl}/bin/playerctl prev";
+     "--release XF86AudioMute" = "exec ${pkgs.pulseaudioFull}/bin/pactl set-source-mute @DEFAULT_SOURCE@ toggle";
+     "--release XF86AudioPlay" = "exec ${pkgs.playerctl}/bin/playerctl play-pause";
+     "--release XF86AudioNext" = "exec ${pkgs.playerctl}/bin/playerctl next";
+     "--release XF86AudioPrev" = "exec ${pkgs.playerctl}/bin/playerctl prev";
 
      # Volume Keys
-    #  "--locked XF86AudioRaiseVolume" = "exec ${pkgs.playerctl}/bin/volumectl -u up";
-    # "--locked XF86AudioLowerVolume" = "exec ${pkgs.playerctl}/bin/volumectl -u down";
-    # "--locked XF86AudioMute" = "exec ${pkgs.volumectl}/bin/volumectl toggle-mute";
-    # "--locked Pause" = "exec ${pkgs.avizvolumectlo}/bin/volumectl -m toggle-mute";
+     "--release XF86AudioRaiseVolume" = "exec ${pkgs.wireplumber}/bin/wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+";
+     "--release XF86AudioLowerVolume" = "exec ${pkgs.wireplumber}/bin/wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-";
 
     # Brightness Controls
     # "--locked XF86MonBrightnessUp" = "exec ${pkgs.avizo}/bin/lightctl up";
