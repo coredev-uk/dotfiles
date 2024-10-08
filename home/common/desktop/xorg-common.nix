@@ -8,6 +8,7 @@
   home.packages = with pkgs; [
     dunst
     scrot
+    dbus
   ];
 
   services = {

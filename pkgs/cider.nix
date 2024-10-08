@@ -25,6 +25,7 @@
   libglvnd,
   libnotify,
   libpulseaudio,
+  libGL,
   libuuid,
   libX11,
   libXScrnSaver,
@@ -76,13 +77,17 @@ stdenv.mkDerivation rec {
       description
       homepage
       downloadPage
-      binaryName
       ;
     sourceProvenance = with sourceTypes; [ binaryNativeCode ];
     # license = licenses.unfree;
     maintainers = with maintainers; [ core ];
     platforms = [ "x86_64-linux" ];
   };
+
+  propagatedBuildInputs = [
+    dbus
+    libX11
+  ];
 
   nativeBuildInputs = [
     alsa-lib
@@ -120,12 +125,10 @@ stdenv.mkDerivation rec {
     glib
     gtk3
     libcxx
-    libappindicator-gtk3
-    libdbusmenu
     libdrm
-    libglvnd
     libnotify
-    libunity
+    libpulseaudio
+    libGL
     libuuid
     libX11
     libXcomposite
@@ -142,10 +145,11 @@ stdenv.mkDerivation rec {
     mesa
     nspr
     openssl
+    nss
     pango
     stdenv.cc.cc
     systemd
-    wayland
+    # wayland
   ];
 
   unpackPhase = ''

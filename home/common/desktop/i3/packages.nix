@@ -13,6 +13,7 @@ in
   home.packages = with pkgs; [
     feh
     i3-background
+    dunst
     cider
   ];
 }
