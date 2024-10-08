@@ -12,6 +12,7 @@
   imports = [
     ./common/shell
     ./common/dev
+    ./common/scripts
   ] ++ lib.optional (builtins.isString desktop) ./common/desktop;
 
   home = {
