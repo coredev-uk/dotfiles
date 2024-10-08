@@ -1,5 +1,4 @@
 let
-  paul = "";
   users = [ "paul" ];
 in
 {

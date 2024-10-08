@@ -1,6 +1,5 @@
 { pkgs, lib, ... }:
 {
-  # TODO: Add backup key
   home.file.".config/git/allowed_signers".text = ''
     core@coredev.uk sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIPF/JcM0mZ9qCfNYrAnaA/rS+N4FuQo+rGxzqAOURIktAAAACnNzaDpHaXRIdWI= YK5C-1
     core@coredev.uk sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIK+uHvJa0C6nT7WIm4XYyCIrJv5NOL6c55lu9TtNzQyzAAAABHNzaDo= YK5C-2

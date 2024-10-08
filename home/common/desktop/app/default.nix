@@ -25,7 +25,9 @@
     catppuccin-gtk
     desktop-file-utils
     pavucontrol
-    discord-canary
+    (discord-canary.override {
+      withVencord = true;
+    })
     jellyfin-media-player
   ];
 

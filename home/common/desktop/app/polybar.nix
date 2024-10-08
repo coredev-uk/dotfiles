@@ -16,7 +16,7 @@ in
 
     package = pkgs.polybar.override {
       i3Support = true;
-      i3 = pkgs.i3;
+      inherit (pkgs) i3;
       alsaSupport = true;
       githubSupport = true;
       pulseSupport = true;

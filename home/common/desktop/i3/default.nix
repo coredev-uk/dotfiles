@@ -2,7 +2,6 @@
   pkgs,
   self,
   hostname,
-  lib,
   ...
 }:
 
@@ -20,8 +19,6 @@
       screenshot = "${pkgs.scrot}/bin/scrot";
       terminal = "alacritty";
       menu = "rofi -show drun";
-      notify = "${pkgs.dunst}/bin/dunst";
-      background = "wallpaper";
       lock = "${pkgs.i3lock}/bin/i3lock -nef -c 000000";
     in
     {
