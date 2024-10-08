@@ -30,5 +30,6 @@ in
   home.packages = with pkgs; [
     age
     sops
+    btop
   ];
 }

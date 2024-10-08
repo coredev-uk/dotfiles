@@ -24,6 +24,21 @@ rec {
     lightPurple = catppuccin-macchiato.lavender;
     bg = catppuccin-macchiato.base;
     bgDark = catppuccin-macchiato.mantle;
+
+    old = rec {
+      foreground = "#ffffff";
+      background = "#00000000";
+      module = "#1e1e2e";
+      black = "#000000";
+      caffeine = "#89dceb";
+      datetime = "#fab387";
+      volume = "#89b4fa";
+      updates = "#f5c2e7";
+      language = "#f38ba8";
+      vpn = "#a6e3a1";
+      microphone = "#cba6f7";
+      nowplaying = "#f38ba8";
+    };
   };
 
   catppuccin-macchiato = {
