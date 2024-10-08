@@ -16,8 +16,6 @@ rec {
     size = "standard";
   };
 
-  wallpaper = "wallpaper";
-
   gtkTheme = {
     name = "catppuccin-macchiato-blue-standard";
     package = pkgs.catppuccin-gtk.override {

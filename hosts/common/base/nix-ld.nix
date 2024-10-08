@@ -55,14 +55,6 @@
     xorg.libxcb
     xorg.libxkbfile
     xorg.libxshmfence
-    stdenv.cc.cc
     zlib
-    fuse3
-    fuse
-    icu
-    openssl
-    curl
-    expat
-    libz
   ];
 }

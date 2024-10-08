@@ -6,4 +6,6 @@
     pcscd.enable = true;
     udev.packages = [ pkgs.yubikey-personalization ];
   };
+
+  services.yubikey-agent.enable = true;
 }

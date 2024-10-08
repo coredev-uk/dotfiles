@@ -5,8 +5,8 @@ in
 {
   imports = [
     ./git.nix
-    ./zsh.nix
     ./nvim.nix
+    ./zsh.nix
   ];
 
   catppuccin = {
@@ -17,20 +17,13 @@ in
   programs = {
     eza.enable = true;
     git.enable = true;
-    gpg.enable = true;
     home-manager.enable = true;
     jq.enable = true;
-  };
-
-  services.gpg-agent = {
-    enable = true;
-    pinentryPackage = pkgs.pinentry-curses;
   };
 
   home.packages = with pkgs; [
     age
     sops
     btop
-    protonvpn-cli
   ];
 }
