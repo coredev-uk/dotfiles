@@ -48,7 +48,7 @@
 
 let
   pname = "Cider";
-  version = "1.0.0";
+  version = "1.1.0";
   description = "A cross-platform Apple Music experience built on Vue.js and written from the ground up with performance in mind.";
   homepage = "https://cider.sh";
   downloadPage = "https://cidercollective.itch.io/cider";
@@ -60,8 +60,8 @@ stdenv.mkDerivation rec {
   src = requireFile rec {
     name = "cider-linux-x64_1.0.0_amd64.deb";
     url = "https://cidercollective.itch.io/cider";
-    # sha256sum /nix/store/9787v3r38sbbmbkxqkx9szk5snmzmf8k-cider-linux-x64_1.0.0_amd64.deb
-    sha256 = "0vnrpx0lk0c9rcd209vmq0armxi62dz3wfnja8ma95b526w8rd39";
+    # sha256sum /nix/store/x5fqqyyppdcnmxzqdjcw1pvw266gbf2i-cider-linux-x64_1.0.0_amd64.deb
+    sha256 = "1zmv0as5ryq82hy3c2kkzq9jf4hvd6zn4q8scnhng3yg7knga5am";
   };
 
   meta = with lib; {
