@@ -1,12 +1,12 @@
 (defpoll time           :interval "1s" "date '+%H:%M'")
 (defpoll volume         :interval "1s" "wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{print $2 * 100}'")
-(defpoll music_art      :interval "1s" "~/.config/eww/scripts/music --art")
-(defpoll music_title    :interval "1s" "~/.config/eww/scripts/music --title")
-(defpoll music_artist   :interval "1s" "~/.config/eww/scripts/music --artist")
+(defpoll music_art      :interval "1s" "~/.config/eww/scripts/music.sh --art")
+(defpoll music_title    :interval "1s" "~/.config/eww/scripts/music.sh --title")
+(defpoll music_artist   :interval "1s" "~/.config/eww/scripts/music.sh --artist")
 (defpoll memory         :interval "15s" "free | awk '/Mem/ {print int($3/$2 * 100 + 0.5)}'")
 
 
-(deflisten workspaces_listen "~/.config/eww/scripts/workspace")
+(deflisten workspaces_listen "~/.config/eww/scripts/workspace.sh")
 
 (defvar volume_reveal false)
 
@@ -93,6 +93,17 @@
 
 (defwindow bar
   :monitor 0
+  :windowtype "dock"
+  :geometry (geometry :x "0%"
+                      :y "0%"
+                      :width "90%"
+                      :height "0px"
+                      :anchor "bottom center")
+  :reserve (struts :side "bottom" :distance "4%")
+  (bar_container))
+
+(defwindow bar-second
+  :monitor 1
   :windowtype "dock"
   :geometry (geometry :x "0%"
                       :y "0%"
