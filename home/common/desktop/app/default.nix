@@ -9,7 +9,6 @@
     ++ (
       if desktop == "i3" then
         [
-          ./polybar.nix
           ./picom.nix
         ]
       else
