@@ -52,12 +52,12 @@ rec {
       size = "11";
     };
     iconFont = {
-      name = "Inter";
-      package = pkgs.inter;
+      name = "Font Awesome";
+      package = pkgs.font-awesome;
     };
     monospace = {
-      name = "MesloLGSDZ Nerd Font Mono";
-      package = pkgs.nerdfonts.override { fonts = [ "Meslo" ]; };
+      name = "Fira Code";
+      package = pkgs.fira-code;
     };
     emoji = {
       name = "Joypixels";

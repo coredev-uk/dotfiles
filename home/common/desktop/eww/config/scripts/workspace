@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+
+MUSIC_DIR="$HOME/.music/"
+mkdir -p "$HOME/.music/"
+
+art() {
+  url=$(playerctl metadata --player=spotify | grep artUrl | awk '{print $3}')
+  id=$(echo "$url" | cut -d'/' -f5)
+  file_path="${MUSIC_DIR}${id}.jpg"
+
+  if [ ! -e file_path ]; then
+    ffmpeg -i "$url" -vf "scale=24:24" "$file_path"
+  fi
+
+  echo "$file_path"
+}
+
+title() {
+  echo $(playerctl metadata --player=spotify --format '{{title}}')
+}
+
+artist() {
+  echo $(playerctl metadata --player=spotify --format '{{artist}}')
+}
+
+case "$1" in
+  --art)
+    art
+    ;;
+  --title)
+    title
+    ;;
+  --artist)
+    artist
+    ;;
+esac

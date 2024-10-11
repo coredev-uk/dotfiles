@@ -43,6 +43,8 @@ in
     ./packages.nix
   ];
 
+  home.packages = with pkgs; [ wallpaper ];
+
   xsession.windowManager.i3 =
     let
       theme = import "${self}/lib/theme" { inherit pkgs hostname; };
