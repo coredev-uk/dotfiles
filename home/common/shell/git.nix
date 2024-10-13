@@ -1,14 +1,9 @@
 { pkgs, lib, ... }:
 {
   home.file.".config/git/allowed_signers".text = ''
-    core@coredev.uk ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBIHUzKGICI1VKmixsiWZnXCRZRdEHYfMcFY3sleAASu/ED/yeLwwtl3ACC+aDIESwYmq1oxTHmXEmy0+Pjc+TLg= YK5C-1
-    core@coredev.uk ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBNhfvWTRZU1BxawHJ5RRHF9TTvhBuLOzh5h9cL2MMttYCxIJPPASJSLrj71E44pdlPFfJDKrkDIbmge3CibKGbg== YK5C-2
-
-    core@cider.sh ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBIHUzKGICI1VKmixsiWZnXCRZRdEHYfMcFY3sleAASu/ED/yeLwwtl3ACC+aDIESwYmq1oxTHmXEmy0+Pjc+TLg= YK5C-1
-    core@cider.sh ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBNhfvWTRZU1BxawHJ5RRHF9TTvhBuLOzh5h9cL2MMttYCxIJPPASJSLrj71E44pdlPFfJDKrkDIbmge3CibKGbg== YK5C-2
-
-    pt357@kent.ac.uk ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBIHUzKGICI1VKmixsiWZnXCRZRdEHYfMcFY3sleAASu/ED/yeLwwtl3ACC+aDIESwYmq1oxTHmXEmy0+Pjc+TLg= YK5C-1
-    pt357@kent.ac.uk ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBNhfvWTRZU1BxawHJ5RRHF9TTvhBuLOzh5h9cL2MMttYCxIJPPASJSLrj71E44pdlPFfJDKrkDIbmge3CibKGbg== YK5C-2
+    core@coredev.uk ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAHp9jtjj8GUHYoLQa+PzfOOkJ9ODPc4G3YlZfYXQFqvK5C-1 1Password
+    core@cider.sh ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAHp9jtjj8GUHYoLQa+PzfOOkJ9ODPc4G3YlZfYXQFqv 1Password
+    pt357@kent.ac.uk ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAHp9jtjj8GUHYoLQa+PzfOOkJ9ODPc4G3YlZfYXQFqv 1Password
   '';
 
   home.packages = with pkgs; [ gh ];
@@ -51,6 +46,7 @@
           ssh = {
             defaultKeyCommand = "sh -c 'echo key::$(ssh-add -L | head -n1)'";
             allowedSignersFile = "~/.config/git/allowed_signers";
+            program = "${lib.getExe' pkgs._1password-gui "op-ssh-sign"}";
           };
         };
         commit = {
