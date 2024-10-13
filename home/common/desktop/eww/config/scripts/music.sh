@@ -6,6 +6,11 @@ mkdir -p "$HOME/.music/"
 PLAYER="cider,spotify"
 
 art() {
+  if [ "$(playerctl status --player=${PLAYER})" != "Playing" ]; then
+    echo ""
+    exit 0
+  fi
+
   meta=$(playerctl metadata --player=${PLAYER})
   url=$(echo "${meta}" | grep artUrl | awk '{print $3}')
   id=$(echo "${meta}" | grep trackid | awk -F'/' '{print $NF}' | sed "s/'//")
@@ -19,10 +24,20 @@ art() {
 }
 
 title() {
+  if [ "$(playerctl status --player=${PLAYER})" != "Playing" ]; then
+    echo ""
+    exit 0
+  fi
+
   echo $(playerctl metadata --player=${PLAYER} --format '{{title}}')
 }
 
 artist() {
+  if [ "$(playerctl status --player=${PLAYER})" != "Playing" ]; then
+    echo ""
+    exit 0
+  fi
+
   echo $(playerctl metadata --player=${PLAYER} --format '{{artist}}')
 }
 
