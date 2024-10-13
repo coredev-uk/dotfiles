@@ -58,6 +58,7 @@
 
     optimise.automatic = true;
     settings = {
+      warn-dirty = false; # Disable warning about dirty working directory - annoying af
       auto-optimise-store = true;
       experimental-features = [
         "nix-command"
