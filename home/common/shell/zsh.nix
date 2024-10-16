@@ -2,6 +2,11 @@
 
 {
 
+  home.packages = with pkgs; [
+    zoxide
+    starship
+  ];
+
   programs = {
     zsh = {
       enable = true;
@@ -33,20 +38,22 @@
         eval "$(nh completions --shell zsh)"  # nix-home completions
       '';
 
-      # oh-my-zsh = {
-      #   enable = true;
-      #   plugins = [
-      #     "git"
-      #     "sudo"
-      #     "golang"
-      #     "kubectl"
-      #     "kubectx"
-      #     "rust"
-      #     # "command-not-found"
-      #     "pass"
-      #     "helm"
-      #   ];
-      # };
+      oh-my-zsh = {
+        enable = true;
+        plugins = [
+          "zoxide"
+          "starship"
+          "sudo"
+          "ssh"
+          "ssh-agent"
+          "npm"
+          "git"
+          "aliases"
+          "colored-man-pages"
+          "docker"
+        ];
+      };
+
       # plugins = [
       #   {
       #     # will source zsh-autosuggestions.plugin.zsh

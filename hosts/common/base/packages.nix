@@ -1,7 +1,6 @@
 { pkgs, ... }:
 {
   basePackages = with pkgs; [
-    _1password
     bat
     binutils
     curl

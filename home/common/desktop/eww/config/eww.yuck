@@ -3,6 +3,7 @@
 (defpoll music_art      :interval "1s" "~/.config/eww/scripts/music.sh --art")
 (defpoll music_title    :interval "1s" "~/.config/eww/scripts/music.sh --title")
 (defpoll music_artist   :interval "1s" "~/.config/eww/scripts/music.sh --artist")
+(defpoll music_status   :interval "1s" "~/.config/eww/scripts/music.sh --status")
 (defpoll memory         :interval "15s" "free | awk '/Mem/ {print int($3/$2 * 100 + 0.5)}'")
 
 
@@ -42,7 +43,7 @@
 
 
 (defwidget music []
-  (box :orientation "h" :hexpand "false" :space-evenly "false"
+  (box :orientation "h" :hexpand "false" :space-evenly "false" :visible music_status
     (box :hexpand "false" :style "background-image: url('${music_art}');" :class "music_art") 
     (box :hexpand "false" "${music_title} ")
     (box :hexpand "false" " - ${music_artist}")))

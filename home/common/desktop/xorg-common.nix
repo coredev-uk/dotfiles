@@ -12,10 +12,6 @@
     dbus
   ];
 
-  services = {
-    gnome-keyring.enable = true;
-  };
-
   services.gammastep = {
     enable = true;
 
