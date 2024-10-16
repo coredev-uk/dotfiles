@@ -1,6 +1,5 @@
 {
   browser,
-  screenshot,
   terminal,
   menu,
   lock,
@@ -10,7 +9,6 @@
   wallpaper,
   ...
 }:
-
 {
 
   main = {
@@ -26,8 +24,8 @@
     "--release XF86AudioLowerVolume" = "exec ${pkgs.wireplumber}/bin/wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-";
 
     # Screenshot
-    "${mod}+Print" = "exec ${screenshot} -u -e 'xclip -selection clipboard -t image/png -i $f && rm $f'";
-    "${mod}+Shift+Print" = "exec ${screenshot} -s -e 'xclip -selection clipboard -t image/png -i $f && rm $f'";
+    "--release ${mod}+Print" = "exec ${pkgs.scrot}/bin/scrot -zs -e '${pkgs.xclip}/bin/xclip -selection clipboard -t image/png -i $f && rm $f'";
+    "--release ${mod}+Shift+Print" = "exec ${pkgs.scrot}/bin/scrot -s -e '${pkgs.xclip}/bin/xclip -selection clipboard -t image/png -i $f && rm $f'";
 
     # 1Password
     "${mod}+grave" = "exec ${pkgs._1password-gui}/bin/1password --quick-access";

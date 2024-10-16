@@ -41,6 +41,14 @@ artist() {
   echo $(playerctl metadata --player=${PLAYER} --format '{{artist}}')
 }
 
+status() {
+  if [ "$(playerctl status --player=${PLAYER})" == "Playing" ]; then
+    echo "true"
+  else
+    echo "false"
+  fi
+}
+
 case "$1" in
   --art)
     art
@@ -50,5 +58,8 @@ case "$1" in
     ;;
   --artist)
     artist
+    ;;
+  --status)
+    status
     ;;
 esac

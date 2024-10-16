@@ -50,7 +50,6 @@ in
       theme = import "${self}/lib/theme" { inherit pkgs hostname; };
       mod = "Mod4";
       browser = "zen-bin";
-      screenshot = "${pkgs.scrot}/bin/scrot";
       terminal = "alacritty";
       menu = "rofi -show drun";
       lock = "${pkgs.i3lock}/bin/i3lock -nef -c 000000";
@@ -97,7 +96,6 @@ in
           (import ./config/keybindings.nix {
             inherit
               browser
-              screenshot
               terminal
               menu
               lock
@@ -112,7 +110,6 @@ in
           (import ./config/keybindings.nix {
             inherit
               browser
-              screenshot
               terminal
               menu
               lock
