@@ -32,29 +32,29 @@
     };
   };
 
-  services.xidlehook = {
-    enable = true;
+  # services.xidlehook = {
+  #   enable = true;
 
-    detect-sleep = true;
+  #   detect-sleep = true;
 
-    not-when-audio = true;
-    not-when-fullscreen = true;
+  #   not-when-audio = true;
+  #   not-when-fullscreen = true;
 
-    timers = [
-      {
-        delay = 300;
-        command = "loginctl lock-session";
-      }
-      {
-        delay = 300;
-        command = "xset s activate";
-      }
-      {
-        delay = 1200;
-        command = "systemctl suspend";
-      }
-    ];
-  };
+  #   timers = [
+  #     {
+  #       delay = 300;
+  #       command = "loginctl lock-session";
+  #     }
+  #     {
+  #       delay = 300;
+  #       command = "xset s activate";
+  #     }
+  #     {
+  #       delay = 1200;
+  #       command = "systemctl suspend";
+  #     }
+  #   ];
+  # };
 
   systemd.user.services.polkit-gnome-authentication-agent-1 = {
     Unit.Description = "polkit-gnome-authentication-agent-1";
