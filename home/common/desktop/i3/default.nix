@@ -49,7 +49,7 @@ in
     let
       theme = import "${self}/lib/theme" { inherit pkgs hostname; };
       mod = "Mod4";
-      browser = "zen-bin";
+      browser = "zen";
       terminal = "alacritty";
       menu = "rofi -show drun";
       lock = "${pkgs.i3lock}/bin/i3lock -nef -c 000000";

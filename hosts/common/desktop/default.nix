@@ -11,6 +11,8 @@ in
 {
   imports = [
     (./. + "/${desktop}.nix")
+
+    ./sddm.nix
     ../hardware/yubikey.nix
     ../services/pipewire.nix
   ];
@@ -53,6 +55,7 @@ in
     "1password/custom_allowed_browsers" = {
       text = ''
         .zen-wrapped
+        zen-bin
         zen
       '';
       mode = "0755";
