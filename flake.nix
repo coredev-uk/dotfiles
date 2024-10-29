@@ -20,7 +20,7 @@
     lanzaboote.url = "github:nix-community/lanzaboote";
     lanzaboote.inputs.nixpkgs.follows = "unstable";
 
-    zen-browser.url = "github:ch4og/zen-browser-flake";
+    zen-browser.url = "github:omarcresp/zen-browser-flake";
   };
 
   outputs =
@@ -51,14 +51,14 @@
       homeConfigurations = {
         "${username}@atlas" = libx.mkHome {
           hostname = "atlas";
-          desktop = "hyprland";
+          desktop = "i3";
         };
       };
 
       nixosConfigurations = {
         atlas = libx.mkHost {
           hostname = "atlas";
-          desktop = "hyprland";
+          desktop = "i3";
         };
       };
 

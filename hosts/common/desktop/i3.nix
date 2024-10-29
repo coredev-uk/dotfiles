@@ -9,8 +9,4 @@
     videoDrivers = [ "nvidia" ];
   };
 
-  services.displayManager.sddm = {
-    enable = true;
-  };
-
 }

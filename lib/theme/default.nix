@@ -11,13 +11,13 @@ rec {
   inherit colours;
 
   catppuccin = {
-    flavor = "macchiato";
+    flavor = "mocha";
     accent = "blue";
     size = "standard";
   };
 
   gtkTheme = {
-    name = "catppuccin-macchiato-blue-standard";
+    name = "catppuccin-mocha-blue-standard";
     package = pkgs.catppuccin-gtk.override {
       inherit (catppuccin) size;
       variant = catppuccin.flavor;
@@ -26,10 +26,10 @@ rec {
   };
 
   qtTheme = {
-    name = "Catppuccin-Macchiato-Blue";
+    name = "Catppuccin-Mocha-Blue";
     package = pkgs.catppuccin-kvantum.override {
-      variant = "Macchiato";
-      accent = "Blue";
+      variant = "mocha";
+      accent = "blue";
     };
   };
 
