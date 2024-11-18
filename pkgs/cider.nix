@@ -60,8 +60,8 @@ stdenv.mkDerivation rec {
   src = requireFile rec {
     name = "cider-linux-x64_1.0.0_amd64.deb";
     url = "https://cidercollective.itch.io/cider";
-    # sha256sum /nix/store/xhzjmc6slbprsb8cjm56cbgvqmal0wbc-cider-linux-x64_1.0.0_amd64.deb
-    sha256 = "00bs4p7ippqhk3ap6qvj8gzqsw3xbbs4wnj2zkgmifch12afxxxx";
+    # sha256sum /nix/store/4k0p1rzkayw98sm0h1fbwviyzvdyzjck-cider-linux-x64_1.0.0_amd64.deb
+    sha256 = "0z56fq51dh4jblfv3rj9iv76ijpyylv0y3amgs9wrgglq11zjbsa";
   };
 
   meta = with lib; {
