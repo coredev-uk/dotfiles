@@ -13,14 +13,6 @@
     alsa.support32Bit = true;
     pulse.enable = true;
     wireplumber.enable = true;
-
-    lowLatency = {
-      # enable this module
-      enable = true;
-      # defaults (no need to be set unless modified)
-      quantum = 64;
-      rate = 48000;
-    };
   };
 
   environment.systemPackages =
