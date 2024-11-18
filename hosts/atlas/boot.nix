@@ -27,7 +27,7 @@
       "vhost_vsock"
     ];
 
-    # Use the latest Linux kernel, rather than the default LTS
-    kernelPackages = pkgs.linuxPackages_latest;
+    # Use the Xanmod Kernel for gaming-related optimisations.
+    kernelPackages = pkgs.linuxPackages_xanmod_latest;
   };
 }

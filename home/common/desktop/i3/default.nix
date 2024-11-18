@@ -65,6 +65,14 @@ in
           inner = 0;
         };
 
+        startup = [
+          { command = "eww open-many bar bar-second"; }
+          { command = "wallpaper"; }
+          { command = "xset s off"; }
+          { command = "xset -dpms"; }
+          { command = "xset s noblank"; }
+        ];
+
         fonts = {
           names = [ "${theme.fonts.iconFont.name}" ];
           size = 8.0;
@@ -85,12 +93,6 @@ in
           newWindow = "focus";
           followMouse = true;
         };
-
-        startup = [
-          {
-            command = "systemctl restart --user polybar";
-          }
-        ];
 
         keybindings =
           (import ./config/keybindings.nix {

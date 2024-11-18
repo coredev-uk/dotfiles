@@ -13,7 +13,7 @@
     inputs.nixos-hardware.nixosModules.common-pc-ssd
 
     # ../common/hardware/bluetooth.nix
-    ../common/hardware/yubikey.nix
+    # ../common/hardware/yubikey.nix
   ];
 
   hardware.nvidia.open = false;

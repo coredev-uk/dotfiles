@@ -13,7 +13,6 @@ in
     (./. + "/${desktop}.nix")
 
     ./sddm.nix
-    ../hardware/yubikey.nix
     ../services/pipewire.nix
   ];
 
@@ -31,15 +30,6 @@ in
 
   # Enable location services
   location.provider = "geoclue2";
-
-  # Enable Steam
-  programs.steam = {
-    enable = true;
-
-    protontricks = {
-      enable = true;
-    };
-  };
 
   programs._1password.enable = true;
   programs._1password-gui.enable = true;
