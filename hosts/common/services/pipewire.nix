@@ -18,7 +18,7 @@
   environment.systemPackages =
     if (builtins.isString desktop) then
       [
-        pkgs.pavucontrol
+        pkgs.pwvucontrol
         pkgs.pamixer
         pkgs.playerctl
       ]

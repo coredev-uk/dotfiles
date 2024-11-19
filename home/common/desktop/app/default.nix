@@ -23,7 +23,7 @@
   home.packages = with pkgs; [
     catppuccin-gtk
     desktop-file-utils
-    pavucontrol
+    pwvucontrol
     (discord.override {
       withVencord = true;
     })
