@@ -10,7 +10,7 @@ _: {
     {
       command = "floating enable";
       criteria = {
-        instance = "org.gnome.*|nm-connection-editor|pavucontrol|pinentry-qt|^code$";
+        instance = "org.gnome.*|nm-connection-editor|pavucontrol|com.saivert.pwvucontrol|pinentry-qt|^code$";
       };
     }
     {

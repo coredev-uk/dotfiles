@@ -293,7 +293,7 @@ in
         ramp-volume-1 = "";
         ramp-volume-2 = "";
 
-        click-right = "pavucontrol";
+        click-right = "${lib.getExe pkgs.pwvucontrol}";
       };
 
       # _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
