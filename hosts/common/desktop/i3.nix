@@ -12,7 +12,6 @@ in
   imports = [ ./tiling-common.nix ];
 
   home.file.".xinitrc".text = ''
-    #!/bin/sh
     export XDG_SESSION_TYPE="x11"
     export XDG_SESSION_DESKTOP="i3"
     export XDG_CURRENT_DESKTOP="i3"
