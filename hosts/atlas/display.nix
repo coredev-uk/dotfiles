@@ -6,7 +6,7 @@ _: {
     }
     {
       output = "DP-2";
-      monitorConfig = "Option \"Rotate\" \"left\"";
+      monitorConfig = "Option \"LeftOf\" \"DP-0\"";
     }
   ];
 }
