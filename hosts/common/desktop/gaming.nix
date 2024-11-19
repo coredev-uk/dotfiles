@@ -38,7 +38,7 @@
 
     # nix-gaming packages
     inputs.nix-gaming.packages.${pkgs.system}.star-citizen
-    inputs.nix-gaming.packages.${pkgs.system}.wine
+    inputs.nix-gaming.packages.${pkgs.system}.wine-ge
   ];
 
   # Tweaks Required for Star-Citizen (https://github.com/fufexan/nix-gaming/tree/master/pkgs/star-citizen)
