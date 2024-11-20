@@ -1,10 +1,11 @@
 { pkgs, ... }:
 {
   basePackages = with pkgs; [
+    _1password-cli
+    agenix
     bat
     binutils
     curl
-    chromium
     eza
     file
     git
@@ -13,8 +14,6 @@
     nfs-utils
     ntfs3g
     pciutils
-    polkit
-    polkit_gnome
     ripgrep
     rsync
     sbctl
