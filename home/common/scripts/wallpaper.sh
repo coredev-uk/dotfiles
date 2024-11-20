@@ -1,6 +1,6 @@
 #!/bin/sh
 
-directory=~/.wallpapers
+directory=~/pictures/wallpaper
 
 if [ ! -d "$directory" ]; then
     echo "Directory does not exist."
