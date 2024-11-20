@@ -33,7 +33,6 @@ in
       terminal = "alacritty";
       menu = "rofi -show drun";
       lock = "${pkgs.i3lock-fancy}/bin/i3lock -nef -c 000000";
-      wallpaper = "${pkgs.feh}/bin/feh --bg-fill --randomize ${theme.wallpaperDir}/*"; # Randomized the wallpaper incase I get bored
     in
     {
       enable = true;
@@ -90,7 +89,6 @@ in
               theme
               mod
               pkgs
-              wallpaper
               ;
           }).main;
 
@@ -104,7 +102,6 @@ in
               theme
               mod
               pkgs
-              wallpaper
               ;
           }).resize;
       };
