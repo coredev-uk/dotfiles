@@ -8,11 +8,6 @@ let
   theme = import "${self}/lib/theme" { inherit pkgs; };
 in
 {
-
-  home.packages = with pkgs; [
-    dconf
-  ];
-
   home.pointerCursor = {
     inherit (theme.cursorTheme) package size name;
     gtk.enable = true;
