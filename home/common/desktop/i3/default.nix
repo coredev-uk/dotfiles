@@ -4,55 +4,36 @@
   hostname,
   ...
 }:
-
 let
-  wallpaper = pkgs.writeScriptBin "wallpaper" ''
-    #!/bin/sh
-    directory=~/.wallpapers
-
-    if [ ! -d "$directory" ]; then
-        echo "Directory does not exist."
-        exit
-    fi
-
-    random_background=$(ls $directory/* | shuf -n 1)
-
-    if [ "$XDG_SESSION_TYPE" = "x11" ]; then
-        DISPLAY=:0.0 ${pkgs.feh}/bin/feh --bg-fill $random_background
-    elif [ "$XDG_SESSION_TYPE" = "wayland" ]; then
-        monitors=$(hyprctl monitors | grep Monitor | awk '{print $2}')
-
-        if ! $(pgrep -x hyprpaper &>2); then
-            ${pkgs.hyprpaper}/bin/hyprpaper &
-        fi
-
-        hyprctl hyprpaper unload all
-        hyprctl hyprpaper preload $random_background
-        for monitor in $monitors; do
-            hyprctl hyprpaper wallpaper "$monitor, $random_background"
-        done
-    else
-        echo "Unsupported Environment"
-        exit
-    fi
-  '';
+  theme = import "${self}/lib/theme" { inherit pkgs hostname; };
 in
 {
   imports = [
     ../xorg-common.nix
+
     ./packages.nix
+    ./i3lock.nix
+    ./picom.nix
   ];
 
-  home.packages = with pkgs; [ wallpaper ];
+  home.file.".xinitrc".text = ''
+    export XDG_SESSION_TYPE="x11"
+    export XDG_SESSION_DESKTOP="i3"
+    export XDG_CURRENT_DESKTOP="i3"
+    exec i3
+  '';
+
+  home.file.".background-image".source = theme.wallpaper;
 
   xsession.windowManager.i3 =
     let
-      theme = import "${self}/lib/theme" { inherit pkgs hostname; };
+
       mod = "Mod4";
       browser = "zen";
       terminal = "alacritty";
       menu = "rofi -show drun";
-      lock = "${pkgs.i3lock}/bin/i3lock -nef -c 000000";
+      lock = "${pkgs.i3lock-fancy}/bin/i3lock -nef -c 000000";
+      wallpaper = "${pkgs.feh}/bin/feh --bg-fill --randomize ${theme.wallpaperDir}/*"; # Randomized the wallpaper incase I get bored
     in
     {
       enable = true;
@@ -65,12 +46,17 @@ in
           inner = 0;
         };
 
+        # workspaceAutoBackAndForth = true;
+
         startup = [
+          { command = "xrandr --output DP-2 --auto --output DP-0 --auto --right-of DP-2 --primary"; } # Temporary until xrandrHeads is fixed
           { command = "eww open-many bar bar-second"; }
-          { command = "wallpaper"; }
+          { command = "${pkgs.feh}/bin/feh --bg-fill ${theme.wallpaper}"; }
           { command = "xset s off"; }
           { command = "xset -dpms"; }
           { command = "xset s noblank"; }
+          { command = "dbus-update-activation-environment --all"; }
+          { command = "protonmail-bridge -n"; }
         ];
 
         fonts = {

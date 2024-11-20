@@ -35,7 +35,7 @@
     "${mod}+b" = "exec ${browser}";
     "${mod}+Return" = "exec ${terminal}";
     "${mod}+space" = "exec ${menu} | xargs i3-msg exec --";
-    "${mod}+f2" = "exec ${wallpaper}/bin/wallpaper";
+    "${mod}+f2" = "exec ${wallpaper}";
 
     # WM Controls
     "${mod}+r" = "reload";

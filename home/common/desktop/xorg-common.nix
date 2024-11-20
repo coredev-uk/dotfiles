@@ -2,7 +2,10 @@
 
 {
   imports = [
-    ./app/dunst.nix
+    ./eww
+    # ./polybar
+    ./dunst.nix
+    ./rofi.nix
   ];
 
   home.packages = with pkgs; [
@@ -12,48 +15,54 @@
     dbus
   ];
 
-  services.gammastep = {
-    enable = true;
+  services = {
 
-    provider = "geoclue2";
+    gnome-keyring.enable = true;
 
-    tray = false;
+    gammastep = {
+      enable = true;
 
-    temperature = {
-      day = 5700;
-      night = 3500;
-    };
+      provider = "geoclue2";
 
-    settings = {
-      general = {
-        gamma = 0.8;
-        adjusstment-method = "randr";
+      tray = false;
+
+      temperature = {
+        day = 5700;
+        night = 3500;
+      };
+
+      settings = {
+        general = {
+          gamma = 0.8;
+          adjusstment-method = "randr";
+        };
       };
     };
-  };
 
-  services.xidlehook = {
-    enable = true;
+    xidlehook = {
+      enable = true;
 
-    detect-sleep = true;
+      detect-sleep = true;
 
-    not-when-audio = true;
-    not-when-fullscreen = true;
+      not-when-audio = true;
+      not-when-fullscreen = true;
 
-    timers = [
-      {
-        delay = 300;
-        command = "loginctl lock-session";
-      }
-      {
-        delay = 300;
-        command = "xset s activate";
-      }
-      {
-        delay = 1200;
-        command = "systemctl suspend";
-      }
-    ];
+      timers = [
+        {
+          delay = 300;
+          command = "loginctl lock-session";
+        }
+        {
+          delay = 300;
+          command = "xset s activate";
+        }
+        {
+          delay = 1200;
+          command = "systemctl suspend";
+        }
+      ];
+    };
+
   };
 
   systemd.user.services.polkit-gnome-authentication-agent-1 = {
