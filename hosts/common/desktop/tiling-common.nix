@@ -14,7 +14,6 @@
       # Enable HEIC image previews in Nautilus
       libheif
       libheif.out
-      polkit_gnome
 
       xdg-desktop-portal-gtk
     ];
