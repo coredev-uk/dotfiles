@@ -1,5 +1,6 @@
 {
   pkgs,
+  hostname ? "",
   ...
 }:
 let
@@ -16,6 +17,11 @@ rec {
     size = "standard";
   };
 
+  # src: https://unsplash.com/photos/brown-rocky-mountain-under-white-clouds-during-daytime-jdpJqWO9Sx8 (https://unsplash.com/collections/220388/macos-desktop-wallpapers)
+  wallpaper = ./wallpapers/mountain.jpg;
+
+  wallpaperDir = "~/pictures/wallpaper";
+
   gtkTheme = {
     name = "catppuccin-mocha-blue-standard";
     package = pkgs.catppuccin-gtk.override {
@@ -28,8 +34,8 @@ rec {
   qtTheme = {
     name = "Catppuccin-Mocha-Blue";
     package = pkgs.catppuccin-kvantum.override {
-      variant = "mocha";
-      accent = "blue";
+      variant = catppuccin.flavor;
+      accent = catppuccin.accent;
     };
   };
 
