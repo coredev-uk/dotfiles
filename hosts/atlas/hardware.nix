@@ -13,10 +13,16 @@
     inputs.nixos-hardware.nixosModules.common-pc-ssd
 
     # ../common/hardware/bluetooth.nix
-    # ../common/hardware/yubikey.nix
   ];
 
-  hardware.nvidia.open = false;
+  hardware.nvidia = {
+    open = false;
+
+    forceFullCompositionPipeline = true;
+
+    # Wayland
+    modesetting.enable = true;
+  };
 
   nixpkgs.hostPlatform = "x86_64-linux";
 }
