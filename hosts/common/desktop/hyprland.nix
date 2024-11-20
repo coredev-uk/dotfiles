@@ -21,10 +21,22 @@ in
 {
   imports = [ ./tiling-common.nix ];
 
+  environment.systemPackages = with pkgs; [
+    xdg-desktop-portal-hyprland
+  ];
+
   programs.hyprland.enable = true;
 
   services.greetd.settings.default_session.command = ''
     ${lib.makeBinPath [ pkgs.greetd.tuigreet ]}/tuigreet -r --asterisks --time \
       --cmd ${lib.getExe hypr-run}
   '';
+
+  xdg.portal.enable = true;
+  xdg.portal.wlr.enable = true;
+  xdg.portal.config.hyprland = {
+    default = [
+      "hyprland"
+    ];
+  };
 }
