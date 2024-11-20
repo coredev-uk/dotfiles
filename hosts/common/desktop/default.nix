@@ -11,7 +11,7 @@ in
 {
   imports = [
     (./. + "/${desktop}.nix")
-
+    ../hardware/yubikey.nix
     ../services/pipewire.nix
   ];
 
@@ -30,9 +30,16 @@ in
   # Enable location services
   location.provider = "geoclue2";
 
-  programs._1password.enable = true;
-  programs._1password-gui.enable = true;
-  programs._1password-gui.polkitPolicyOwners = [ "paul" ];
+  programs._1password = {
+    enable = true;
+    package = pkgs.unstable._1password-cli;
+  };
+
+  programs._1password-gui = {
+    package = pkgs.unstable._1password-gui-beta;
+    enable = true;
+    polkitPolicyOwners = [ "${username}" ];
+  };
 
   security.pam.services = {
     login.u2fAuth = true;
