@@ -2,8 +2,7 @@
 
 {
   home.packages = with pkgs; [
+    scrot
     feh
-    cider
-    geary
   ];
 }
