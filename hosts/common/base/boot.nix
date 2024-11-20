@@ -8,7 +8,10 @@ _: {
     };
 
     loader = {
-      systemd-boot.enable = true;
+      systemd-boot = {
+        enable = true;
+        consoleMode = "max"; # or auto
+      };
       efi.canTouchEfiVariables = true;
     };
   };
