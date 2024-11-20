@@ -38,6 +38,7 @@
       ];
     }))
     catppuccin-gtk
+    cider
     chromium
     desktop-file-utils
     (discord.override {

@@ -58,10 +58,10 @@ stdenv.mkDerivation rec {
   inherit pname version;
 
   src = requireFile rec {
-    name = "cider-linux-x64_1.0.0_amd64.deb";
+    name = "Cider.deb";
     url = "https://cidercollective.itch.io/cider";
-    # sha256sum /nix/store/4k0p1rzkayw98sm0h1fbwviyzvdyzjck-cider-linux-x64_1.0.0_amd64.deb
-    sha256 = "0z56fq51dh4jblfv3rj9iv76ijpyylv0y3amgs9wrgglq11zjbsa";
+    # sha256sum /nix/store/vzlkckpjb695gnd68q2yclis8g3l74mv-Cider.deb
+    sha256 = "0qkpi7q695zp148m545wjj79gav2w4lrf928hxamjhssj68fwb29";
   };
 
   meta = with lib; {
