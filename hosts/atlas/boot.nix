@@ -17,10 +17,22 @@
         "usb_storage"
         "usbhid"
         "xhci_pci"
+
+        # For Nvidia
+        "nvidia"
+        "nvidia_drm"
+        "nvidia_modeset"
+        "nvidia_uvm"
       ];
 
       systemd.dbus.enable = true;
     };
+
+    # Nvidia
+    kernelParams = [
+      "nvidia-drm.modeset=1"
+      "nvidia-drm.fbdev=1"
+    ];
 
     kernelModules = [
       "kvm_amd"
