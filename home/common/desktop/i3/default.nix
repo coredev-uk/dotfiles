@@ -56,6 +56,7 @@ in
           { command = "xset s noblank"; }
           { command = "dbus-update-activation-environment --all"; }
           { command = "protonmail-bridge -n"; }
+          { command = "gammastep-indicator"; }
         ];
 
         fonts = {
