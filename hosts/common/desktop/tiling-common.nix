@@ -15,6 +15,8 @@
       libheif
       libheif.out
       polkit_gnome
+
+      xdg-desktop-portal-gtk
     ];
 
     # Enable HEIC image previews in Nautilus
@@ -38,5 +40,25 @@
     };
 
     gvfs.enable = true;
+
+    protonmail-bridge = {
+      enable = true;
+    };
+  };
+
+  xdg.portal = {
+    enable = true;
+    xdgOpenUsePortal = true;
+
+    config = {
+      common = {
+        default = [
+          "gtk"
+        ];
+        "org.freedesktop.impl.portal.Secret" = [
+          "gnome-keyring"
+        ];
+      };
+    };
   };
 }
