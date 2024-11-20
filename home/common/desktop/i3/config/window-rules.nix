@@ -25,6 +25,12 @@ _: {
         class = "1Password";
       };
     }
+    {
+      command = "floating enable";
+      criteria = {
+        title = "^Steam Settings$";
+      };
+    }
     # Floating & Sticky windows
     {
       command = "floating enable sticky";
