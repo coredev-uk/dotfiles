@@ -15,6 +15,7 @@
     # uni
     jetbrains.clion
     juce
+
   ];
 
 }
