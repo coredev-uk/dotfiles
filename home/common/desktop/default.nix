@@ -39,7 +39,7 @@
     }))
     catppuccin-gtk
     cider
-    chromium
+    google-chrome
     desktop-file-utils
     (discord.override {
       withVencord = true;
