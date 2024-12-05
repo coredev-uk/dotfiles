@@ -7,12 +7,12 @@
 let
   theme = import "${self}/lib/theme" { inherit pkgs; };
   i3-run = pkgs.writeShellScriptBin "i3-run" ''
-    export XDG_SESSION_TYPE="x11"
-    export XDG_SESSION_DESKTOP="i3"
-    export XDG_CURRENT_DESKTOP="i3"
     export GTK_THEME=${theme.gtkTheme.name}
 
-    startx
+    systemctl --user import-environment PATH DISPLAY XAUTHORITY DESKTOP_SESSION XDG_CONFIG_DIRS XDG_DATA_DIRS XDG_RUNTIME_DIR XDG_SESSION_ID DBUS_SESSION_BUS_ADDRESS
+    dbus-update-activation-environment --systemd --all
+
+    ${pkgs.xorg.xinit}/bin/startx
   '';
 in
 {
@@ -32,8 +32,16 @@ in
     };
   };
 
-  services.greetd.settings.default_session.command = ''
-    ${lib.makeBinPath [ pkgs.greetd.tuigreet ]}/tuigreet -r --asterisks --time \
-      --cmd ${lib.getExe i3-run}
-  '';
+  systemd.services.i3 = {
+    description = "i3 tiling window manager";
+    script = "${lib.getExe i3-run}";
+  };
+
+  services.greetd.settings.default_session.command = lib.concatStringsSep " " [
+    "${pkgs.greetd.tuigreet}/bin/tuigreet"
+    "--remember"
+    "--asterisks"
+    "--time"
+    "--cmd ${lib.getExe i3-run}"
+  ];
 }
