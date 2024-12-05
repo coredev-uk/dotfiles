@@ -1,5 +1,9 @@
 { pkgs, lib, ... }:
 {
+  environment.systemPackages = with pkgs; [
+    efibootmgr
+  ];
+
   boot = {
     # Secure boot configuration
     bootspec.enable = true;
