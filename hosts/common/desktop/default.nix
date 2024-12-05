@@ -63,6 +63,11 @@ in
       liberation_ttf
       ubuntu_font_family
 
+      # Compatibility Fonts
+      noto-fonts
+      noto-fonts-emoji
+      noto-fonts-cjk-sans
+
       theme.fonts.default.package
       theme.fonts.emoji.package
       theme.fonts.iconFont.package
@@ -74,6 +79,7 @@ in
 
     fontconfig = {
       enable = true;
+      useEmbeddedBitmaps = true;
       defaultFonts = {
         serif = [
           "${theme.fonts.default.name}"
