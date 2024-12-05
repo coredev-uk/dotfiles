@@ -23,8 +23,6 @@ in
     exec i3
   '';
 
-  home.file.".background-image".source = theme.wallpaper;
-
   xsession.windowManager.i3 =
     let
 
