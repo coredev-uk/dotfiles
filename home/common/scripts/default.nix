@@ -1,7 +1,8 @@
-{ pkgs, ... }:
+{ pkgs, self, ... }:
 
 let
-  bootwin = pkgs.writeScriptBin "bootwin" (builtins.readFile ./bootwin.sh);
+  theme = import "${self}/lib/theme" { inherit pkgs; };
+
   clipboard-interop = pkgs.writeScriptBin "clipboard-interop" (
     builtins.readFile ./clipboard-interop.sh
   );
@@ -9,7 +10,6 @@ let
 in
 {
   home.packages = with pkgs; [
-    bootwin
     clipboard-interop
     killwine
   ];
