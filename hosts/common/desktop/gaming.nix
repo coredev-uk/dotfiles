@@ -1,4 +1,9 @@
-{ pkgs, inputs, ... }:
+{
+  pkgs,
+  inputs,
+  system,
+  ...
+}:
 {
   # Enable Steam
   programs.steam = {
@@ -37,8 +42,11 @@
     lutris
 
     # nix-gaming packages
-    inputs.nix-gaming.packages.${pkgs.system}.star-citizen
-    inputs.nix-gaming.packages.${pkgs.system}.wine-ge
+    (inputs.nix-gaming.packages.${system}.star-citizen.override {
+      location = "games/star-citizen";
+    })
+
+    inputs.nix-gaming.packages.${system}.wine-ge
   ];
 
   # Tweaks Required for Star-Citizen (https://github.com/fufexan/nix-gaming/tree/master/pkgs/star-citizen)
