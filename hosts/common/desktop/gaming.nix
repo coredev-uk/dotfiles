@@ -43,7 +43,7 @@
 
     # nix-gaming packages
     (inputs.nix-gaming.packages.${system}.star-citizen.override {
-      location = "games/star-citizen";
+      location = "$HOME/games/star-citizen";
     })
 
     inputs.nix-gaming.packages.${system}.wine-ge
