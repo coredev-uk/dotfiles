@@ -97,9 +97,7 @@
         speedtest = "curl -s https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py | python -";
 
         cleanup = "nh clean all --keep-since 10d --keep 3";
-        update-os = "nh os switch ${flakePath}";
-        update-home = "nh home switch ${flakePath}";
-        update-all = "reb-os;reb-home";
+        nix-update = "nh os switch ${flakePath}; nh home switch ${flakePath}; cleanup";
       };
     };
   };
