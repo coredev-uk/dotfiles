@@ -31,6 +31,13 @@ _: {
         title = "^Steam Settings$";
       };
     }
+    {
+      # Star Citizen Launcher
+      command = "floating enable";
+      criteria = {
+        class = "rsi launcher.exe";
+      };
+    }
     # Floating & Sticky windows
     {
       command = "floating enable sticky";
