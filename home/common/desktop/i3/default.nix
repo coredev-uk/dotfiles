@@ -55,6 +55,7 @@ in
           { command = "dbus-update-activation-environment --all"; }
           { command = "protonmail-bridge -n"; }
           { command = "gammastep-indicator"; }
+          { command = "systemctl enable --user polkit-gnome-authentication-agent-1.service --now"; }
         ];
 
         fonts = {
