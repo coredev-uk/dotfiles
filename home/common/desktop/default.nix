@@ -44,6 +44,7 @@
     (discord.override {
       withVencord = true;
     })
+    vesktop
     jellyfin-media-player
     papers
     pwvucontrol

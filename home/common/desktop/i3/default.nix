@@ -56,6 +56,7 @@ in
           { command = "protonmail-bridge -n"; }
           { command = "gammastep-indicator"; }
           { command = "systemctl enable --user polkit-gnome-authentication-agent-1.service --now"; }
+          { command = "picom"; }
         ];
 
         fonts = {
@@ -66,7 +67,7 @@ in
         window = {
           hideEdgeBorders = "smart";
           titlebar = false;
-          # inherit ((import ./config/window-rules.nix { inherit theme; })) commands;
+          inherit ((import ./config/window-rules.nix { inherit theme; })) commands;
         };
 
         floating = {
