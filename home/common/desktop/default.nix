@@ -8,8 +8,9 @@
 
     ./alacritty.nix
     ./gtk.nix
-    ./rclone.nix
+    ./mangohud.nix
     ./qt.nix
+    ./rclone.nix
     ./xdg.nix
   ];
 
