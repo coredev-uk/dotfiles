@@ -1,5 +1,5 @@
 (defpoll time           :interval "1s" "date '+%H:%M'")
-(defpoll date           :interval "1m" "date '+%a %d %b'")
+(defpoll date           :interval "60s" "date '+%a %d %b'")
 (defpoll volume         :interval "1s" "wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{print $2 * 100}'")
 (defpoll music_art      :interval "5s" "~/.config/eww/scripts/music.sh --art")
 (defpoll music_title    :interval "5s" "~/.config/eww/scripts/music.sh --title")
