@@ -7,8 +7,8 @@
     ../scripts
 
     ./alacritty.nix
+    ./gaming.nix
     ./gtk.nix
-    ./mangohud.nix
     ./qt.nix
     ./rclone.nix
     ./xdg.nix
