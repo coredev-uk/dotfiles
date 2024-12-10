@@ -1,10 +1,10 @@
 (defpoll time           :interval "1s" "date '+%H:%M'")
-(defpoll date           :interval "1s" "date '+%a %d %b'")
+(defpoll date           :interval "1m" "date '+%a %d %b'")
 (defpoll volume         :interval "1s" "wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{print $2 * 100}'")
-(defpoll music_art      :interval "1s" "~/.config/eww/scripts/music.sh --art")
-(defpoll music_title    :interval "1s" "~/.config/eww/scripts/music.sh --title")
-(defpoll music_artist   :interval "1s" "~/.config/eww/scripts/music.sh --artist")
-(defpoll music_status   :interval "1s" "~/.config/eww/scripts/music.sh --status")
+(defpoll music_art      :interval "5s" "~/.config/eww/scripts/music.sh --art")
+(defpoll music_title    :interval "5s" "~/.config/eww/scripts/music.sh --title")
+(defpoll music_artist   :interval "5s" "~/.config/eww/scripts/music.sh --artist")
+(defpoll music_status   :interval "5s" "~/.config/eww/scripts/music.sh --status")
 (defpoll memory         :interval "15s" "free | awk '/Mem/ {print int($3/$2 * 100 + 0.5)}'")
 
 
