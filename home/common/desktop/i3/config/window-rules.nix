@@ -47,6 +47,13 @@ _: {
         class = "rsi launcher.exe";
       };
     }
+    # Fullscreen Games
+    {
+      command = "fullscreen enable";
+      criteria = {
+        class = "starcitizen.exe|steam_app_*"
+      };
+    }
     # Floating & Sticky windows
     {
       command = "floating enable sticky";
