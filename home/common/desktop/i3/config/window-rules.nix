@@ -49,9 +49,9 @@ _: {
     }
     # Fullscreen Games
     {
-      command = "fullscreen enable";
+      command = "floating disable";
       criteria = {
-        class = "starcitizen.exe|steam_app_*"
+        class = "starcitizen.exe|steam_app_*";
       };
     }
     # Floating & Sticky windows
