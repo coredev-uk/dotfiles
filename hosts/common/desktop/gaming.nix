@@ -36,12 +36,8 @@
     };
   };
 
-  # Enable Mangohud and Lutris
+  # nix-gaming packages
   environment.systemPackages = with pkgs; [
-    mangohud
-    lutris
-
-    # nix-gaming packages
     (inputs.nix-gaming.packages.${system}.star-citizen.override {
       location = "$HOME/games/star-citizen";
     })
