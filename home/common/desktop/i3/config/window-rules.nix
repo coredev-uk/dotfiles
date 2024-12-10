@@ -10,7 +10,7 @@ _: {
     {
       command = "floating enable";
       criteria = {
-        instance = "org.gnome.*|nm-connection-editor|pavucontrol|com.saivert.pwvucontrol|pinentry-qt|^code$";
+        instance = "org.gnome.*|nm-connection-editor|pavucontrol|com.saivert.pwvucontrol|pinentry-qt";
       };
     }
     {
@@ -26,9 +26,18 @@ _: {
       };
     }
     {
+      # Enable floating for all Steam windows
       command = "floating enable";
       criteria = {
-        title = "^Steam Settings$";
+        class = "^steam$|^Steam$";
+      };
+    }
+    {
+      # Disable floating for the main Steam window
+      command = "floating disable";
+      criteria = {
+        class = "^steam$";
+        instance = "^Steam$";
       };
     }
     {
@@ -46,12 +55,6 @@ _: {
       };
     }
     # Sticky windows
-    {
-      command = "sticky enable";
-      criteria = {
-        instance = "^code$";
-      };
-    }
     {
       command = "sticky enable";
       criteria = {
