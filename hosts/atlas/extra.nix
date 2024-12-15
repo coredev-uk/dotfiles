@@ -18,10 +18,11 @@ in
   imports = [
     "${self}/hosts/common/services/networkmanager.nix"
     "${self}/hosts/common/desktop/gaming.nix"
+    "${self}/hosts/common/desktop/rgb.nix"
   ] ++ lib.optional (desktop == "i3") ./display.nix;
 
   # Add bootwin script to reboot into Windows
-  environment.systemPackages = [
+  environment.systemPackages = with pkgs; [
     bootwin
   ];
 
@@ -34,5 +35,4 @@ in
     "10.147.1.10"
     "10.147.1.20"
   ];
-
 }

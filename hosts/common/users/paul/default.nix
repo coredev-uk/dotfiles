@@ -21,6 +21,7 @@ in
         "render"
         "lxd"
         "dialout" # For Arduino
+        "i2c" # For RGB
       ];
 
     linger = true;
