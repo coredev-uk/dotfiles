@@ -32,8 +32,16 @@
     (pkgs.python3.withPackages (
       p: with p; [
         virtualenv
+        pyserial
       ]
     ))
+
+    # Uni project tooling
+    juce
+    arduino
+    arduino-cli
+    esptool
+    platformio
 
     # Shell tooling
     shellcheck
