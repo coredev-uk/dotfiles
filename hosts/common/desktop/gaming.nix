@@ -40,9 +40,8 @@
   environment.systemPackages = with pkgs; [
     (inputs.nix-gaming.packages.${system}.star-citizen.override {
       location = "$HOME/games/star-citizen";
+      wine = pkgs.unstable.wine64;
     })
-
-    inputs.nix-gaming.packages.${system}.wine-ge
   ];
 
   # Tweaks Required for Star-Citizen (https://github.com/fufexan/nix-gaming/tree/master/pkgs/star-citizen)
