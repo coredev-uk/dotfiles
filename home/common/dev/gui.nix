@@ -11,11 +11,7 @@
 
   home.packages = with pkgs; [
     zed-editor
-
-    # uni
     jetbrains.clion
-    juce
-
   ];
 
 }

@@ -20,6 +20,7 @@ in
         "plugdev"
         "render"
         "lxd"
+        "dialout" # For Arduino
       ];
 
     linger = true;
