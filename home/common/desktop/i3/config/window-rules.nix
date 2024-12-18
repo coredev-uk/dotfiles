@@ -1,3 +1,11 @@
+# Command List:
+# 'move', 'exec', 'exit', 'restart', 'reload'
+# 'shmlog', 'debuglog', 'border', 'layout'
+# 'append_layout', 'workspace', 'focus', 'kill', 'open'
+# 'fullscreen', 'sticky', 'split', 'floating', 'mark'
+# 'unmark', 'resize', 'rename', 'nop', 'scratchpad'
+# 'swap', 'title_format', 'title_window_icon', 'mode', 'bar', 'gaps'
+
 _: {
   commands = [
     # Floating window config
@@ -29,22 +37,22 @@ _: {
       # Enable floating for all Steam windows
       command = "floating enable";
       criteria = {
-        class = "^steam$|^Steam$";
+        class = "steam|Steam";
       };
     }
     {
       # Disable floating for the main Steam window
       command = "floating disable";
       criteria = {
-        class = "^steam$";
-        instance = "^Steam$";
+        class = "steam";
+        instance = "steamwebhelper";
       };
     }
     {
       # Star Citizen Launcher
       command = "floating enable";
       criteria = {
-        class = "rsi launcher.exe";
+        title = "RSI Launcher";
       };
     }
     # Fullscreen Games
