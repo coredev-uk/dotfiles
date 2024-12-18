@@ -21,7 +21,6 @@
     lanzaboote.inputs.nixpkgs.follows = "unstable";
 
     zen-browser.url = "github:omarcresp/zen-browser-flake";
-    nix-gaming.url = "github:fufexan/nix-gaming";
   };
 
   outputs =
