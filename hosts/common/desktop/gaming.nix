@@ -26,8 +26,8 @@
       ];
 
       package = pkgs.steam.override {
-        extraPkgs = with pkgs; [
-          corefonts # Microsoft Core Fonts
+        extraPkgs = pkgs: [
+          pkgs.corefonts # Microsoft Core Fonts
         ];
       };
     };
