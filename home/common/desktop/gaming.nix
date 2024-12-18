@@ -22,6 +22,14 @@
 
   home.packages = with pkgs; [
     mangohud
-    lutris
+    (lutris.override {
+      extraPkgs = pkgs: [
+        pkgs.corefonts
+        pkgs.gamescope
+        pkgs.mangohud
+        pkgs.wineWowPackages.staging
+        pkgs.winetricks
+      ];
+    })
   ];
 }
