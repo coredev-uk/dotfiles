@@ -53,6 +53,7 @@ _: {
       command = "floating enable";
       criteria = {
         title = "RSI Launcher";
+        class = "rsi launcher.exe";
       };
     }
     # Fullscreen Games
