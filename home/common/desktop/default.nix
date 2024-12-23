@@ -39,16 +39,15 @@
       ];
     }))
     catppuccin-gtk
-    cider
-    google-chrome
     desktop-file-utils
     (discord.override {
       withVencord = true;
     })
-    vesktop
+    google-chrome
     jellyfin-media-player
     papers
     pwvucontrol
+    vesktop
   ];
 
   fonts.fontconfig.enable = true;
