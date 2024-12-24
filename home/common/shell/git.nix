@@ -38,9 +38,9 @@
         branch = {
           sort = "-committerdate";
         };
-        # pull = {
-        # rebase = true;
-        # };
+        pull = {
+          rebase = false;
+        };
         init = {
           defaultBranch = "main";
         };
