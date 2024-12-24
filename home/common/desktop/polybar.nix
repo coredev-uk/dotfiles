@@ -90,9 +90,10 @@ let
   '';
 in
 {
+  catppuccin.polybar.enable = true;
+
   services.polybar = {
     enable = true;
-    catppuccin.enable = true;
 
     script = ''
       for m in $(polybar --list-monitors | ${pkgs.coreutils}/bin/cut -d":" -f1); do
