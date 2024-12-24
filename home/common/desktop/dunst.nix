@@ -4,10 +4,10 @@ let
   theme = import "${self}/lib/theme" { inherit pkgs; };
 in
 {
+  catppuccin.dunst.enable = true;
+
   services.dunst = {
     enable = true;
-
-    catppuccin.enable = true;
 
     iconTheme = {
       package = pkgs.papirus-icon-theme;

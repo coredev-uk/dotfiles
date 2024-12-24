@@ -1,13 +1,11 @@
 { pkgs, desktop, ... }:
 
 {
+  catppuccin.rofi.enable = true;
+
   programs.rofi = {
     enable = true;
     package = if desktop == "i3" then pkgs.rofi else pkgs.rofi-wayland;
-    catppuccin = {
-      enable = true;
-      flavor = "mocha";
-    };
     terminal = "${pkgs.alacritty}/bin/alacritty";
 
     extraConfig = {
