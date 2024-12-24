@@ -11,6 +11,7 @@ These are my NixOS config files. I recently moved from Arch Linux using i3wm and
 | `atlas` | NixOS | Desktop | Hyperland / i3wm | Working |
 | `poseidon` | NixOS (macOS) | Laptop | Hyprland | Not Started |
 | `hyperion` | NixOS | Server | N/A | Not Started |
+| `athena` | Windows | Desktop | N/A | N/A |
 
 ## Setup Summary
 
