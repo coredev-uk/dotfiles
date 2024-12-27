@@ -3,6 +3,7 @@
   username,
   pkgs,
   self,
+  inputs,
   ...
 }:
 let
@@ -29,6 +30,11 @@ in
 
   # Enable location services
   location.provider = "geoclue2";
+
+  environment.systemPackages = with pkgs; [
+    inputs.zen-browser.packages."${system}".default
+    inputs.ghostty.packages."${system}".ghostty
+  ];
 
   programs._1password = {
     enable = true;

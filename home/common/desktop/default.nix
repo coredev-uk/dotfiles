@@ -1,4 +1,9 @@
-{ pkgs, desktop, ... }:
+{
+  pkgs,
+  desktop,
+  inputs,
+  ...
+}:
 {
   imports = [
     (./. + "/${desktop}")
