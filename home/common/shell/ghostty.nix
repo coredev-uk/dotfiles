@@ -4,7 +4,7 @@ let
 in
 {
   home.file.".config/ghostty/config".text = ''
-    theme = catppuccin-mocha
+    theme = catppuccin-${theme.catppuccin.flavor}
     font-family = "${theme.fonts.monospace.name}"
   '';
 }
