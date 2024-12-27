@@ -8,6 +8,7 @@ in
     ./bat.nix
     ./bottom.nix
     # ./fzf.nix
+    ./ghostty.nix
     ./git.nix
     ./fastfetch.nix
     ./starship.nix

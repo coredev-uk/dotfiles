@@ -21,6 +21,7 @@
     lanzaboote.inputs.nixpkgs.follows = "unstable";
 
     zen-browser.url = "github:omarcresp/zen-browser-flake";
+    ghostty.url = "github:ghostty-org/ghostty";
   };
 
   outputs =

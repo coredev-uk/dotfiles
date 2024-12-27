@@ -3,7 +3,6 @@
   pkgs,
   lib,
   username,
-  inputs,
   system,
   ...
 }:
@@ -25,9 +24,7 @@
     useDHCP = lib.mkDefault true;
   };
 
-  environment.systemPackages = (import ./packages.nix { inherit pkgs; }).basePackages ++ [
-    inputs.zen-browser.packages."${system}".default
-  ];
+  environment.systemPackages = (import ./packages.nix { inherit pkgs; }).basePackages;
 
   programs = {
     zsh.enable = true;
