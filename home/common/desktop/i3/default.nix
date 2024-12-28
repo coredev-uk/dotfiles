@@ -12,7 +12,7 @@ in
     ../xorg-common.nix
 
     ./packages.nix
-    ./i3lock.nix
+    ./lock.nix
     ./picom.nix
   ];
 
@@ -30,7 +30,7 @@ in
       browser = "zen";
       terminal = "alacritty";
       menu = "rofi -show drun";
-      lock = "${pkgs.i3lock-fancy}/bin/i3lock -nef -c 000000";
+      lock = "${pkgs.betterlockscreen}/bin/betterlockscreen -l dim";
     in
     {
       enable = true;
