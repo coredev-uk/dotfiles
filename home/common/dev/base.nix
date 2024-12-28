@@ -33,6 +33,7 @@
       p: with p; [
         virtualenv
         pyserial
+        distutils
       ]
     ))
 
