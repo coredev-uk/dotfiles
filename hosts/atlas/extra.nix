@@ -19,6 +19,7 @@ in
     "${self}/hosts/common/services/networkmanager.nix"
     "${self}/hosts/common/desktop/gaming.nix"
     "${self}/hosts/common/desktop/rgb.nix"
+    "${self}/hosts/common/desktop/qmk.nix"
   ] ++ lib.optional (desktop == "i3") ./display.nix;
 
   # Add bootwin script to reboot into Windows
