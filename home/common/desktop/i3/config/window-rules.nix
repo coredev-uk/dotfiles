@@ -24,12 +24,6 @@ _: {
     {
       command = "floating enable";
       criteria = {
-        title = "Picture-in-picture|1Password";
-      };
-    }
-    {
-      command = "floating enable";
-      criteria = {
         class = "1Password";
       };
     }
@@ -37,30 +31,32 @@ _: {
       # Enable floating for all Steam windows
       command = "floating enable";
       criteria = {
-        class = "steam|Steam";
+        class = "^steam$";
+        instance = "^steamwebhelper$";
       };
     }
     {
       # Disable floating for the main Steam window
       command = "floating disable";
       criteria = {
-        class = "steam";
-        instance = "steamwebhelper";
+        title = "^Steam$";
+        class = "^steam$";
+        instance = "^steamwebhelper$";
       };
     }
     {
       # Star Citizen Launcher
       command = "floating enable";
       criteria = {
-        title = "RSI Launcher";
-        class = "rsi launcher.exe";
+        title = "^RSI Launcher$";
+        class = "^rsi launcher.exe$";
       };
     }
     # Fullscreen Games
     {
       command = "floating disable";
       criteria = {
-        class = "starcitizen.exe|steam_app_*";
+        class = "^starcitizen.exe$|steam_app_*";
       };
     }
     # Floating & Sticky windows
