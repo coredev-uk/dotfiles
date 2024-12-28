@@ -22,8 +22,10 @@ _: {
       };
     }
     {
-      command = "floating enable";
+      # 1Password Floating Windows
+      command = "floating enable sticky";
       criteria = {
+        title = "Quick Access|Unlock 1Password|Settings|^1Password$";
         class = "1Password";
       };
     }
