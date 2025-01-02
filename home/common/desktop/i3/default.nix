@@ -2,6 +2,7 @@
   pkgs,
   self,
   hostname,
+  inputs,
   ...
 }:
 let
@@ -28,7 +29,7 @@ in
 
       mod = "Mod4";
       browser = "zen";
-      terminal = "alacritty";
+      terminal = "${pkgs.ghostty}/bin/ghostty";
       menu = "rofi -show drun";
       lock = "${pkgs.betterlockscreen}/bin/betterlockscreen -l dim";
     in
