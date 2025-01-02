@@ -20,8 +20,8 @@
     lanzaboote.url = "github:nix-community/lanzaboote";
     lanzaboote.inputs.nixpkgs.follows = "unstable";
 
+    # TODO: Remove when https://github.com/NixOS/nixpkgs/pull/363992 is merged
     zen-browser.url = "github:omarcresp/zen-browser-flake";
-    ghostty.url = "github:ghostty-org/ghostty";
   };
 
   outputs =
