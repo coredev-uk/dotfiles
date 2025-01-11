@@ -9,4 +9,10 @@
       "QT_STYLE_OVERRIDE" = "kvantum";
     };
   };
+
+  qt = {
+    enable = true;
+    platformTheme = "qt5ct";
+    style = "kvantum";
+  };
 }
