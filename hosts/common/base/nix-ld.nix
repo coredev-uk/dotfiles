@@ -5,6 +5,8 @@
 {
   programs.nix-ld.enable = true;
 
+  # List of libraries to be included in the nix-ld environment
+  # Main ones follow Electron's dependencies
   programs.nix-ld.libraries = with pkgs; [
     alsa-lib
     at-spi2-atk

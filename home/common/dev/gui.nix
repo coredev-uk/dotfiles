@@ -13,5 +13,4 @@
     zed-editor
     jetbrains.clion
   ];
-
 }

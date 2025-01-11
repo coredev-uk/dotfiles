@@ -19,5 +19,8 @@
     };
   };
 
-  home.packages = [ pkgs.bemoji ];
+  home.packages = [
+    pkgs.bemoji
+    pkgs.alfred
+  ];
 }

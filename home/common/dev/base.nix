@@ -8,8 +8,9 @@
     # Node.js development
     nodejs
     bun
-    pnpm
-    yarn
+    nodePackages.npm
+    nodePackages.pnpm
+    nodePackages.yarn
     fnm
 
     # Electron
