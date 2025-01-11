@@ -20,7 +20,6 @@ in
         "plugdev"
         "render"
         "lxd"
-        "dialout" # For Arduino
         "i2c" # For RGB
       ];
 

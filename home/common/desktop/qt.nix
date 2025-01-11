@@ -11,12 +11,11 @@ in
   home = {
     packages = with pkgs; [
       theme.qtTheme.package
-      libsForQt5.qtstyleplugin-kvantum
     ];
-    sessionVariables = {
-      "QT_STYLE_OVERRIDE" = "kvantum";
-    };
   };
+
+  # QT config moved to hosts/common/desktop/qt.nix
+  # @see https://github.com/NixOS/nixpkgs/issues/243329
 
   xdg.configFile = {
     "Kvantum/kvantum.kvconfig".text = ''

@@ -40,10 +40,6 @@
 
     # Uni project tooling
     juce
-    arduino
-    arduino-cli
-    esptool
-    platformio
 
     # Shell tooling
     shellcheck

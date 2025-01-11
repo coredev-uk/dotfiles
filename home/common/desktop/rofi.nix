@@ -21,6 +21,6 @@
 
   home.packages = [
     pkgs.bemoji
-    pkgs.alfred
+    pkgs.albert
   ];
 }
