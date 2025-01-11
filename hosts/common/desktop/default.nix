@@ -14,6 +14,7 @@ in
     (./. + "/${desktop}.nix")
     ../hardware/yubikey.nix
     ../services/pipewire.nix
+    ./qt.nix
   ];
 
   # Enable Plymouth and surpress some logs by default.
