@@ -5,7 +5,8 @@ in
 {
   qt = {
     enable = true;
-    platformTheme.name = "gtk";
+    platformTheme.name = "qtct";
+    style.name = "kvantum";
   };
 
   home = {
@@ -17,10 +18,13 @@ in
   # QT config moved to hosts/common/desktop/qt.nix
   # @see https://github.com/NixOS/nixpkgs/issues/243329
 
-  xdg.configFile = {
-    "Kvantum/kvantum.kvconfig".text = ''
-      [General]
-      theme=${theme.qtTheme.name}
-    '';
+  xdg.configFile."Kvantum/kvantum.kvconfig".source =
+    (pkgs.formats.ini { }).generate "kvantum.kvconfig"
+      {
+        General.theme = "${theme.qtTheme.name}";
+      };
+
+  xdg.configFile."qt5ct/qt5ct.conf".source = (pkgs.formats.ini { }).generate "kvantum.kvconfig" {
+    Appearance.icon_theme = "${theme.iconTheme.name}";
   };
 }
