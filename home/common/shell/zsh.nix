@@ -1,15 +1,27 @@
 { flakePath, pkgs, ... }:
 
 {
-
   home.packages = with pkgs; [
-    zoxide
-    starship
+    zsh-syntax-highlighting
   ];
 
   catppuccin.zsh-syntax-highlighting.enable = true;
 
   programs = {
+    zoxide = {
+      enable = true;
+      enableZshIntegration = true;
+      options = [
+        "--cmd cd"
+      ];
+    };
+
+    oh-my-posh = {
+      enable = true;
+      enableZshIntegration = true;
+      useTheme = "the-unnamed";
+    };
+
     zsh = {
       enable = true;
       dotDir = ".config/zsh";
@@ -34,8 +46,6 @@
         zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
         zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
-        export EDITOR=vim
-
         eval "$(nh completions --shell zsh)"  # nix-home completions
       '';
 
@@ -43,7 +53,6 @@
         enable = true;
         plugins = [
           "zoxide"
-          "starship"
           "sudo"
           "ssh"
           "ssh-agent"
@@ -55,34 +64,14 @@
         ];
       };
 
-      # plugins = [
-      #   {
-      #     # will source zsh-autosuggestions.plugin.zsh
-      #     name = "zsh-autosuggestions";
-      #     src = pkgs.zsh-autosuggestions;
-      #     file = "share/zsh-autosuggestions/zsh-autosuggestions.zsh";
-      #   }
-      #   {
-      #     name = "zsh-completions";
-      #     src = pkgs.zsh-completions;
-      #     file = "share/zsh-completions/zsh-completions.zsh";
-      #   }
-      #   {
-      #     name = "zsh-syntax-highlighting";
-      #     src = pkgs.zsh-syntax-highlighting;
-      #     file = "share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh";
-      #   }
-      #   {
-      #     name = "fzf-tab";
-      #     src = pkgs.zsh-fzf-tab;
-      #     file = "share/fzf-tab/fzf-tab.plugin.zsh";
-      #   }
-      # ];
+      plugins = [ ];
 
       shellAliases = {
-        # ls = "eza -gl --git --color=automatic";
-        # tree = "eza --tree";
-        # cat = "bat";
+        la = "ls -la";
+        ".." = "cd ..";
+        ls = "eza -gl --git --color=automatic";
+        tree = "eza --tree";
+        cat = "bat";
 
         ip = "ip --color";
         ipb = "ip --color --brief";
@@ -99,6 +88,10 @@
 
         cleanup = "nh clean all --keep 4";
         nix-update = "nix flake update --flake ${flakePath}; nh os switch ${flakePath}; nh home switch ${flakePath}; cleanup";
+
+        grep = "grep --color=auto";
+        vim = "nvim";
+        nvm = "fnm";
       };
     };
   };
