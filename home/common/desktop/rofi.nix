@@ -19,7 +19,7 @@
     };
   };
 
-  home.packages = with pgks; [
+  home.packages = with pkgs; [
     bemoji
     albert
   ];
