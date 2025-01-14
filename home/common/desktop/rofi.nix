@@ -19,8 +19,8 @@
     };
   };
 
-  home.packages = [
-    pkgs.bemoji
-    pkgs.albert
+  home.packages = with pgks; [
+    bemoji
+    albert
   ];
 }

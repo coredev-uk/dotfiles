@@ -30,7 +30,7 @@ in
       mod = "Mod4";
       browser = "zen";
       terminal = "${pkgs.ghostty}/bin/ghostty";
-      menu = "rofi -show drun";
+      menu = "albert toggle";
       lock = "${pkgs.betterlockscreen}/bin/betterlockscreen -l dim";
     in
     {
@@ -58,6 +58,7 @@ in
           { command = "gammastep-indicator"; }
           { command = "systemctl enable --user polkit-gnome-authentication-agent-1.service --now"; }
           { command = "picom"; }
+          { command = "albert"; }
         ];
 
         fonts = {
