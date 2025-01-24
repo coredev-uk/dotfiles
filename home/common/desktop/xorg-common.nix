@@ -47,7 +47,7 @@
 
       detect-sleep = true;
 
-      not-when-audio = true;
+      # not-when-audio = true;
       not-when-fullscreen = true;
 
       timers = [

@@ -44,12 +44,14 @@
       ];
     }))
     catppuccin-gtk
+    cider
     desktop-file-utils
-    (discord.override {
+    (discord-canary.override {
       withVencord = true;
     })
     google-chrome
     jellyfin-media-player
+    protonmail-desktop
     papers
     pwvucontrol
     vesktop
