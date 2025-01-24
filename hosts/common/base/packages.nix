@@ -14,6 +14,7 @@
     nfs-utils
     ntfs3g
     pciutils
+    polkit_gnome
     ripgrep
     rsync
     sbctl
