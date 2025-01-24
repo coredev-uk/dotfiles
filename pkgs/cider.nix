@@ -48,7 +48,7 @@
 
 let
   pname = "Cider";
-  version = "1.0.0";
+  version = "2.0.3";
   description = "A cross-platform Apple Music experience built on Vue.js and written from the ground up with performance in mind.";
   homepage = "https://cider.sh";
   downloadPage = "https://cidercollective.itch.io/cider";
@@ -60,8 +60,8 @@ stdenv.mkDerivation rec {
   src = requireFile rec {
     name = "Cider.deb";
     url = "https://cidercollective.itch.io/cider";
-    # sha256sum "/nix/store/jypzj0325zh111cacckzfrzj1kzyv5pf-Cider.deb"
-    sha256 = "0m273mm8c2fcxqmqqzsf0x0sd5w2k8y7knfcmw5nl5adbpf0xl10";
+    # sha256sum /nix/store/rrq30hkvkp84yza0p4wqwamzc1mh5qln-Cider.deb
+    sha256 = "1r4m7awv6vjc23cgcwfq0w2s9qyic8rva32nnbgd3vva6gxk81im";
   };
 
   meta = with lib; {
@@ -157,12 +157,12 @@ stdenv.mkDerivation rec {
     # Now it requires lib{ssl,crypto}.so.1.0.0. Fix based on Spotify pkg.
     # https://github.com/NixOS/nixpkgs/blob/efea022d6fe0da84aa6613d4ddeafb80de713457/pkgs/applications/audio/spotify/default.nix#L129
     mkdir -p $out/lib/cider
-    ln -s ${lib.getLib openssl}/lib/libssl.so $out/lib/cider-linux-x64/libssl.so.1.0.0
-    ln -s ${lib.getLib openssl}/lib/libcrypto.so $out/lib/cider-linux-x64/libcrypto.so.1.0.0
+    ln -s ${lib.getLib openssl}/lib/libssl.so $out/lib/cider/libssl.so.1.0.0
+    ln -s ${lib.getLib openssl}/lib/libcrypto.so $out/lib/cider/libcrypto.so.1.0.0
 
-    sed -e "s|/opt/cider-linux-x64|$out/bin|g" -i $out/share/applications/cider-linux-x64.desktop
-    makeWrapper $out/lib/cider-linux-x64/Cider \
-      $out/bin/cider-linux-x64 \
+    sed -e "s|/opt/cider|$out/bin|g" -i $out/share/applications/cider.desktop
+    makeWrapper $out/lib/cider/Cider \
+      $out/bin/cider \
       --prefix XDG_DATA_DIRS : "${gtk3}/share/gsettings-schemas/${gtk3.name}/" \
       --prefix LD_LIBRARY_PATH : ${libPath}
 
@@ -179,7 +179,7 @@ stdenv.mkDerivation rec {
   #     "Audio"
   #     "AudioVideo"
   #   ];
-  #   mimeTypes = [ "x-scheme-handler/discord" ];
+  #   mimeTypes = [ "x-scheme-handler/cider" ];
   # };
 
 }

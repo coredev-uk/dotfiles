@@ -69,7 +69,7 @@
       shellAliases = {
         la = "ls -la";
         ".." = "cd ..";
-        ls = "eza -gl --git --color=automatic";
+        ls = "eza -gl --git --group-directories-first --color=automatic";
         tree = "eza --tree";
         cat = "bat";
 
@@ -87,7 +87,7 @@
         speedtest = "curl -s https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py | python -";
 
         cleanup = "nh clean all --keep 4";
-        nix-update = "nix flake update --flake ${flakePath}; nh os switch ${flakePath}; nh home switch ${flakePath}; cleanup";
+        nix-update = "nix flake update --flake ${flakePath}; nh os switch ${flakePath}; nh home switch ${flakePath}";
 
         grep = "grep --color=auto";
         vim = "nvim";

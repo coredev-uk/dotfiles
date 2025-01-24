@@ -12,7 +12,7 @@
     inputs.nixos-hardware.nixosModules.common-pc
     inputs.nixos-hardware.nixosModules.common-pc-ssd
 
-    # ../common/hardware/bluetooth.nix
+    ../common/hardware/bluetooth.nix
   ];
 
   hardware.nvidia = {
