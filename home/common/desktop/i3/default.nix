@@ -26,11 +26,10 @@ in
 
   xsession.windowManager.i3 =
     let
-
       mod = "Mod4";
       browser = "zen";
       terminal = "${pkgs.ghostty}/bin/ghostty";
-      menu = "albert toggle";
+      menu = "rofi -show drun";
       lock = "${pkgs.betterlockscreen}/bin/betterlockscreen -l dim";
     in
     {
@@ -47,18 +46,39 @@ in
         # workspaceAutoBackAndForth = true;
 
         startup = [
-          { command = "xrandr --output DP-2 --auto --output DP-0 --auto --right-of DP-2 --primary"; } # Temporary until xrandrHeads is fixed
-          { command = "eww open-many bar bar-second"; }
-          { command = "${pkgs.feh}/bin/feh --bg-fill ${theme.wallpaper}"; }
-          { command = "xset s off"; }
-          { command = "xset -dpms"; }
-          { command = "xset s noblank"; }
-          { command = "dbus-update-activation-environment --all"; }
-          { command = "protonmail-bridge -n"; }
-          { command = "gammastep-indicator"; }
-          { command = "systemctl enable --user polkit-gnome-authentication-agent-1.service --now"; }
-          { command = "picom"; }
-          { command = "albert"; }
+          {
+            command = ''
+              ${pkgs.systemd}/bin/systemctl --user import-environment DISPLAY; \
+                ${pkgs.systemd}/bin/systemctl --user start i3-session.target
+            '';
+            always = false;
+            notification = false;
+          }
+          {
+            command = "dbus-update-activation-environment --all";
+          }
+          {
+            # Temporary until xrandrHeads is fixed
+            command = "xrandr --output DP-2 --auto --output DP-0 --auto --right-of DP-2 --primary";
+          }
+          {
+            command = "eww open-many bar bar-second";
+          }
+          {
+            command = "${pkgs.feh}/bin/feh --bg-fill ${theme.wallpaper}";
+          }
+          # {
+          #   command = "xset s off";
+          # }
+          # {
+          #   command = "xset -dpms";
+          # }
+          # {
+          #   command = "xset s noblank";
+          # }
+          # {
+          #   command = "systemctl enable --user polkit-gnome-authentication-agent-1.service --now";
+          # }
         ];
 
         fonts = {
@@ -109,5 +129,17 @@ in
           }).resize;
       };
     };
+
+  systemd.user = {
+    targets.i3-session = {
+      Unit = {
+        Description = "i3 session";
+        Documentation = [ "man:systemd.special(7)" ];
+        BindsTo = [ "graphical-session.target" ];
+        Wants = [ "graphical-session-pre.target" ];
+        After = [ "graphical-session-pre.target" ];
+      };
+    };
+  };
 
 }
