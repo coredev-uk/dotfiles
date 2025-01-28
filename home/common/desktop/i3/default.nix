@@ -67,18 +67,15 @@ in
           {
             command = "${pkgs.feh}/bin/feh --bg-fill ${theme.wallpaper}";
           }
-          # {
-          #   command = "xset s off";
-          # }
-          # {
-          #   command = "xset -dpms";
-          # }
-          # {
-          #   command = "xset s noblank";
-          # }
-          # {
-          #   command = "systemctl enable --user polkit-gnome-authentication-agent-1.service --now";
-          # }
+          {
+            command = "xset s off";
+          }
+          {
+            command = "xset -dpms";
+          }
+          {
+            command = "xset s noblank";
+          }
         ];
 
         fonts = {
