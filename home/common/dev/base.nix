@@ -2,8 +2,13 @@
 
 {
   home.packages = with pkgs; [
+
+    # C++ tooling
+    clang
     gnumake
     gcc
+    xorg.libX11.dev
+    xorg.libXft
 
     # Node.js development
     nodejs
@@ -39,10 +44,12 @@
     ))
 
     # Uni project tooling
-    juce
+    cmake
+    ninja
 
     # Shell tooling
     shellcheck
     shfmt
+    binutils
   ];
 }
