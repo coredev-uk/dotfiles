@@ -33,7 +33,11 @@ in
   home.packages = with pkgs; [
     age
     btop
+    lazygit
     protonvpn-cli
     sops
+    termscp
   ];
+
+  catppuccin.btop.enable = true;
 }
