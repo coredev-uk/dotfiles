@@ -24,8 +24,8 @@
       vim.opt.tabstop = 2
 
       vim.opt.backspace = "indent,eol,start"
-      vim.g.mapleader = ';'
-      vim.g.maplocalleader = ';'
+      vim.g.mapleader = ' '
+      vim.g.maplocalleader = ' '
 
       vim.opt.hlsearch = true
       vim.opt.ignorecase = true
