@@ -18,7 +18,7 @@ _: {
     {
       command = "floating enable";
       criteria = {
-        instance = "org.gnome.*|nm-connection-editor|pavucontrol|com.saivert.pwvucontrol|pinentry-qt";
+        instance = "org.gnome.*|nm-connection-editor|pavucontrol|com.saivert.pwvucontrol|pinentry-qt|.protonvpn-app-wrapped";
       };
     }
     {
