@@ -34,8 +34,6 @@ in
     age
     btop
     lazygit
-    protonvpn-cli
-    sops
     termscp
   ];
 
