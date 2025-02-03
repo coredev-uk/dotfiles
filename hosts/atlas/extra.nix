@@ -36,4 +36,22 @@ in
     "10.147.1.10"
     "10.147.1.20"
   ];
+
+  # Disable suspend of Toslink output to prevent audio popping.
+  services.pipewire.wireplumber.extraConfig."99-disable-suspend" = {
+    "monitor.alsa.rules" = [
+      {
+        matches = [
+          {
+            "node.name" = "alsa_output.usb-Generic_ATH-M50xSTS-USB-00.analog-stereo";
+          }
+        ];
+        actions = {
+          update-props = {
+            "session.suspend-timeout-seconds" = 0;
+          };
+        };
+      }
+    ];
+  };
 }

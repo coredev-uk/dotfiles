@@ -5,7 +5,7 @@
   ...
 }:
 {
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = lib.mkForce false;
 
   services.pipewire = {
     enable = true; # if not already enabled
