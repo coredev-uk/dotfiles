@@ -6,7 +6,7 @@
     # C++ tooling
     clang
     gnumake
-    gcc
+    # gcc
     xorg.libX11.dev
     xorg.libXft
 
@@ -50,6 +50,6 @@
     # Shell tooling
     shellcheck
     shfmt
-    binutils
+    # binutils
   ];
 }
