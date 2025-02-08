@@ -79,6 +79,7 @@ in
     protonmail-desktop
     protonvpn-gui
     papers
+    vesktop
   ];
 
   fonts.fontconfig.enable = true;

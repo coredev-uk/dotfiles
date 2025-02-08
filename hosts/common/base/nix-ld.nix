@@ -140,7 +140,7 @@
     pixman
     speex
     SDL_image
-    SDL_ttf
+    # SDL_ttf @TODO: Fix when CVE-2022-27470 is resolved <https://ubuntu.com/security/CVE-2022-27470>
     SDL_mixer
     SDL2_ttf
     SDL2_mixer
