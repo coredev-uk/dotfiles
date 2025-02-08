@@ -42,6 +42,9 @@
     config = {
       allowUnfree = true;
       joypixels.acceptLicense = true;
+      permittedInsecurePackages = [
+        # "SDL_ttf-2.0.11"
+      ];
     };
   };
 
