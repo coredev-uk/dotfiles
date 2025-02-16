@@ -73,6 +73,7 @@ in
     #   withVencord = true;
     # })
     discord
+    globalprotect-openconnect
     google-chrome
     jellyfin-media-player
     krisp-patcher
