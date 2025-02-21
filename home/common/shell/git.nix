@@ -2,7 +2,6 @@
 {
   home.file.".config/git/allowed_signers".text = ''
     core@coredev.uk ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINQpQFDxvGq+x6sHldr81kFtftS6KFEzbOtoRKKTXFR7 1Password
-    core@cider.sh ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINQpQFDxvGq+x6sHldr81kFtftS6KFEzbOtoRKKTXFR7 1Password
     pt357@kent.ac.uk ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFiZJO5uLLRe4XhtxRbafK69xzOUCAKhbtq7f+CqrfSI 1Password
   '';
 
@@ -15,10 +14,6 @@
     userName = "Core";
 
     includes = [
-      {
-        condition = "hasconfig:remote.*.url:*github.com*ciderapp/**";
-        contents.user.email = "core@cider.sh";
-      }
       {
         condition = "hasconfig:remote.*.url:git@git.cs.kent.ac.uk:*/**";
         contents.user.email = "pt357@kent.ac.uk";

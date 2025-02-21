@@ -47,6 +47,7 @@
         zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
         eval "$(nh completions --shell zsh)"  # nix-home completions
+        TERM=xterm-256color
       '';
 
       oh-my-zsh = {
