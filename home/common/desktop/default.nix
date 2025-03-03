@@ -31,6 +31,9 @@ in
   imports = [
     (./. + "/${desktop}")
 
+    # @TODO: Remove this once the PR is merged
+    ./hyprland
+
     ../dev
     ../scripts
 
@@ -77,6 +80,7 @@ in
     google-chrome
     jellyfin-media-player
     krisp-patcher
+    plex-desktop
     protonmail-desktop
     protonvpn-gui
     papers
