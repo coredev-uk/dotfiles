@@ -13,7 +13,6 @@ in
   imports = [
     (./. + "/${desktop}.nix")
 
-    # @TODO: Remove this once the following PR is merged
     ./hyprland.nix
 
     ../hardware/yubikey.nix
