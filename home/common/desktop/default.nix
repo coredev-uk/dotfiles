@@ -31,9 +31,6 @@ in
   imports = [
     (./. + "/${desktop}")
 
-    # @TODO: Remove this once the PR is merged
-    ./hyprland
-
     ../dev
     ../scripts
 
