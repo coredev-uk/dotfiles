@@ -1,7 +1,12 @@
-{ pkgs, ... }:
+{
+  pkgs,
+  lib,
+  hostname,
+  ...
+}:
 {
   imports = [
-    (lib.optional (builtins.pathExists ./. + "/${hostname}.nix") (import ./. + "/${hostname}.nix"))
+    (./. + "/${hostname}.nix")
   ];
 
   # Temporary
@@ -56,7 +61,6 @@
       shadow_ignore_window = true;
       shadow_range = 4;
       shadow_render_power = 2;
-      col.shadow = 0 x66000000;
     };
 
     exec-once = [
