@@ -25,18 +25,17 @@ in
     xdg-desktop-portal-hyprland
   ];
 
+  xdg.portal = {
+    enable = true;
+    wlr.enable = true;
+    extraPortals = lib.mkForce [ pkgs.xdg-desktop-portal-hyprland ];
+    xdgOpenUsePortal = true;
+  };
+
   programs.hyprland.enable = true;
 
   services.greetd.settings.default_session.command = ''
     ${lib.makeBinPath [ pkgs.greetd.tuigreet ]}/tuigreet -r --asterisks --time \
       --cmd ${lib.getExe hypr-run}
   '';
-
-  xdg.portal.enable = true;
-  xdg.portal.wlr.enable = true;
-  xdg.portal.config.hyprland = {
-    default = [
-      "hyprland"
-    ];
-  };
 }
