@@ -1,6 +1,4 @@
 #!/usr/bin/env bash
-
-
 i3_workspaces() {
   all_workspaces=$(i3-msg -t get_workspaces | jq -c '.[]')
   selected_workspace=$(i3-msg -t get_workspaces | jq --unbuffered -rc '.[] | select(.focused == true)')
@@ -43,22 +41,19 @@ hypr_workspaces() {
   stdbuf -o0 echo "(box :class \"workspaces\" :halign \"center\" :valign \"center\" :vexpand true :hexpand true :spacing 10 $buf)"
 }
 
-
 workspaces() {
-  if [[ $(pgrep -x i3) ]]; then
+  if [[ $(pgrep i3) ]]; then
     i3_workspaces
     i3-msg -t subscribe -m '{"type":"workspace"}' |
     while read -r _; do
       i3_workspaces
     done
-  elif [[ $(pgrep -x hypr) ]]; then
+  elif [[ $(pgrep hypr) ]]; then
     hypr_workspaces
     socat "UNIX-CONNECT:$XDG_RUNTIME_DIR/hypr/$HYPRLAND_INSTANCE_SIGNATURE/.socket2.sock" - | while read -r event; do
     hypr_workspaces
     done
   fi
-
-
 }
 
 workspaces

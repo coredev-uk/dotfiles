@@ -47,6 +47,7 @@
 
       exec-once = [
         "eww open-many bar bar-second"
+        "1password --silent"
         #      "dbus-update-activation-environment --all"
       ];
 
@@ -83,6 +84,9 @@
           "windowsOut,0,4,mycurve"
         ];
       };
+
+      windowrule = (import ./config/window-rules.nix).rulesv1;
+      windowrulev2 = (import ./config/window-rules.nix).rulesv2;
 
       debug = {
         disable_logs = true;
