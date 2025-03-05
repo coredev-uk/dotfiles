@@ -76,6 +76,9 @@ in
           {
             command = "xset s noblank";
           }
+          {
+            command = "1password --silent";
+          }
         ];
 
         fonts = {
