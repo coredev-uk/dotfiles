@@ -102,6 +102,8 @@
 (defwindow bar
   :monitor 0
   :windowtype "dock"
+  :namespace "bar"
+  :exclusive "true"
   :geometry (geometry :x "0%"
     :y "0%"
     :width "100%"
@@ -113,6 +115,8 @@
 (defwindow bar-second
   :monitor 1
   :windowtype "dock"
+  :namespace "bar"
+  :exclusive "true"
   :geometry (geometry :x "0%"
     :y "0%"
     :width "100%"
