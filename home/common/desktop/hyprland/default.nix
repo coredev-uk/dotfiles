@@ -70,6 +70,8 @@
 
       layerrule = [
         "blur, bar"
+        "noanim, rofi"
+        "noanim, discord"
       ];
 
       bezier = [
@@ -85,8 +87,8 @@
         ];
       };
 
-      windowrule = (import ./config/window-rules.nix).rulesv1;
-      windowrulev2 = (import ./config/window-rules.nix).rulesv2;
+      windowrule = (import ./config/window-rules.nix { }).window_v1;
+      windowrulev2 = (import ./config/window-rules.nix { }).window_v2;
 
       debug = {
         disable_logs = true;
