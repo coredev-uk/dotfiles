@@ -21,18 +21,12 @@ in
 {
   imports = [ ./tiling-common.nix ];
 
-  environment.systemPackages = with pkgs; [
+  programs.hyprland.enable = true;
+
+  xdg.portal.extraPortals = with pkgs; [
+    xdg-desktop-portal-gtk
     xdg-desktop-portal-hyprland
   ];
-
-  xdg.portal = {
-    enable = true;
-    wlr.enable = true;
-    extraPortals = lib.mkForce [ pkgs.xdg-desktop-portal-hyprland ];
-    xdgOpenUsePortal = true;
-  };
-
-  programs.hyprland.enable = true;
 
   services.greetd.settings.default_session.command = ''
     ${lib.makeBinPath [ pkgs.greetd.tuigreet ]}/tuigreet -r --asterisks --time \

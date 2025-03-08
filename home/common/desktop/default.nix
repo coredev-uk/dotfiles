@@ -69,15 +69,13 @@ in
     catppuccin-gtk
     cider
     desktop-file-utils
-    # (discord.override {
-    #   withVencord = true;
-    # })
-    discord
+    (discord.override {
+      withVencord = true;
+    })
     globalprotect-openconnect
     google-chrome
     jellyfin-media-player
     krisp-patcher
-    plex-desktop
     protonmail-desktop
     protonvpn-gui
     papers
