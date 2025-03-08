@@ -18,6 +18,9 @@
     nodePackages.yarn
     fnm
 
+    # Go tooling
+    go
+
     # Electron
     dpkg
     fakeroot

@@ -39,7 +39,7 @@
     "${mod}+b" = "exec ${browser}";
     "${mod}+Return" = "exec ${terminal}";
     "${mod}+space" = "exec ${menu} | xargs i3-msg exec --";
-    "${mod}+Shift+p" = "exec ${pkgs.feh}/bin/feh --bg-fill --randomize ${theme.wallpaperDir}/*"; # Randomized the wallpaper incase I get bored
+    "${mod}+Shift+p" = "exec ${pkgs.feh}/bin/feh --bg-fill --randomize ${theme.wallpaperDir}/*"; # Randomized the wallpaper encase I get bored
 
     # WM Controls
     "${mod}+r" = "reload";
