@@ -6,7 +6,7 @@
   programs.rofi = {
     enable = true;
     package = if desktop == "i3" then pkgs.rofi else pkgs.rofi-wayland;
-    terminal = "${pkgs.alacritty}/bin/alacritty";
+    terminal = "${pkgs.ghostty}/bin/ghostty";
 
     extraConfig = {
       modi = "drun";
