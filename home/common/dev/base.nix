@@ -1,14 +1,12 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 
 {
   home.packages = with pkgs; [
+    devenv
 
     # C++ tooling
     clang
     gnumake
-    # gcc
-    xorg.libX11.dev
-    xorg.libXft
 
     # Node.js development
     nodejs
@@ -17,9 +15,6 @@
     nodePackages.pnpm
     nodePackages.yarn
     fnm
-
-    # Go tooling
-    go
 
     # Electron
     dpkg
@@ -45,10 +40,6 @@
         distutils
       ]
     ))
-
-    # Uni project tooling
-    cmake
-    ninja
 
     # Shell tooling
     shellcheck
