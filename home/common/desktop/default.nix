@@ -1,7 +1,6 @@
 {
   pkgs,
   desktop,
-  inputs,
   ...
 }:
 let
