@@ -26,9 +26,9 @@
     };
   };
 
-  systemd.user.services.polkit-gnome-authentication-agent-1 = {
+  systemd.user.services.hyprpolkitagent = {
     Unit = {
-      Description = "GNOME Polkit Authentication Agent";
+      Description = "A simple polkit authentication agent for Hyprland, written in QT/QML.";
       PartOf = [ "graphical-session-pre.target" ];
     };
 
@@ -37,7 +37,7 @@
     };
 
     Service = {
-      ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
+      ExecStart = "${pkgs.hyprpolkitagent}/libexec/hyprpolkitagent";
       Restart = "on-abort";
     };
   };
