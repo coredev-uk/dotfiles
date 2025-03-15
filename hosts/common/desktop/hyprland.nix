@@ -23,11 +23,6 @@ in
 
   programs.hyprland.enable = true;
 
-  xdg.portal.extraPortals = with pkgs; [
-    xdg-desktop-portal-gtk
-    xdg-desktop-portal-hyprland
-  ];
-
   services.greetd.settings.default_session.command = ''
     ${lib.makeBinPath [ pkgs.greetd.tuigreet ]}/tuigreet -r --asterisks --time \
       --cmd ${lib.getExe hypr-run}
