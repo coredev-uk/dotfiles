@@ -13,8 +13,6 @@ in
   imports = [
     (./. + "/${desktop}.nix")
 
-    ./hyprland.nix
-
     ../hardware/yubikey.nix
     ../services/pipewire.nix
     ./qt.nix
