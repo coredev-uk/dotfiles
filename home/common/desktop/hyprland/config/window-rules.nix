@@ -12,11 +12,6 @@ _: {
     "float, nm-connection-editor"
     "float, viewnior"
     "float, confirmreset"
-    "float, title:Open File"
-    "float, title:^(Media viewer)$"
-    "float, title:^(Volume Control)$"
-    "float, title:^(Picture-in-Picture)$"
-    "size 800 600, title:^(Volume Control)$"
   ];
 
   window_v2 = [
@@ -27,6 +22,12 @@ _: {
     # Miscellaneous
     "center, class:^(polkit-gnome-authentication-agent-1)$"
     "center, title:^(.*notificationtoasts*.)$"
+
+    # Picture-in-Picture
+    "float, title:^(Picture-in-Picture|Firefox)$"
+    "size 800 450, title:^(Picture-in-Picture|Firefox)$"
+    "pin, title:^(Picture-in-Picture|Firefox)$"
+    "move 100%-850 100%-500, title:^(Picture-in-Picture|Firefox)$"
 
     # Wine
     "move 0 0, title:^(Wine System Tray)$"
