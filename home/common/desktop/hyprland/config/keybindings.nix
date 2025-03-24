@@ -2,12 +2,26 @@
   browser,
   terminal,
   menu,
+  self,
   lock,
   mod,
   pkgs,
   ...
 }:
+let
+  theme = import "${self}/lib/theme" { inherit pkgs hostname; };
+  inherit (theme) colours fonts;
+  wallpaper = pkgs.writeScriptBin "wallpaper" ''
+    WALLPAPER_DIR="${theme.wallpaperDir}"
+    CURRENT_WALL=$(hyprctl hyprpaper listloaded)
 
+    # Get a random wallpaper that is not the current one
+    WALLPAPER=$(find "$WALLPAPER_DIR" -type f ! -name "$(basename "$CURRENT_WALL")" | shuf -n 1)
+
+    # Apply the selected wallpaper
+    hyprctl hyprpaper reload ,"$WALLPAPER"
+  '';
+in
 {
   bind =
     [
@@ -23,6 +37,7 @@
       "${mod}, B, exec, ${browser}"
       "${mod}, Return, exec, ${terminal}"
       "${mod}, Space, exec, ${menu}"
+      "${mod} SHIFT, P, exec, ${wallpaper}/bin/wallpaper"
 
       # WM Controls
       "${mod}, R, exec, hyprctl reload"

@@ -12,7 +12,7 @@ in
 {
   imports = [
     ../wl-common.nix
-    ./hyprlock.nix
+    ./packages.nix
   ];
 
   wayland.windowManager.hyprland = {
