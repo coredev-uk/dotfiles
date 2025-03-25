@@ -21,7 +21,11 @@ in
 {
   imports = [ ./tiling-common.nix ];
 
-  programs.hyprland.enable = true;
+  programs.hyprland = {
+    enable = true;
+    withUWSM = true;
+    xwayland.enable = true;
+  };
 
   services.greetd.settings.default_session.command = ''
     ${lib.makeBinPath [ pkgs.greetd.tuigreet ]}/tuigreet -r --asterisks --time \
