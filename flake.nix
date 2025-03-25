@@ -20,6 +20,8 @@
     lanzaboote.url = "github:nix-community/lanzaboote";
     lanzaboote.inputs.nixpkgs.follows = "unstable";
 
+    nvf.url = "github:notashelf/nvf";
+
     # TODO: Remove when https://github.com/NixOS/nixpkgs/pull/363992 is merged
     zen-browser.url = "github:omarcresp/zen-browser-flake";
   };
@@ -75,7 +77,7 @@
         let
           pkgs = unstable.legacyPackages.${system};
         in
-        import ./pkgs { inherit pkgs; }
+        import ./pkgs { inherit pkgs inputs; }
       );
 
       # Custom overlays
