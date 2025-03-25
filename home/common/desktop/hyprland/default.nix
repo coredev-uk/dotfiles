@@ -26,6 +26,17 @@ in
         terminal = "${pkgs.ghostty}/bin/ghostty";
         menu = "rofi -show drun";
         lock = "${pkgs.hyprlock}/bin/hyprlock";
+
+        wallpaper = pkgs.writeScriptBin "wallpaper" ''
+          WALLPAPER_DIR="${theme.wallpaperDir}"
+          CURRENT_WALL=$(hyprctl hyprpaper listloaded)
+
+          # Get a random wallpaper that is not the current one
+          WALLPAPER=$(find "$WALLPAPER_DIR" -type f ! -name "$(basename "$CURRENT_WALL")" | shuf -n 1)
+
+          # Apply the selected wallpaper
+          hyprctl hyprpaper reload ,"$WALLPAPER"
+        '';
       in
       {
         "$MOD" = "${mod}";
@@ -107,11 +118,12 @@ in
             (import ./config/keybindings.nix {
               inherit
                 browser
-                terminal
-                menu
                 lock
+                menu
                 mod
                 pkgs
+                terminal
+                wallpaper
                 ;
             })
           )
