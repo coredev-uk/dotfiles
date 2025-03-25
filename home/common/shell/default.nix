@@ -4,16 +4,12 @@ let
 in
 {
   imports = [
-    # ./atuin.nix
     ./bat.nix
     ./bottom.nix
-    # ./fzf.nix
     ./ghostty.nix
     ./git.nix
     ./fastfetch.nix
     ./starship.nix
-    # ./tmux.nix
-    ./vim.nix
     ./xdg.nix
     ./zsh.nix
   ];
@@ -31,6 +27,7 @@ in
   };
 
   home.packages = with pkgs; [
+    self.packages.${pkgs.stdenv.system}.neovim
     age
     btop
     lazygit
