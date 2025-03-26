@@ -1,19 +1,4 @@
 _: {
-
-  window_v1 = [
-    # Floating Windows
-    "float, file_progress"
-    "float, confirm"
-    "float, dialog"
-    "float, download"
-    "float, notification"
-    "float, error"
-    "float, splash"
-    "float, nm-connection-editor"
-    "float, viewnior"
-    "float, confirmreset"
-  ];
-
   window_v2 = [
     # Floating Windows
     "float,class:^$,title:^$"
