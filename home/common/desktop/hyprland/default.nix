@@ -15,6 +15,9 @@ in {
     enable = true;
     xwayland.enable = true;
 
+    # Fix weird environment variable bs
+    systemd.variables = ["--all"];
+
     settings = let
       mod = "Mod4";
       browser = "zen";
@@ -61,7 +64,6 @@ in {
       exec-once = [
         "eww open-many bar bar-second"
         "1password --silent"
-        #      "dbus-update-activation-environment --all"
       ];
 
       decoration = {

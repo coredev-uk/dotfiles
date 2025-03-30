@@ -2,8 +2,7 @@
   pkgs,
   desktop,
   ...
-}:
-{
+}: {
   imports = [
     (./. + "/${desktop}")
 
@@ -33,16 +32,14 @@
             "x-scheme-handler/me.blueone.linux"
             "x-scheme-handler/mailto"
           ];
-          categories = [ "Office" ];
+          categories = ["Office"];
         })
       ];
     }))
     catppuccin-gtk
     cider
     desktop-file-utils
-    (discord.override {
-      withVencord = true;
-    })
+    discord
     globalprotect-openconnect
     google-chrome
     jellyfin-media-player
