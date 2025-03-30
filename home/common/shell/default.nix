@@ -1,8 +1,10 @@
-{ pkgs, self, ... }:
-let
-  theme = import "${self}/lib/theme" { inherit pkgs; };
-in
 {
+  pkgs,
+  self,
+  ...
+}: let
+  theme = import "${self}/lib/theme" {inherit pkgs;};
+in {
   imports = [
     ./bat.nix
     ./bottom.nix
@@ -24,13 +26,16 @@ in
     git.enable = true;
     home-manager.enable = true;
     jq.enable = true;
+    lazygit = {
+      enable = true;
+      settings.promptToReturnFromSubprocess = false;
+    };
   };
 
   home.packages = with pkgs; [
     self.packages.${pkgs.stdenv.system}.neovim
     age
     btop
-    lazygit
     termscp
   ];
 
