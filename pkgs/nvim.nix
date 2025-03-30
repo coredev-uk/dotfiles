@@ -1,4 +1,4 @@
-{...}: {
+{pkgs, ...}: {
   vim = {
     options = {
       tabstop = 2;
@@ -64,6 +64,13 @@
       tailwind.enable = true;
     };
 
+    # Custom Plugins
+    lazy.plugins = {
+      "yuck.vim" = {
+        package = pkgs.vimPlugins.yuck-vim;
+      };
+    };
+
     # Options
     lsp = {
       enable = true;
@@ -104,6 +111,9 @@
       setupOpts.filesystem.hijack_netrw_behavior = "open_current";
     };
 
+    diagnostics.nvim-lint.enable = true; # Enabling this to stop the errors from other plugins
+
+    # Snacks
     utility.snacks-nvim = {
       enable = true;
       setupOpts = {
