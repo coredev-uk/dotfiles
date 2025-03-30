@@ -1,6 +1,8 @@
-{ pkgs, inputs, ... }:
-
 {
+  pkgs,
+  inputs,
+  ...
+}: {
   home.packages = with pkgs; [
     # Base development (devenv)
     devenv
@@ -17,6 +19,11 @@
     nodePackages.pnpm
     nodePackages.yarn
     fnm
+
+    # Tauri
+    webkitgtk_4_1
+    pkg-config
+    openssl
 
     # Electron
     dpkg
@@ -36,11 +43,12 @@
 
     # Python tooling
     (pkgs.python3.withPackages (
-      p: with p; [
-        virtualenv
-        pyserial
-        distutils
-      ]
+      p:
+        with p; [
+          virtualenv
+          pyserial
+          distutils
+        ]
     ))
 
     # Shell tooling
