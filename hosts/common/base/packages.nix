@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   basePackages = with pkgs; [
     _1password-cli
     agenix
@@ -11,6 +10,7 @@
     git
     jq
     killall
+    lsof
     nfs-utils
     ntfs3g
     pciutils

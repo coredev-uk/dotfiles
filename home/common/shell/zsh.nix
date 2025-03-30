@@ -1,6 +1,8 @@
-{ flakePath, pkgs, ... }:
-
 {
+  flakePath,
+  pkgs,
+  ...
+}: {
   home.packages = with pkgs; [
     zsh-syntax-highlighting
   ];
@@ -68,7 +70,7 @@
         ];
       };
 
-      plugins = [ ];
+      plugins = [];
 
       shellAliases = {
         la = "ls -la";
@@ -90,12 +92,10 @@
 
         speedtest = "curl -s https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py | python -";
 
-        cleanup = "nh clean all --keep 4";
-        nix-update = "nix flake update --flake ${flakePath}; nh os switch ${flakePath}; nh home switch ${flakePath}";
+        nix-update = "nh clean all --keep 3; nix flake update --flake ${flakePath}; nh os switch ${flakePath}; nh home switch ${flakePath}";
 
         grep = "grep --color=auto";
         vim = "nvim";
-        nvm = "fnm";
       };
     };
   };

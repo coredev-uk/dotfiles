@@ -5,8 +5,7 @@
   username,
   system,
   ...
-}:
-{
+}: {
   imports = [
     ./boot.nix
     ./console.nix
@@ -24,7 +23,7 @@
     useDHCP = lib.mkDefault true;
   };
 
-  environment.systemPackages = (import ./packages.nix { inherit pkgs; }).basePackages;
+  environment.systemPackages = (import ./packages.nix {inherit pkgs;}).basePackages;
 
   programs = {
     zsh.enable = true;
@@ -41,5 +40,5 @@
   };
 
   # Create dirs for home-manager
-  systemd.tmpfiles.rules = [ "d /nix/var/nix/profiles/per-user/${username} 0755 ${username} root" ];
+  systemd.tmpfiles.rules = ["d /nix/var/nix/profiles/per-user/${username} 0755 ${username} root"];
 }
