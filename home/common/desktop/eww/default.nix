@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   programs.eww = {
     enable = true;
 
@@ -10,5 +9,9 @@
   home.packages = with pkgs; [
     eww
     ffmpeg
+
+    # Needed for scripts
+    jq
+    socat
   ];
 }
