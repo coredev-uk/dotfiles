@@ -65,6 +65,21 @@
       ];
     };
 
+    mkDarwin = 
+      {
+        hostname,
+        pkgsInput ? inputs.darwin,
+        system ? "aarch64-darwin",
+      }:
+      pkgsInput.lib.darwinSystem {
+        inherit system;
+        modules = [
+          inputs.home-manager.darwinModules.home-manager
+          ../hosts
+        ];
+      };
+    };
+
   forAllSystems = inputs.nixpkgs.lib.genAttrs [
     "aarch64-linux"
     "i686-linux"
