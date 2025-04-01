@@ -1,9 +1,10 @@
 let
-  browser = ["zen_twilight.desktop"];
-  archiveManager = ["org.gnome.FileRoller.desktop"];
-  imageViewer = ["org.gnome.Loupe.desktop"];
-  videoPlayer = ["mpv.desktop"];
-in {
+  browser = [ "zen_twilight.desktop" ];
+  archiveManager = [ "org.gnome.FileRoller.desktop" ];
+  imageViewer = [ "org.gnome.Loupe.desktop" ];
+  videoPlayer = [ "mpv.desktop" ];
+in
+{
   # XDG MIME types
   associations = {
     "application/x-extension-htm" = browser;

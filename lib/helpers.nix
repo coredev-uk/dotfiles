@@ -6,14 +6,16 @@
   username,
   flakePath,
   ...
-}: {
+}:
+{
   # Helper function for generating home-manager configs
-  mkHome = {
-    hostname,
-    user ? username,
-    desktop ? null,
-    system ? "x86_64-linux",
-  }:
+  mkHome =
+    {
+      hostname,
+      user ? username,
+      desktop ? null,
+      system ? "x86_64-linux",
+    }:
     inputs.home-manager.lib.homeManagerConfiguration {
       pkgs = inputs.unstable.legacyPackages.${system};
       extraSpecialArgs = {
@@ -35,12 +37,13 @@
     };
 
   # Helper function for generating host configs
-  mkHost = {
-    hostname,
-    desktop ? null,
-    pkgsInput ? inputs.unstable,
-    system ? "x86_64-linux",
-  }:
+  mkHost =
+    {
+      hostname,
+      desktop ? null,
+      pkgsInput ? inputs.unstable,
+      system ? "x86_64-linux",
+    }:
     pkgsInput.lib.nixosSystem {
       specialArgs = {
         inherit
