@@ -1,11 +1,8 @@
 {
-  self,
   pkgs,
   hostname,
   ...
-}: let
-  theme = import "${self}/lib/theme" {inherit pkgs hostname;};
-in {
+}: {
   imports = [
     ../wl-common.nix
     ./packages.nix
@@ -24,17 +21,7 @@ in {
       terminal = "${pkgs.ghostty}/bin/ghostty";
       menu = "rofi -show drun";
       lock = "${pkgs.hyprlock}/bin/hyprlock";
-
-      wallpaper = pkgs.writeScriptBin "wallpaper" ''
-        WALLPAPER_DIR="${theme.wallpaperDir}"
-        CURRENT_WALL=$(hyprctl hyprpaper listloaded)
-
-        # Get a random wallpaper that is not the current one
-        WALLPAPER=$(find "$WALLPAPER_DIR" -type f ! -name "$(basename "$CURRENT_WALL")" | shuf -n 1)
-
-        # Apply the selected wallpaper
-        hyprctl hyprpaper reload ,"$WALLPAPER"
-      '';
+      wallpaper = pkgs.writeScriptBin "get-wallpaper" (builtins.readFile ../../scripts/wallpaper.sh);
     in {
       "$MOD" = "${mod}";
 
@@ -64,6 +51,7 @@ in {
       exec-once = [
         "eww open-many bar bar-second"
         "1password --silent"
+        "${wallpaper} --session=hyprland"
       ];
 
       decoration = {
