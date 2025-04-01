@@ -18,7 +18,7 @@ in {
 
       background = [
         {
-          path = "${theme.wallpaper}";
+          path = "$HOME/.cache/current-wallpaper.jpg";
           blur_passes = 2;
           blur_size = 6;
         }
