@@ -22,7 +22,7 @@
 
     nvf.url = "github:notashelf/nvf";
 
-    darwin.url = "github:lnl7/nix-darwin";
+    darwin.url = "github:nix-darwin/nix-darwin";
     darwin.inputs.nixpkgs.follows = "unstable";
 
     # TODO: Remove when https://github.com/NixOS/nixpkgs/pull/363992 is merged
