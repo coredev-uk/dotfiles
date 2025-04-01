@@ -5,9 +5,11 @@
   self,
   inputs,
   ...
-}: let
-  theme = import "${self}/lib/theme" {inherit pkgs;};
-in {
+}:
+let
+  theme = import "${self}/lib/theme" { inherit pkgs; };
+in
+{
   imports = [
     (./. + "/${desktop}.nix")
 
@@ -43,7 +45,7 @@ in {
   programs._1password-gui = {
     package = pkgs.unstable._1password-gui-beta;
     enable = true;
-    polkitPolicyOwners = ["${username}"];
+    polkitPolicyOwners = [ "${username}" ];
   };
 
   security.pam.services = {
@@ -94,8 +96,8 @@ in {
           "${theme.fonts.default.name}"
           "${theme.fonts.emoji.name}"
         ];
-        monospace = ["${theme.fonts.monospace.name}"];
-        emoji = ["${theme.fonts.emoji.name}"];
+        monospace = [ "${theme.fonts.monospace.name}" ];
+        emoji = [ "${theme.fonts.emoji.name}" ];
       };
     };
   };

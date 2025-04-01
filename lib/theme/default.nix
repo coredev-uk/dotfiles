@@ -1,6 +1,5 @@
 {
   pkgs,
-  hostname ? "",
   ...
 }:
 let
@@ -35,7 +34,7 @@ rec {
     name = "Catppuccin-Mocha-Blue";
     package = pkgs.catppuccin-kvantum.override {
       variant = catppuccin.flavor;
-      accent = catppuccin.accent;
+      inherit (catppuccin) accent;
     };
   };
 

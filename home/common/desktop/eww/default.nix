@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   programs.eww = {
     enable = true;
 
@@ -19,11 +20,11 @@
   systemd.user.services.eww = {
     Unit = {
       Description = "ElKowars wacky widgets daemon";
-      PartOf = ["graphical-session.target"];
+      PartOf = [ "graphical-session.target" ];
     };
 
     Install = {
-      WantedBy = ["graphical-session.target"];
+      WantedBy = [ "graphical-session.target" ];
     };
 
     Service = {

@@ -3,27 +3,32 @@
   terminal,
   menu,
   lock,
-  theme,
   mod,
   pkgs,
   wallpaper,
   ...
-}: {
+}:
+{
   main = {
     ###############################################
     ##### KEYBIND #################################
     ###############################################
     # Media Keys
-    "--release XF86AudioMute" = "exec ${pkgs.pulseaudioFull}/bin/pactl set-source-mute @DEFAULT_SOURCE@ toggle";
+    "--release XF86AudioMute" =
+      "exec ${pkgs.pulseaudioFull}/bin/pactl set-source-mute @DEFAULT_SOURCE@ toggle";
     "--release XF86AudioPlay" = "exec ${pkgs.playerctl}/bin/playerctl play-pause";
     "--release XF86AudioNext" = "exec ${pkgs.playerctl}/bin/playerctl next";
     "--release XF86AudioPrev" = "exec ${pkgs.playerctl}/bin/playerctl prev";
-    "--release XF86AudioRaiseVolume" = "exec ${pkgs.wireplumber}/bin/wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+";
-    "--release XF86AudioLowerVolume" = "exec ${pkgs.wireplumber}/bin/wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-";
+    "--release XF86AudioRaiseVolume" =
+      "exec ${pkgs.wireplumber}/bin/wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+";
+    "--release XF86AudioLowerVolume" =
+      "exec ${pkgs.wireplumber}/bin/wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-";
 
     # Screenshot
-    "--release ${mod}+Print" = "exec ${pkgs.scrot}/bin/scrot -zs -e '${pkgs.xclip}/bin/xclip -selection clipboard -t image/png -i $f && rm $f'";
-    "--release ${mod}+Shift+Print" = "exec ${pkgs.scrot}/bin/scrot -s -e '${pkgs.xclip}/bin/xclip -selection clipboard -t image/png -i $f && rm $f'";
+    "--release ${mod}+Print" =
+      "exec ${pkgs.scrot}/bin/scrot -zs -e '${pkgs.xclip}/bin/xclip -selection clipboard -t image/png -i $f && rm $f'";
+    "--release ${mod}+Shift+Print" =
+      "exec ${pkgs.scrot}/bin/scrot -s -e '${pkgs.xclip}/bin/xclip -selection clipboard -t image/png -i $f && rm $f'";
 
     # 1Password
     "${mod}+grave" = "exec ${pkgs._1password-gui-beta}/bin/1password --quick-access";

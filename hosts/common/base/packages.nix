@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   basePackages = with pkgs; [
     _1password-cli
     agenix

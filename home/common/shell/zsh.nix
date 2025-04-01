@@ -2,7 +2,8 @@
   flakePath,
   pkgs,
   ...
-}: {
+}:
+{
   home.packages = with pkgs; [
     zsh-syntax-highlighting
   ];
@@ -70,7 +71,7 @@
         ];
       };
 
-      plugins = [];
+      plugins = [ ];
 
       shellAliases = {
         la = "ls -la";

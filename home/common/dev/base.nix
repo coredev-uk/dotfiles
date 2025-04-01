@@ -1,8 +1,8 @@
 {
   pkgs,
-  inputs,
   ...
-}: {
+}:
+{
   home.packages = with pkgs; [
     # Base development (devenv)
     devenv
@@ -43,12 +43,11 @@
 
     # Python tooling
     (pkgs.python3.withPackages (
-      p:
-        with p; [
-          virtualenv
-          pyserial
-          distutils
-        ]
+      p: with p; [
+        virtualenv
+        pyserial
+        distutils
+      ]
     ))
 
     # Shell tooling
