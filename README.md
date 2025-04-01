@@ -9,7 +9,7 @@ These are my NixOS config files. I recently moved from Arch Linux using i3wm and
 | Hostname | OS | Device | WM | Status |  
 | :------: | :----: | :-----: | :----------: | :--------: |
 | `atlas` | NixOS | Desktop | Hyperland / i3wm | Working |
-| `poseidon` | NixOS (macOS) | Laptop | N/A | Not Started |
+| `poseidon` | macOS (nix-darwin) | Laptop | N/A | Not Started |
 | `hyperion` | NixOS | Server | N/A | Not Started |
 | `athena` | Windows | Desktop | N/A | N/A |
 
