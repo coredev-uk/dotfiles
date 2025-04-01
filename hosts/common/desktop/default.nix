@@ -32,7 +32,7 @@ in {
   location.provider = "geoclue2";
 
   environment.systemPackages = with pkgs; [
-    inputs.zen-browser.packages."${system}".beta
+    inputs.zen-browser.packages."${system}".twilight
   ];
 
   programs._1password = {
