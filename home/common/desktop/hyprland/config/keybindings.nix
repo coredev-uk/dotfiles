@@ -7,8 +7,7 @@
   terminal,
   wallpaper,
   ...
-}:
-{
+}: {
   bind =
     [
       # Media Keys
@@ -23,7 +22,7 @@
       "${mod}, B, exec, ${browser}"
       "${mod}, Return, exec, ${terminal}"
       "${mod}, Space, exec, ${menu}"
-      "${mod} SHIFT, P, exec, ${wallpaper}/bin/wallpaper"
+      "${mod} SHIFT, P, exec, ${wallpaper}/bin/get-wallpaper --session=hyprland"
 
       # WM Controls
       "${mod}, R, exec, hyprctl reload"
@@ -61,15 +60,14 @@
       # binds ${mod} + [shift +] {1..9} to [move to] workspace {1..9}
       builtins.concatLists (
         builtins.genList (
-          i:
-          let
+          i: let
             ws = i + 1;
-          in
-          [
+          in [
             "${mod}, code:1${toString i}, workspace, ${toString ws}"
             "${mod} SHIFT, code:1${toString i}, movetoworkspace, ${toString ws}"
           ]
-        ) 10
+        )
+        10
       )
     );
 

@@ -4,12 +4,10 @@
   pkgs,
   hostname,
   ...
-}:
-let
-  theme = import "${self}/lib/theme" { inherit pkgs hostname; };
+}: let
+  theme = import "${self}/lib/theme" {inherit pkgs hostname;};
   inherit (theme) hexToRgb colours;
-in
-{
+in {
   programs.hyprlock = {
     enable = true;
     settings = {
@@ -90,12 +88,6 @@ in
       ipc = "on";
       splash = false;
       splash_offset = 2.0;
-
-      preload = [ "${theme.wallpaper}" ];
-
-      wallpaper = [
-        ", ${theme.wallpaper}"
-      ];
     };
   };
 }
