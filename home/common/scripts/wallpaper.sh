@@ -103,13 +103,11 @@ fi
 
 echo "Image downloaded successfully to: $OUTPUT_PATH"
 
-# --- Max Store Functionality (Corrected) ---
 find "$OUTPUT_DIR" -maxdepth 1 -type f -printf '%T@\t%p\n' | sort -n | head -n "$(($(find "$OUTPUT_DIR" -maxdepth 1 -type f | wc -l) - MAX_IMAGES))" | cut -f 2- | while IFS= read -r file; do
   echo "Removing old image: $file"
   rm "$file"
 done
 
-# Check the operating system and set wallpaper based on --session arg
 UNAME=$(uname -s)
 
 if [ "$UNAME" == "Linux" ]; then
@@ -119,6 +117,7 @@ if [ "$UNAME" == "Linux" ]; then
     hyprctl hyprpaper unload all
     hyprctl hyprpaper preload "$OUTPUT_PATH"
     hyprctl hyprpaper wallpaper ",$OUTPUT_PATH"
+    cp -f $OUTPUT_PATH $HOME/.cache/current-wallpaper.jpg
     echo "Hyprland wallpaper set to: $OUTPUT_PATH"
     ;;
   i3)
