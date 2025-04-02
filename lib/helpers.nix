@@ -68,17 +68,30 @@
     mkDarwin = 
       {
         hostname,
-        pkgsInput ? inputs.darwin,
         system ? "aarch64-darwin",
+        desktop ? null,
       }:
-      pkgsInput.lib.darwinSystem {
+      inputs.nix-darwin.lib.darwinSystem {
         inherit system;
+        specialArgs = {
+          inherit
+            self
+            inputs
+            outputs
+            stateVersion
+            username
+            hostname
+            desktop
+            flakePath
+            system
+            ;
+        };
         modules = [
-          inputs.home-manager.darwinModules.home-manager
           ../hosts
+          inputs.home-manager.darwinModules.home-manager
+          ../home
         ];
       };
-    };
 
   forAllSystems = inputs.nixpkgs.lib.genAttrs [
     "aarch64-linux"
