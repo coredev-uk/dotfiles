@@ -4,7 +4,8 @@
   lib,
   pkgs,
   ...
-}: let
+}:
+let
   bootwin = pkgs.writeScriptBin "bootwin" ''
     #!/bin/sh
     sudo su - <<EOF
@@ -12,15 +13,14 @@
     reboot
     EOF
   '';
-in {
-  imports =
-    [
-      "${self}/hosts/common/services/networkmanager.nix"
-      "${self}/hosts/common/desktop/gaming.nix"
-      "${self}/hosts/common/desktop/rgb.nix"
-      "${self}/hosts/common/desktop/qmk.nix"
-    ]
-    ++ lib.optional (desktop == "i3") ./display.nix;
+in
+{
+  imports = [
+    "${self}/hosts/common/services/networkmanager.nix"
+    "${self}/hosts/common/desktop/gaming.nix"
+    "${self}/hosts/common/desktop/rgb.nix"
+    "${self}/hosts/common/desktop/qmk.nix"
+  ] ++ lib.optional (desktop == "i3") ./display.nix;
 
   # Add bootwin script to reboot into Windows
   environment.systemPackages = with pkgs; [

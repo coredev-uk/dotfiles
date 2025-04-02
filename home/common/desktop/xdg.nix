@@ -1,4 +1,4 @@
-{ pkgs, username, ... }:
+_:
 let
   inherit ((import ./file-associations.nix)) associations;
 in

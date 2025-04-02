@@ -3,13 +3,12 @@
   terminal,
   menu,
   lock,
-  theme,
   mod,
   pkgs,
+  wallpaper,
   ...
 }:
 {
-
   main = {
     ###############################################
     ##### KEYBIND #################################
@@ -39,7 +38,7 @@
     "${mod}+b" = "exec ${browser}";
     "${mod}+Return" = "exec ${terminal}";
     "${mod}+space" = "exec ${menu} | xargs i3-msg exec --";
-    "${mod}+Shift+p" = "exec ${pkgs.feh}/bin/feh --bg-fill --randomize ${theme.wallpaperDir}/*"; # Randomized the wallpaper encase I get bored
+    "${mod}+Shift+p" = "exec ${wallpaper}/bin/get-wallpaper --session=i3";
 
     # WM Controls
     "${mod}+r" = "reload";

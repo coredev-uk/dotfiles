@@ -2,9 +2,11 @@
   pkgs,
   self,
   ...
-}: let
-  theme = import "${self}/lib/theme" {inherit pkgs;};
-in {
+}:
+let
+  theme = import "${self}/lib/theme" { inherit pkgs; };
+in
+{
   imports = [
     ./bat.nix
     ./bottom.nix

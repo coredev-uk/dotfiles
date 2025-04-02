@@ -20,7 +20,7 @@ in
 
       background = [
         {
-          path = "${theme.wallpaper}";
+          path = "$HOME/.cache/current-wallpaper.jpg";
           blur_passes = 2;
           blur_size = 6;
         }
@@ -90,12 +90,6 @@ in
       ipc = "on";
       splash = false;
       splash_offset = 2.0;
-
-      preload = [ "${theme.wallpaper}" ];
-
-      wallpaper = [
-        ", ${theme.wallpaper}"
-      ];
     };
   };
 }

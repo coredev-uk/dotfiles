@@ -30,6 +30,7 @@ in
       terminal = "${pkgs.ghostty}/bin/ghostty";
       menu = "rofi -show drun";
       lock = "${pkgs.betterlockscreen}/bin/betterlockscreen -l dim";
+      wallpaper = pkgs.writeScriptBin "get-wallpaper" (builtins.readFile ../../scripts/get-wallpaper.sh);
     in
     {
       enable = true;
@@ -64,7 +65,7 @@ in
             command = "eww open-many bar bar-second";
           }
           {
-            command = "${pkgs.feh}/bin/feh --bg-fill ${theme.wallpaper}";
+            command = "${wallpaper}/bin/get-wallpaper --session=i3";
           }
           {
             command = "xset s off";
@@ -111,6 +112,7 @@ in
               theme
               mod
               pkgs
+              wallpaper
               ;
           }).main;
 
@@ -124,6 +126,7 @@ in
               theme
               mod
               pkgs
+              wallpaper
               ;
           }).resize;
       };
@@ -140,5 +143,4 @@ in
       };
     };
   };
-
 }

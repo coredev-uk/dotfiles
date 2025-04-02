@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   vim = {
     options = {
       tabstop = 2;
@@ -58,6 +59,7 @@
       astro.enable = true;
       bash.enable = true;
       nix.enable = true;
+      nix.format.type = "nixfmt";
       python.enable = true;
       rust.enable = true;
       ts.enable = true;
