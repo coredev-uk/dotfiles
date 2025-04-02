@@ -68,6 +68,8 @@
         };
       };
 
+      darwinConfigurations = {};
+
       # Custom packages; acessible via 'nix build', 'nix shell', etc
       packages = libx.forAllSystems (
         system:
