@@ -22,8 +22,8 @@
 
     nvf.url = "github:notashelf/nvf";
 
-    darwin.url = "github:nix-darwin/nix-darwin";
-    darwin.inputs.nixpkgs.follows = "unstable";
+    nix-darwin.url = "github:nix-darwin/nix-darwin";
+    nix-darwin.inputs.nixpkgs.follows = "unstable";
 
     # TODO: Remove when https://github.com/NixOS/nixpkgs/pull/363992 is merged
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
@@ -68,7 +68,11 @@
         };
       };
 
-      darwinConfigurations = {};
+      darwinConfigurations = {
+        Poseidon = libx.mkDarwin {
+          hostname = "Poseidon";
+        };
+      };
 
       # Custom packages; acessible via 'nix build', 'nix shell', etc
       packages = libx.forAllSystems (

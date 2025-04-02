@@ -12,6 +12,7 @@
 }:
 {
 
+  # TODO: Make the host configuration optional, move to default.nix and import there
   imports =
     [
       (modulesPath + "/installer/scan/not-detected.nix")
@@ -42,9 +43,7 @@
     config = {
       allowUnfree = true;
       joypixels.acceptLicense = true;
-      permittedInsecurePackages = [
-        # "SDL_ttf-2.0.11"
-      ];
+      permittedInsecurePackages = [];
     };
   };
 
