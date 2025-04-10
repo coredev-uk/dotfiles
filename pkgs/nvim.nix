@@ -64,6 +64,18 @@
       rust.enable = true;
       ts.enable = true;
       tailwind.enable = true;
+
+      # Markdown
+      markdown.enable = true;
+      markdown.extensions.render-markdown-nvim = {
+        enable = true;
+        setupOpts = {
+          file_types = [
+            "markdown"
+            "Avante"
+          ];
+        };
+      };
     };
 
     # Custom Plugins
@@ -74,8 +86,6 @@
       "avante.nvim" = {
         package = pkgs.vimPlugins.avante-nvim;
         setupModule = "avante";
-        #event = "VeryLazy";
-        #lazy = false;
         setupOpts = {
           provider = "copilot";
           copilot = {
