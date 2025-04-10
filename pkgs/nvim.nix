@@ -71,6 +71,24 @@
       "yuck.vim" = {
         package = pkgs.vimPlugins.yuck-vim;
       };
+      "avante.nvim" = {
+        package = pkgs.vimPlugins.avante-nvim;
+        setupModule = "avante";
+        #event = "VeryLazy";
+        #lazy = false;
+        setupOpts = {
+          provider = "copilot";
+          copilot = {
+            model = "claude-3.7-sonnet";
+            endpoint = "https://api.githubcopilot.com";
+            allow_insecure = false;
+            timeout = 10 * 60 * 1000;
+            temperature = 0;
+            max_completion_tokens = 1000000;
+            reasoning_effort = "high";
+          };
+        };
+      };
     };
 
     # Options
@@ -81,7 +99,26 @@
       lspsaga.enable = true;
     };
 
-    autocomplete.blink-cmp.enable = true;
+    autocomplete.blink-cmp = {
+      enable = true;
+      mappings.close = null;
+      mappings.complete = null;
+      sourcePlugins = {
+        copilot = {
+          enable = true;
+          package = pkgs.vimPlugins.blink-copilot;
+          module = "blink-copilot";
+        };
+      };
+      setupOpts.sources.providers = {
+        copilot = {
+          name = "copilot";
+          module = "blink-copilot";
+          score_offset = 100;
+          async = true;
+        };
+      };
+    };
     autopairs.nvim-autopairs.enable = true;
     assistant.copilot.enable = true;
 
