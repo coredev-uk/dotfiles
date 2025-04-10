@@ -21,7 +21,7 @@
   };
 
   home.packages = with pkgs; [
-    mangohud
+    heroic
     (lutris.override {
       extraPkgs = pkgs: [
         pkgs.corefonts
@@ -31,5 +31,6 @@
         pkgs.winetricks
       ];
     })
+    mangohud
   ];
 }
