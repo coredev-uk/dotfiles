@@ -61,5 +61,31 @@
         };
       };
     };
+
+    ignores = [
+      ".vscode"
+      ".npm"
+      ".cache"
+      ".icons"
+      ".mozilla"
+      ".local"
+      ".electron-gyp"
+      ".idea"
+      ".lock"
+      ".DS_Store"
+
+      # Application Development
+      "node_modules"
+      "dist"
+      "yarn-error.log"
+      ".yarnclean"
+
+      # Stuff
+      "doc/tags"
+      "*.vim-flavor"
+      "*.swp"
+      "*.bundle"
+      "vendor"
+    ];
   };
 }
