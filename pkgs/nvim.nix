@@ -1,22 +1,184 @@
 { pkgs, ... }:
 {
   vim = {
+    # Experimental feature
+    enableLuaLoader = true;
+
+    #------------------------------------------------------------------------------
+    # CORE EDITOR SETTINGS
+    #------------------------------------------------------------------------------
     options = {
       tabstop = 2;
       shiftwidth = 2;
       softtabstop = 2;
       clipboard = "unnamedplus";
+
+      # Folding Options
+      foldcolumn = "1";
+      foldlevel = 99;
+      foldlevelstart = 99;
+      foldenable = true;
     };
 
-    # Styling
+    #------------------------------------------------------------------------------
+    # APPEARANCE
+    #------------------------------------------------------------------------------
+    # Theme configuration
     theme = {
       enable = true;
       name = "catppuccin";
       style = "mocha";
     };
 
-    # Keymaps
+    # UI enhancements
+    ui = {
+      noice.enable = true;
+      nvim-ufo.enable = true;
+      borders = {
+        enable = true;
+        plugins.lspsaga.enable = true;
+      };
+    };
+
+    # Visual elements
+    visuals.nvim-web-devicons.enable = true;
+
+    # Status and display components
+    mini = {
+      basics.enable = true;
+      statusline.enable = true;
+      icons.enable = true;
+    };
+
+    #------------------------------------------------------------------------------
+    # LANGUAGE SUPPORT & LSP
+    #------------------------------------------------------------------------------
+    languages = {
+      enableLSP = true;
+      enableTreesitter = true;
+      enableFormat = true;
+
+      # Language servers
+      astro.enable = true;
+      bash.enable = true;
+      css.enable = true;
+      html.enable = true;
+      nix = {
+        enable = true;
+        format.type = "nixfmt";
+      };
+      python.enable = true;
+      rust.enable = true;
+      tailwind.enable = true;
+      ts.enable = true;
+
+      # Markdown support
+      markdown = {
+        enable = true;
+        extensions.render-markdown-nvim = {
+          enable = true;
+          setupOpts = {
+            file_types = [
+              "markdown"
+              "Avante"
+            ];
+          };
+        };
+      };
+    };
+
+    # LSP configuration
+    lsp = {
+      enable = true;
+      formatOnSave = true;
+      lspsaga.enable = true;
+    };
+
+    # Diagnostic tools
+    diagnostics = {
+      enable = true;
+      config.virtual_lines = true;
+      nvim-lint.enable = true; # Prevents errors from other plugins
+    };
+
+    #------------------------------------------------------------------------------
+    # CODE FORMATTING
+    #------------------------------------------------------------------------------
+    formatter.conform-nvim = {
+      enable = true;
+      setupOpts = {
+        formatters_by_fs = {
+          astro = [
+            "prettierd"
+            "eslint_d"
+          ];
+          nix = [ "nixfmt-plus" ];
+        };
+      };
+    };
+
+    #------------------------------------------------------------------------------
+    # COMPLETION & ASSISTANCE
+    #------------------------------------------------------------------------------
+    # Auto-completion
+    autocomplete.blink-cmp = {
+      enable = true;
+      mappings = {
+        close = null;
+        complete = null;
+      };
+      sourcePlugins = {
+        copilot = {
+          enable = true;
+          package = pkgs.vimPlugins.blink-copilot;
+          module = "blink-copilot";
+        };
+      };
+      setupOpts.sources.providers = {
+        copilot = {
+          name = "copilot";
+          module = "blink-copilot";
+          score_offset = 100;
+          async = true;
+        };
+      };
+    };
+
+    # Auto-pairs and assistance
+    autopairs.nvim-autopairs.enable = true;
+    assistant.copilot.enable = true;
+
+    # Comments
+    comments.comment-nvim.enable = true;
+    notes.todo-comments.enable = true;
+
+    #------------------------------------------------------------------------------
+    # NAVIGATION & FILE MANAGEMENT
+    #------------------------------------------------------------------------------
+    # File explorer
+    filetree.neo-tree = {
+      enable = true;
+      setupOpts.filesystem.hijack_netrw_behavior = "open_current";
+    };
+
+    # Search
+    telescope = {
+      enable = true;
+      mappings.resume = null;
+    };
+
+    #------------------------------------------------------------------------------
+    # GIT INTEGRATION
+    #------------------------------------------------------------------------------
+    git.gitsigns.enable = true;
+
+    #------------------------------------------------------------------------------
+    # KEYBINDINGS
+    #------------------------------------------------------------------------------
+    binds.whichKey.enable = true;
+
     keymaps = [
+      # Git
       {
         key = "<leader>gg";
         mode = "n";
@@ -25,6 +187,7 @@
         lua = true;
         desc = "Show LazyGit window";
       }
+      # File navigation
       {
         key = "<leader>fr";
         mode = "n";
@@ -32,6 +195,7 @@
         action = "<cmd>Telescope oldfiles<CR>";
         desc = "Show Telescopes old files";
       }
+      # File explorer
       {
         key = "<leader>m";
         mode = "n";
@@ -46,39 +210,27 @@
         action = "<cmd>Neotree reveal<CR>";
         desc = "Reveal filetree";
       }
+      # LSP actions
+      {
+        key = "caa";
+        mode = "n";
+        silent = true;
+        action = "<cmd>Lspsaga code_action<CR>";
+        desc = "Lsp Sage Code action";
+      }
+      {
+        key = "cgg";
+        mode = "n";
+        silent = true;
+        action = "<cmd>Lspsaga goto_definition<CR>";
+        desc = "Lsp Sage Goto definition";
+      }
     ];
-    binds.whichKey.enable = true;
 
-    # LSP
-    languages = {
-      enableLSP = true;
-      enableTreesitter = true;
-      enableFormat = true;
-
-      # LSP servers
-      astro.enable = true;
-      bash.enable = true;
-      nix.enable = true;
-      nix.format.type = "nixfmt";
-      python.enable = true;
-      rust.enable = true;
-      ts.enable = true;
-      tailwind.enable = true;
-
-      # Markdown
-      markdown.enable = true;
-      markdown.extensions.render-markdown-nvim = {
-        enable = true;
-        setupOpts = {
-          file_types = [
-            "markdown"
-            "Avante"
-          ];
-        };
-      };
-    };
-
-    # Custom Plugins
+    #------------------------------------------------------------------------------
+    # PLUGINS
+    #------------------------------------------------------------------------------
+    # Custom plugins
     lazy.plugins = {
       "yuck.vim" = {
         package = pkgs.vimPlugins.yuck-vim;
@@ -99,81 +251,40 @@
           };
         };
       };
-    };
-
-    # Options
-    lsp = {
-      enable = true;
-
-      formatOnSave = true;
-      lspsaga.enable = true;
-    };
-
-    autocomplete.blink-cmp = {
-      enable = true;
-      mappings.close = null;
-      mappings.complete = null;
-      sourcePlugins = {
-        copilot = {
-          enable = true;
-          package = pkgs.vimPlugins.blink-copilot;
-          module = "blink-copilot";
-        };
-      };
-      setupOpts.sources.providers = {
-        copilot = {
-          name = "copilot";
-          module = "blink-copilot";
-          score_offset = 100;
-          async = true;
+      "colorful-menu.nvim" = {
+        package = pkgs.vimPlugins.colorful-menu-nvim;
+        setupOpts = {
+          ls = {
+            lua_ls = {
+              arguments_hl = "@comment";
+            };
+            ts_ls = {
+              extra_info_hl = "@comment";
+            };
+          };
+          fallback_highlight = "@variable";
+          max_width = 60;
         };
       };
     };
-    autopairs.nvim-autopairs.enable = true;
-    assistant.copilot.enable = true;
 
-    # UI
-    ui.noice.enable = true;
-    notes.todo-comments.enable = true;
-    comments.comment-nvim.enable = true;
-    visuals.nvim-web-devicons.enable = true;
-
-    # mini.nvim
-    mini = {
-      basics.enable = true;
-      statusline.enable = true;
-      icons.enable = true;
-    };
-
-    # Git
-    git.gitsigns.enable = true;
-
-    # File Search
-    telescope = {
-      enable = true;
-      mappings.resume = null;
-    };
-
-    # File Tree
-    filetree.neo-tree = {
-      enable = true;
-      setupOpts.filesystem.hijack_netrw_behavior = "open_current";
-    };
-
-    diagnostics.nvim-lint.enable = true; # Enabling this to stop the errors from other plugins
-
-    # Snacks
+    #------------------------------------------------------------------------------
+    # UTILITIES
+    #------------------------------------------------------------------------------
+    # Snacks utilities
     utility.snacks-nvim = {
       enable = true;
       setupOpts = {
         lazygit.enable = true;
         bigfile.enable = true;
-        notifier.enale = true;
+        notifier.enable = true;
         git.enable = true;
         gitbrowser.enable = true;
         scroll.enable = true;
-        indent.enable = true;
-        indent.indent.only_scope = true;
+        indent = {
+          enable = true;
+          indent.only_scope = true;
+        };
         statuscolumn.enable = true;
       };
     };
