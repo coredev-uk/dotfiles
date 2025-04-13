@@ -28,8 +28,8 @@ in
   ];
 
   # Fix the time when Dual-booting with Windows
-  time.hardwareClockInLocalTime = true;
-  # time.timeZone = "Europe/London";
+  # time.hardwareClockInLocalTime = true;
+  time.timeZone = "Europe/London";
 
   # DNS
   networking.nameservers = [
@@ -37,13 +37,20 @@ in
     "10.147.1.20"
   ];
 
-  # Set limits for systemd units (not systemd itself).
-  #
-  # From `man 5 systemd-system.conf`:
-  # "DefaultLimitNOFILE= defaults to 1024:524288"
-  systemd.extraConfig = ''
-    DefaultLimitNOFILE=8192:524288
-  '';
+  #systemd.extraConfig = "DefaultLimitNOFILE=1048576";
+
+  # Fix hmr issue (https://github.com/phenax/nixos-dotfiles/blob/main/configuration.nix#L34)
+  systemd.extraConfig = ''DefaultLimitNOFILE=65536'';
+  systemd.user.extraConfig = ''DefaultLimitNOFILE=65536'';
+  boot.kernel.sysctl."fs.inotify.max_user_instances" = 8192;
+  security.pam.loginLimits = [
+    {
+      domain = "*";
+      type = "-";
+      item = "nofile";
+      value = "65536";
+    }
+  ];
 
   # Disable suspend of Toslink output to prevent audio popping.
   services.pipewire.wireplumber.extraConfig."99-disable-suspend" = {
