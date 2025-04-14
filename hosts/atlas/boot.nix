@@ -1,5 +1,9 @@
-{ pkgs, lib, ... }:
+{ pkgs, lib, modulesPath, ... }:
 {
+  imports = [
+    (modulesPath + "/installer/scan/not-detected.nix")
+  ]
+
   environment.systemPackages = with pkgs; [
     efibootmgr
   ];
