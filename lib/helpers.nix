@@ -32,6 +32,7 @@
       };
       modules = [
         inputs.catppuccin.homeModules.catppuccin
+        inputs.zen-browser.homeModules.twilight # beta
         ../home
       ];
     };
