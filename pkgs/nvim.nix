@@ -85,6 +85,8 @@
           };
         };
       };
+
+      yaml.enable = true;
     };
 
     # LSP configuration
@@ -241,7 +243,7 @@
         setupOpts = {
           provider = "copilot";
           copilot = {
-            model = "claude-3.7-sonnet";
+            model = "o4-mini";
             endpoint = "https://api.githubcopilot.com";
             allow_insecure = false;
             timeout = 10 * 60 * 1000;
