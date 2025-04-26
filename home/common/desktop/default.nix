@@ -51,5 +51,13 @@
     papers
   ];
 
+  programs.zen-browser = {
+    enable = true;
+    policies = {
+      DisableAppUpdate = false;
+      DisableTelemetry = true;
+    };
+  };
+
   fonts.fontconfig.enable = true;
 }
