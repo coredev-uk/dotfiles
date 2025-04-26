@@ -41,7 +41,7 @@
         path = "$HOME/.cache/zsh_history";
       };
 
-      initExtra = ''
+      initContent = ''
         # Completion styling
         zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
         zstyle ':completion:*' list-colors "''${(s.:.)LS_COLORS}"
@@ -49,7 +49,6 @@
         zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
         zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
-        eval "$(nh completions --shell zsh)"  # nix-home completions
         eval "$(direnv hook zsh)" # direnv auto shell activation hook
         TERM=xterm-256color
 

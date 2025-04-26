@@ -39,8 +39,6 @@
     };
 
     gvfs.enable = true;
-
-    protonmail-bridge.enable = true;
   };
 
   xdg.portal = {
