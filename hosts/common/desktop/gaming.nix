@@ -45,7 +45,7 @@
   # For Epic Games Store in Lutris
   hardware.graphics.enable32Bit = true;
 
-  # Tweaks Required for Star-Citizen (src: https://github.com/fufexan/nix-gaming/tree/master/pkgs/star-citizen)
+  # Tweaks Required for Star-Citizen (src: https://github.com/starcitizen-lug/knowledge-base/wiki/Tips-and-Tricks#nixos)
   boot.kernel.sysctl = {
     "vm.max_map_count" = 16777216;
     "fs.file-max" = 524288;

@@ -10,7 +10,7 @@
     ../dev
     ../scripts
 
-    ./alacritty.nix
+    # ./alacritty.nix
     ./gaming.nix
     ./gtk.nix
     ./qt.nix
@@ -45,10 +45,9 @@
     google-chrome
     jellyfin-media-player
     protonmail-desktop
-    protonmail-bridge-gui
     proton-pass
-    protonvpn-gui
     papers
+    spotify
   ];
 
   programs.zen-browser = {
