@@ -44,10 +44,13 @@
     globalprotect-openconnect
     google-chrome
     jellyfin-media-player
+    legcord
     protonmail-desktop
     proton-pass
     papers
     spotify
+    thunderbird
+    xfce.thunar
   ];
 
   programs.zen-browser = {
