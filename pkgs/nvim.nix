@@ -54,7 +54,6 @@
     # LANGUAGE SUPPORT & LSP
     #------------------------------------------------------------------------------
     languages = {
-      enableLSP = true;
       enableTreesitter = true;
       enableFormat = true;
 
@@ -243,7 +242,7 @@
         setupOpts = {
           provider = "copilot";
           copilot = {
-            model = "claude-3.7-sonnet";
+            model = "claude-3.5-sonnet";
             endpoint = "https://api.githubcopilot.com";
             allow_insecure = false;
             timeout = 10 * 60 * 1000;
