@@ -38,7 +38,7 @@ in
   };
 
   programs._1password-gui = {
-    package = pkgs.unstable._1password-gui-beta;
+    package = pkgs.unstable._1password-gui;
     enable = true;
     polkitPolicyOwners = [ "${username}" ];
   };
