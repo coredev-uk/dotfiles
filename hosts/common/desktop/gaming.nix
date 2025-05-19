@@ -42,10 +42,12 @@
     };
   };
 
+  environment.sessionVariables.VK_ICD_FILENAMES = "/run/opengl-driver/share/vulkan/icd.d/nvidia_icd.x86_64.json";
+
   # For Epic Games Store in Lutris
   hardware.graphics.enable32Bit = true;
 
-  # Tweaks Required for Star-Citizen (src: https://github.com/fufexan/nix-gaming/tree/master/pkgs/star-citizen)
+  # Tweaks Required for Star-Citizen (src: https://github.com/starcitizen-lug/knowledge-base/wiki/Tips-and-Tricks#nixos)
   boot.kernel.sysctl = {
     "vm.max_map_count" = 16777216;
     "fs.file-max" = 524288;

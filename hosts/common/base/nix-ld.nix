@@ -1,10 +1,13 @@
 # Taken from https://github.com/ywmaa/dotfiles/blob/main/nix-config/dynamic_binaries_support.nix
 # Inturn from https://github.com/NovaViper/NixConfig/blob/8c81e92723e37a99d1049205ec3c5f874dd43c48/modules/core/ld.nix#L6
+
 { pkgs, ... }:
+
 {
-  # allow running binaries
+  #nix-ld and envfs for dynamic binaries.
   services.envfs.enable = true;
   programs.nix-ld.enable = true;
+
   programs.nix-ld.libraries = with pkgs; [
     # Needed for operating system detection until
     # https://github.com/ValveSoftware/steam-for-linux/issues/5909 is resolved
@@ -16,12 +19,14 @@
     which
     # Needed by gdialog, including in the steam-runtime
     perl
-    curl
     # Open URLs
     xdg-utils
     iana-etc
     # Steam Play / Proton
     python3
+    # Steam VR
+    procps
+    usbutils
 
     # It tries to execute xdg-user-dir and spams the log with command not founds
     xdg-user-dirs
@@ -41,30 +46,16 @@
     xorg.libXext
     xorg.libX11
     xorg.libXfixes
-    xorg.libxkbfile
     libGL
     libva
     libva-utils
     #pipewire.lib
-    ocamlPackages.alsa
     alsa-lib
     libpulseaudio
     # steamwebhelper
     harfbuzz
     libthai
     pango
-    brotli
-    fuse3
-    icu
-    libglvnd
-    libnotify
-    libxml2
-    openssl
-    pipewire
-    pulseaudio
-    systemd
-    x264
-    libplist
 
     lsof # friends options won't display "Launch Game" without it
     file # called by steam's setup.sh
@@ -91,14 +82,13 @@
     xorg.libSM
     xorg.libICE
     gnome2.GConf
-    curlWithGnuTls
+    #      curlWithGnuTls
     nspr
     nss
     cups
     libcap
     SDL2
     libusb1
-    dbus
     dbus-glib
     gsettings-desktop-schemas
     ffmpeg
@@ -119,14 +109,12 @@
     zlib
 
     # SteamVR
-    procps
-    usbutils
     udev
+    dbus
 
     # Other things from runtime
     glib
     gtk2
-    gtk3
     bzip2
     flac
     freeglut
@@ -140,12 +128,11 @@
     pixman
     speex
     SDL_image
-    # SDL_ttf @TODO: Fix when CVE-2022-27470 is resolved <https://ubuntu.com/security/CVE-2022-27470>
+    SDL_ttf
     SDL_mixer
     SDL2_ttf
     SDL2_mixer
     libappindicator-gtk2
-    libappindicator-gtk3
     libdbusmenu-gtk2
     libindicator-gtk2
     libcaca
@@ -172,21 +159,29 @@
     json-glib # paradox launcher (Stellaris)
     libdrm
     libxkbcommon # paradox launcher
+    libvorbis # Dead Cells
     libxcrypt # Alien Isolation, XCOM 2, Company of Heroes 2
     mono
     xorg.xkeyboardconfig
     xorg.libpciaccess
+    xorg.libXScrnSaver # Dead Cells
     icu # dotnet runtime, e.g. Stardew Valley
 
     # screeps dependencies
+    gtk3
+    dbus
+    zlib
     atk
     cairo
+    freetype
     gdk-pixbuf
+    fontconfig
 
     # Prison Architect
     libGLU
     libuuid
     libbsd
+    alsa-lib
 
     # Loop Hero
     libidn2
@@ -194,4 +189,5 @@
     nghttp2.lib
     rtmpdump
   ];
+
 }

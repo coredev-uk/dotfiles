@@ -19,6 +19,7 @@
     inputs.home-manager.lib.homeManagerConfiguration {
       pkgs = inputs.unstable.legacyPackages.${system};
       extraSpecialArgs = {
+        stable = inputs.nixpkgs.legacyPackages.${system};
         inherit
           self
           inputs
@@ -32,6 +33,7 @@
       };
       modules = [
         inputs.catppuccin.homeModules.catppuccin
+        inputs.zen-browser.homeModules.twilight # beta
         ../home
       ];
     };
@@ -46,6 +48,7 @@
     }:
     pkgsInput.lib.nixosSystem {
       specialArgs = {
+        stable = inputs.nixpkgs.legacyPackages.${system};
         inherit
           self
           inputs

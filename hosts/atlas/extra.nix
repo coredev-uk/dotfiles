@@ -23,7 +23,7 @@ in
   ] ++ lib.optional (desktop == "i3") ./display.nix;
 
   # Add bootwin script to reboot into Windows
-  environment.systemPackages = with pkgs; [
+  environment.systemPackages = [
     bootwin
   ];
 
@@ -40,15 +40,15 @@ in
   #systemd.extraConfig = "DefaultLimitNOFILE=1048576";
 
   # Fix hmr issue (https://github.com/phenax/nixos-dotfiles/blob/main/configuration.nix#L34)
-  systemd.extraConfig = ''DefaultLimitNOFILE=65536'';
-  systemd.user.extraConfig = ''DefaultLimitNOFILE=65536'';
+  systemd.extraConfig = ''DefaultLimitNOFILE=524288'';
+  systemd.user.extraConfig = ''DefaultLimitNOFILE=524288'';
   boot.kernel.sysctl."fs.inotify.max_user_instances" = 8192;
   security.pam.loginLimits = [
     {
       domain = "*";
       type = "-";
       item = "nofile";
-      value = "65536";
+      value = "524288";
     }
   ];
 

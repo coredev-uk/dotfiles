@@ -10,7 +10,7 @@
     ../dev
     ../scripts
 
-    ./alacritty.nix
+    # ./alacritty.nix
     ./gaming.nix
     ./gtk.nix
     ./qt.nix
@@ -44,12 +44,22 @@
     globalprotect-openconnect
     google-chrome
     jellyfin-media-player
+    legcord
     protonmail-desktop
-    protonmail-bridge-gui
     proton-pass
-    protonvpn-gui
     papers
+    spotify
+    thunderbird
+    xfce.thunar
   ];
+
+  programs.zen-browser = {
+    enable = true;
+    policies = {
+      DisableAppUpdate = false;
+      DisableTelemetry = true;
+    };
+  };
 
   fonts.fontconfig.enable = true;
 }

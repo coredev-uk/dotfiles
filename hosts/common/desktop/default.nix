@@ -3,7 +3,6 @@
   username,
   pkgs,
   self,
-  inputs,
   ...
 }:
 let
@@ -33,17 +32,13 @@ in
   # Enable location services
   location.provider = "geoclue2";
 
-  environment.systemPackages = with pkgs; [
-    inputs.zen-browser.packages."${system}".twilight
-  ];
-
   programs._1password = {
     enable = true;
     package = pkgs.unstable._1password-cli;
   };
 
   programs._1password-gui = {
-    package = pkgs.unstable._1password-gui-beta;
+    package = pkgs.unstable._1password-gui;
     enable = true;
     polkitPolicyOwners = [ "${username}" ];
   };
@@ -69,6 +64,7 @@ in
     packages = with pkgs; [
       liberation_ttf
       ubuntu_font_family
+      gyre-fonts
 
       # Compatibility Fonts
       noto-fonts
