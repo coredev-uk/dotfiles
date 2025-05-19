@@ -11,7 +11,7 @@
 {
   imports = [
     ./common/shell
-  ] ++ lib.optional (builtins.isString desktop) ./common/desktop;
+  ] ++ (if config.system.isDesktop then [ ./common/desktop ] else []);
 
   home = {
     inherit username stateVersion;

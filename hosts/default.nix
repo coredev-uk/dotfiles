@@ -11,20 +11,15 @@
   ...
 }:
 {
-
-  # TODO: Make the host configuration optional, move to default.nix and import there
   imports =
     [
       (./. + "/${hostname}/boot.nix")
       (./. + "/${hostname}/hardware.nix")
-
-      ./common/base
-      ./common/users/${username}
     ]
     # Extras
     ++ lib.optional (builtins.pathExists (./. + "/${hostname}/extra.nix")) ./${hostname}/extra.nix
     # Include desktop config if a desktop is defined
-    ++ lib.optional (builtins.isString desktop) ./common/desktop;
+    ++ (if config.system.isDesktop then [ "./common/desktop" ] else [ ]);
 
   nixpkgs = {
     overlays = [

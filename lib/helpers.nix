@@ -61,6 +61,7 @@
       modules = [
         inputs.agenix.nixosModules.default
         inputs.lanzaboote.nixosModules.lanzaboote
+        ./config.nix
         ../hosts
       ];
     };
@@ -68,8 +69,9 @@
     mkDarwin = 
       {
         hostname,
+        user ? username,
         system ? "aarch64-darwin",
-        desktop ? null,
+        desktop ? "null",
       }:
       inputs.nix-darwin.lib.darwinSystem {
         inherit system;
@@ -87,9 +89,16 @@
             ;
         };
         modules = [
+          ./config.nix
           ../hosts
           inputs.home-manager.darwinModules.home-manager
-          ../home
+          {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              users.${user} = ../home;
+            };
+          }
         ];
       };
 
