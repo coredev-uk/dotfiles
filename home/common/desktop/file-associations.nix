@@ -1,6 +1,7 @@
 let
   browser = [ "zen-twilight.desktop" ];
   archiveManager = [ "org.gnome.FileRoller.desktop" ];
+  fileBrowser = [ "org.gnome.Nautilus" ];
   imageViewer = [ "org.gnome.Loupe.desktop" ];
   videoPlayer = [ "mpv.desktop" ];
 in
@@ -24,6 +25,8 @@ in
     "audio/*" = videoPlayer;
     "video/*" = videoPlayer;
     "image/*" = imageViewer;
+
+    "inode/directory" = fileBrowser;
 
     "application/json" = browser;
     "application/pdf" = browser;

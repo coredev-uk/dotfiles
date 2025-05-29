@@ -37,20 +37,21 @@
         })
       ];
     }))
+    brave
     catppuccin-gtk
     cider
     desktop-file-utils
     discord
-    globalprotect-openconnect
-    google-chrome
+    file-roller
     jellyfin-media-player
-    legcord
+    loupe
+    mpv
+    nautilus
     protonmail-desktop
     proton-pass
     papers
     spotify
     thunderbird
-    xfce.thunar
   ];
 
   programs.zen-browser = {
