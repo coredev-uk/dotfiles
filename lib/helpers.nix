@@ -92,7 +92,7 @@ in
       hostname,
       user ? username,
       system ? "aarch64-darwin",
-      desktop ? "null",
+      desktop ? null,
       type ? "darwin",
       flakePath ? "/Users/${user}/.dotfiles",
     }:
