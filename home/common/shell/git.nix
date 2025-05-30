@@ -1,8 +1,8 @@
 { pkgs, lib, ... }:
 {
   home.file.".config/git/allowed_signers".text = ''
-    core@coredev.uk ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINQpQFDxvGq+x6sHldr81kFtftS6KFEzbOtoRKKTXFR7 1Password
-    pt357@kent.ac.uk ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFiZJO5uLLRe4XhtxRbafK69xzOUCAKhbtq7f+CqrfSI 1Password
+    core@coredev.uk ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINQpQFDxvGq+x6sHldr81kFtftS6KFEzbOtoRKKTXFR7 
+    pt357@kent.ac.uk ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFiZJO5uLLRe4XhtxRbafK69xzOUCAKhbtq7f+CqrfSI
   '';
 
   home.packages = with pkgs; [ gh ];
@@ -43,11 +43,7 @@
       };
       gpg = {
         format = "ssh";
-        ssh = {
-          defaultKeyCommand = "sh -c 'echo key::$(ssh-add -L | head -n1)'";
-          allowedSignersFile = "~/.config/git/allowed_signers";
-          program = "${lib.getExe' pkgs._1password-gui "op-ssh-sign"}";
-        };
+        ssh.allowedSignersFile = "~/.config/git/allowed_signers";
       };
       commit = {
         gpgSign = true;
