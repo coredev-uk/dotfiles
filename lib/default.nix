@@ -20,5 +20,10 @@ let
   };
 in
 {
-  inherit (helpers) mkHome mkHost mkDarwin forAllSystems;
+  inherit (helpers)
+    mkHome
+    mkHost
+    mkDarwin
+    forAllSystems
+    ;
 }
