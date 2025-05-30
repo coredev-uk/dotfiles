@@ -32,32 +32,10 @@ in
   # Enable location services
   location.provider = "geoclue2";
 
-  programs._1password = {
-    enable = true;
-    package = pkgs.unstable._1password-cli;
-  };
-
-  programs._1password-gui = {
-    package = pkgs.unstable._1password-gui;
-    enable = true;
-    polkitPolicyOwners = [ "${username}" ];
-  };
-
   security.pam.services = {
     login.u2fAuth = true;
     sudo.u2fAuth = true;
     polkit-1.u2fAuth = true;
-  };
-
-  environment.etc = {
-    "1password/custom_allowed_browsers" = {
-      text = ''
-        .zen-wrapped
-        zen-bin
-        zen
-      '';
-      mode = "0755";
-    };
   };
 
   fonts = {
