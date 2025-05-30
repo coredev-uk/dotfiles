@@ -97,6 +97,7 @@ in
     inputs.darwin.lib.darwinSystem {
       inherit system;
       specialArgs = {
+        flakePath = "/Users/${user}/.dotfiles";
         inherit
           self
           inputs
@@ -105,7 +106,6 @@ in
           username
           hostname
           desktop
-          flakePath
           system
           type
           ;
@@ -130,11 +130,11 @@ in
                 stateVersion
                 hostname
                 desktop
-                flakePath
                 type
                 ;
               username = user;
               homeDirectory = "/Users/${user}";
+              flakePath = "/Users/${user}/.dotfiles";
             };
           };
         }
