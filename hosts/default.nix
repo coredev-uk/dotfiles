@@ -8,6 +8,7 @@
   outputs,
   stateVersion,
   username,
+  type,
   ...
 }:
 {
@@ -19,7 +20,7 @@
     # Extras
     ++ lib.optional (builtins.pathExists (./. + "/${hostname}/extra.nix")) ./${hostname}/extra.nix
     # Include desktop config if a desktop is defined
-    ++ (if config.system.isDesktop then [ "./common/desktop" ] else [ ]);
+    ++ lib.optional (type == "desktop") ./common/desktop;
 
   nixpkgs = {
     overlays = [
@@ -56,7 +57,6 @@
     optimise.automatic = true;
     settings = {
       warn-dirty = false; # Disable warning about dirty working directory - annoying af
-      auto-optimise-store = true;
       experimental-features = [
         "nix-command"
         "flakes"
@@ -69,6 +69,6 @@
   };
 
   system = {
-    inherit stateVersion;
+    stateVersion = lib.mkDefault stateVersion;
   };
 }

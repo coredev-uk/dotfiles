@@ -6,16 +6,17 @@
   stateVersion,
   username,
   inputs,
+  type,
+  homeDirectory,
   ...
 }:
 {
   imports = [
     ./common/shell
-  ] ++ (if config.system.isDesktop then [ ./common/desktop ] else []);
+  ] ++ (lib.optional (type == "desktop") ./common/desktop);
 
   home = {
-    inherit username stateVersion;
-    homeDirectory = "/home/${username}";
+    inherit username stateVersion homeDirectory;
   };
 
   nixpkgs = {
