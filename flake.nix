@@ -68,8 +68,8 @@
       };
 
       darwinConfigurations = {
-        Poseidon = libx.mkDarwin {
-          hostname = "Poseidon";
+        poseidon = libx.mkDarwin {
+          hostname = "poseidon";
         };
       };
 

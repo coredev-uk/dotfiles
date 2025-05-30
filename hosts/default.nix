@@ -1,13 +1,10 @@
 {
   config,
-  desktop,
   hostname,
   inputs,
   lib,
-  modulesPath,
   outputs,
   stateVersion,
-  username,
   type,
   ...
 }:
@@ -39,7 +36,7 @@
     config = {
       allowUnfree = true;
       joypixels.acceptLicense = true;
-      permittedInsecurePackages = [];
+      permittedInsecurePackages = [ ];
     };
   };
 

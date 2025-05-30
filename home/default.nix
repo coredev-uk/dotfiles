@@ -1,19 +1,21 @@
 {
-  config,
-  desktop,
   lib,
   outputs,
   stateVersion,
   username,
   inputs,
   type,
+  hostname,
   homeDirectory,
   ...
 }:
 {
-  imports = [
-    ./common/shell
-  ] ++ (lib.optional (type == "desktop") ./common/desktop);
+  imports =
+    [
+      ./common/shell
+    ]
+    ++ (lib.optional (type == "desktop") ./common/desktop)
+    ++ (lib.optional (type == "darwin") ./hosts/${hostname}.nix);
 
   home = {
     inherit username stateVersion homeDirectory;
