@@ -4,7 +4,6 @@
   outputs,
   stateVersion,
   username,
-  flakePath,
   ...
 }:
 let
@@ -28,6 +27,7 @@ in
       desktop ? null,
       type ? "desktop",
       system ? "x86_64-linux",
+      flakePath ? "/home/${user}/.dotfiles",
     }:
     inputs.home-manager.lib.homeManagerConfiguration {
       pkgs = inputs.unstable.legacyPackages.${system};
@@ -62,6 +62,7 @@ in
       type ? "desktop",
       pkgsInput ? inputs.unstable,
       system ? "x86_64-linux",
+      flakePath ? "/home/${username}/.dotfiles",
     }:
     pkgsInput.lib.nixosSystem {
       specialArgs = {
@@ -93,11 +94,11 @@ in
       system ? "aarch64-darwin",
       desktop ? "null",
       type ? "darwin",
+      flakePath ? "/Users/${user}/.dotfiles",
     }:
     inputs.darwin.lib.darwinSystem {
       inherit system;
       specialArgs = {
-        flakePath = "/Users/${user}/.dotfiles";
         inherit
           self
           inputs
@@ -108,6 +109,7 @@ in
           desktop
           system
           type
+          flakePath
           ;
       };
       modules = [
@@ -131,10 +133,10 @@ in
                 hostname
                 desktop
                 type
+                flakePath
                 ;
               username = user;
               homeDirectory = "/Users/${user}";
-              flakePath = "/Users/${user}/.dotfiles";
             };
           };
         }
