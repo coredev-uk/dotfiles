@@ -1,4 +1,11 @@
 _: {
+
+  systemd.services.systemd-vconsole-setup = {
+    unitConfig = {
+      After = "local-fs.target";
+    };
+  };
+
   boot = {
     initrd.systemd.enable = true;
 
