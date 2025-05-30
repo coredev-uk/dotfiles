@@ -21,4 +21,3 @@
     packages = [ pkgs.home-manager ];
   };
 }
-

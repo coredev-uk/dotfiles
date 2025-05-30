@@ -16,6 +16,7 @@ in
       ./git.nix
       ./fastfetch.nix
       ./starship.nix
+      ./nh.nix
       ./ssh.nix
       ./zsh.nix
     ]
