@@ -1,6 +1,5 @@
 {
   desktop,
-  username,
   pkgs,
   self,
   ...

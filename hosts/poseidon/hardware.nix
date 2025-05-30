@@ -1,4 +1,3 @@
-_:
-{
+_: {
   nixpkgs.hostPlatform = "aarch64-darwin";
 }

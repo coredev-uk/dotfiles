@@ -20,10 +20,8 @@ in
       ./ssh.nix
       ./zsh.nix
     ]
-    ++ (lib.optional (type == "desktop") [
-      ./xdg.nix
-      ./ghostty.nix
-    ]);
+    ++ (lib.optional (type == "desktop") ./ghostty.nix)
+    ++ (lib.optional (type == "desktop") ./xdg.nix);
 
   catppuccin = {
     inherit (theme.catppuccin) flavor;
