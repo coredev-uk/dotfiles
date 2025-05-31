@@ -1,5 +1,4 @@
 {
-  pkgs,
   lib,
   username,
   modulesPath,
@@ -19,7 +18,7 @@
     loader.systemd-boot.enable = lib.mkForce false;
     lanzaboote = {
       enable = true;
-      pkiBundle = "/etc/secureboot";
+      pkiBundle = "/var/lib/sbctl";
     };
 
     initrd = {
@@ -38,8 +37,5 @@
     kernelModules = [
       "vhost_vsock"
     ];
-
-    # Use the Xanmod Kernel for gaming-related optimisations.
-    kernelPackages = pkgs.linuxPackages_xanmod_latest;
   };
 }
