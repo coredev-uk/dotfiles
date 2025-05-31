@@ -1,12 +1,9 @@
 {
   username,
-  modulesPath,
   ...
 }:
 {
   imports = [
-    (modulesPath + "/installer/scan/not-detected.nix")
-
     ../common/base
     ../common/users/${username}
   ];
@@ -14,19 +11,25 @@
   boot = {
     initrd = {
       availableKernelModules = [
-        "ahci"
         "nvme"
         "sd_mod"
+        "sdhci_pci"
         "usb_storage"
         "usbhid"
         "xhci_pci"
       ];
-
-      systemd.dbus.enable = true;
+      kernelModules = [ ];
     };
 
     kernelModules = [
+      "kvm-intel"
       "vhost_vsock"
     ];
+
+    kernel = {
+      sysctl = {
+        "fs.inotify.max_user_watches" = 524288;
+      };
+    };
   };
 }
