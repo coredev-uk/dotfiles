@@ -1,6 +1,5 @@
 _:
 let
-  cryptroot = "cryptroot";
   defaultBtrfsOpts = [
     "defaults"
     "compress=zstd:1"
@@ -32,21 +31,13 @@ in
                 mountpoint = "/boot";
               };
             };
-            luks = {
+            root = {
               size = "100%";
               content = {
-                type = "luks";
-                name = "${cryptroot}";
-
-                settings = {
-                  allowDiscards = true;
-                };
-
-                content = {
-                  type = "btrfs";
-                  # Override existing partition
-                  extraArgs = [ "-f" ];
-                  subvolumes = {
+                type = "btrfs";
+                # Override existing partition
+                extraArgs = [ "-f" ];
+                subvolumes = {
                     "@" = {
                       mountpoint = "/";
                       mountOptions = defaultBtrfsOpts;
