@@ -4,10 +4,6 @@
 }:
 {
   home.packages = with pkgs; [
-    # Base development (devenv)
-    devenv
-    direnv
-
     # C++ tooling
     clang
     gnumake

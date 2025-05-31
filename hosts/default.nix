@@ -1,29 +1,23 @@
 {
   config,
-  desktop,
   hostname,
   inputs,
   lib,
-  modulesPath,
   outputs,
   stateVersion,
-  username,
+  type,
   ...
 }:
 {
-
   imports =
     [
-      (modulesPath + "/installer/scan/not-detected.nix")
       (./. + "/${hostname}/boot.nix")
       (./. + "/${hostname}/hardware.nix")
-
-      ./common/base
-      ./common/users/${username}
     ]
+    # Extras
     ++ lib.optional (builtins.pathExists (./. + "/${hostname}/extra.nix")) ./${hostname}/extra.nix
     # Include desktop config if a desktop is defined
-    ++ lib.optional (builtins.isString desktop) ./common/desktop;
+    ++ lib.optional (type == "desktop") ./common/desktop;
 
   nixpkgs = {
     overlays = [
@@ -42,9 +36,7 @@
     config = {
       allowUnfree = true;
       joypixels.acceptLicense = true;
-      permittedInsecurePackages = [
-        # "SDL_ttf-2.0.11"
-      ];
+      permittedInsecurePackages = [ ];
     };
   };
 
@@ -62,7 +54,6 @@
     optimise.automatic = true;
     settings = {
       warn-dirty = false; # Disable warning about dirty working directory - annoying af
-      auto-optimise-store = true;
       experimental-features = [
         "nix-command"
         "flakes"
@@ -75,6 +66,6 @@
   };
 
   system = {
-    inherit stateVersion;
+    stateVersion = lib.mkDefault stateVersion;
   };
 }
