@@ -38,26 +38,25 @@ in
                 # Override existing partition
                 extraArgs = [ "-f" ];
                 subvolumes = {
-                    "@" = {
-                      mountpoint = "/";
-                      mountOptions = defaultBtrfsOpts;
-                    };
-                    "@nix" = {
-                      mountpoint = "/nix";
-                      mountOptions = defaultBtrfsOpts;
-                    };
-                    "@home" = {
-                      mountpoint = "/home";
-                      mountOptions = defaultBtrfsOpts;
-                    };
-                    "@var" = {
-                      mountpoint = "/var";
-                      mountOptions = defaultBtrfsOpts;
-                    };
-                    "@snapshots" = {
-                      mountpoint = "/.snapshots";
-                      mountOptions = defaultBtrfsOpts;
-                    };
+                  "@" = {
+                    mountpoint = "/";
+                    mountOptions = defaultBtrfsOpts;
+                  };
+                  "@nix" = {
+                    mountpoint = "/nix";
+                    mountOptions = defaultBtrfsOpts;
+                  };
+                  "@home" = {
+                    mountpoint = "/home";
+                    mountOptions = defaultBtrfsOpts;
+                  };
+                  "@var" = {
+                    mountpoint = "/var";
+                    mountOptions = defaultBtrfsOpts;
+                  };
+                  "@snapshots" = {
+                    mountpoint = "/.snapshots";
+                    mountOptions = defaultBtrfsOpts;
                   };
                 };
               };
