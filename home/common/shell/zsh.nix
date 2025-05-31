@@ -55,6 +55,11 @@
         export GIO_MODULE_DIR=${pkgs.glib-networking}/lib/gio/modules/ # Patch for webkit2gtk ssl error (https://github.com/tauri-apps/wry/issues/605#issuecomment-1215756032)
       '';
 
+      sessionVariables = {
+        EDITOR = "nvim";
+        NH_FLAKE = flakePath;
+      };
+
       oh-my-zsh = {
         enable = true;
         plugins = [
@@ -92,7 +97,8 @@
 
         speedtest = "curl -s https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py | python -";
 
-        nix-update = "nh clean all --keep 3; nix flake update --flake ${flakePath}; nh os switch ${flakePath}; nh home switch ${flakePath}";
+        nix-update = "nh clean all --keep 3; nh os switch --update ${flakePath}; nh home switch ${flakePath}";
+        darwin-update = "nh clean all; nh darwin switch --update ${flakePath}";
 
         grep = "grep --color=auto";
         vim = "nvim";

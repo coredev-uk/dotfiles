@@ -2,7 +2,7 @@
   description = "coredev-uk flake";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
     unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nixos-hardware.url = "github:nixos/nixos-hardware/master";
 
@@ -22,6 +22,8 @@
 
     nvf.url = "github:notashelf/nvf";
 
+    darwin.url = "github:nix-darwin/nix-darwin";
+
     # TODO: Remove when https://github.com/NixOS/nixpkgs/pull/363992 is merged
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
     zen-browser.inputs.nixpkgs.follows = "unstable";
@@ -35,9 +37,8 @@
     }@inputs:
     let
       inherit (self) outputs;
-      stateVersion = "24.11";
+      stateVersion = "25.05";
       username = "paul";
-      flakePath = "/home/${username}/.dotfiles";
 
       libx = import ./lib {
         inherit
@@ -46,7 +47,6 @@
           outputs
           stateVersion
           username
-          flakePath
           ;
       };
     in
@@ -62,6 +62,12 @@
         atlas = libx.mkHost {
           hostname = "atlas";
           desktop = "hyprland"; # hyprland or i3
+        };
+      };
+
+      darwinConfigurations = {
+        poseidon = libx.mkDarwin {
+          hostname = "poseidon";
         };
       };
 

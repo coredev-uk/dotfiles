@@ -11,7 +11,6 @@
     ./console.nix
     ./hardware.nix
     ./locale.nix
-    ./nh.nix
     ./zramswap.nix
     ./nix-ld.nix
 

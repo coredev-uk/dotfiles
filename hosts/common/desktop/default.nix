@@ -1,6 +1,5 @@
 {
   desktop,
-  username,
   pkgs,
   self,
   ...
@@ -17,7 +16,7 @@ in
     ./qt.nix
   ];
 
-  # Enable Plymouth and surpress some logs by default.
+  # Enable Plymouth and suppress some logs by default.
   boot.plymouth.enable = true;
   boot.kernelParams = [
     # The 'splash' arg is included by the plymouth option

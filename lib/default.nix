@@ -4,7 +4,6 @@
   outputs,
   stateVersion,
   username,
-  flakePath,
   ...
 }:
 let
@@ -15,10 +14,14 @@ let
       outputs
       stateVersion
       username
-      flakePath
       ;
   };
 in
 {
-  inherit (helpers) mkHome mkHost forAllSystems;
+  inherit (helpers)
+    mkHome
+    mkHost
+    mkDarwin
+    forAllSystems
+    ;
 }
