@@ -36,7 +36,7 @@ echo
 if [[ $REPLY =~ ^[Yy]$ ]]; then
   sudo true
 
-  sudo nix --experimental-features "nix-command flakes" run github:nix-community/disko/latest -- --mode destroy,format,mount "hosts/${TARGET_HOST}/disks.nix"
+  sudo nix --experimental-features "nix-command flakes" run github:nix-community/disko/latest -- --mode destroy,format,mount "hosts/${TARGET_HOST}/disks.nix" --yes-wipe-all-disks
 
   sudo nixos-install --flake ".#${TARGET_HOST}"
 
