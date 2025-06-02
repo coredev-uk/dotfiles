@@ -13,7 +13,7 @@ in
     ../hardware/yubikey.nix
     ../services/pipewire.nix
     ./qt.nix
-  ] ++ lib.optional (builtins.isString desktop) ./common/${desktop}.nix;
+  ] ++ lib.optional (builtins.isString desktop) ./${desktop}.nix;
 
   # Enable Plymouth and suppress some logs by default.
   boot.plymouth.enable = true;
