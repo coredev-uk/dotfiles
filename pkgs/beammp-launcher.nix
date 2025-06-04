@@ -83,8 +83,8 @@ stdenv.mkDerivation rec {
   meta = {
     homepage = "https://github.com/BeamMP/BeamMP-Launcher";
     description = "Official BeamMP Launcher";
-    license = lib.licenses.unfree;
-    maintainers = with lib.maintainers; [ member87 ];
+    # license = lib.licenses.unfree;
+    maintainers = with lib.maintainers; [ JManch ];
     mainProgram = "BeamMP-Launcher";
   };
 }
