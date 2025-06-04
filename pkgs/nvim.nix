@@ -151,7 +151,7 @@
     assistant.avante-nvim = {
       enable = true;
       setupOpts = {
-        auto_suggestions_provider = "copilot";
+        provider = "copilot";
         copilot = {
           model = "claude-3.5-sonnet";
           endpoint = "https://api.githubcopilot.com";
