@@ -63,7 +63,19 @@ stdenv.mkDerivation rec {
     wrapProgram $out/bin/BeamMP-Launcher \
       --set SSL_CERT_FILE "${oldCertBundleFile}"
 
-    echo For running BeamNG.drive in Proton, you must symlink \'Steam/compatdata/284160/pfx/drive_c/users/steamuser/AppData/Local/BeamNG.drive\' to \'$HOME/.local/Share/BeamNG.Drive\'
+    echo ""
+    echo "--- BeamMP Launcher Setup Hint ---"
+    echo "  For BeamNG.drive to work correctly with Proton, you might need to create a symlink."
+    echo ""
+    echo "  The Launcher expects BeamNG.drive's 'AppData/Local' folder at: $HOME/.local/share/BeamNG.Drive"
+    echo ""
+    echo "  If your Steam library is at '~/.local/share/Steam', the source path would typically be:"
+    echo "    ~/.local/share/Steam/steamapps/compatdata/284160/pfx/drive_c/users/steamuser/AppData/Local/BeamNG.drive"
+    echo ""
+    echo "  Example command to create the symlink (adjust source path if needed):"
+    echo "    ln -s ~/.local/share/Steam/steamapps/compatdata/284160/pfx/drive_c/users/steamuser/AppData/Local/BeamNG.drive $HOME/.local/share/BeamNG.Drive"
+    echo ""
+    echo "----------------------------------"
 
     runHook postInstall
   '';
