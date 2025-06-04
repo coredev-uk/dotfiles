@@ -148,6 +148,21 @@
     # Auto-pairs and assistance
     autopairs.nvim-autopairs.enable = true;
     assistant.copilot.enable = true;
+    assistant.avante-nvim = {
+      enable = true;
+      setupOpts = {
+        auto_suggestions_provider = "copilot";
+        copilot = {
+          model = "claude-3.5-sonnet";
+          endpoint = "https://api.githubcopilot.com";
+          allow_insecure = false;
+          timeout = 10 * 60 * 1000;
+          temperature = 0;
+          max_completion_tokens = 1000000;
+          reasoning_effort = "high";
+        };
+      };
+    };
 
     # Comments
     comments.comment-nvim.enable = true;
@@ -235,22 +250,6 @@
     lazy.plugins = {
       "yuck.vim" = {
         package = pkgs.vimPlugins.yuck-vim;
-      };
-      "avante.nvim" = {
-        package = pkgs.vimPlugins.avante-nvim;
-        setupModule = "avante";
-        setupOpts = {
-          provider = "copilot";
-          copilot = {
-            model = "claude-3.5-sonnet";
-            endpoint = "https://api.githubcopilot.com";
-            allow_insecure = false;
-            timeout = 10 * 60 * 1000;
-            temperature = 0;
-            max_completion_tokens = 1000000;
-            reasoning_effort = "high";
-          };
-        };
       };
       "colorful-menu.nvim" = {
         package = pkgs.vimPlugins.colorful-menu-nvim;
