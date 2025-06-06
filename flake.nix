@@ -56,12 +56,20 @@
           hostname = "atlas";
           desktop = "hyprland"; # hyprland or i3
         };
+        "${username}@hyperion" = libx.mkHome {
+          hostname = "hyperion";
+          type = "server";
+        };
       };
 
       nixosConfigurations = {
         atlas = libx.mkHost {
           hostname = "atlas";
           desktop = "hyprland"; # hyprland or i3
+        };
+        hyperion = libx.mkHost {
+          hostname = "hyperion";
+          type = "server";
         };
       };
 
