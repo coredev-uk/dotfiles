@@ -2,6 +2,7 @@
   desktop,
   pkgs,
   self,
+  lib,
   ...
 }:
 let
@@ -9,12 +10,10 @@ let
 in
 {
   imports = [
-    (./. + "/${desktop}.nix")
-
     ../hardware/yubikey.nix
     ../services/pipewire.nix
     ./qt.nix
-  ];
+  ] ++ lib.optional (builtins.isString desktop) ./${desktop}.nix;
 
   # Enable Plymouth and suppress some logs by default.
   boot.plymouth.enable = true;

@@ -5,7 +5,7 @@
   lib,
   outputs,
   stateVersion,
-  type,
+  desktop,
   ...
 }:
 {
@@ -17,7 +17,7 @@
     # Extras
     ++ lib.optional (builtins.pathExists (./. + "/${hostname}/extra.nix")) ./${hostname}/extra.nix
     # Include desktop config if a desktop is defined
-    ++ lib.optional (type == "desktop") ./common/desktop;
+    ++ lib.optional (builtins.isString desktop) ./common/desktop;
 
   nixpkgs = {
     overlays = [
