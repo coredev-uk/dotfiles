@@ -5,7 +5,7 @@
 
 {
   #nix-ld and envfs for dynamic binaries.
-  services.envfs.enable = true;
+  # services.envfs.enable = true;
   programs.nix-ld.enable = true;
 
   programs.nix-ld.libraries = with pkgs; [
