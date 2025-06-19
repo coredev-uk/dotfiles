@@ -6,6 +6,9 @@
   imports = [
     "${self}/hosts/common/services/networkmanager.nix"
     "${self}/hosts/common/services/nixidy.nix"
+    {
+      hostname = "hyperion";
+    }
   ];
 
   time.timeZone = "Europe/London";
