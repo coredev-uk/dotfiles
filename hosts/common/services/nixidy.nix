@@ -1,14 +1,16 @@
-{ inputs, pkgs, ... }:
 {
-
-  # This declares the available nixidy envs.
-  nixidyEnvs = inputs.nixidy.lib.mkEnvs {
+  inputs,
+  pkgs,
+  self,
+  hostname,
+}:
+{
+  _module.args.nixidyEnvs = inputs.nixidy.lib.mkEnvs {
     inherit pkgs;
 
     envs = {
       # Currently we only have the one dev env.
-      dev.modules = [ ./env/dev.nix ];
+      dev.modules = [ "${self}/hosts/${hostname}/dev.nix" ];
     };
   };
-
 }
