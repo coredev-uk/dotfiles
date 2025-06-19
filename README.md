@@ -20,3 +20,7 @@ was a great help at getting going.
 ## Setup Summary
 
 _TBD_
+
+## Bootstrap Guide
+
+Clone the repo, run `nix develop` then ./install-with-disk
