@@ -93,12 +93,12 @@
 
         open = "xdg-open";
 
-        opget = "op item get \"$(op item list --format=json | jq -r '.[].title' | fzf)\"";
-
         speedtest = "curl -s https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py | python -";
 
         nix-update = "nh clean all --keep 3; nh os switch --update ${flakePath}; nh home switch ${flakePath}";
         darwin-update = "nh clean all; nh darwin switch --update ${flakePath}";
+
+        fix-time = "sudo chronyc -a makestep";
 
         grep = "grep --color=auto";
         vim = "nvim";
