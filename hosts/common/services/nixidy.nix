@@ -11,8 +11,4 @@
     };
   };
 
-  # Handy to have nixidy cli available in the local
-  # flake too.
-  packages.nixidy = nixidy.packages.${system}.default;
-
 }
