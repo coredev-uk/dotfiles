@@ -22,6 +22,8 @@
 
     nvf.url = "github:notashelf/nvf";
 
+    nixidy.url = "github:arnarg/nixidy";
+
     darwin.url = "github:nix-darwin/nix-darwin";
 
     # TODO: Remove when https://github.com/NixOS/nixpkgs/pull/363992 is merged
@@ -85,7 +87,7 @@
         let
           pkgs = unstable.legacyPackages.${system};
         in
-        import ./pkgs { inherit pkgs inputs; }
+        import ./pkgs { inherit pkgs inputs system; }
       );
 
       # Custom overlays
@@ -98,7 +100,7 @@
         let
           pkgs = unstable.legacyPackages.${system};
         in
-        import ./shell.nix { inherit pkgs; }
+        import ./shell.nix { inherit pkgs inputs system; }
       );
 
       formatter = libx.forAllSystems (system: self.packages.${system}.nixfmt-plus);
