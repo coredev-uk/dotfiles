@@ -18,5 +18,5 @@
   nixfmt-plus = pkgs.callPackage ./nixfmt-plus.nix { };
   cider = pkgs.callPackage ./cider.nix { };
   beammp-launcher = pkgs.callPackage ./beammp-launcher.nix { };
-  nixidy = inputs.nixidy.${system}.default;
+  nixidy = inputs.nixidy.packages.${system}.default;
 }

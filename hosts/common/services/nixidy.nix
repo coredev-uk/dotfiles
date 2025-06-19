@@ -3,8 +3,14 @@
   pkgs,
   self,
   hostname,
+  ...
 }:
 {
+
+  # environment.systemPackages = with pkgs; [
+  #   nixidy
+  # ];
+
   _module.args.nixidyEnvs = inputs.nixidy.lib.mkEnvs {
     inherit pkgs;
 
