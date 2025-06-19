@@ -152,14 +152,18 @@
       enable = true;
       setupOpts = {
         provider = "copilot";
-        copilot = {
-          model = "claude-3.5-sonnet";
-          endpoint = "https://api.githubcopilot.com";
-          allow_insecure = false;
-          timeout = 10 * 60 * 1000;
-          temperature = 0;
-          max_completion_tokens = 1000000;
-          reasoning_effort = "high";
+        providers = {
+          copilot = {
+            model = "claude-3.5-sonnet";
+            endpoint = "https://api.githubcopilot.com";
+            allow_insecure = false;
+            timeout = 10 * 60 * 1000;
+            max_completion_tokens = 1000000;
+            reasoning_effort = "high";
+            extra_request_body = {
+              temperature = 0;
+            };
+          };
         };
       };
     };
