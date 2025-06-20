@@ -19,6 +19,8 @@
   networking = {
     hostName = "hyperion";
 
+    useDHCP = false;
+
     defaultGateway.address = "10.147.20.1";
 
     interfaces.enp170s0 = {
