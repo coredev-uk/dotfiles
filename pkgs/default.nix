@@ -3,7 +3,6 @@
 {
   pkgs ? (import ../nixpkgs.nix) { },
   inputs ? { },
-  system ? "x86_64-linux",
 }:
 {
   inherit
@@ -18,5 +17,4 @@
   nixfmt-plus = pkgs.callPackage ./nixfmt-plus.nix { };
   cider = pkgs.callPackage ./cider.nix { };
   beammp-launcher = pkgs.callPackage ./beammp-launcher.nix { };
-  nixidy = inputs.nixidy.packages.${system}.default;
 }
