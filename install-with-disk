@@ -44,9 +44,6 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
   mkdir -p "/mnt/home/${TARGET_USER}/.dotfiles"
   rsync -a --delete "${DIR}/.." "/mnt/home/${TARGET_USER}"
 
-  # Setup home-manager for the target user. (Change to nix-instance using nixos-enter, change user and run home-manager switch)
-  echo "echo 'home-manager switch --flake /home/${TARGET_USER}/.dotfiles' | sudo -u ${TARGET_USER} bash" | sudo nixos-enter
-
   # If there is a keyfile for a data disk, put copy it to the root partition and
   # ensure the permissions are set appropriately.
   if [[ -f "/tmp/data.keyfile" ]]; then
