@@ -13,13 +13,13 @@ in
     [
       ./bat.nix
       ./bottom.nix
-      ./git.nix
       ./fastfetch.nix
       ./starship.nix
       ./nh.nix
       ./ssh.nix
       ./zsh.nix
     ]
+    ++ (lib.optional (type == "desktop") ./git.nix)
     ++ (lib.optional (type == "desktop") ./ghostty.nix)
     ++ (lib.optional (type == "desktop") ./xdg.nix);
 
