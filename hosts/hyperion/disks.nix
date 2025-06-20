@@ -23,7 +23,7 @@ in
           partitions = {
             ESP = {
               start = "0%";
-              end = "512MiB";
+              end = "1GB";
               type = "EF00";
               content = {
                 type = "filesystem";
