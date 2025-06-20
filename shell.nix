@@ -2,8 +2,6 @@
 # Access development shell with  'nix develop' or (legacy) 'nix-shell'
 {
   pkgs ? (import ./nixpkgs.nix) { },
-  inputs ? { },
-  system ? "x86_64-linux",
 }:
 {
   default = pkgs.mkShell {
@@ -18,6 +16,5 @@
     shellHook = ''
       exec zsh
     '';
-    buildInputs = [ inputs.nixidy.packages.${system}.default ];
   };
 }

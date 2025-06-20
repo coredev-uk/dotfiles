@@ -22,8 +22,6 @@
 
     nvf.url = "github:notashelf/nvf";
 
-    nixidy.url = "github:arnarg/nixidy";
-
     darwin.url = "github:nix-darwin/nix-darwin";
 
     # TODO: Remove when https://github.com/NixOS/nixpkgs/pull/363992 is merged
