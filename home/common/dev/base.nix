@@ -1,54 +1,58 @@
 {
   pkgs,
+  desktop,
   ...
 }:
 {
-  home.packages = with pkgs; [
-    # C++ tooling
-    clang
-    gnumake
+  home.packages =
+    with pkgs;
+    [
+      # C++ tooling
+      clang
+      gnumake
 
-    # Node.js development
-    nodejs
-    bun
-    nodePackages.npm
-    nodePackages.pnpm
-    nodePackages.yarn
-    fnm
+      # Node.js development
+      nodejs
+      bun
+      nodePackages.npm
+      nodePackages.pnpm
+      nodePackages.yarn
+      fnm
 
-    # Tauri
-    webkitgtk_4_1
-    pkg-config
-    openssl
+      # Nix tooling
+      deadnix
+      nil
+      nix-init
+      # Wrapper
+      nixfmt-plus
+      nixfmt-rfc-style
+      nurl
+      statix
 
-    # Electron
-    dpkg
-    fakeroot
-    rpm
-    libglibutil
+      # Python tooling
+      (pkgs.python3.withPackages (
+        p: with p; [
+          virtualenv
+          pyserial
+          distutils
+        ]
+      ))
 
-    # Nix tooling
-    deadnix
-    nil
-    nix-init
-    # Wrapper
-    nixfmt-plus
-    nixfmt-rfc-style
-    nurl
-    statix
+      # Shell tooling
+      shellcheck
+      shfmt
+      # binutils
+    ]
+    ++ lib.optional (builtins.isString desktop) [
+      # Tauri
+      webkitgtk_4_1
+      pkg-config
+      openssl
 
-    # Python tooling
-    (pkgs.python3.withPackages (
-      p: with p; [
-        virtualenv
-        pyserial
-        distutils
-      ]
-    ))
-
-    # Shell tooling
-    shellcheck
-    shfmt
-    # binutils
-  ];
+      # Electron
+      dpkg
+      fakeroot
+      rpm
+      libglibutil
+    ];
 }
