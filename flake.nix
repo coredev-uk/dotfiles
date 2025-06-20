@@ -61,6 +61,7 @@
         "${username}@hyperion" = libx.mkHome {
           hostname = "hyperion";
           type = "server";
+          user = "sysadmin";
         };
       };
 
@@ -72,6 +73,7 @@
         hyperion = libx.mkHost {
           hostname = "hyperion";
           type = "server";
+          user = "sysadmin";
         };
       };
 
