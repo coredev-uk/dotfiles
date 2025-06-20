@@ -88,7 +88,7 @@
         let
           pkgs = unstable.legacyPackages.${system};
         in
-        import ./pkgs { inherit pkgs inputs system; }
+        import ./pkgs { inherit pkgs inputs; }
       );
 
       # Custom overlays
@@ -101,7 +101,7 @@
         let
           pkgs = unstable.legacyPackages.${system};
         in
-        import ./shell.nix { inherit pkgs inputs system; }
+        import ./shell.nix { inherit pkgs; }
       );
 
       formatter = libx.forAllSystems (system: self.packages.${system}.nixfmt-plus);
