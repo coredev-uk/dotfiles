@@ -14,6 +14,7 @@
     [
       ./common/shell
     ]
+    ++ (lib.optional (type == "desktop" || type == "darwin") ./common/dev)
     ++ (lib.optional (type == "desktop") ./common/desktop)
     ++ (lib.optional (type == "darwin") ./hosts/${hostname}.nix);
 

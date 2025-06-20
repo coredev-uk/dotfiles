@@ -7,7 +7,6 @@
   imports = [
     (./. + "/${desktop}")
 
-    ../dev
     ../scripts
 
     # ./alacritty.nix
