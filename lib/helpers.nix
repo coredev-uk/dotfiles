@@ -58,21 +58,22 @@ in
   mkHost =
     {
       hostname,
+      user ? username,
       desktop ? null,
       type ? "desktop",
       pkgsInput ? inputs.unstable,
       system ? "x86_64-linux",
-      flakePath ? "/home/${username}/.dotfiles",
+      flakePath ? "/home/${user}/.dotfiles",
     }:
     pkgsInput.lib.nixosSystem {
       specialArgs = {
         stable = inputs.nixpkgs.legacyPackages.${system};
+        username = user;
         inherit
           self
           inputs
           outputs
           stateVersion
-          username
           hostname
           desktop
           flakePath
