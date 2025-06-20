@@ -27,10 +27,20 @@
       inherit (final) system;
       config.allowUnfree = true;
       overlays = [
-        (_final: _prev: {
+        (_final: prev: {
           # example = prev.example.overrideAttrs (oldAttrs: rec {
           # ...
           # });
+
+          deno = prev.deno.overrideAttrs (oldAttrs: {
+            version = "2.3.6";
+            src = prev.fetchFromGitHub {
+              owner = "denoland";
+              repo = "deno";
+              rev = "v2.3.6";
+              hash = "sha256-l3cWnv2cEmoeecYj38eMIlgqlRjDbtQuc6Q3DmOJoqE=";
+            };
+          });
 
         })
       ];
