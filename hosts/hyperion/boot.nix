@@ -1,5 +1,6 @@
 {
   username,
+  pkgs,
   ...
 }:
 {
@@ -31,5 +32,6 @@
         "fs.inotify.max_user_watches" = 524288;
       };
     };
+    kernelPackages = pkgs.linuxPackages_lts;
   };
 }
