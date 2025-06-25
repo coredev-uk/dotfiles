@@ -1,7 +1,8 @@
-{ meta, ... }:
+{ pkgs, meta, ... }:
 {
+  environment.systemPackages = [ pkgs.nfs-utils ];
   services.openiscsi = {
     enable = true;
-    name = "iqn.2016-04.com.open-iscsi:${meta.hostname}";
+    name = "${meta.hostname}-initiatorhost";
   };
 }
