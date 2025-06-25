@@ -6,8 +6,8 @@ let
     "# SSH Config File managed by NixOS Home Manager"
     ""
     "# 1. My Home Servers (using private key ~/.ssh/id_home)"
-    "Host 10.147.20.*"
-    "    User sysadmin"
+    "Host 10.147.20.20"
+    "    User paul"
     "    IdentityFile ~/.ssh/id_home"
     "    IdentitiesOnly yes"
     ""
@@ -30,6 +30,13 @@ let
     "  IdentityFile ~/.ssh/id_github"
     "  IdentitiesOnly yes"
     ""
+    "# 5. Legacy Home Server (using private key ~/.ssh/id_home)"
+    "Host 10.147.20.18"
+    "    User sysadmin"
+    "    IdentityFile ~/.ssh/id_home"
+    "    IdentitiesOnly yes"
+    ""
+
   ];
 
   fullKnownHostsContent = pkgs.lib.strings.concatLines [
