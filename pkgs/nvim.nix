@@ -61,6 +61,7 @@
       astro.enable = true;
       bash.enable = true;
       css.enable = true;
+      helm.enable = true;
       html.enable = true;
       nix = {
         enable = true;

@@ -101,6 +101,7 @@
 
           grep = "grep --color=auto";
           vim = "nvim";
+          k = "kubectl";
         }
         // (
           if meta.isDesktop then
