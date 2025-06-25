@@ -1,11 +1,8 @@
 {
   lib,
-  config,
-  self,
   ...
 }:
 {
-  age.secrets.k3s.file = "${self}/secrets/k3s.age";
 
   networking.firewall.allowedTCPPorts = [
     6443 # k3s: required so that pods can reach the API server (running on port 6443 by default)
@@ -19,7 +16,7 @@
   services.k3s = {
     enable = true;
     role = lib.mkDefault "agent"; # or "server"
-    tokenFile = config.age.secrets.k3s.path;
+    tokenFile = lib.mkDefault "/path/to/token";
     extraFlags = toString [
       "--debug"
     ];
