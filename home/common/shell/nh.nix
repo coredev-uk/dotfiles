@@ -1,13 +1,13 @@
 {
   pkgs,
-  flakePath,
+  meta,
   ...
 }:
 {
   programs.nh = {
     enable = true;
     package = pkgs.unstable.nh;
-    flake = "${flakePath}";
+    flake = "${meta.flakePath}";
     clean = {
       enable = true;
       dates = "weekly";

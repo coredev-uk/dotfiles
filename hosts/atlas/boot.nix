@@ -1,8 +1,8 @@
 {
   pkgs,
   lib,
-  username,
   modulesPath,
+  meta,
   ...
 }:
 {
@@ -10,7 +10,7 @@
     (modulesPath + "/installer/scan/not-detected.nix")
 
     ../common/base
-    ../common/users/${username}
+    ../common/users/${meta.username}
   ];
 
   environment.systemPackages = with pkgs; [

@@ -1,11 +1,11 @@
 {
-  username,
+  meta,
   ...
 }:
 {
   imports = [
     ../common/base
-    ../common/users/${username}
+    ../common/users/${meta.username}
   ];
 
   boot = {

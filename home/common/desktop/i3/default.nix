@@ -1,11 +1,14 @@
 {
   pkgs,
   self,
-  hostname,
+  meta,
   ...
 }:
 let
-  theme = import "${self}/lib/theme" { inherit pkgs hostname; };
+  theme = import "${self}/lib/theme" {
+    inherit pkgs;
+    hostname = meta.hostname;
+  };
 in
 {
   imports = [

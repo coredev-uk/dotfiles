@@ -1,6 +1,6 @@
 {
   pkgs,
-  desktop,
+  meta,
   ...
 }:
 {
@@ -43,7 +43,7 @@
       shfmt
       # binutils
     ]
-    ++ lib.optional (builtins.isString desktop) [
+    ++ lib.optionals (meta.isDesktop) [
       # Tauri
       webkitgtk_4_1
       pkg-config

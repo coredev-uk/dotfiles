@@ -1,6 +1,6 @@
-{ desktop, lib, ... }:
+{ lib, meta, ... }:
 {
   imports = [
     ./base.nix
-  ] ++ lib.optional (builtins.isString desktop) ./gui.nix;
+  ] ++ lib.optional (meta.isDesktop) ./gui.nix;
 }

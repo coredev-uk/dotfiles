@@ -57,7 +57,7 @@ in
 stdenv.mkDerivation rec {
   inherit pname version;
 
-  src = requireFile rec {
+  src = requireFile {
     name = "Cider.deb";
     url = "https://cidercollective.itch.io/cider";
     # sha256sum /nix/store/m2ada8dfgnh0kz9jvpqsn60mfg3n1mp3-Cider.deb

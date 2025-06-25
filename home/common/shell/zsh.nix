@@ -1,6 +1,6 @@
 {
-  flakePath,
   pkgs,
+  meta,
   ...
 }:
 {
@@ -57,7 +57,7 @@
 
       sessionVariables = {
         EDITOR = "nvim";
-        NH_FLAKE = flakePath;
+        NH_FLAKE = meta.flakePath;
       };
 
       oh-my-zsh = {
@@ -77,32 +77,39 @@
 
       plugins = [ ];
 
-      shellAliases = {
-        la = "ls -la";
-        ".." = "cd ..";
-        ls = "eza -gl --git --group-directories-first --color=automatic";
-        tree = "eza --tree";
-        cat = "bat";
+      shellAliases =
+        {
+          la = "ls -la";
+          ".." = "cd ..";
+          ls = "eza -gl --git --group-directories-first --color=automatic";
+          tree = "eza --tree";
+          cat = "bat";
 
-        ip = "ip --color";
-        ipb = "ip --color --brief";
+          ip = "ip --color";
+          ipb = "ip --color --brief";
 
-        gac = "git add -A  && git commit -a";
-        gp = "git push";
-        gst = "git status -sb";
+          gac = "git add -A  && git commit -a";
+          gp = "git push";
+          gst = "git status -sb";
 
-        open = "xdg-open";
+          speedtest = "curl -s https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py | python -";
 
-        speedtest = "curl -s https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py | python -";
+          nix-update = "nh clean all --keep 3; nh os switch --update ${meta.flakePath}; nh home switch ${meta.flakePath}";
+          darwin-update = "nh clean all; nh darwin switch --update ${meta.flakePath}";
 
-        nix-update = "nh clean all --keep 3; nh os switch --update ${flakePath}; nh home switch ${flakePath}";
-        darwin-update = "nh clean all; nh darwin switch --update ${flakePath}";
+          fix-time = "sudo chronyc -a makestep";
 
-        fix-time = "sudo chronyc -a makestep";
-
-        grep = "grep --color=auto";
-        vim = "nvim";
-      };
+          grep = "grep --color=auto";
+          vim = "nvim";
+        }
+        // (
+          if meta.isDesktop then
+            {
+              open = "xdg-open";
+            }
+          else
+            { }
+        );
     };
   };
 }

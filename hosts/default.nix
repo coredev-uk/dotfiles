@@ -1,23 +1,23 @@
 {
   config,
-  hostname,
+  meta,
   inputs,
   lib,
   outputs,
-  stateVersion,
-  desktop,
   ...
 }:
 {
   imports =
     [
-      (./. + "/${hostname}/boot.nix")
-      (./. + "/${hostname}/hardware.nix")
+      (./. + "/${meta.hostname}/boot.nix")
+      (./. + "/${meta.hostname}/hardware.nix")
     ]
     # Extras
-    ++ lib.optional (builtins.pathExists (./. + "/${hostname}/extra.nix")) ./${hostname}/extra.nix
+    ++ lib.optional (builtins.pathExists (
+      ./. + "/${meta.hostname}/extra.nix"
+    )) ./${meta.hostname}/extra.nix
     # Include desktop config if a desktop is defined
-    ++ lib.optional (builtins.isString desktop) ./common/desktop;
+    ++ lib.optional meta.isDesktop ./common/desktop;
 
   nixpkgs = {
     overlays = [
@@ -66,6 +66,6 @@
   };
 
   system = {
-    stateVersion = lib.mkDefault stateVersion;
+    stateVersion = lib.mkDefault meta.stateVersion;
   };
 }

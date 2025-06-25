@@ -8,7 +8,7 @@ let
   killwine = pkgs.writeScriptBin "killwine" (builtins.readFile ./killwine.sh);
 in
 {
-  home.packages = with pkgs; [
+  home.packages = [
     clipboard-interop
     killwine
   ];

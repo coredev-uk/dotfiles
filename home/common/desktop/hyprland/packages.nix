@@ -2,11 +2,14 @@
   self,
   lib,
   pkgs,
-  hostname,
+  meta,
   ...
 }:
 let
-  theme = import "${self}/lib/theme" { inherit pkgs hostname; };
+  theme = import "${self}/lib/theme" {
+    inherit pkgs;
+    hostname = meta.hostname;
+  };
   inherit (theme) hexToRgb colours;
 in
 {

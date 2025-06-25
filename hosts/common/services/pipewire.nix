@@ -1,6 +1,6 @@
 {
   pkgs,
-  desktop,
+  meta,
   ...
 }:
 {
@@ -11,7 +11,7 @@
   };
 
   environment.systemPackages =
-    if (builtins.isString desktop) then
+    if meta.isDesktop then
       [
         pkgs.pwvucontrol
         pkgs.pamixer
