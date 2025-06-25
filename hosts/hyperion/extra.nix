@@ -5,7 +5,11 @@
 {
   imports = [
     "${self}/hosts/common/services/networkmanager.nix"
+    "${self}/hosts/common/services/k3s.nix"
   ];
+
+  services.k3s.clusterInit = true;
+  services.k3s.role = "server";
 
   time.timeZone = "Europe/London";
 
