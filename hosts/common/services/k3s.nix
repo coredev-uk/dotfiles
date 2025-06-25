@@ -31,7 +31,7 @@
           [ ]
         else
           [
-            "--server https://hyperion:6443"
+            "--server https://10.147.20.20:6443"
           ]
       )
     );
