@@ -31,7 +31,7 @@
           [ ]
         else
           [
-            "--server https://homelab-0:6443"
+            "--server https://hyperion:6443"
           ]
       )
     );

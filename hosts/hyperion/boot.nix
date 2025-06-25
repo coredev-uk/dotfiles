@@ -1,9 +1,12 @@
 {
   meta,
+  modulesPath,
   ...
 }:
 {
   imports = [
+    (modulesPath + "/installer/scan/not-detected.nix")
+
     ../common/base
     ../common/users/${meta.username}
   ];
