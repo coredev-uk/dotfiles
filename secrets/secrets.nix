@@ -4,7 +4,7 @@ let
     paul
   ];
 
-  hyperion = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIZ6Fqa7aM2UDtFxzRk7He/cSc0pWgXzBbgAokM8Rbsd";
+  hyperion = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICL9+Cp3dUkcgvzGUaDcfsoywXeaRISJNZ/Tgqqzlk6k";
   systems = [
     hyperion
   ];
