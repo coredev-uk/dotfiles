@@ -42,6 +42,10 @@
       shellcheck
       shfmt
       # binutils
+
+      # Kubernetes
+      kubectl
+      kubernetes-helm
     ]
     ++ lib.optionals (meta.isDesktop) [
       # Tauri
