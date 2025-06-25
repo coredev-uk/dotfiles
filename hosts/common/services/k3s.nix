@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ lib, config, ... }:
 {
 
   networking.firewall.allowedTCPPorts = [
@@ -13,7 +13,7 @@
   services.k3s = {
     enable = true;
     role = lib.mkDefault "agent"; # or "server"
-    token = "unicorn-drive-turbulence-road";
+    tokenFile = config.age.secrets.k3s.path;
     extraFlags = toString [
       "--debug"
     ];
