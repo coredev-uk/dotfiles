@@ -26,11 +26,12 @@
     tokenFile = config.age.secrets.${meta.hostname}.path;
     extraFlags = toString (
       [
-        # "--write-kubeconfig-mode \"0644\""
-        # "--cluster-init"
-        # "--disable servicelb"
-        # "--disable traefik"
-        # "--disable local-storage"
+        "--write-kubeconfig-mode \"0644\""
+        "--cluster-init"
+        # Disable built-in services
+        "--disable servicelb"
+        "--disable traefik"
+        "--disable local-storage"
       ]
       ++ (
         if meta.hostname == "hyperion" then
