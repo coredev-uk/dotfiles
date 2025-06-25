@@ -38,23 +38,29 @@
     let
       inherit (self) outputs;
       stateVersion = "25.05";
-      username = "paul";
+      homeUsername = "paul";
+      srvUsername = "sysadmin";
 
       libx = import ./lib {
+        username = homeUsername;
         inherit
           self
           inputs
           outputs
           stateVersion
-          username
           ;
       };
     in
     {
       homeConfigurations = {
-        "${username}@atlas" = libx.mkHome {
+        "${homeUsername}@atlas" = libx.mkHome {
           hostname = "atlas";
           desktop = "hyprland"; # hyprland or i3
+        };
+        "${srvUsername}@hyperion" = libx.mkHome {
+          hostname = "hyperion";
+          type = "server";
+          user = "${srvUsername}";
         };
       };
 
@@ -62,6 +68,11 @@
         atlas = libx.mkHost {
           hostname = "atlas";
           desktop = "hyprland"; # hyprland or i3
+        };
+        hyperion = libx.mkHost {
+          hostname = "hyperion";
+          type = "server";
+          user = "sysadmin";
         };
       };
 

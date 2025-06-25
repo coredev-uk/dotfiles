@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # Configuration variables
 COUNTRY="UK"                               # Set the country code (e.g., US, UK, IN)

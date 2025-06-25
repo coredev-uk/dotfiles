@@ -12,7 +12,6 @@
     ./hardware.nix
     ./locale.nix
     ./zramswap.nix
-    ./nix-ld.nix
 
     ../services/openssh.nix
   ];

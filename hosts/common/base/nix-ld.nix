@@ -5,7 +5,7 @@
 
 {
   #nix-ld and envfs for dynamic binaries.
-  services.envfs.enable = true;
+  # services.envfs.enable = true;
   programs.nix-ld.enable = true;
 
   programs.nix-ld.libraries = with pkgs; [
@@ -81,7 +81,7 @@
     xorg.libXi
     xorg.libSM
     xorg.libICE
-    gnome2.GConf
+    # gnome2.GConf - https://github.com/NixOS/nixpkgs/issues/413845
     #      curlWithGnuTls
     nspr
     nss

@@ -21,6 +21,7 @@
   };
 
   home.packages = with pkgs; [
+    beammp-launcher
     heroic
     (lutris.override {
       extraPkgs = pkgs: [
