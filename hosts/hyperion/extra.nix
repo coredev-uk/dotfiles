@@ -1,5 +1,6 @@
 {
   self,
+  config,
   ...
 }:
 {
@@ -8,6 +9,9 @@
     "${self}/hosts/common/services/k3s.nix"
   ];
 
+  age.secrets.hyperion.file = "${self}/secrets/hyperion.age";
+
+  services.k3s.tokenFile = config.age.secrets.k3s.path;
   services.k3s.clusterInit = true;
   services.k3s.role = "server";
 
