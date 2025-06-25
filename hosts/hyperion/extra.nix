@@ -1,19 +1,14 @@
 {
   self,
-  config,
   ...
 }:
 {
+  age.secrets.hyperion.file = "${self}/secrets/hyperion.age";
+
   imports = [
     "${self}/hosts/common/services/networkmanager.nix"
     "${self}/hosts/common/services/k3s.nix"
   ];
-
-  age.secrets.hyperion.file = "${self}/secrets/hyperion.age";
-
-  services.k3s.tokenFile = config.age.secrets.hyperion.path;
-  services.k3s.clusterInit = true;
-  services.k3s.role = "server";
 
   time.timeZone = "Europe/London";
 
