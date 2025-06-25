@@ -1,8 +1,8 @@
 {
-  desktop,
   pkgs,
   self,
   lib,
+  meta,
   ...
 }:
 let
@@ -13,7 +13,7 @@ in
     ../hardware/yubikey.nix
     ../services/pipewire.nix
     ./qt.nix
-  ] ++ lib.optional (builtins.isString desktop) ./${desktop}.nix;
+  ] ++ lib.optional meta.isDesktop ./${meta.desktop}.nix;
 
   # Enable Plymouth and suppress some logs by default.
   boot.plymouth.enable = true;

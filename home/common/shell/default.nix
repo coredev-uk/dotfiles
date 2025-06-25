@@ -2,8 +2,7 @@
   pkgs,
   self,
   lib,
-  type,
-  desktop,
+  meta,
   ...
 }:
 let
@@ -19,11 +18,12 @@ in
       ./nh.nix
       ./ssh.nix
       ./zsh.nix
-
     ]
-    ++ (lib.optional (type == "desktop" || type == "darwin") ./git.nix)
-    ++ lib.optional (builtins.isString desktop) ./ghostty.nix
-    ++ lib.optional (builtins.isString desktop) ./xdg.nix;
+    ++ lib.optional (!meta.isHeadless) ./git.nix
+    ++ lib.optionals (meta.isDesktop) [
+      ./ghostty.nix
+      ./xdg.nix
+    ];
 
   catppuccin = {
     inherit (theme.catppuccin) flavor;

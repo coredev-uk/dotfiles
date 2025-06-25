@@ -1,6 +1,6 @@
 {
   pkgs,
-  hostname,
+  meta,
   ...
 }:
 {
@@ -28,7 +28,7 @@
       {
         "$MOD" = "${mod}";
 
-        monitor = (import ./config/monitors.nix { })."${hostname}";
+        monitor = (import ./config/monitors.nix { })."${meta.hostname}";
 
         general = {
           gaps_in = 0; # 5

@@ -1,8 +1,7 @@
 {
-  hostname,
   pkgs,
   lib,
-  username,
+  meta,
   ...
 }:
 {
@@ -17,7 +16,7 @@
   ];
 
   networking = {
-    hostName = hostname;
+    hostName = meta.hostname;
     useDHCP = lib.mkDefault true;
   };
 
@@ -38,5 +37,7 @@
   };
 
   # Create dirs for home-manager
-  systemd.tmpfiles.rules = [ "d /nix/var/nix/profiles/per-user/${username} 0755 ${username} root" ];
+  systemd.tmpfiles.rules = [
+    "d /nix/var/nix/profiles/per-user/${meta.username} 0755 ${meta.username} root"
+  ];
 }

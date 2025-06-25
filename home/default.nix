@@ -1,12 +1,8 @@
 {
   lib,
   outputs,
-  stateVersion,
-  username,
   inputs,
-  type,
-  hostname,
-  homeDirectory,
+  meta,
   ...
 }:
 {
@@ -14,12 +10,16 @@
     [
       ./common/shell
     ]
-    ++ (lib.optional (type == "desktop" || type == "darwin") ./common/dev)
-    ++ (lib.optional (type == "desktop") ./common/desktop)
-    ++ (lib.optional (type == "darwin") ./hosts/${hostname}.nix);
+    ++ lib.optional (!meta.isHeadless) ./common/dev
+    ++ lib.optional meta.isDesktop ./common/desktop
+    ++ lib.optional (builtins.pathExists (
+      ./. + "/hosts/${meta.hostname}.nix"
+    )) ./hosts/${meta.hostname}.nix;
 
   home = {
-    inherit username stateVersion homeDirectory;
+    inherit (meta) username;
+    inherit (meta) homeDirectory;
+    inherit (meta) stateVersion;
   };
 
   nixpkgs = {

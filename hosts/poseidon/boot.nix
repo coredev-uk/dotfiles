@@ -1,15 +1,15 @@
 {
   pkgs,
-  username,
   lib,
+  meta,
   ...
 }:
 {
   system.stateVersion = lib.mkForce 6;
 
-  users.users.${username} = {
-    name = username;
-    home = lib.mkForce "/Users/${username}";
+  users.users.${meta.username} = {
+    name = meta.username;
+    home = lib.mkForce "/Users/${meta.username}";
     shell = pkgs.zsh;
 
     openssh.authorizedKeys.keys = [

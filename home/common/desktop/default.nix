@@ -1,11 +1,11 @@
 {
   pkgs,
-  desktop,
+  meta,
   ...
 }:
 {
   imports = [
-    (./. + "/${desktop}")
+    (./. + "/${meta.desktop}")
 
     ../scripts
 

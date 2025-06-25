@@ -7,6 +7,39 @@
   ...
 }:
 let
+  # Helper function to generate common specialArgs
+  mkSpecialArgs =
+    {
+      hostname,
+      user ? username,
+      desktop ? null,
+      type ? "desktop",
+      system ? "x86_64-linux",
+      flakePath ? "/home/${user}/.dotfiles",
+    }:
+    {
+      inherit
+        self
+        inputs
+        outputs
+        ;
+      stable = inputs.nixpkgs.legacyPackages.${system};
+      meta = {
+        inherit
+          hostname
+          desktop
+          stateVersion
+          flakePath
+          ;
+        homeDirectory = if type == "darwin" then "/Users/${user}" else "/home/${user}";
+        username = user;
+        systemType = type;
+        isDesktop = builtins.isString desktop;
+        isDarwin = type == "darwin";
+        isHeadless = type == "server" || (type != "darwin" && type != "desktop");
+      };
+    };
+
   mkHomeManager =
     { flakeInputs, flakeStateVersion }:
     {
@@ -31,20 +64,15 @@ in
     }:
     inputs.home-manager.lib.homeManagerConfiguration {
       pkgs = inputs.unstable.legacyPackages.${system};
-      extraSpecialArgs = {
-        stable = inputs.nixpkgs.legacyPackages.${system};
+      extraSpecialArgs = mkSpecialArgs {
         inherit
-          self
-          inputs
-          outputs
-          stateVersion
           hostname
+          user
           desktop
-          flakePath
           type
+          system
+          flakePath
           ;
-        username = user;
-        homeDirectory = "/home/${user}";
       };
       modules = [
         (mkHomeManager {
@@ -66,19 +94,14 @@ in
       flakePath ? "/home/${user}/.dotfiles",
     }:
     pkgsInput.lib.nixosSystem {
-      specialArgs = {
-        stable = inputs.nixpkgs.legacyPackages.${system};
-        username = user;
+      specialArgs = mkSpecialArgs {
         inherit
-          self
-          inputs
-          outputs
-          stateVersion
           hostname
+          user
           desktop
-          flakePath
-          system
           type
+          system
+          flakePath
           ;
       };
       modules = [
@@ -99,17 +122,13 @@ in
     }:
     inputs.darwin.lib.darwinSystem {
       inherit system;
-      specialArgs = {
+      specialArgs = mkSpecialArgs {
         inherit
-          self
-          inputs
-          outputs
-          stateVersion
-          username
           hostname
+          user
           desktop
-          system
           type
+          system
           flakePath
           ;
       };
@@ -124,20 +143,15 @@ in
               flakeInputs = inputs;
               flakeStateVersion = stateVersion;
             };
-            extraSpecialArgs = {
-              stable = inputs.nixpkgs.legacyPackages.${system};
+            extraSpecialArgs = mkSpecialArgs {
               inherit
-                self
-                inputs
-                outputs
-                stateVersion
                 hostname
+                user
                 desktop
                 type
+                system
                 flakePath
                 ;
-              username = user;
-              homeDirectory = "/Users/${user}";
             };
           };
         }
