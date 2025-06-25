@@ -8,6 +8,7 @@
   imports = [
     "${self}/hosts/common/services/networkmanager.nix"
     "${self}/hosts/common/services/k3s.nix"
+    "${self}/hosts/common/services/iscsi.nix"
   ];
 
   time.timeZone = "Europe/London";
