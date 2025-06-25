@@ -1,5 +1,6 @@
 {
-  lib,
+  meta,
+  config,
   ...
 }:
 {
@@ -15,12 +16,25 @@
 
   services.k3s = {
     enable = true;
-    role = lib.mkDefault "agent"; # or "server"
-    tokenFile = lib.mkDefault "/path/to/token";
-    extraFlags = toString [
-      "--debug"
-    ];
-    # clusterInit = true;
-    # serverAddr = "https://<ip of first node>:6443";
+    role = "server";
+    tokenFile = config.age.secrets.${meta.hostname}.path;
+    extraFlags = toString (
+      [
+        "--write-kubeconfig-mode \"0644\""
+        "--cluster-init"
+        "--disable servicelb"
+        "--disable traefik"
+        "--disable local-storage"
+      ]
+      ++ (
+        if meta.hostname == "hyperion" then
+          [ ]
+        else
+          [
+            "--server https://homelab-0:6443"
+          ]
+      )
+    );
+    clusterInit = (meta.hostname == "hyperion");
   };
 }
