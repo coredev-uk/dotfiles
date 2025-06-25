@@ -1,5 +1,5 @@
 let
-  paul = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKCmA4pOckYwJCeDUMOrRCU5xX2g1x9Ddsf3eDa4UViX";
+  paul = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEFGD4CB9taNUU8tcWy/mbplg3wvpa3EDEjL7csfErkH";
   users = [
     paul
   ];
