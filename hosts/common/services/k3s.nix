@@ -42,6 +42,6 @@
           ]
       )
     );
-    clusterInit = (meta.hostname == "hyperion");
+    clusterInit = meta.hostname == "hyperion";
   };
 }

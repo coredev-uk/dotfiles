@@ -12,7 +12,7 @@
       gnumake
 
       # Node.js development
-      nodejs
+      # nodejs
       bun
       nodePackages.npm
       nodePackages.pnpm
@@ -47,7 +47,7 @@
       kubectl
       kubernetes-helm
     ]
-    ++ lib.optionals (meta.isDesktop) [
+    ++ lib.optionals meta.isDesktop [
       # Tauri
       webkitgtk_4_1
       pkg-config

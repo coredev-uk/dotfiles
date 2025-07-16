@@ -7,7 +7,7 @@
 let
   theme = import "${self}/lib/theme" {
     inherit pkgs;
-    hostname = meta.hostname;
+    inherit (meta) hostname;
   };
 in
 {

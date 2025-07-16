@@ -20,7 +20,7 @@ in
       ./zsh.nix
     ]
     ++ lib.optional (!meta.isHeadless) ./git.nix
-    ++ lib.optionals (meta.isDesktop) [
+    ++ lib.optionals meta.isDesktop [
       ./ghostty.nix
       ./xdg.nix
     ];
