@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 {
   vim = {
     # Experimental feature
@@ -94,6 +94,12 @@
       enable = true;
       formatOnSave = true;
       lspsaga.enable = true;
+
+      # https://github.com/justDeeevin/nvim-config/blob/main/config/plugins/lsp.nix#L8
+      servers = {
+        vue_ls = { };
+        vtsls = { };
+      };
     };
 
     # Diagnostic tools
@@ -102,6 +108,12 @@
       config.virtual_lines = true;
       nvim-lint.enable = true; # Prevents errors from other plugins
     };
+
+    # Extra Packages for Language Servers
+    extraPackages = with pkgs; [
+      vue-language-server
+      vtsls
+    ];
 
     #------------------------------------------------------------------------------
     # CODE FORMATTING
