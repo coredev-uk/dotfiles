@@ -77,40 +77,39 @@
 
       plugins = [ ];
 
-      shellAliases =
-        {
-          la = "ls -la";
-          ".." = "cd ..";
-          ls = "eza -gl --git --group-directories-first --color=automatic";
-          tree = "eza --tree";
-          cat = "bat";
+      shellAliases = {
+        la = "ls -la";
+        ".." = "cd ..";
+        ls = "eza -gl --git --group-directories-first --color=automatic";
+        tree = "eza --tree";
+        cat = "bat";
 
-          ip = "ip --color";
-          ipb = "ip --color --brief";
+        ip = "ip --color";
+        ipb = "ip --color --brief";
 
-          gac = "git add -A  && git commit -a";
-          gp = "git push";
-          gst = "git status -sb";
+        gac = "git add -A  && git commit -a";
+        gp = "git push";
+        gst = "git status -sb";
 
-          speedtest = "curl -s https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py | python -";
+        speedtest = "curl -s https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py | python -";
 
-          nix-update = "nh clean all --keep 2; nh os switch --update ${meta.flakePath}; nh home switch ${meta.flakePath}";
-          darwin-update = "nh clean all; nh darwin switch --update ${meta.flakePath}";
+        nix-update = "nh clean all; nh os switch --update ${meta.flakePath}; nh home switch ${meta.flakePath}";
+        darwin-update = "nh clean all; nh darwin switch --update ${meta.flakePath}";
 
-          fix-time = "sudo chronyc -a makestep";
+        fix-time = "sudo chronyc -a makestep";
 
-          grep = "grep --color=auto";
-          vim = "nvim";
-          k = "kubectl";
-        }
-        // (
-          if meta.isDesktop then
-            {
-              open = "xdg-open";
-            }
-          else
-            { }
-        );
+        grep = "grep --color=auto";
+        vim = "nvim";
+        k = "kubectl";
+      }
+      // (
+        if meta.isDesktop then
+          {
+            open = "xdg-open";
+          }
+        else
+          { }
+      );
     };
   };
 }

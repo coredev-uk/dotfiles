@@ -7,21 +7,20 @@ in
   users.users.${user} = {
     isNormalUser = true;
     shell = pkgs.zsh;
-    extraGroups =
-      [
-        "audio"
-        "networkmanager"
-        "users"
-        "video"
-        "wheel"
-      ]
-      ++ ifExists [
-        "docker"
-        "plugdev"
-        "render"
-        "lxd"
-        "i2c" # For RGB
-      ];
+    extraGroups = [
+      "audio"
+      "networkmanager"
+      "users"
+      "video"
+      "wheel"
+    ]
+    ++ ifExists [
+      "docker"
+      "plugdev"
+      "render"
+      "lxd"
+      "i2c" # For RGB
+    ];
 
     linger = true;
 

@@ -7,17 +7,16 @@
   ...
 }:
 {
-  imports =
-    [
-      (./. + "/${meta.hostname}/boot.nix")
-      (./. + "/${meta.hostname}/hardware.nix")
-    ]
-    # Extras
-    ++ lib.optional (builtins.pathExists (
-      ./. + "/${meta.hostname}/extra.nix"
-    )) ./${meta.hostname}/extra.nix
-    # Include desktop config if a desktop is defined
-    ++ lib.optional meta.isDesktop ./common/desktop;
+  imports = [
+    (./. + "/${meta.hostname}/boot.nix")
+    (./. + "/${meta.hostname}/hardware.nix")
+  ]
+  # Extras
+  ++ lib.optional (builtins.pathExists (
+    ./. + "/${meta.hostname}/extra.nix"
+  )) ./${meta.hostname}/extra.nix
+  # Include desktop config if a desktop is defined
+  ++ lib.optional meta.isDesktop ./common/desktop;
 
   nixpkgs = {
     overlays = [
