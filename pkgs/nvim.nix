@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ pkgs, ... }:
 {
   vim = {
     # Experimental feature
@@ -75,6 +75,7 @@
       # Markdown support
       markdown = {
         enable = true;
+        format.enable = false;
         extensions.render-markdown-nvim = {
           enable = true;
           setupOpts = {

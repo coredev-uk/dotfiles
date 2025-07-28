@@ -6,15 +6,14 @@
   ...
 }:
 {
-  imports =
-    [
-      ./common/shell
-    ]
-    ++ lib.optional (!meta.isHeadless) ./common/dev
-    ++ lib.optional meta.isDesktop ./common/desktop
-    ++ lib.optional (builtins.pathExists (
-      ./. + "/hosts/${meta.hostname}.nix"
-    )) ./hosts/${meta.hostname}.nix;
+  imports = [
+    ./common/shell
+  ]
+  ++ lib.optional (!meta.isHeadless) ./common/dev
+  ++ lib.optional meta.isDesktop ./common/desktop
+  ++ lib.optional (builtins.pathExists (
+    ./. + "/hosts/${meta.hostname}.nix"
+  )) ./hosts/${meta.hostname}.nix;
 
   home = {
     inherit (meta) username;

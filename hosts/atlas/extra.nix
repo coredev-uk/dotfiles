@@ -21,7 +21,8 @@ in
     "${self}/hosts/common/desktop/rgb.nix"
     "${self}/hosts/common/desktop/qmk.nix"
     "${self}/hosts/common/base/nix-ld.nix"
-  ] ++ lib.optional (meta.desktop == "i3") ./display.nix;
+  ]
+  ++ lib.optional (meta.desktop == "i3") ./display.nix;
 
   # Add bootwin script to reboot into Windows
   environment.systemPackages = [
