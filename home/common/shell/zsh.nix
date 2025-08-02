@@ -35,12 +35,6 @@
         enable = true;
       };
 
-      history = {
-        save = 10000;
-        size = 10000;
-        path = "$HOME/.cache/zsh_history";
-      };
-
       initContent = ''
         # Completion styling
         zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
