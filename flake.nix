@@ -51,6 +51,7 @@
       };
     in
     {
+      # Home Manager configurations
       homeConfigurations = {
         "${username}@atlas" = libx.mkHome {
           hostname = "atlas";
@@ -63,6 +64,7 @@
         };
       };
 
+      # NixOS configurations
       nixosConfigurations = {
         atlas = libx.mkHost {
           hostname = "atlas";
@@ -74,6 +76,7 @@
         };
       };
 
+      # Nix Darwin configurations
       darwinConfigurations = {
         poseidon = libx.mkDarwin {
           hostname = "poseidon";
