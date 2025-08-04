@@ -1,6 +1,8 @@
 let
-  paul = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEFGD4CB9taNUU8tcWy/mbplg3wvpa3EDEjL7csfErkH";
+  # Users
+  paul = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINQpQFDxvGq+x6sHldr81kFtftS6KFEzbOtoRKKTXFR7";
 
+  # Systems
   hyperion = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICL9+Cp3dUkcgvzGUaDcfsoywXeaRISJNZ/Tgqqzlk6k";
 in
 {
@@ -8,4 +10,11 @@ in
     hyperion
     paul
   ];
+  "proton_username.age".publicKeys = [
+    paul
+  ];
+  "proton_password.age".publicKeys = [
+    paul
+  ];
+
 }

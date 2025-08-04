@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, meta, ... }:
 
 let
   # Define the content of your ~/.ssh/config within Home Manager
@@ -68,5 +68,8 @@ in
     forwardAgent = true;
     addKeysToAgent = "yes";
   };
+
+  # Agenix Identity
+  age.identityPaths = [ "/home/${meta.username}/.ssh/id_github" ];
 
 }
