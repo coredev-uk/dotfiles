@@ -42,7 +42,7 @@ in
   #systemd.extraConfig = "DefaultLimitNOFILE=1048576";
 
   # Fix hmr issue (https://github.com/phenax/nixos-dotfiles/blob/main/configuration.nix#L34)
-  systemd.extraConfig = ''DefaultLimitNOFILE=524288'';
+  # systemd.extraConfig = ''DefaultLimitNOFILE=524288''; # TODO: Fix me, extraConfig was depreciated
   systemd.user.extraConfig = ''DefaultLimitNOFILE=524288'';
   boot.kernel.sysctl."fs.inotify.max_user_instances" = 8192;
   security.pam.loginLimits = [
