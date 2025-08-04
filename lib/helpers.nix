@@ -44,6 +44,7 @@ let
     { flakeInputs, flakeStateVersion }:
     {
       imports = [
+        flakeInputs.agenix.homeManagerModules.default
         flakeInputs.catppuccin.homeModules.catppuccin
         flakeInputs.zen-browser.homeModules.twilight
         ../home # This path is relative to where this function is defined and used
