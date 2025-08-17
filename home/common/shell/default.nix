@@ -47,6 +47,7 @@ in
     age
     btop
     termscp
+    opencode
   ];
 
   catppuccin.btop.enable = true;
