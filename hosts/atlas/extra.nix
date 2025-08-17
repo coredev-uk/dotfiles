@@ -30,7 +30,7 @@ in
   ];
 
   # Fix the time when Dual-booting with Windows
-  # time.hardwareClockInLocalTime = true;
+  time.hardwareClockInLocalTime = true;
   time.timeZone = "Europe/London";
 
   # DNS
