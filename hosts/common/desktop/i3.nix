@@ -38,7 +38,7 @@ in
   };
 
   services.greetd.settings.default_session.command = lib.concatStringsSep " " [
-    "${pkgs.greetd.tuigreet}/bin/tuigreet"
+    "${pkgs.tuigreet}/bin/tuigreet"
     "--remember"
     "--asterisks"
     "--time"
