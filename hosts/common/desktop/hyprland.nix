@@ -28,7 +28,7 @@ in
   };
 
   services.greetd.settings.default_session.command = ''
-    ${lib.makeBinPath [ pkgs.greetd.tuigreet ]}/tuigreet -r --asterisks --time \
+    ${lib.makeBinPath [ pkgs.tuigreet ]}/tuigreet -r --asterisks --time \
       --cmd ${lib.getExe hypr-run}
   '';
 }
