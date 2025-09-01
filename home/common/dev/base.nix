@@ -46,6 +46,7 @@
       # Kubernetes
       kubectl
       kubernetes-helm
+      argocd
     ]
     ++ lib.optionals meta.isDesktop [
       # Tauri
