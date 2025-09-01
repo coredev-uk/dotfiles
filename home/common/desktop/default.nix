@@ -29,7 +29,7 @@
     desktop-file-utils
     discord
     file-roller
-    jellyfin-media-player
+    # jellyfin-media-player
     loupe
     mpv
     nautilus
