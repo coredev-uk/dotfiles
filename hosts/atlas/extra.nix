@@ -39,6 +39,8 @@ in
     "10.147.1.20"
   ];
 
+  # networking.timeServers = options.networking.timeServers.default ++ [ "ntp.example.com" ];
+
   #systemd.extraConfig = "DefaultLimitNOFILE=1048576";
 
   # Fix hmr issue (https://github.com/phenax/nixos-dotfiles/blob/main/configuration.nix#L34)
