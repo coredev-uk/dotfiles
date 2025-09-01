@@ -41,7 +41,7 @@ in
 
       label = [
         {
-          text = "Hello";
+          text = ''cmd[update:1000] echo "$(date +"%A, %B %d")"'';
           color = "rgba(${hexToRgb colours.text}, 1.0)";
           font_family = theme.fonts.default.name;
           font_size = 64;
@@ -68,17 +68,17 @@ in
     enable = true;
     settings = {
       general = {
-        lock_cmd = "${lib.getExe pkgs.hyprlock}";
-        before_sleep_cmd = "${lib.getExe pkgs.hyprlock}";
+        # lock_cmd = "${lib.getExe pkgs.hyprlock}";
+        # before_sleep_cmd = "${lib.getExe pkgs.hyprlock}";
       };
 
       listener = [
+        # {
+        #   timeout = 600;
+        #   on-timeout = "${lib.getExe pkgs.hyprlock}";
+        # }
         {
-          timeout = 300;
-          on-timeout = "${lib.getExe pkgs.hyprlock}";
-        }
-        {
-          timeout = 305;
+          timeout = 1000;
           on-timeout = "${pkgs.hyprland}/bin/hyprctl dispatch dpms off";
           on-resume = "${pkgs.hyprland}/bin/hyprctl dispatch dpms on";
         }
