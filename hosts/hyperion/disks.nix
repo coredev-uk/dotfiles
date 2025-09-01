@@ -62,6 +62,13 @@ in
                     mountpoint = "/.snapshots";
                     mountOptions = defaultBtrfsOpts;
                   };
+                  "@longhorn" = {
+                    mountpoint = "/var/lib/longhorn";
+                    mountOptions = defaultBtrfsOpts ++ [
+                      "nodatacow"      # Disable copy-on-write for better database performance
+                      "nodatasum"      # Disable checksums for raw storage performance
+                    ];
+                  };
                 };
               };
             };
