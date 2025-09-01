@@ -5,7 +5,7 @@
 }:
 {
 
-  # Fixes for longhorn
+  # Basic fixes for k3s container runtime
   systemd.tmpfiles.rules = [
     "L+ /usr/local/bin - - - - /run/current-system/sw/bin/"
   ];
