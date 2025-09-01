@@ -33,7 +33,7 @@
   # Install required packages for Longhorn
   environment.systemPackages = with pkgs; [
     # Essential packages for Longhorn operation
-    open-iscsi          # iSCSI initiator
+    openiscsi           # iSCSI initiator (correct package name)
     nfs-utils           # NFS client for backup targets
     cryptsetup          # For volume encryption
     util-linux          # General utilities (blkid, lsblk, etc.)
@@ -50,18 +50,15 @@
     iftop               # Network I/O monitoring
   ];
 
-  # Configure iSCSI initiator
-  services.openiscsi = {
-    enable = true;
-    name = "iqn.2023-01.io.hyperion:initiator";  # Unique initiator name
-  };
+  # Configure iSCSI initiator (extend existing config)
+  # Note: Basic iSCSI config is already handled in common/services/iscsi.nix
 
   # Optimize systemd for storage workloads
-  systemd.extraConfig = ''
+  systemd.settings.Manager = {
     # Increase default timeout for storage operations
-    DefaultTimeoutStartSec=300s
-    DefaultTimeoutStopSec=300s
-  '';
+    DefaultTimeoutStartSec = "300s";
+    DefaultTimeoutStopSec = "300s";
+  };
 
   # Configure sysctl parameters for storage optimization
   boot.kernel.sysctl = {
@@ -93,14 +90,15 @@
   };
 
   # Configure NFS client optimizations
-  services.nfs.extraConfig = ''
+  services.nfs.settings = {
     # NFS client optimizations for backup operations
-    [nfsmount]
-    vers=4.1
-    proto=tcp
-    fsc
-    _netdev
-  '';
+    nfsmount = {
+      vers = "4.1";
+      proto = "tcp";
+      fsc = true;
+      _netdev = true;
+    };
+  };
 
   # Enable and configure appropriate filesystems
   boot.supportedFilesystems = [ 
@@ -111,17 +109,8 @@
     "nfs4"
   ];
 
-  # Longhorn specific mount point optimizations
-  fileSystems."/var/lib/longhorn" = {
-    device = "/var/lib/longhorn";
-    fsType = "none";
-    options = [ "bind" "rw" "exec" ];
-    neededForBoot = false;
-  };
-
-  # Create necessary directories for Longhorn
+  # Create necessary directories for Longhorn (skip /var/lib/longhorn as it exists)
   systemd.tmpfiles.rules = [
-    "d /var/lib/longhorn 0750 root root -"
     "d /var/lib/longhorn/replicas 0750 root root -"
     "d /var/lib/longhorn/engines 0750 root root -"
     "d /var/lib/longhorn/backups 0750 root root -"

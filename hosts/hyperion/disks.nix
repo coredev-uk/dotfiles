@@ -62,15 +62,6 @@ in
                     mountpoint = "/.snapshots";
                     mountOptions = defaultBtrfsOpts;
                   };
-                  # Dedicated subvolume for Longhorn storage
-                  "@longhorn" = {
-                    mountpoint = "/var/lib/longhorn";
-                    mountOptions = defaultBtrfsOpts ++ [
-                      "noatime"
-                      "nodiratime"
-                      "norelatime"      # No relative access time for storage workloads
-                    ];
-                  };
                 };
               };
             };
