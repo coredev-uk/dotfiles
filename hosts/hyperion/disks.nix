@@ -2,14 +2,14 @@ _:
 let
   defaultBtrfsOpts = [
     "defaults"
-    "compress=zstd:1"    # Fast compression good for storage workloads
+    "compress=zstd:1" # Fast compression good for storage workloads
     "ssd"
-    "noatime"            # Disable access time updates for better performance
-    "nodiratime"         # Disable directory access time updates
-    "space_cache=v2"     # Use v2 space cache for better performance
-    "autodefrag"         # Automatic defragmentation for better performance
-    "commit=30"          # Commit interval optimization
-    "discard=async"      # Async discard for SSD optimization
+    "noatime" # Disable access time updates for better performance
+    "nodiratime" # Disable directory access time updates
+    "space_cache=v2" # Use v2 space cache for better performance
+    "autodefrag" # Automatic defragmentation for better performance
+    "commit=30" # Commit interval optimization
+    "discard=async" # Async discard for SSD optimization
   ];
 in
 {
@@ -65,8 +65,8 @@ in
                   "@longhorn" = {
                     mountpoint = "/var/lib/longhorn";
                     mountOptions = defaultBtrfsOpts ++ [
-                      "nodatacow"      # Disable copy-on-write for better database performance
-                      "nodatasum"      # Disable checksums for raw storage performance
+                      "nodatacow" # Disable copy-on-write for better database performance
+                      "nodatasum" # Disable checksums for raw storage performance
                     ];
                   };
                 };
