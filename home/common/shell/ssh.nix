@@ -61,12 +61,15 @@ in
   # Enable the SSH program for your user
   programs.ssh = {
     enable = true;
+    enableDefaultConfig = false;
+
     extraConfig = sshConfigContent;
 
-    userKnownHostsFile = "~/.ssh/common_hosts ~/.ssh/known_hosts";
-
-    forwardAgent = true;
-    addKeysToAgent = "yes";
+    matchBlocks."*" = {
+      userKnownHostsFile = "~/.ssh/common_hosts ~/.ssh/known_hosts";
+      forwardAgent = true;
+      addKeysToAgent = "yes";
+    };
   };
 
   # Agenix Identity
