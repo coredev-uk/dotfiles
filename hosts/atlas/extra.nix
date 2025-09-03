@@ -35,9 +35,12 @@ in
 
   # DNS
   networking.nameservers = [
+    "10.147.20.26"
     "10.147.1.10"
-    "10.147.1.20"
   ];
+
+  # Enforce Static DNS
+  networking.networkmanager.dns = "none";
 
   # networking.timeServers = options.networking.timeServers.default ++ [ "ntp.example.com" ];
 

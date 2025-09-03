@@ -18,7 +18,7 @@
     ./gaming.nix
     ./gtk.nix
     ./qt.nix
-    ./rclone.nix
+    # ./rclone.nix
     ./xdg.nix
   ];
 
