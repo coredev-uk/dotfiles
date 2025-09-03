@@ -38,6 +38,8 @@ in
       enable = true;
       settings.promptToReturnFromSubprocess = false;
     };
+    opencode.enable = true;
+
   };
 
   home.packages = with pkgs; [
@@ -47,7 +49,6 @@ in
     age
     btop
     termscp
-    opencode
   ];
 
   catppuccin.btop.enable = true;

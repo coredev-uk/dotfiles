@@ -44,6 +44,7 @@
         eval "$(direnv hook zsh)" # direnv auto shell activation hook
         TERM=xterm-256color
 
+        export KUBECONFIG=~/.kube/homelab-config
         export GIO_MODULE_DIR=${pkgs.glib-networking}/lib/gio/modules/ # Patch for webkit2gtk ssl error (https://github.com/tauri-apps/wry/issues/605#issuecomment-1215756032)
       '';
 
@@ -85,7 +86,7 @@
 
         speedtest = "curl -s https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py | python -";
 
-        nix-update = "nh clean all; nh os switch --update ${meta.flakePath}; nh home switch ${meta.flakePath}";
+        nix-update = "nh clean all; nh os switch --update ${meta.flakePath}; nh home switch ${meta.flakePath}; /run/current-system/bin/switch-to-configuration boot";
         darwin-update = "nh clean all; nh darwin switch --update ${meta.flakePath}";
 
         fix-time = "sudo chronyc -a makestep";
