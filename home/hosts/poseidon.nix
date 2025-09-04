@@ -20,5 +20,8 @@
 
     # Extra
     discord
+    # whatsapp-for-mac
   ];
+
+  # programs.zen-browser.enable = true;
 }
