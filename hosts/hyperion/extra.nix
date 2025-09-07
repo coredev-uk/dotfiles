@@ -20,6 +20,14 @@
 
     defaultGateway.address = "10.147.20.1";
 
+    routes = [
+      {
+        address = "10.147.5.0";
+        prefixLength = 24;
+        via = "10.147.11.1";
+      }
+    ];
+
     interfaces.enp170s0 = {
       ipv4.addresses = [
         {
