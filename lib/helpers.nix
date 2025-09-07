@@ -16,6 +16,7 @@ let
       type ? "desktop",
       system ? "x86_64-linux",
       flakePath ? "/home/${user}/.dotfiles",
+      stableOverride ? null,
     }:
     {
       inherit
@@ -23,7 +24,11 @@ let
         inputs
         outputs
         ;
-      stable = inputs.nixpkgs.legacyPackages.${system};
+      stable =
+        if builtins.isString stableOverride then
+          stableOverride
+        else
+          inputs.nixpkgs.legacyPackages.${system};
       meta = {
         inherit
           hostname
@@ -124,6 +129,7 @@ in
     inputs.darwin.lib.darwinSystem {
       inherit system;
       specialArgs = mkSpecialArgs {
+        stableOverride = inputs.nixpkgs-darwin;
         inherit
           hostname
           user
@@ -145,6 +151,7 @@ in
               flakeStateVersion = stateVersion;
             };
             extraSpecialArgs = mkSpecialArgs {
+              stableOverride = inputs.nixpkgs-darwin;
               inherit
                 hostname
                 user

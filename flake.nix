@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
+    nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-25.05-darwin";
     unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nixos-hardware.url = "github:nixos/nixos-hardware/master";
 
@@ -87,7 +88,12 @@
       packages = libx.forAllSystems (
         system:
         let
-          pkgs = unstable.legacyPackages.${system};
+          pkgs =
+            # if builtins.isString (builtins.match "-darwin$" system) then
+            if system == "aarch64-darwin" then
+              inputs.nixpkgs-darwin.legacyPackages.${system}
+            else
+              unstable.legacyPackages.${system};
         in
         import ./pkgs { inherit pkgs inputs; }
       );
