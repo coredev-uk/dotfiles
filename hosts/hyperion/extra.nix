@@ -28,13 +28,6 @@
             prefixLength = 24;
           }
         ];
-        routes = [
-          {
-            address = "10.147.5.0";
-            prefixLength = 24;
-            via = "10.147.11.1";
-          }
-        ];
       };
     };
 
