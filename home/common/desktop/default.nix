@@ -33,7 +33,6 @@
     loupe
     mpv
     nautilus
-    protonmail-desktop
     proton-pass
     papers
     spotify
