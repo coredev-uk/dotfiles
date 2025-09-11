@@ -44,7 +44,6 @@
         eval "$(direnv hook zsh)" # direnv auto shell activation hook
         TERM=xterm-256color
 
-        export KUBECONFIG=~/.kube/homelab-config
         export GIO_MODULE_DIR=${pkgs.glib-networking}/lib/gio/modules/ # Patch for webkit2gtk ssl error (https://github.com/tauri-apps/wry/issues/605#issuecomment-1215756032)
       '';
 
