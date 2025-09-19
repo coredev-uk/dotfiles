@@ -35,8 +35,9 @@ in
 
   # DNS
   networking.nameservers = [
-    "10.147.20.26"
+    "10.147.10.101"
     "10.147.1.10"
+    # "10.147.1.20"
   ];
 
   # Enforce Static DNS

@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   # Longhorn storage optimization for Hyperion host
@@ -14,11 +14,6 @@
     "target_core_file"
     "iscsi_target_mod"
     "configfs" # Configuration filesystem for targets
-  ];
-
-  # Load modules at boot
-  boot.extraModulePackages = with config.boot.kernelPackages; [
-    # Additional modules will be loaded automatically
   ];
 
   # Ensure required kernel parameters for storage optimization
