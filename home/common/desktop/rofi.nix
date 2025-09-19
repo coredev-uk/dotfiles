@@ -1,11 +1,10 @@
-{ pkgs, meta, ... }:
+{ pkgs, ... }:
 
 {
   catppuccin.rofi.enable = true;
 
   programs.rofi = {
     enable = true;
-    package = if meta.desktop == "i3" then pkgs.rofi else pkgs.rofi-wayland;
     terminal = "${pkgs.ghostty}/bin/ghostty";
 
     extraConfig = {

@@ -85,7 +85,7 @@
 
         speedtest = "curl -s https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py | python -";
 
-        nix-update = "nh clean all; nh os switch --update ${meta.flakePath}; nh home switch ${meta.flakePath}; /run/current-system/bin/switch-to-configuration boot";
+        nix-update = "nh clean all; nh os switch --update ${meta.flakePath}; nh home switch ${meta.flakePath}; sudo /run/current-system/bin/switch-to-configuration boot";
         darwin-update = "nh clean all; nh darwin switch --update ${meta.flakePath}";
 
         fix-time = "sudo chronyc -a makestep";
