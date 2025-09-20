@@ -32,13 +32,15 @@
         "--disable servicelb"
         "--disable traefik"
         "--disable local-storage"
+        # Enable Sysctls
+        "--kubelet-arg=allowed-unsafe-sysctls=net.ipv4.conf.all.src_valid_mark,net.ipv6.conf.all.disable_ipv6"
       ]
       ++ (
         if meta.hostname == "hyperion" then
           [ ]
         else
           [
-            "--server https://10.147.20.20:6443"
+            "--server https://10.147.10.20:6443"
           ]
       )
     );
