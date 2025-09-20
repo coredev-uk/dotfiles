@@ -6,7 +6,7 @@ let
     "# SSH Config File managed by NixOS Home Manager"
     ""
     "# 1. My Home Servers (using private key ~/.ssh/id_home)"
-    "Host 10.147.20.20"
+    "Host 10.147.10.20"
     "    User paul"
     "    IdentityFile ~/.ssh/id_home"
     "    IdentitiesOnly yes"
@@ -49,7 +49,7 @@ let
     ""
     "# Home Servers"
     "10.147.20.18 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAHp9jtjj8GUHYoLQa+PzfOOkJ9ODPc4G3YlZfYXQFqv"
-    "10.147.20.20 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICL9+Cp3dUkcgvzGUaDcfsoywXeaRISJNZ/Tgqqzlk6k"
+    "10.147.10.20 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICL9+Cp3dUkcgvzGUaDcfsoywXeaRISJNZ/Tgqqzlk6k"
   ];
 in
 {
