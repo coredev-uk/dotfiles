@@ -19,7 +19,7 @@
     vim
 
     # Extra
-    discord
+    # discord
     # whatsapp-for-mac
   ];
 
