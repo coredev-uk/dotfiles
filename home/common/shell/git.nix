@@ -2,7 +2,6 @@
 {
   home.file.".config/git/allowed_signers".text = ''
     core@coredev.uk ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINQpQFDxvGq+x6sHldr81kFtftS6KFEzbOtoRKKTXFR7 
-    pt357@kent.ac.uk ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFiZJO5uLLRe4XhtxRbafK69xzOUCAKhbtq7f+CqrfSI
   '';
 
   home.packages = with pkgs; [ gh ];
@@ -12,14 +11,6 @@
 
     userEmail = "core@coredev.uk";
     userName = "Core";
-
-    includes = [
-      {
-        condition = "hasconfig:remote.*.url:git@git.cs.kent.ac.uk:*/**";
-        contents.user.email = "pt357@kent.ac.uk";
-        contents.user.name = "Paul Thompson";
-      }
-    ];
 
     aliases = {
       lg = "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit";
