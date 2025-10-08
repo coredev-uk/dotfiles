@@ -13,6 +13,8 @@
 
   time.timeZone = "Europe/London";
 
+  services.atd.enable = true;
+
   networking = {
     hostName = "hyperion";
 
