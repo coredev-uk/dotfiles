@@ -20,6 +20,7 @@ in
       "render"
       "lxd"
       "i2c" # For RGB
+      "atd"
     ];
 
     linger = true;
