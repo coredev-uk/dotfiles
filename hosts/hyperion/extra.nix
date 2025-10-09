@@ -21,13 +21,13 @@
 
     useDHCP = false;
 
-    defaultGateway.address = "10.147.10.1";
+    defaultGateway.address = "192.168.20.1";
 
     interfaces.enp170s0 = {
       ipv4 = {
         addresses = [
           {
-            address = "10.147.10.20";
+            address = "192.168.20.10";
             prefixLength = 24;
           }
         ];

@@ -6,7 +6,7 @@ let
     "# SSH Config File managed by NixOS Home Manager"
     ""
     "# 1. My Home Servers (using private key ~/.ssh/id_home)"
-    "Host 10.147.10.20"
+    "Host 192.168.20.10"
     "    User paul"
     "    IdentityFile ~/.ssh/id_home"
     "    IdentitiesOnly yes"
@@ -24,13 +24,6 @@ let
     "  IdentityFile ~/.ssh/id_github"
     "  IdentitiesOnly yes"
     ""
-    "# 4. Legacy Home Server (using private key ~/.ssh/id_home)"
-    "Host 10.147.20.18"
-    "    User sysadmin"
-    "    IdentityFile ~/.ssh/id_home"
-    "    IdentitiesOnly yes"
-    ""
-
   ];
 
   fullKnownHostsContent = pkgs.lib.strings.concatLines [
@@ -42,8 +35,7 @@ let
     "aur.archlinux.org ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBPtuX2qOFQUxuH9wR/ZavxkjCherF9sKQJb1yYML21i"
     ""
     "# Home Servers"
-    "10.147.20.18 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAHp9jtjj8GUHYoLQa+PzfOOkJ9ODPc4G3YlZfYXQFqv"
-    "10.147.10.20 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICL9+Cp3dUkcgvzGUaDcfsoywXeaRISJNZ/Tgqqzlk6k"
+    "192.168.20.10 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICL9+Cp3dUkcgvzGUaDcfsoywXeaRISJNZ/Tgqqzlk6k"
   ];
 in
 {
