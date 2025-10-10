@@ -43,7 +43,6 @@ in
   };
 
   home.packages = with pkgs; [
-    at
     devenv
     direnv
     self.packages.${pkgs.stdenv.system}.neovim
