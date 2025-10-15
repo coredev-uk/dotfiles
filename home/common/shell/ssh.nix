@@ -24,12 +24,22 @@ let
     "  IdentityFile ~/.ssh/id_github"
     "  IdentitiesOnly yes"
     ""
+    "# 4. BitBucket Configuration (using private key ~/.ssh/id_bitbucket)"
+    "Host bitbucket.org"
+    " HostName bitbucket.org"
+    " User git"
+    " IdentityFile ~/.ssh/id_bitbucket"
+    " IdentitiesOnly yes"
+    ""
   ];
 
   fullKnownHostsContent = pkgs.lib.strings.concatLines [
     "# SSH Known Hosts File managed by NixOS Home Manager"
     "# GitHub"
     "github.com ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOMqqnkVzrm0SdG6UOoqKLsabgH5C9okWi0dh2l9GKJl"
+    ""
+    "# BitBucket"
+    "bitbucket.org ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIazEu89wgQZ4bqs3d63QSMzYVa0MuJ2e2gKTKqu+UUO"
     ""
     "# AUR"
     "aur.archlinux.org ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBPtuX2qOFQUxuH9wR/ZavxkjCherF9sKQJb1yYML21i"
