@@ -13,7 +13,6 @@
 
   time.timeZone = "Europe/London";
 
-  services.atd.enable = true;
   services.cron.enable = true;
 
   networking = {
