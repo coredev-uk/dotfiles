@@ -38,6 +38,21 @@
         enable = true;
         plugins.lspsaga.enable = true;
       };
+      colorful-menu-nvim = {
+        enable = true;
+        setupOpts = {
+          ls = {
+            lua_ls = {
+              arguments_hl = "@comment";
+            };
+            ts_ls = {
+              extra_info_hl = "@comment";
+            };
+          };
+          fallback_highlight = "@variable";
+          max_width = 60;
+        };
+      };
     };
 
     # Visual elements
@@ -67,6 +82,7 @@
         enable = true;
         format.type = "nixfmt";
       };
+      php.enable = true;
       python.enable = true;
       rust.enable = true;
       tailwind.enable = true;
@@ -122,6 +138,7 @@
     formatter.conform-nvim = {
       enable = true;
       setupOpts = {
+        format_on_save = true;
         formatters_by_fs = {
           astro = [
             "prettierd"
@@ -268,21 +285,6 @@
     lazy.plugins = {
       "yuck.vim" = {
         package = pkgs.vimPlugins.yuck-vim;
-      };
-      "colorful-menu.nvim" = {
-        package = pkgs.vimPlugins.colorful-menu-nvim;
-        setupOpts = {
-          ls = {
-            lua_ls = {
-              arguments_hl = "@comment";
-            };
-            ts_ls = {
-              extra_info_hl = "@comment";
-            };
-          };
-          fallback_highlight = "@variable";
-          max_width = 60;
-        };
       };
     };
 
