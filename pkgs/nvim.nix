@@ -138,7 +138,6 @@
     formatter.conform-nvim = {
       enable = true;
       setupOpts = {
-        format_on_save = true;
         formatters_by_fs = {
           astro = [
             "prettierd"
@@ -221,7 +220,7 @@
     #------------------------------------------------------------------------------
     # GIT INTEGRATION
     #------------------------------------------------------------------------------
-    git.gitsigns.enable = true;
+    git.enable = true;
 
     #------------------------------------------------------------------------------
     # KEYBINDINGS
