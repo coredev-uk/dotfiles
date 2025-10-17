@@ -22,7 +22,7 @@
 
     defaultGateway.address = "192.168.20.1";
 
-    interfaces.enp170s0 = {
+    interfaces.enp171s0 = {
       ipv4 = {
         addresses = [
           {
