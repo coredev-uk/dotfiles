@@ -39,4 +39,11 @@
     ];
   };
 
+  # Coral TPU configuration
+  services.udev.extraRules = ''
+    SUBSYSTEM=="apex", MODE="0660", GROUP="apex"
+  '';
+
+  users.groups.apex = { };
+
 }

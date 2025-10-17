@@ -12,6 +12,9 @@
   ];
 
   boot = {
+    # Enable Coral TPU support
+    extraModulePackages = with config.boot.kernelPackages; [ gasket ];
+    
     initrd = {
       availableKernelModules = [
         "nvme"
@@ -27,6 +30,8 @@
     kernelModules = [
       "kvm-intel"
       "vhost_vsock"
+      "gasket"
+      "apex"
     ];
 
     kernel = {
@@ -34,5 +39,10 @@
         "fs.inotify.max_user_watches" = 524288;
       };
     };
+
+    # Coral TPU PCIe compatibility parameters
+    kernelParams = [
+      "pcie_aspm=off" # Disable PCIe ASPM for TPU compatibility
+    ];
   };
 }
