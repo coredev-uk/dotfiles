@@ -6,6 +6,7 @@ in
 {
   users.users.${user} = {
     isNormalUser = true;
+    uid = 1000;
     shell = pkgs.zsh;
     extraGroups = [
       "audio"
