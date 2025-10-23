@@ -92,5 +92,7 @@
   ];
   bindl = [
     ", XF86AudioLowerVolume, exec, ${pkgs.wireplumber}/bin/wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%-"
+    ", XF86MonBrightnessDown, exec, hyprctl hyprsunset gamma -10"
+    ", XF86MonBrightnessUp, exec, hyprctl hyprsunset gamma +10"
   ];
 }

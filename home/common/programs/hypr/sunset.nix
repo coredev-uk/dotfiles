@@ -11,7 +11,6 @@ _: {
         {
           time = "21:00";
           temperature = 5500;
-          gamma = 1;
         }
       ];
     };
