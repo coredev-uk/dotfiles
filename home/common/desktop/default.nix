@@ -42,7 +42,4 @@
     thunderbird
   ];
 
-  programs.zen-browser.enable = true;
-
-  fonts.fontconfig.enable = true;
 }
