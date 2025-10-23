@@ -3,7 +3,7 @@
 {
   imports = [
     ./eww
-    ./dunst.nix
+    ./swaync.nix
     ./rofi.nix
   ];
 
