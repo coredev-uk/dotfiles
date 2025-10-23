@@ -53,7 +53,6 @@
 
         exec-once = [
           "eww open-many bar bar-second"
-          "1password --silent"
           "${wallpaper}/bin/get-wallpaper --session=hyprland"
         ];
 

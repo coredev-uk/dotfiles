@@ -30,9 +30,6 @@
     "--release ${mod}+Shift+Print" =
       "exec ${pkgs.scrot}/bin/scrot -s -e '${pkgs.xclip}/bin/xclip -selection clipboard -t image/png -i $f && rm $f'";
 
-    # 1Password
-    "${mod}+grave" = "exec ${pkgs._1password-gui-beta}/bin/1password --quick-access";
-
     # Miscellaneous
     "${mod}+l" = "exec ${lock}";
     "${mod}+b" = "exec ${browser}";

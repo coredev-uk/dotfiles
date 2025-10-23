@@ -76,9 +76,6 @@
     # Screenshot
     "${mod}, Print, exec, ${pkgs.grimblast}/bin/grimblast --notify copy active"
     ", Print, exec, ${pkgs.grimblast}/bin/grimblast --notify copy area"
-
-    # 1Password
-    "CTRL SHIFT, Space, exec, 1password --quick-access"
   ];
 
   bindm = [
