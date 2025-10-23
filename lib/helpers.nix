@@ -150,6 +150,7 @@ in
               flakeInputs = inputs;
               flakeStateVersion = stateVersion;
             };
+            backupFileExtension = "backup";
             extraSpecialArgs = mkSpecialArgs {
               stableOverride = inputs.nixpkgs-darwin;
               inherit

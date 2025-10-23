@@ -1,5 +1,11 @@
-{ pkgs, ... }:
+{ pkgs, self, ... }:
+
+let
+  theme = import "${self}/lib/theme" { inherit pkgs; };
+in
 {
+  catppuccin.dunst.enable = true;
+
   services.swaync = {
     enable = true;
     package = pkgs.swaynotificationcenter;
@@ -38,7 +44,7 @@
     style = ''
       * {
         all: unset;
-        font-family: FiraCode Nerd Font;
+        font-family: ${theme.fonts.monospace.name}, monospace;
         transition: 0.3s;
         font-size: 1.2rem;
       }
