@@ -2,9 +2,9 @@
 
 {
   imports = [
-    ./eww
-    ./swaync.nix
-    ./rofi.nix
+    ../../programs/eww
+    ../../programs/swaync.nix
+    ../../programs/rofi.nix
   ];
 
   home.packages = with pkgs; [
@@ -15,16 +15,8 @@
     wdisplays
   ];
 
-  services = {
-
-    gnome-keyring.enable = true;
-
-    wlsunset = {
-      enable = true;
-      latitude = "51.50605057576348";
-      longitude = "-0.131601896747958";
-    };
-  };
+  fonts.fontconfig.enable = true;
+  services.gnome-keyring.enable = true;
 
   systemd.user.services.hyprpolkitagent = {
     Unit = {

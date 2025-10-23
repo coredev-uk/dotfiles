@@ -12,11 +12,12 @@ let
 in
 {
   imports = [
-    ../xorg-common.nix
+    ../default/xorg.nix
 
-    ./packages.nix
-    ./lock.nix
-    ./picom.nix
+    # i3-Specific Programs
+    ../../programs/betterlockscreen.nix
+    ../../programs/picom.nix
+    ../../programs/gammastep.nix
   ];
 
   home.file.".xinitrc".text = ''

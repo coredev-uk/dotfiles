@@ -5,8 +5,8 @@
 }:
 {
   imports = [
-    ../wl-common.nix
-    ./packages.nix
+    ../default/wayland.nix
+    ../../programs/hypr
   ];
 
   wayland.windowManager.hyprland = {

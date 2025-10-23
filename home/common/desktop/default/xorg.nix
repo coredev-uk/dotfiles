@@ -2,70 +2,21 @@
 
 {
   imports = [
-    ./eww
-    # ./polybar
-    ./dunst.nix
-    ./rofi.nix
+    ../../programs/eww
+    # ../../programs/picom.nix
+    ../../programs/dunst.nix
+    ../../programs/rofi.nix
   ];
 
   home.packages = with pkgs; [
-    dunst
+    feh
     libnotify
     scrot
     dbus
   ];
 
-  services = {
-
-    gnome-keyring.enable = true;
-
-    gammastep = {
-      enable = true;
-
-      provider = "manual";
-
-      tray = true;
-
-      latitude = 51.50605057576348;
-      longitude = -0.131601896747958;
-
-      temperature = {
-        day = 5700;
-        night = 3500;
-      };
-
-      settings = {
-        general = {
-          # gamma = 0.8;
-          adjusstment-method = "randr";
-        };
-      };
-    };
-
-    xidlehook = {
-      enable = true;
-
-      detect-sleep = true;
-
-      # not-when-audio = true;
-      not-when-fullscreen = true;
-
-      timers = [
-        {
-          delay = 300;
-          command = "loginctl lock-session";
-        }
-        {
-          delay = 300;
-          command = "xset s activate";
-        }
-        {
-          delay = 1200;
-          command = "systemctl suspend";
-        }
-      ];
-    };
-  };
+  fonts.fontconfig.enable = true;
+  services.gnome-keyring.enable = true;
 
   systemd.user.services.polkit-gnome-authentication-agent-1 = {
     Unit = {

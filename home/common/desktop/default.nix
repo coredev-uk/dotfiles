@@ -12,14 +12,17 @@
   imports = [
     (./. + "/${meta.desktop}")
 
+    # Environment Configurations
+    ./default/gtk.nix
+    ./default/qt.nix
+    ./default/xdg.nix
+
     ../scripts
 
-    # ./alacritty.nix
-    ./gaming.nix
-    ./gtk.nix
-    ./qt.nix
-    # ./rclone.nix
-    ./xdg.nix
+    # Standard Programs
+    ../programs/gaming.nix
+    ../programs/zen.nix
+    # ./programs/rclone.nix
   ];
 
   home.packages = with pkgs; [

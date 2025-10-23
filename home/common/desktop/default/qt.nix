@@ -10,7 +10,7 @@ in
   };
 
   home = {
-    packages = with pkgs; [
+    packages = [
       theme.qtTheme.package
     ];
   };
