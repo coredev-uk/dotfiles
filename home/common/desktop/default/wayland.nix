@@ -14,6 +14,7 @@
     dbus
     wl-clipboard
     wdisplays
+    hyprprop
   ];
 
   fonts.fontconfig.enable = true;
