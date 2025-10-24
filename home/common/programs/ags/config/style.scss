@@ -2,12 +2,12 @@
 $fg-color: #{"@theme_fg_color"};
 $bg-color: #{"@theme_bg_color"};
 
-window#bar {
+window.Bar {
   background: transparent;
   color: $fg-color;
   font-weight: bold;
 
-  >box {
+  > centerbox {
     background: $bg-color;
     border-radius: 10px;
     margin: 8px;
@@ -16,7 +16,5 @@ window#bar {
   button {
     border-radius: 8px;
     margin: 2px;
-    min-height: 0;
-    padding: 4px 8px;
   }
 }
