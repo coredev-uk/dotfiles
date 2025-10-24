@@ -13,17 +13,20 @@
     agenix.url = "github:ryantm/agenix";
     agenix.inputs.nixpkgs.follows = "unstable";
 
+    ags.url = "github:/aylur/ags";
+    ags.inputs.nixpkgs.follows = "unstable";
+
     catppuccin.url = "github:catppuccin/nix";
 
     disko.url = "github:nix-community/disko";
     disko.inputs.nixpkgs.follows = "unstable";
 
+    darwin.url = "github:nix-darwin/nix-darwin";
+
     lanzaboote.url = "github:nix-community/lanzaboote";
     lanzaboote.inputs.nixpkgs.follows = "unstable";
 
     nvf.url = "github:notashelf/nvf";
-
-    darwin.url = "github:nix-darwin/nix-darwin";
 
     # TODO: Remove when https://github.com/NixOS/nixpkgs/pull/363992 is merged
     zen-browser.url = "github:0xc000022070/zen-browser-flake";

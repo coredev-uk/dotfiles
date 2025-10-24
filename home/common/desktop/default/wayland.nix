@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ../../programs/ags
     ../../programs/eww
     ../../programs/swaync.nix
     ../../programs/rofi.nix
