@@ -52,7 +52,8 @@
         };
 
         exec-once = [
-          "eww open-many bar bar-second"
+          # "eww open-many bar bar-second"
+          "MANGOHUD=0 ags run"
           "${wallpaper}/bin/get-wallpaper --session=hyprland"
         ];
 
