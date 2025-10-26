@@ -11,8 +11,6 @@
     "${self}/hosts/common/services/iscsi.nix"
   ];
 
-  time.timeZone = "Europe/London";
-
   services.cron.enable = true;
 
   networking = {

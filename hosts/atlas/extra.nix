@@ -29,10 +29,6 @@ in
     bootwin
   ];
 
-  # Fix the time when Dual-booting with Windows
-  time.hardwareClockInLocalTime = true;
-  time.timeZone = "Europe/London";
-
   # DNS
   networking.nameservers = [
     "192.168.20.20"
