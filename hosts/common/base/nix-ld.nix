@@ -38,5 +38,6 @@
       libxkbcommon
       alsa-lib
       libusb1
+      libGL.out
     ]);
 }
