@@ -32,6 +32,11 @@
           icon = "fence";
           id = 6;
         };
+        TikTok = {
+          color = "toolbar";
+          icon = "fence";
+          id = 7;
+        };
       };
 
       # User Spaces
