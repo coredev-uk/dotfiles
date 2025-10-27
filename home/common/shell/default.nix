@@ -11,7 +11,7 @@ in
 {
   imports = [
     ./bat.nix
-    ./bottom.nix
+    ./btop.nix
     ./fastfetch.nix
     ./starship.nix
     ./nh.nix
@@ -47,9 +47,6 @@ in
     direnv
     self.packages.${pkgs.stdenv.system}.neovim
     age
-    btop
     termscp
   ];
-
-  catppuccin.btop.enable = true;
 }
