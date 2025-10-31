@@ -5,6 +5,11 @@
   ...
 }:
 {
+  imports = [
+    ./homebrew.nix
+  ];
+
+  system.primaryUser = meta.username;
   system.stateVersion = lib.mkForce 6;
 
   users.users.${meta.username} = {
@@ -18,4 +23,5 @@
 
     packages = [ pkgs.home-manager ];
   };
+
 }

@@ -67,11 +67,12 @@ in
       user ? username,
       desktop ? null,
       type ? "desktop",
+      pkgsInput ? inputs.unstable,
       system ? "x86_64-linux",
       flakePath ? "/home/${user}/.dotfiles",
     }:
     inputs.home-manager.lib.homeManagerConfiguration {
-      pkgs = inputs.unstable.legacyPackages.${system};
+      pkgs = pkgsInput.legacyPackages.${system};
       extraSpecialArgs = mkSpecialArgs {
         inherit
           hostname
@@ -128,7 +129,7 @@ in
       type ? "darwin",
       flakePath ? "/Users/${user}/.dotfiles",
     }:
-    inputs.darwin.lib.darwinSystem {
+    inputs.nix-darwin.lib.darwinSystem {
       inherit system;
       specialArgs = mkSpecialArgs {
         stableOverride = inputs.nixpkgs-darwin;
@@ -142,8 +143,9 @@ in
           ;
       };
       modules = [
-        ../hosts
+        inputs.nix-homebrew.darwinModules.nix-homebrew
         inputs.home-manager.darwinModules.home-manager
+        ../hosts
         {
           home-manager = {
             #useGlobalPkgs = true;

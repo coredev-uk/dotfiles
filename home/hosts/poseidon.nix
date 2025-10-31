@@ -1,27 +1,11 @@
-{ pkgs, ... }:
+{ lib, ... }:
 {
-  home.packages = with pkgs; [
-    # Base Packages
-    agenix
-    bat
-    curl
-    eza
-    file
-    git
-    jq
-    killall
-    lsof
-    ripgrep
-    rsync
-    tree
-    unzip
-    usbutils
-    vim
 
-    # Extra
-    # discord
-    # whatsapp-for-mac
+  imports = [
+    ../common/programs/discord.nix
+    ../common/programs/ghostty.nix # NixOS/nixpkgs#388984
+    ../common/programs/zen.nix
   ];
 
-  # programs.zen-browser.enable = true;
+  programs.ghostty.enable = lib.mkForce false;
 }
