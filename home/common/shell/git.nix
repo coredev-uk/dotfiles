@@ -29,29 +29,15 @@
         lg = "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit";
       };
 
-      branch = {
-        sort = "-committerdate";
-      };
-
-      pull = {
-        rebase = false;
-      };
-
-      init = {
-        defaultBranch = "main";
-      };
+      branch.sort = "-committerdate";
+      pull.rebase = false;
+      init.defaultBranch = "main";
+      commit.gpgSign = true;
+      tag.gpgSign = true;
 
       gpg = {
         format = "ssh";
         ssh.allowedSignersFile = "~/.config/git/allowed_signers";
-      };
-
-      commit = {
-        gpgSign = true;
-      };
-
-      tag = {
-        gpgSign = true;
       };
 
       url = {
