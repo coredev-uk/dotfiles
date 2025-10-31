@@ -9,20 +9,20 @@ let
   theme = import "${self}/lib/theme" { inherit pkgs; };
 in
 {
-  imports = [
-    ./bat.nix
-    ./btop.nix
-    ./fastfetch.nix
-    ./starship.nix
-    ./nh.nix
-    ./ssh.nix
-    ./zsh.nix
-  ]
-  ++ lib.optional (!meta.isHeadless) ./git.nix
-  ++ lib.optionals meta.isDesktop [
-    ./ghostty.nix
-    ./xdg.nix
-  ];
+  imports =
+    [
+      ./bat.nix
+      ./btop.nix
+      ./fastfetch.nix
+      ./starship.nix
+      ./nh.nix
+      ./ssh.nix
+      ./zsh.nix
+    ]
+    ++ lib.optional (!meta.isHeadless) ./git.nix
+    ++ lib.optionals meta.isDesktop [
+      ./xdg.nix
+    ];
 
   catppuccin = {
     inherit (theme.catppuccin) flavor;

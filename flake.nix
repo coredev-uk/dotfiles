@@ -26,6 +26,8 @@
     lanzaboote.url = "github:nix-community/lanzaboote";
     lanzaboote.inputs.nixpkgs.follows = "unstable";
 
+    nixcord.url = "github:kaylorben/nixcord";
+
     nvf.url = "github:notashelf/nvf";
 
     # TODO: Remove when https://github.com/NixOS/nixpkgs/pull/363992 is merged

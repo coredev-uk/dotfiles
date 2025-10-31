@@ -52,6 +52,7 @@ let
         flakeInputs.agenix.homeManagerModules.default
         flakeInputs.ags.homeManagerModules.default
         flakeInputs.catppuccin.homeModules.catppuccin
+        flakeInputs.nixcord.homeModules.nixcord
         flakeInputs.zen-browser.homeModules.twilight
         ../home # This path is relative to where this function is defined and used
       ];

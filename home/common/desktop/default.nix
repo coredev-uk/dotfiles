@@ -20,7 +20,9 @@
     ../scripts
 
     # Standard Programs
+    ../programs/discord.nix
     ../programs/gaming.nix
+    ../programs/ghostty.nix
     ../programs/zen.nix
     # ./programs/rclone.nix
   ];
@@ -30,7 +32,6 @@
     catppuccin-gtk
     cider
     desktop-file-utils
-    discord
     file-roller
     # jellyfin-media-player
     loupe
