@@ -15,7 +15,7 @@
   boot = {
     # Enable Coral TPU support
     extraModulePackages = with config.boot.kernelPackages; [ gasket ];
-    
+
     initrd = {
       availableKernelModules = [
         "nvme"

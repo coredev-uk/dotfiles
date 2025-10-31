@@ -43,7 +43,7 @@
       spacesForce = false;
       spaces =
         let
-          containers = config.programs.zen-browser.profiles."default".containers;
+          inherit (config.programs.zen-browser.profiles."default") containers;
         in
         {
           Universal = {
