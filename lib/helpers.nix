@@ -14,9 +14,9 @@ let
       user ? username,
       desktop ? null,
       type ? "desktop",
+      pkgsInput ? inputs.nixpkgs,
       system ? "x86_64-linux",
       flakePath ? "/home/${user}/.dotfiles",
-      stableOverride ? null,
     }:
     {
       inherit
@@ -24,11 +24,7 @@ let
         inputs
         outputs
         ;
-      stable =
-        if builtins.isString stableOverride then
-          stableOverride
-        else
-          inputs.nixpkgs.legacyPackages.${system};
+      stable = pkgsInput.legacyPackages.${system};
       meta = {
         inherit
           hostname
@@ -127,18 +123,19 @@ in
       system ? "aarch64-darwin",
       desktop ? null,
       type ? "darwin",
+      pkgsInput ? inputs.unstable,
       flakePath ? "/Users/${user}/.dotfiles",
     }:
     inputs.nix-darwin.lib.darwinSystem {
       inherit system;
       specialArgs = mkSpecialArgs {
-        stableOverride = inputs.nixpkgs-darwin;
         inherit
           hostname
           user
+          system
           desktop
           type
-          system
+          pkgsInput
           flakePath
           ;
       };
@@ -156,13 +153,13 @@ in
             };
             backupFileExtension = "backup";
             extraSpecialArgs = mkSpecialArgs {
-              stableOverride = inputs.nixpkgs-darwin;
               inherit
                 hostname
                 user
+                system
                 desktop
                 type
-                system
+                pkgsInput
                 flakePath
                 ;
             };

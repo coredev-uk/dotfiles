@@ -1,10 +1,16 @@
-{ pkgs, ... }:
-{
+_: {
   # Docs: https://kaylorben.github.io/nixcord/
   programs.nixcord = {
     enable = true;
 
-    package = pkgs.discord;
+    discord = {
+      enable = true;
+      openASAR.enable = true;
+      vencord = {
+        enable = true;
+        unstable = false;
+      };
+    };
 
     config = {
       useQuickCss = true;
