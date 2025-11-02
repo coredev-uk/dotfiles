@@ -25,7 +25,7 @@
     profiles."default" = {
 
       # User Containers (With Facebook Containers enabled)
-      containersForce = false;
+      containersForce = true;
       containers = {
         Personal = {
           color = "blue";
@@ -60,7 +60,7 @@
       };
 
       # User Spaces
-      spacesForce = false;
+      spacesForce = true;
       spaces =
         let
           inherit (config.programs.zen-browser.profiles."default") containers;
