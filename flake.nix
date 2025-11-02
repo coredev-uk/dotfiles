@@ -3,13 +3,12 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
-    nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-25.05-darwin";
     unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
     nixos-hardware.url = "github:nixos/nixos-hardware/master";
 
     home-manager.url = "github:nix-community/home-manager"; # /release-25.05";
-    # home-manager.inputs.nixpkgs.follows = "unstable";
+    home-manager.inputs.nixpkgs.follows = "unstable";
 
     agenix.url = "github:ryantm/agenix";
     agenix.inputs.nixpkgs.follows = "unstable";
@@ -23,7 +22,7 @@
     disko.inputs.nixpkgs.follows = "unstable";
 
     nix-darwin.url = "github:nix-darwin/nix-darwin/nix-darwin-25.05";
-    nix-darwin.inputs.nixpkgs.follows = "nixpkgs-darwin";
+    nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
 
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
 
@@ -103,12 +102,7 @@
       packages = libx.forAllSystems (
         system:
         let
-          pkgs =
-            # if builtins.isString (builtins.match "-darwin$" system) then
-            if system == "aarch64-darwin" then
-              inputs.nixpkgs-darwin.legacyPackages.${system}
-            else
-              unstable.legacyPackages.${system};
+          pkgs = unstable.legacyPackages.${system};
         in
         import ./pkgs { inherit pkgs inputs; }
       );
