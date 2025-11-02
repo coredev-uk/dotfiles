@@ -1,7 +1,10 @@
-_: {
+{ pkgs, ... }:
+{
   # Docs: https://kaylorben.github.io/nixcord/
   programs.nixcord = {
     enable = true;
+
+    package = pkgs.discord;
 
     config = {
       useQuickCss = true;
@@ -10,7 +13,23 @@ _: {
       ];
 
       plugins = {
-        # to be set
+        autoDNDWhilePlaying.enable = true;
+
+        disableCallIdle.enable = true;
+
+        fixCodeblockGap.enable = true;
+        fixSpotifyEmbeds.enable = true;
+
+        messageLogger.enable = true;
+        openInApp.enable = true;
+
+        shikiCodeblocks.enable = true;
+        sortFriendRequests.enable = true;
+
+        translate.enable = true;
+        validUser.enable = true;
+
+        youtubeAdblock.enable = true;
       };
     };
   };
