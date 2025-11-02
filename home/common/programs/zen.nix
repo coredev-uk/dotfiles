@@ -3,26 +3,59 @@
   programs.zen-browser = {
     enable = true;
 
-    policies = {
-      AutofillAddressEnabled = false;
-      AutofillCreditCardEnabled = false;
-      DisableAppUpdate = true;
-      DisableFeedbackCommands = true;
-      DisableFirefoxStudies = true;
-      DisablePocket = true;
-      DisableTelemetry = true;
-      DontCheckDefaultBrowser = true;
-      NoDefaultBookmarks = true;
-      OfferToSaveLogins = false;
-      EnableTrackingProtection = {
-        Value = true;
-        Locked = true;
-        Cryptomining = true;
-        Fingerprinting = true;
+    languagePacks = [
+      "en-GB"
+    ];
+
+    policies =
+      let
+        mkExtensionSettings = builtins.mapAttrs (
+          _: pluginId: {
+            install_url = "https://addons.mozilla.org/firefox/downloads/latest/${pluginId}/latest.xpi";
+            installation_mode = "force_installed";
+          }
+        );
+      in
+      {
+        AutofillAddressEnabled = false;
+        AutofillCreditCardEnabled = false;
+        DisableAppUpdate = true;
+        DisableFeedbackCommands = true;
+        DisableFirefoxStudies = true;
+        DisablePocket = true;
+        DisableTelemetry = true;
+        DontCheckDefaultBrowser = true;
+        NoDefaultBookmarks = true;
+        OfferToSaveLogins = false;
+        TranslateEnabled = false;
+        EnableTrackingProtection = {
+          Value = true;
+          Locked = true;
+          Cryptomining = true;
+          Fingerprinting = true;
+        };
+        ExtensionSettings = mkExtensionSettings {
+          # Dark Reader
+          "addon@darkreader.org" = "darkreader";
+          # YouTube
+          "sponsorBlocker@ajay.app" = "sponsorblock";
+          # Cookies
+          "jid1-KKzOGWgsW3Ao4Q@jetpack" = "i-dont-care-about-cookies";
+          # Proton
+          "78272b6fa58f4a1abaac99321d503a20@proton.me" = "proton-pass";
+          "vpn@proton.ch" = "proton-vpn";
+          # Refined GitHub
+          "{a4c4eda4-fb84-4a84-b4a1-f7c1cbf2a1ad}" = "refined-github";
+          # Wappalyzer
+          "wappalyzer@crunchlabz.com" = "wappalyzer";
+          # AdBlocker
+          "uBlock0@raymondhill.net" = "ublock-origin";
+        };
       };
-    };
 
     profiles."default" = {
+      name = "Default";
+      isDefault = true;
 
       # User Containers (With Facebook Containers enabled)
       containersForce = true;
