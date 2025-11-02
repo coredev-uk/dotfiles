@@ -2,7 +2,6 @@ _: {
   # Docs: https://kaylorben.github.io/nixcord/
   programs.nixcord = {
     enable = true;
-    vesktop.enable = true;
 
     config = {
       useQuickCss = true;
