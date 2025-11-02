@@ -1,36 +1,41 @@
 { pkgs, ... }:
 {
-  programs.mangohud = {
-    enable = true;
+  programs = {
+    mangohud = {
+      enable = true;
 
-    enableSessionWide = true;
+      enableSessionWide = true;
 
-    package = pkgs.mangohud;
+      package = pkgs.mangohud;
 
-    settings = {
-      table_columns = 2;
-      hud_compact = true;
-      gpu_stats = true;
-      cpu_stats = true;
-      fps = true;
-      frametime = false;
-      frame_timing = false;
-      round_corners = 3;
-      width = 100;
+      settings = {
+        table_columns = 2;
+        hud_compact = true;
+        gpu_stats = true;
+        cpu_stats = true;
+        fps = true;
+        frametime = false;
+        frame_timing = false;
+        round_corners = 3;
+        width = 100;
+      };
+    };
+
+    lutris = {
+      enable = true;
+      extraPackages = with pkgs; [
+        corefonts
+        gamescope
+        mangohud
+        winetricks
+      ];
+      winePackages = with pkgs.wineWowPackages; [
+        staging
+      ];
     };
   };
 
   home.packages = with pkgs; [
     beammp-launcher
-    (lutris.override {
-      extraPkgs = pkgs: [
-        pkgs.corefonts
-        pkgs.gamescope
-        pkgs.mangohud
-        pkgs.winetricks
-      ];
-    })
-    mangohud
-    wineWowPackages.stable
   ];
 }
