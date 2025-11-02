@@ -26,6 +26,9 @@
       "batfi"
       "mediamate"
       "raycast"
+      "scroll-reverser"
+      "alt-tab"
+      "bartender"
 
       "ghostty"
 
