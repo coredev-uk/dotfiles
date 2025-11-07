@@ -123,7 +123,7 @@ in
       system ? "aarch64-darwin",
       desktop ? null,
       type ? "darwin",
-      pkgsInput ? inputs.unstable,
+      pkgsInput ? inputs.nixpkgs-darwin,
       flakePath ? "/Users/${user}/.dotfiles",
     }:
     inputs.nix-darwin.lib.darwinSystem {
