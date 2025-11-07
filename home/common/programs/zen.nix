@@ -15,8 +15,15 @@
             installation_mode = "force_installed";
           }
         );
+        mkLockedAttrs = builtins.mapAttrs (
+          _: value: {
+            Value = value;
+            Status = "locked";
+          }
+        );
       in
       {
+        # Standard Policies
         AutofillAddressEnabled = false;
         AutofillCreditCardEnabled = false;
         DisableAppUpdate = true;
@@ -34,6 +41,14 @@
           Cryptomining = true;
           Fingerprinting = true;
         };
+
+        # Preferences
+        Preferences = mkLockedAttrs {
+          "browser.tabs.warnOnClose" = false;
+          # and so on...
+        };
+
+        # Extensions
         ExtensionSettings = mkExtensionSettings {
           # Dark Reader
           "addon@darkreader.org" = "darkreader";
@@ -104,18 +119,138 @@
             icon = "🌐";
             container = containers.Personal.id;
             position = 1000;
+            theme = {
+              type = "gradient";
+              opacity = 0.5;
+              rotation = null;
+              texture = 0.0;
+              colors = [
+                {
+                  red = 127;
+                  green = 72;
+                  blue = 26;
+                  custom = false;
+                  algorithm = "analogous";
+                  lightness = 30;
+                  position = {
+                    x = 237;
+                    y = 210;
+                  };
+                }
+                {
+                  red = 77;
+                  green = 125;
+                  blue = 28;
+                  custom = false;
+                  algorithm = "analogous";
+                  lightness = 30;
+                  position = {
+                    x = 181;
+                    y = 247;
+                  };
+                }
+                {
+                  red = 122;
+                  green = 31;
+                  blue = 78;
+                  custom = false;
+                  algorithm = "analogous";
+                  lightness = 30;
+                  position = {
+                    x = 244;
+                    y = 143;
+                  };
+                }
+              ];
+            };
           };
           Programming = {
             id = "cdbae728-7886-4c52-9b38-4d93424a1eaf";
             icon = "💻";
             container = containers.Personal.id;
             position = 2000;
+            theme = {
+              type = "gradient";
+              opacity = 0.578;
+              rotation = null;
+              texture = 0.0;
+              colors = [
+                {
+                  red = 11;
+                  green = 68;
+                  blue = 162;
+                  custom = false;
+                  algorithm = "complementary";
+                  lightness = 16;
+                  position = {
+                    x = 131;
+                    y = 143;
+                  };
+                }
+                {
+                  red = 75;
+                  green = 40;
+                  blue = 7;
+                  custom = false;
+                  algorithm = "complementary";
+                  lightness = 16;
+                  position = {
+                    x = 207;
+                    y = 195;
+                  };
+                }
+              ];
+            };
           };
           Work = {
             id = "727c9903-928e-4667-9757-6a54c0b445cd";
             icon = "💼";
             container = containers.Work.id;
             position = 3000;
+            theme = {
+              type = "gradient";
+              opacity = 0.635;
+              rotation = null;
+              texture = 0.5;
+              colors = [
+                {
+                  red = 131;
+                  green = 73;
+                  blue = 122;
+                  custom = false;
+                  algorithm = "analogous";
+                  lightness = 40;
+                  position = {
+                    x = 265;
+                    y = 79;
+                  };
+                }
+                {
+                  red = 138;
+                  green = 68;
+                  blue = 66;
+                  custom = false;
+                  algorithm = "analogous";
+                  lightness = 40;
+                  position = {
+                    x = 300;
+                    y = 185;
+                  };
+                }
+                {
+                  red = 96;
+                  green = 80;
+                  blue = 124;
+                  custom = false;
+                  algorithm = "analogous";
+                  lightness = 40;
+                  position = {
+                    x = 162;
+                    y = 38;
+                  };
+                }
+              ];
+            };
           };
         };
     };
