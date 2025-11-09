@@ -9,7 +9,7 @@
     nixpkgs-darwin.url = "github:NixOS/nixpkgs/nixpkgs-25.05-darwin";
 
     # Bleeding-Edge Packages (Used for pkgs.unstable overlay)
-    unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     nixos-hardware.url = "github:nixos/nixos-hardware/master";
 
