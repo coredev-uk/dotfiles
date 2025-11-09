@@ -40,12 +40,12 @@ in
   fonts = {
     packages = with pkgs; [
       liberation_ttf
-      ubuntu_font_family
+      ubuntu-classic
       gyre-fonts
 
       # Compatibility Fonts
       noto-fonts
-      noto-fonts-emoji
+      noto-fonts-color-emoji
       noto-fonts-cjk-sans
 
       theme.fonts.default.package
