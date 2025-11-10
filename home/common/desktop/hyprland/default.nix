@@ -80,24 +80,26 @@
           "noanim, discord"
         ];
 
-        bezier = [
-          "mycurve,.32,.97,.53,.98"
-        ];
-
         animations = {
-          enabled = 0;
-          animation = [
-            "windowsMove,1,4,mycurve"
-            "windowsIn,1,4,mycurve"
-            "windowsOut,0,4,mycurve"
-          ];
+          enabled = true;
+          inherit (import ./config/animations.nix { }) bezier animation;
         };
 
         windowrulev2 = (import ./config/window-rules.nix { }).window_v2;
 
-        debug = {
-          disable_logs = true;
+        master = {
+          new_status = "master";
         };
+
+        # https://wiki.hypr.land/Configuring/Variables/#misc
+        misc = {
+          force_default_wallpaper = 1;
+          disable_hyprland_logo = false;
+        };
+
+        # debug = {
+        #   disable_logs = true;
+        # };
 
         inherit
           (
