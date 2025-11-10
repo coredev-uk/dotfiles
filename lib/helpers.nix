@@ -31,10 +31,10 @@ let
           desktop
           stateVersion
           flakePath
+          system
           ;
         homeDirectory = if type == "darwin" then "/Users/${user}" else "/home/${user}";
         username = user;
-        systemType = type;
         isDesktop = builtins.isString desktop;
         isDarwin = type == "darwin";
         isHeadless = type == "server" || (type != "darwin" && type != "desktop");

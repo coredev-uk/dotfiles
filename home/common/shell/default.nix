@@ -44,7 +44,7 @@ in
   home.packages = with pkgs; [
     devenv
     direnv
-    self.packages.${pkgs.stdenv.system}.neovim
+    self.packages.${meta.system}.neovim
     age
     termscp
   ];

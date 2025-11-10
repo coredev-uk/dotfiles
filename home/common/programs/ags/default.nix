@@ -1,4 +1,9 @@
-{ inputs, pkgs, ... }:
+{
+  inputs,
+  pkgs,
+  meta,
+  ...
+}:
 {
   programs.ags = {
     enable = true;
@@ -7,7 +12,7 @@
 
     extraPackages =
       let
-        lib = inputs.ags.inputs.astal.packages.${pkgs.system};
+        lib = inputs.ags.inputs.astal.packages.${meta.system};
       in
       with pkgs;
       [
